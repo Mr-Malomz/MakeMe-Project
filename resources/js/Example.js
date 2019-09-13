@@ -1,17 +1,23 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
+import {HashRouter as Router} from 'react-router-dom'
+import Main from './Main';
+
+
 
 function Example() {
     return (
-        <div className="container">
-            <h1>React Live and Direct from laravel!!!</h1>
-            
-        </div>
+        <>
+            <Main />
+        </>
     );
 }
 
 export default Example;
 
 if (document.getElementById('example')) {
-    ReactDOM.render(<Example />, document.getElementById('example'));
+    ReactDOM.render(
+        <Router>
+            <Example />
+        </Router>, document.getElementById('example'));
 }
