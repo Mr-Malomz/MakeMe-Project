@@ -39,6 +39,14 @@ const HomeWrapper = styled.div `
             height: 100%;
         }
 
+        input {
+            width: 300px !important ; 
+        }
+
+        button {
+            left: 70px !important;
+        }
+
         .glide--next-btn, .glide--prev-btn {
             display: none;
         }
@@ -48,6 +56,14 @@ const HomeWrapper = styled.div `
     @media (max-width: 700px) {
         .slide {
             display: none;
+        }
+
+        input {
+            width: 420px !important ; 
+        }
+
+        button {
+            left: 150px !important;
         }
     }
 `;
