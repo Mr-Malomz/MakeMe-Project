@@ -73909,6 +73909,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _pages_login_Home__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./pages/login/Home */ "./resources/js/pages/login/Home.js");
 /* harmony import */ var _pages_login_Login_SignUp__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./pages/login/Login_SignUp */ "./resources/js/pages/login/Login_SignUp.js");
+/* harmony import */ var _pages_workers_Workers__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./pages/workers/Workers */ "./resources/js/pages/workers/Workers.js");
 function _templateObject() {
   var data = _taggedTemplateLiteral(["\n    * {\n        box-sizing: border-box;\n        padding: 0;\n        margin: 0;\n\n        > body {\n            background: #ffffff;\n            font-family: 'Montserrat', sans-serif;\n        }\n    }\n"]);
 
@@ -73926,6 +73927,7 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+
 var GlobalStyle = Object(styled_components__WEBPACK_IMPORTED_MODULE_1__["createGlobalStyle"])(_templateObject());
 
 var Main = function Main() {
@@ -73936,6 +73938,9 @@ var Main = function Main() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
     path: "/register/",
     component: _pages_login_Login_SignUp__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Route"], {
+    path: "/workers/",
+    component: _pages_workers_Workers__WEBPACK_IMPORTED_MODULE_5__["default"]
   })));
 };
 
@@ -74071,6 +74076,37 @@ var LoginSVG2 = function LoginSVG2(props) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (LoginSVG2);
+
+/***/ }),
+
+/***/ "./resources/js/assets/svg/WorkerSVG.js":
+/*!**********************************************!*\
+  !*** ./resources/js/assets/svg/WorkerSVG.js ***!
+  \**********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+
+
+var WorkerSVG = function WorkerSVG(props) {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("svg", _extends({
+    width: 1440,
+    height: 180,
+    viewBox: "0 0 1440 180",
+    fill: "none"
+  }, props), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("path", {
+    d: "M0 129.103V0L1440 2.48276V180H218.303C194.27 136.303 62.7538 127.862 0 129.103Z",
+    fill: "#2B5680"
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (WorkerSVG);
 
 /***/ }),
 
@@ -74219,6 +74255,252 @@ var FormInput = function FormInput(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (FormInput);
+
+/***/ }),
+
+/***/ "./resources/js/components/Header.js":
+/*!*******************************************!*\
+  !*** ./resources/js/components/Header.js ***!
+  \*******************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _extends() { _extends = Object.assign || function (target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i]; for (var key in source) { if (Object.prototype.hasOwnProperty.call(source, key)) { target[key] = source[key]; } } } return target; }; return _extends.apply(this, arguments); }
+
+function _objectWithoutProperties(source, excluded) { if (source == null) return {}; var target = _objectWithoutPropertiesLoose(source, excluded); var key, i; if (Object.getOwnPropertySymbols) { var sourceSymbolKeys = Object.getOwnPropertySymbols(source); for (i = 0; i < sourceSymbolKeys.length; i++) { key = sourceSymbolKeys[i]; if (excluded.indexOf(key) >= 0) continue; if (!Object.prototype.propertyIsEnumerable.call(source, key)) continue; target[key] = source[key]; } } return target; }
+
+function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    min-width: 100%;\n    height: 60px;\n    box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);\n    padding: 10px 60px 10px 60px;\n\n    nav {\n        float: right;\n        display: flex;\n\n        .nav-link-edit, .nav-link-signout {\n            text-decoration: none;\n            color: #3B5998;\n            font-weight: bold;\n            font-size: 14px;\n            text-transform: capitalize;\n        }\n\n        .nav-link-edit {\n            padding-top: 10px;\n\n            :hover {\n                color: #000000;\n            }\n        }\n\n        .nav-link-signout {\n            border: 1px solid #3B5998;\n            padding:10px 25px 10px 25px;\n            border-radius: 4px;\n            margin-left: 30px;\n\n            :hover {\n                background: #3b5998;\n                border: none;\n                color: #ffffff;\n            }\n        }\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+var HeaderWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].header(_templateObject());
+
+var Header = function Header(_ref) {
+  var handleClick = _ref.handleClick,
+      otherProps = _objectWithoutProperties(_ref, ["handleClick"]);
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(HeaderWrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], _extends({}, otherProps, {
+    className: "nav-link-edit"
+  }), "edit profile"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], _extends({
+    handleClick: handleClick
+  }, otherProps, {
+    className: "nav-link-signout"
+  }), "sign out")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Header);
+
+/***/ }),
+
+/***/ "./resources/js/components/Notifications.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/Notifications.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    width: 200px;\n    min-height: 215px;\n    height: auto;\n    box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.25);\n    border-radius: 0 0 10px 10px;\n    padding-bottom: 20px;  \n\n    .not-header {\n        background: #E9EEF8;\n        width: 100%;\n        height: 33px;\n        text-align: center;\n        text-transform: capitalize;\n        font-size: small;\n        line-height: 30px\n    }\n\n    .msg-wrapper {\n        margin: 20px;\n        border: 1px solid #E5E5E5;\n        height: auto;\n\n        > header {\n            background: #E5E5E5;\n            width: 100%;\n            height: 35px;\n            /* line-height: 25px; */\n            padding-left: 10px;\n            text-transform: capitalize;\n\n            h6 {\n                margin: 0;\n                padding: 0\n            }\n\n            span {\n                font-size: 10px;\n            }\n        }\n\n        > span {\n            font-size: 10px;\n            padding: 10px;\n            display: block;\n        }\n    }\n\n    @media(max-width:700px) {\n        display: none;\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+var NotWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].section(_templateObject());
+
+var Notifications = function Notifications() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(NotWrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", {
+    className: "not-header"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h4", null, "notifications")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "msg-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("header", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "admin"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "20-Sept-2019")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "We have a meeting at the end of the month")));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Notifications);
+
+/***/ }),
+
+/***/ "./resources/js/components/Pagination.js":
+/*!***********************************************!*\
+  !*** ./resources/js/components/Pagination.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    width: 85%;\n\n    nav {\n        margin: 30px auto 30px auto;\n        width: 100%;\n    }\n    \n    .pagination {\n        display: flex;\n        font-size: 12px;\n        \n            li {\n                list-style: none;\n                padding: 5px 10px 5px 10px;\n                border: 0.5px solid #C4C4C4;\n\n                &:first-child {\n                    border-radius: 4px 0 0 4px;\n                    font-weight: bold;\n                }\n\n                &:last-child {\n                    border-radius: 0 4px 4px 0;\n                    font-weight: bold;\n                }\n\n                a {\n                    text-decoration: none;\n                    color: #000000;\n                }\n            }\n    }\n\n    .active {\n        background: #C4C4C4;\n        color: #ffffff\n    }\n\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+ // import 'bootstrap/dist/css/bootstrap.min.css';
+
+var PaginationWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].section(_templateObject());
+
+var Pagination = function Pagination() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PaginationWrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+    "aria-label": "Page navigation example"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "pagination"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "http://127.0.0.1:8000/#/workers"
+  }, "Previous")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "active"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "http://127.0.0.1:8000/#/workers"
+  }, "1")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "http://127.0.0.1:8000/#/workers"
+  }, "2")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "http://127.0.0.1:8000/#/workers"
+  }, "3")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "http://127.0.0.1:8000/#/workers"
+  }, "Next")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Pagination);
+
+/***/ }),
+
+/***/ "./resources/js/components/workers/Table.js":
+/*!**************************************************!*\
+  !*** ./resources/js/components/workers/Table.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    height: auto;\n    margin: 0;\n    border-collapse: collapse;\n\n    thead {\n        background: #E9EEF8;\n        \n        th {\n            text-align: left;\n            padding-left: 10px;\n            height: 35px;\n            opacity: 0.6;\n            text-transform: capitalize;\n            font-weight: bold;\n        }\n    }\n\n    tbody {\n        tr {\n            height: 30px;\n            border: 1px solid #E9EEF8;\n        }\n    }\n\n    td {\n        padding-left: 10px\n    }\n\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+var TableWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].table(_templateObject());
+
+var Table = function Table() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TableWrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "time"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "percentage"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "commission"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "9:45 am"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Ghana weaving and crochet"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "5"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A6 100")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "9:45 am"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Ghana weaving and crochet"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "5"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A6 100"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Table);
+
+/***/ }),
+
+/***/ "./resources/js/components/workers/Timeline.js":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/workers/Timeline.js ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _Table__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./Table */ "./resources/js/components/workers/Table.js");
+/* harmony import */ var _Pagination__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Pagination */ "./resources/js/components/Pagination.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    height: auto;\n    font-size: 14px;\n\n    .timeline-content {\n        width: 85%;\n        height: 35px;\n        padding: 10px 30px 10px 120px;\n        position: relative;\n\n\n        section {\n            display: inline;\n            float: right;\n            transform: translateY(-7.5px);\n\n           > span:nth-child(1) {\n                font-weight: bold;\n                margin-right: 90px;\n                \n            }\n\n            > span:nth-child(2) {\n                font-weight: bolder;\n                width: 30px;\n                height: 30px;\n                border-radius: 50%;\n                background: #FFFFFF;\n                opacity: 0.6;\n                display: inline-block;\n                text-align: center;\n                font-size: 20px;\n                padding-top: 3px;\n                cursor: pointer;\n            }\n        }\n    }\n\n    .timeline-content:nth-of-type(odd) {\n        background: #D9E1E8\n    }\n\n    .timeline-content:nth-of-type(even) {\n        background: #F5F5F5\n    }\n\n    .toggle-timeline-table {\n        width: 85%;\n        margin: 0\n    }\n\n    @media(max-width:900px){\n        font-size: 8px;\n        \n        .timeline-content {\n            padding-left: 30px;\n        }\n\n        > span:nth-child(1) {\n                font-weight: bold;\n                margin-right: 30px;\n                \n            }\n\n        > span:nth-child(2) {\n            width: 20px;\n            height: 20px;\n            font-size: 16px\n        }\n    }\n\n    @media(max-width:700px){\n        .timeline-content {\n            width: 100%;\n        }\n\n        .toggle-timeline-table {\n            width: 100%;\n        }\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+var TimeWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].section(_templateObject());
+
+var Timeline = function Timeline() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(false),
+      _useState2 = _slicedToArray(_useState, 2),
+      showtable = _useState2[0],
+      setShowTable = _useState2[1];
+
+  var handleToggle = function handleToggle() {
+    return setShowTable(!showtable);
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TimeWrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "timeline-content"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "01-Sep-2019"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\u20A6 100,000"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+    className: "toggle-btn-time",
+    onClick: handleToggle
+  }, showtable ? '-' : '+'))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "toggle-timeline-table"
+  }, showtable && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Table__WEBPACK_IMPORTED_MODULE_2__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Pagination__WEBPACK_IMPORTED_MODULE_3__["default"], null));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Timeline);
 
 /***/ }),
 
@@ -74535,6 +74817,138 @@ var Login_SignUp = function Login_SignUp() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Login_SignUp);
+
+/***/ }),
+
+/***/ "./resources/js/pages/workers/EditWorker.js":
+/*!**************************************************!*\
+  !*** ./resources/js/pages/workers/EditWorker.js ***!
+  \**************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+
+
+var EditWorker = function EditWorker() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null, "Hello My G hksjksksk");
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (EditWorker);
+
+/***/ }),
+
+/***/ "./resources/js/pages/workers/MainWorkers.js":
+/*!***************************************************!*\
+  !*** ./resources/js/pages/workers/MainWorkers.js ***!
+  \***************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Header */ "./resources/js/components/Header.js");
+/* harmony import */ var _assets_svg_WorkerSVG__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../assets/svg/WorkerSVG */ "./resources/js/assets/svg/WorkerSVG.js");
+/* harmony import */ var _assets_img_pic1_jpg__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../assets/img/pic1.jpg */ "./resources/js/assets/img/pic1.jpg");
+/* harmony import */ var _assets_img_pic1_jpg__WEBPACK_IMPORTED_MODULE_4___default = /*#__PURE__*/__webpack_require__.n(_assets_img_pic1_jpg__WEBPACK_IMPORTED_MODULE_4__);
+/* harmony import */ var _components_Notifications__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/Notifications */ "./resources/js/components/Notifications.js");
+/* harmony import */ var _components_workers_Timeline__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/workers/Timeline */ "./resources/js/components/workers/Timeline.js");
+function _templateObject2() {
+  var data = _taggedTemplateLiteral(["\n    margin: 0 60px 30px 60px;\n    display: flex;\n    margin-top: 20px;\n"]);
+
+  _templateObject2 = function _templateObject2() {
+    return data;
+  };
+
+  return data;
+}
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n\n    .mid-header-cont {\n\n        svg {\n            height: 5% !important;\n            width: 100vw;\n            position: relative;\n        }\n\n        .responsive {\n            width: 100vw;\n            background: #2B5680;\n            height: 140px;\n            position: relative;\n            display: none;\n        }\n\n        .mid-header-main {\n            position: absolute;\n            top: 75px;\n            left: 150px;\n            width: 83.5%;\n\n            .mid-header-main-img {\n                display: flex;\n\n                img {\n                    width: 130px;\n                    height: 130px;\n                    border-radius: 50%;\n                }\n                \n                section {\n                    margin: 10px 0 0 20px;\n\n                    h3, p {\n                        color: #ffffff;\n                        margin-bottom: 13px;\n                    }\n\n                    h3, .main-child {\n                        text-transform: capitalize\n                    }\n\n                    p {\n                        font-size: 14px;\n                    }\n                }\n            }\n\n            .amount {\n                width: 200px;\n                height: 100px;\n                background: #ffffff;\n                float: right;\n                bottom: 120px;\n                position: relative;\n                text-align: center;\n                padding: 10px;\n                border-radius: 10px;\n                box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.25), 0px 12px 20px rgba(0, 0, 0, 0.25);\n\n                h5 {\n                    text-transform: capitalize;\n                    font-weight: bold;\n                    opacity: 0.7;\n                }\n\n                span {\n                    width: 150px;\n                    height: 50px;\n                    border-radius: 10px;\n                    background: rgba(43, 86, 128, 0.18);\n                    display: block;\n                    color: #000000;\n                    font-size: 20px;\n                    text-align: center;\n                    font-weight: bold;\n                    margin: 10px auto;\n                    line-height: 50px;\n                }\n            }\n\n        }\n    }\n\n    h3.header-title {\n        text-align: center;\n        margin: 20px 0 20px 0;\n        opacity: 0.8;\n        text-transform: capitalize;\n    }\n\n    h3.header-timeline {\n        opacity: 0.8;\n        text-transform: capitalize;\n        margin-left: 60px\n    }\n\n    @media(max-width:900px) { \n        svg {\n            display: none;\n        }\n\n        .responsive {\n            display: block !important;\n        }\n\n        .mid-header-main {\n            left: 30px !important;\n            width: 83.5% !important; \n            font-size: 10px;\n\n            img {\n                width: 110px !important;\n                height: 110px !important;\n            }\n\n           \n        }\n\n         p {\n            font-size: 8px;\n         }\n\n        .amount {\n            transform: scale(0.7);\n            left: 65px;\n        }\n    }\n\n    @media (max-width:370px) {\n        .mid-header-main {\n            transform: scale(0.7);\n        }\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+
+
+
+var WorkersWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
+var WorkersContent = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject2());
+
+var MainWorkers = function MainWorkers() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(WorkersWrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "mid-header-cont"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_assets_svg_WorkerSVG__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "responsive"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "mid-header-main"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "mid-header-main-img"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: _assets_img_pic1_jpg__WEBPACK_IMPORTED_MODULE_4___default.a,
+    alt: "profile picture"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", null, "chinenye agungi"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", {
+    className: "main-child"
+  }, "nail technician"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "08050676783"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("p", null, "chinenye.agu@makeme.com"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", {
+    className: "amount"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "monthly total"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " \u20A6 100,000")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "header-title"
+  }, "work breakdown"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
+    className: "header-timeline"
+  }, "job timeline"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(WorkersContent, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_workers_Timeline__WEBPACK_IMPORTED_MODULE_6__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Notifications__WEBPACK_IMPORTED_MODULE_5__["default"], null)));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (MainWorkers);
+
+/***/ }),
+
+/***/ "./resources/js/pages/workers/Workers.js":
+/*!***********************************************!*\
+  !*** ./resources/js/pages/workers/Workers.js ***!
+  \***********************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var _MainWorkers__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MainWorkers */ "./resources/js/pages/workers/MainWorkers.js");
+/* harmony import */ var _EditWorker__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./EditWorker */ "./resources/js/pages/workers/EditWorker.js");
+
+
+
+
+
+var Workers = function Workers() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Switch"], null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/workers/",
+    component: _MainWorkers__WEBPACK_IMPORTED_MODULE_2__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    path: "/workers/edit/",
+    component: _EditWorker__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Workers);
 
 /***/ }),
 
