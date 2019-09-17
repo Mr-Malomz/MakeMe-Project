@@ -44,10 +44,12 @@ const HeaderWrapper = styled.header `
 `;
 
 const Header = ({handleClick, ...otherProps}) => {
+    const {to} = {...otherProps};
+    
     return (
         <HeaderWrapper>
             <nav>
-                <Link {...otherProps} className="nav-link-edit">edit profile</Link>
+                {!location.href.endsWith(to) && <Link {...otherProps} className="nav-link-edit">edit profile</Link>}
                 <Link handleClick={handleClick} {...otherProps} className="nav-link-signout">sign out</Link>
             </nav>
         </HeaderWrapper>
