@@ -8,6 +8,11 @@ const HeaderWrapper = styled.header `
     box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
     padding: 10px 60px 10px 60px;
 
+    i {
+        padding-top: 10px;
+        cursor: pointer;
+    }
+
     nav {
         float: right;
         display: flex;
@@ -43,6 +48,8 @@ const HeaderWrapper = styled.header `
     }
 
     @media (max-width: 700px) {
+        padding-left: 10px;
+
         nav {
             .nav-link-edit {
                 font-size: 11px;
@@ -55,11 +62,12 @@ const HeaderWrapper = styled.header `
     }
 `;
 
-const Header = ({handleClick, ...otherProps}) => {
+const HeaderMain = ({handleClick, handleToggle, ...otherProps}) => {
     const {to} = {...otherProps};
     
     return (
         <HeaderWrapper>
+            <i className="material-icons" onClick={handleToggle}>menu</i>
             <nav>
                 {!location.href.endsWith(to) && <Link {...otherProps} className="nav-link-edit">edit profile</Link>}
                 <Link handleClick={handleClick} {...otherProps} className="nav-link-signout">sign out</Link>
@@ -68,4 +76,4 @@ const Header = ({handleClick, ...otherProps}) => {
     )
 }
 
-export default Header
+export default HeaderMain
