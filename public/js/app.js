@@ -74777,6 +74777,88 @@ var CustTable = function CustTable() {
 
 /***/ }),
 
+/***/ "./resources/js/components/receptionist/CustomerCreateForm.js":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/receptionist/CustomerCreateForm.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _FormInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../FormInput */ "./resources/js/components/FormInput.js");
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    width: 45%;\n\n    h5 {\n        text-transform: capitalize;\n    }\n    \n    .form-section {\n        width: 100%;\n        background: #D7DEE3;\n        min-height: 380px;\n        height: auto;\n        padding: 20px;\n        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.25);\n        border-radius: 5px;\n\n        form {\n            display: flex;\n            flex-direction: column;\n            min-height: 100%;\n            height: auto;\n            \n\n            .form-inp-wrp {\n                margin-bottom: 15px;\n            }\n\n            .table-wrap {\n                border: 0.7px solid #3B5998;\n                background: #ffffff;\n                min-height: 200px;\n                height: auto;\n                border-radius: 5px 5px 0 0;\n\n                table {\n                    width: 100%;\n                    border-collapse: collapse;\n                    font-size: 12px;\n                    text-transform: capitalize;\n                    \n\n                    thead {\n                        th {\n                            text-align: left;\n                            padding-left: 10px;\n                            height: 20px;\n                            opacity: 0.6;\n                            font-weight: bold;\n                            border-bottom: 0.7px solid #3B5998;\n                        }\n                    }\n\n                    tbody {\n                        tr {\n                            height: 20px;\n                            \n                            input {\n                                margin-right: 8px;\n                                transform: translateY(3px)\n                            }\n                        }\n                    }\n\n                    td {\n                        padding-left: 10px;\n                    }\n                }\n\n                .total-section {\n                    margin-top: auto;\n                }\n            }\n        }\n    }\n\n     @media (max-width: 1000px) {\n        width: 95%;\n    }\n\n    @media (max-width: 700px) {\n        width: 95%;\n        margin-bottom: 40px; \n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+var CustomerCreateFormWrap = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].section(_templateObject());
+
+var CustomerCreateForm = function CustomerCreateForm() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CustomerCreateFormWrap, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "create a job"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-section"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    action: ""
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-inp-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "text",
+    name: "custName",
+    disabled: true,
+    style: {
+      borderColor: '#3B5998',
+      borderRadius: '3px',
+      height: '25px'
+    },
+    value: "Mrs Oriola Agungi"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "form-inp-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "text",
+    name: "membership",
+    disabled: true,
+    style: {
+      borderColor: '#3B5998',
+      borderRadius: '3px',
+      height: '25px'
+    },
+    value: "Platinum"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "table-wrap"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "select services"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "price"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox",
+    name: "",
+    id: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "ghana weaving and crochet")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A6 100")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox",
+    name: "",
+    id: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "ponytail gel")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A6 3400"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "total-section"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "total-main"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "total"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text"
+  }))))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CustomerCreateForm);
+
+/***/ }),
+
 /***/ "./resources/js/components/receptionist/FormSearch.js":
 /*!************************************************************!*\
   !*** ./resources/js/components/receptionist/FormSearch.js ***!
@@ -75021,8 +75103,11 @@ var SideBarWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].n
 
 var SideBar = function SideBar() {
   // add active links to navbar based on url
+  var urlCheck = location.href;
   var path1 = '/reception';
-  var path2 = '/reception/create';
+  var path2 = '/reception/createcustomer';
+  var path3 = '/reception/results';
+  var path4 = '/reception/createjob';
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SideBarWrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_assets_svg_RecepSVG2__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "responsive-sidebar"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -75034,12 +75119,12 @@ var SideBar = function SideBar() {
     className: "mini-nav"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
     to: path1,
-    activeClassName: location.href.endsWith(path1) ? 'active' : null
+    activeClassName: urlCheck.endsWith(path1) || urlCheck.endsWith(path3) || urlCheck.endsWith(path4) ? 'active' : null
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "material-icons"
   }, "assignment"), "  completed job"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
     to: path2,
-    activeClassName: location.href.endsWith(path2) ? 'active' : null
+    activeClassName: urlCheck.endsWith(path2) ? 'active' : null
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "material-icons"
   }, "person_add"), "  create customer")));
@@ -75465,6 +75550,113 @@ var Login_SignUp = function Login_SignUp() {
 
 /***/ }),
 
+/***/ "./resources/js/pages/receptionist/CreateJobR.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/pages/receptionist/CreateJobR.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _components_receptionist_SideBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/receptionist/SideBar */ "./resources/js/components/receptionist/SideBar.js");
+/* harmony import */ var _components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/HeaderMain */ "./resources/js/components/HeaderMain.js");
+/* harmony import */ var _components_Notifications__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Notifications */ "./resources/js/components/Notifications.js");
+/* harmony import */ var _components_receptionist_CreateCust__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/receptionist/CreateCust */ "./resources/js/components/receptionist/CreateCust.js");
+/* harmony import */ var _components_receptionist_CustTable__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/receptionist/CustTable */ "./resources/js/components/receptionist/CustTable.js");
+/* harmony import */ var _components_receptionist_Modal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/receptionist/Modal */ "./resources/js/components/receptionist/Modal.js");
+/* harmony import */ var _components_receptionist_FormSearch__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/receptionist/FormSearch */ "./resources/js/components/receptionist/FormSearch.js");
+/* harmony import */ var _components_receptionist_CustomerCreateForm__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/receptionist/CustomerCreateForm */ "./resources/js/components/receptionist/CustomerCreateForm.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .main-content-side {\n        \n        \n        .recept-content {\n            display: flex;\n            margin: 20px 60px 0 0;\n\n            .recep-content-main {\n                width: 80%;\n                margin: 0 15px 0 15px;\n\n                .search-fd {\n                    width: 70%;\n                   \n                }\n\n                hr{\n                    margin: 10px 0 10px 0;\n                    border: 0.3px solid #FFDF00\n                }\n\n                .component-section {\n                    display: flex;\n                    justify-content: space-around\n                }\n            }\n\n            .notification {\n                float: right;\n            }\n        }\n    }\n\n    @media (max-width: 1000px) {\n        .component-section {\n            flex-direction: column;\n        }\n    }\n\n    @media (max-width: 700px) {\n        .recept-content {\n            width: 100%;\n\n            .recep-content-main {\n                width: 100% !important;\n\n                .component-section {\n                    flex-direction: column;\n                }\n            }\n\n        }\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+
+
+
+
+
+
+var MainRecepWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
+
+var CreateJobR = function CreateJobR() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    width: true,
+    toggleNav: true,
+    modalShow: false
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      data = _useState2[0],
+      setData = _useState2[1];
+
+  var handleToggle = function handleToggle() {
+    setData({
+      width: !data.width,
+      toggleNav: !data.toggleNav
+    });
+  };
+
+  var handleModalShow = function handleModalShow() {
+    setData({
+      modalShow: true
+    });
+  };
+
+  var handleModalHide = function handleModalHide() {
+    setData({
+      modalShow: false
+    });
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainRecepWrapper, null, data.modalShow && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_Modal__WEBPACK_IMPORTED_MODULE_7__["default"], {
+    handleModalHide: handleModalHide
+  }), data.toggleNav && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_SideBar__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "main-content-side",
+    style: {
+      width: data.width ? '80.5%' : '100%'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    handleToggle: handleToggle
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recept-content"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recep-content-main"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "search-fd"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_FormSearch__WEBPACK_IMPORTED_MODULE_8__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "component-section"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_CustomerCreateForm__WEBPACK_IMPORTED_MODULE_9__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_CustTable__WEBPACK_IMPORTED_MODULE_6__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "notification"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Notifications__WEBPACK_IMPORTED_MODULE_4__["default"], null)))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CreateJobR);
+
+/***/ }),
+
 /***/ "./resources/js/pages/receptionist/MainRecep.js":
 /*!******************************************************!*\
   !*** ./resources/js/pages/receptionist/MainRecep.js ***!
@@ -75586,6 +75778,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 /* harmony import */ var _MainRecep__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MainRecep */ "./resources/js/pages/receptionist/MainRecep.js");
 /* harmony import */ var _ResultRecep__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ResultRecep */ "./resources/js/pages/receptionist/ResultRecep.js");
+/* harmony import */ var _CreateJobR__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CreateJobR */ "./resources/js/pages/receptionist/CreateJobR.js");
+
 
 
 
@@ -75600,6 +75794,10 @@ var Reception = function Reception() {
     exact: true,
     path: "/reception/results/",
     component: _ResultRecep__WEBPACK_IMPORTED_MODULE_3__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/reception/createjob/",
+    component: _CreateJobR__WEBPACK_IMPORTED_MODULE_4__["default"]
   }));
 };
 
