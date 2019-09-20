@@ -154,7 +154,7 @@ const WorkersContent = styled.div `
 const MainWorkers = () => {
     return (
         <WorkersWrapper>
-            <Header />
+            <Header to='/workers/edit/'/>
             <div className="mid-header-cont">
                 <WorkerSVG />
                 <div className="responsive"></div>
