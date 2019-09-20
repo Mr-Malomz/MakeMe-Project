@@ -41,6 +41,18 @@ const HeaderWrapper = styled.header `
             }
         }
     }
+
+    @media (max-width: 700px) {
+        nav {
+            .nav-link-edit {
+                font-size: 11px;
+            }
+
+            .nav-link-signout {
+                font-size: 11px;
+            }
+        }
+    }
 `;
 
 const Header = ({handleClick, ...otherProps}) => {
