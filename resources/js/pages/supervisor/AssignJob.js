@@ -2,6 +2,7 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import SideBar from '../../components/supervisor/SideBar';
 import HeaderMain from '../../components/HeaderMain';
+import AssignJobSV from '../../components/supervisor/AssignJobSV';
 
 const MainSupervisWrapper = styled.div `
 width: 100vw;
@@ -12,10 +13,21 @@ width: 100vw;
     .main-content-side {
         
         
-    .SuperVs-content {
+        .SuperVs-content {
             display: flex;
             margin: 20px 60px 0 0;
 
+            .supervs-content-main{
+                position: absolute;
+                width: 934px;
+                height: 734px;
+                left: 378px;
+                top: 185px;
+                background: #F5F5F5;
+                box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.25);
+                border-radius: 10px;
+
+            }
         }
     }
 
@@ -46,8 +58,8 @@ const AssignJob = () => {
             <div className="main-content-side" style={{width: data.width ? '80.5%' : '100%'}}>
                 <HeaderMain handleToggle={handleToggle}/>
                 <div className="SuperVs-content">
-                    <div className="recep-content-main">
-
+                    <div className="supervs-content-main">
+                        <AssignJobSV />
                     </div>
                 </div>
             </div>
