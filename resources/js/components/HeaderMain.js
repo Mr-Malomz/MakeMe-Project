@@ -9,7 +9,7 @@ const HeaderWrapper = styled.header `
     padding: 10px 60px 10px 60px;
 
     i {
-        padding-top: 10px;
+        padding-top: 8px;
         cursor: pointer;
     }
 
