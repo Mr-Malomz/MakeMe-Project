@@ -5,6 +5,7 @@ import Home from './pages/login/Home';
 import Login_SignUp from './pages/login/Login_SignUp';
 import Workers from './pages/workers/Workers';
 import Reception from './pages/receptionist/Reception';
+import Supervisor from './pages/supervisor/Supervisor';
 
 const GlobalStyle = createGlobalStyle `
     * {
@@ -28,6 +29,7 @@ const Main = () => {
                 <Route path='/register/' component={Login_SignUp}/>
                 <Route path='/workers/' component={Workers}/>
                 <Route path='/reception/' component={Reception}/>
+                <Route path='/supervisor/' component={Supervisor}/>
             </Switch>
         </>
     )
