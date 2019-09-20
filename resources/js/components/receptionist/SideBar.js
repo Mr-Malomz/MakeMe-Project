@@ -131,6 +131,7 @@ const SideBar = () => {
     const path2 = '/reception/createcustomer';
     const path3 = '/reception/results';
     const path4 = '/reception/createjob';
+    const path5 = '/reception/payment';
     
     return (
         <SideBarWrapper>
@@ -145,7 +146,8 @@ const SideBar = () => {
                 <NavLink 
                     to={path1} 
                     activeClassName = {
-                        urlCheck.endsWith(path1) || urlCheck.endsWith(path3) || urlCheck.endsWith(path4)
+                        urlCheck.endsWith(path1) || urlCheck.endsWith(path3) || urlCheck.endsWith(path4) ||
+                        urlCheck.endsWith(path5)
                     ? 'active' : null}
                 >
                   <i className="material-icons">assignment</i>  completed job

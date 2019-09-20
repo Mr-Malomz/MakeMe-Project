@@ -3,6 +3,7 @@ import {Switch, Route} from 'react-router-dom';
 import MainRecep from './MainRecep';
 import ResultRecep from './ResultRecep';
 import CreateJobR from './CreateJobR';
+import PaymentRecep from './PaymentRecep';
 
 const Reception = () => {
     return (
@@ -10,6 +11,7 @@ const Reception = () => {
             <Route exact path='/reception/' component={MainRecep}/>
             <Route exact path='/reception/results/' component={ResultRecep}/>
             <Route exact path='/reception/createjob/' component={CreateJobR}/>
+            <Route exact path='/reception/payment/' component={PaymentRecep}/>
 
         </Switch>
     )

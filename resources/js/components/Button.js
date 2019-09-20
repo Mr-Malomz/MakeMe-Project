@@ -12,7 +12,7 @@ const CustomButton = styled.button `
     font-weight: bold;
 
     :hover {
-        transform: scale(1.08)
+        transform: scale(1.01)
     }
 `;
 

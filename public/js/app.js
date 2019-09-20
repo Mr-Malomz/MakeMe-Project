@@ -65266,7 +65266,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74252,7 +74252,7 @@ function _objectWithoutProperties(source, excluded) { if (source == null) return
 function _objectWithoutPropertiesLoose(source, excluded) { if (source == null) return {}; var target = {}; var sourceKeys = Object.keys(source); var key, i; for (i = 0; i < sourceKeys.length; i++) { key = sourceKeys[i]; if (excluded.indexOf(key) >= 0) continue; target[key] = source[key]; } return target; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    position: relative;\n    width: 120px;\n    height: 38px;\n    font-size: 14px;\n    color: #ffffff;\n    text-transform: capitalize;\n    border-radius: 7px;\n    font-weight: bold;\n\n    :hover {\n        transform: scale(1.08)\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    position: relative;\n    width: 120px;\n    height: 38px;\n    font-size: 14px;\n    color: #ffffff;\n    text-transform: capitalize;\n    border-radius: 7px;\n    font-weight: bold;\n\n    :hover {\n        transform: scale(1.01)\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -74790,8 +74790,17 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _FormInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../FormInput */ "./resources/js/components/FormInput.js");
+/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Button */ "./resources/js/components/Button.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    width: 45%;\n\n    h5 {\n        text-transform: capitalize;\n    }\n    \n    .form-section {\n        width: 100%;\n        background: #D7DEE3;\n        min-height: 380px;\n        height: auto;\n        padding: 20px;\n        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.25);\n        border-radius: 5px;\n\n        form {\n            display: flex;\n            flex-direction: column;\n            min-height: 100%;\n            height: auto;\n            \n\n            .form-inp-wrp {\n                margin-bottom: 15px;\n            }\n\n            .table-wrap {\n                border: 0.7px solid #3B5998;\n                background: #ffffff;\n                min-height: 200px;\n                height: auto;\n                border-radius: 5px 5px 0 0;\n\n                table {\n                    width: 100%;\n                    border-collapse: collapse;\n                    font-size: 12px;\n                    text-transform: capitalize;\n                    \n\n                    thead {\n                        th {\n                            text-align: left;\n                            padding-left: 10px;\n                            height: 20px;\n                            opacity: 0.6;\n                            font-weight: bold;\n                            border-bottom: 0.7px solid #3B5998;\n                        }\n                    }\n\n                    tbody {\n                        tr {\n                            height: 20px;\n                            \n                            input {\n                                margin-right: 8px;\n                                transform: translateY(3px)\n                            }\n                        }\n                    }\n\n                    td {\n                        padding-left: 10px;\n                    }\n                }\n\n                .total-section {\n                    margin-top: auto;\n                }\n            }\n        }\n    }\n\n     @media (max-width: 1000px) {\n        width: 95%;\n    }\n\n    @media (max-width: 700px) {\n        width: 95%;\n        margin-bottom: 40px; \n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    width: 45%;\n\n    h5 {\n        text-transform: capitalize;\n    }\n    \n    .form-section {\n        width: 100%;\n        background: #D7DEE3;\n        min-height: 380px;\n        height: auto;\n        padding: 20px;\n        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.25);\n        border-radius: 5px;\n\n        form {\n            display: flex;\n            flex-direction: column;\n            min-height: 100%;\n            height: auto;\n            \n\n            .form-inp-wrp {\n                margin-bottom: 15px;\n            }\n\n            .table-wrap {\n                border: 0.7px solid #3B5998;\n                background: #ffffff;\n                min-height: 200px;\n                height: auto;\n                border-radius: 5px 5px 0 0;\n\n                table {\n                    width: 100%;\n                    border-collapse: collapse;\n                    font-size: 12px;\n                    text-transform: capitalize;\n                    \n\n                    thead {\n                        th {\n                            text-align: left;\n                            padding-left: 10px;\n                            height: 20px;\n                            opacity: 0.6;\n                            font-weight: bold;\n                            border-bottom: 0.7px solid #3B5998;\n                        }\n                    }\n\n                    tbody {\n                        tr {\n                            height: 20px;\n                            \n                            input {\n                                margin-right: 8px;\n                                transform: translateY(3px)\n                            }\n                        }\n                    }\n\n                    td {\n                        padding-left: 10px;\n                    }\n                }\n            }\n\n            .total-section {\n                margin-top: auto;\n                font-size: 12px;\n                font-weight: bold;\n                text-transform: capitalize;\n                padding: 15px 0;\n\n                .input-cover {\n                    float: right;\n                    input {\n                        border: none;\n                        background: none;\n                    }\n                }\n                \n            }\n        }\n    }\n\n     @media (max-width: 1000px) {\n        width: 95%;\n    }\n\n    @media (max-width: 700px) {\n        width: 95%;\n        margin-bottom: 40px; \n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -74805,9 +74814,15 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
+
 var CustomerCreateFormWrap = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].section(_templateObject());
 
 var CustomerCreateForm = function CustomerCreateForm() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(3400),
+      _useState2 = _slicedToArray(_useState, 2),
+      value = _useState2[0],
+      setValue = _useState2[1];
+
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CustomerCreateFormWrap, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "create a job"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "form-section"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
@@ -74848,11 +74863,20 @@ var CustomerCreateForm = function CustomerCreateForm() {
     id: ""
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "ponytail gel")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A6 3400"))))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "total-section"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "total-main"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "total"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
-    type: "text"
-  }))))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "total"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-cover"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    hidden: true,
+    name: "amount",
+    value: value
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\u20A6", value))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    type: "submit",
+    style: {
+      width: '100%',
+      fontSize: '12px'
+    }
+  }, "send job card to supervisor"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CustomerCreateForm);
@@ -74972,7 +74996,8 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 var ModalWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
 
 var Modal = function Modal(_ref) {
-  var handleModalHide = _ref.handleModalHide;
+  var handleModalHide = _ref.handleModalHide,
+      to = _ref.to;
 
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState2 = _slicedToArray(_useState, 2),
@@ -75003,7 +75028,7 @@ var Modal = function Modal(_ref) {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "btn-form-sect"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], {
-    to: "reception",
+    to: to,
     onClick: handleModalHide
   }, "cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Button__WEBPACK_IMPORTED_MODULE_4__["default"], {
     style: {
@@ -75013,6 +75038,89 @@ var Modal = function Modal(_ref) {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (Modal);
+
+/***/ }),
+
+/***/ "./resources/js/components/receptionist/PaymntSlip.js":
+/*!************************************************************!*\
+  !*** ./resources/js/components/receptionist/PaymntSlip.js ***!
+  \************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../Button */ "./resources/js/components/Button.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    width: 45%;\n\n    h5, h6 {\n        text-transform: capitalize\n    }\n\n    .content-wrapper {\n        background: #ffffff;\n        min-height: 380px;\n        height: auto;\n        box-shadow: 0 8px 10px rgba(0, 0, 0, 0.25);\n        padding: 10px;\n        border-radius: 5px;\n        display: flex;\n        flex-direction: column;\n\n        .content-main {\n            border: 0.7px solid #3B5998;\n            border-radius: 5px;\n            max-height: calc(380px - 10px);\n            /* height: auto; */\n            padding: 40px 5px 5px 5px;\n            display: flex;\n            flex-direction: column;\n            overflow-y: auto;\n\n            h6 {\n                margin-bottom: 10px;\n            }\n\n            h6:first-child {\n                text-align: center;\n            }\n\n            span {\n                margin-left: 8px;\n                font-weight: 18px;\n                opacity: 0.6;\n            }\n\n            table {\n                width: 100%;\n                border-collapse: collapse;\n                font-size: 12px;\n                text-transform: capitalize;\n\n                thead {\n\n                    th {\n                        text-align: left;\n                        height: 25px;\n                        opacity: 0.7;\n                        font-weight: bold;\n                        border-bottom: 0.7px solid #3B5998;\n                    }\n                }\n\n                tbody {\n                    tr {\n                        height: 25px;   \n                    }\n                }\n            }\n\n            form {\n                margin-top: auto;\n                border-top: 0.7px solid #3B5998;\n                padding: 5px 0 5px 0;\n\n                .bottom-sect {\n                    \n                    span {\n                        font-size: 12px;\n                    }\n                    \n                    .wallet-sect {\n                        display: flex;\n                        justify-content: space-between;\n\n                        .inp-case {\n                            display: flex;\n                            \n                            h6 {\n                                transform: translateY(-10px)\n                            }\n                            input {\n                                margin-right: 8px;\n                            }\n                        }\n                    }\n\n                    .amount-sect {\n                        display: flex;\n                        justify-content: space-between;\n                        h6 {\n                            text-align: left;\n                        }\n\n                    }\n                }\n\n                h6:last-child {\n                    text-align: center;\n                    margin: 10px 0;\n                }\n            }\n        }\n    }\n\n    @media (max-width: 1000px) {\n        width: 95%;\n    }\n\n    @media (max-width: 700px) {\n        width: 95%;\n        margin-bottom: 40px; \n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+var PaymntSlipWrap = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].section(_templateObject());
+
+var PaymntSlip = function PaymntSlip() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(3500),
+      _useState2 = _slicedToArray(_useState, 2),
+      state = _useState2[0],
+      setState = _useState2[1];
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PaymntSlipWrap, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "completed job card"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "content-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "content-main"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "job card"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "customer's name: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "miss chinonso agunbi")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "customer's group: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "platinum member")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "receipt no: ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "d54567")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "services rendered"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "price"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "ghana weaving and crochet"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A6 100")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "ponytail and gel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A6 3400")))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    action: ""
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "bottom-sect"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "wallet-sect"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "inp-case"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox",
+    name: "",
+    id: ""
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "wallet balance")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\u20A6 0")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "amount-sect"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "total price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "amount-float"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "text",
+    hidden: true,
+    name: "amount",
+    value: state
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "\u20A6", state))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h6", null, "looking good is good business")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Button__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "submit",
+    style: {
+      width: "100%",
+      fontSize: "12px",
+      height: '30px'
+    }
+  }, "complete payment & print receipt")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PaymntSlip);
 
 /***/ }),
 
@@ -75108,6 +75216,7 @@ var SideBar = function SideBar() {
   var path2 = '/reception/createcustomer';
   var path3 = '/reception/results';
   var path4 = '/reception/createjob';
+  var path5 = '/reception/payment';
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SideBarWrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_assets_svg_RecepSVG2__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "responsive-sidebar"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -75119,7 +75228,7 @@ var SideBar = function SideBar() {
     className: "mini-nav"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
     to: path1,
-    activeClassName: urlCheck.endsWith(path1) || urlCheck.endsWith(path3) || urlCheck.endsWith(path4) ? 'active' : null
+    activeClassName: urlCheck.endsWith(path1) || urlCheck.endsWith(path3) || urlCheck.endsWith(path4) || urlCheck.endsWith(path5) ? 'active' : null
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "material-icons"
   }, "assignment"), "  completed job"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
@@ -75737,7 +75846,8 @@ var MainRecep = function MainRecep() {
   };
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainRecepWrapper, null, data.modalShow && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_Modal__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    handleModalHide: handleModalHide
+    handleModalHide: handleModalHide,
+    to: "reception"
   }), data.toggleNav && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_SideBar__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main-content-side",
     style: {
@@ -75764,6 +75874,114 @@ var MainRecep = function MainRecep() {
 
 /***/ }),
 
+/***/ "./resources/js/pages/receptionist/PaymentRecep.js":
+/*!*********************************************************!*\
+  !*** ./resources/js/pages/receptionist/PaymentRecep.js ***!
+  \*********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _components_receptionist_SideBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/receptionist/SideBar */ "./resources/js/components/receptionist/SideBar.js");
+/* harmony import */ var _components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/HeaderMain */ "./resources/js/components/HeaderMain.js");
+/* harmony import */ var _components_Notifications__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Notifications */ "./resources/js/components/Notifications.js");
+/* harmony import */ var _components_receptionist_CreateCust__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/receptionist/CreateCust */ "./resources/js/components/receptionist/CreateCust.js");
+/* harmony import */ var _components_receptionist_Modal__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/receptionist/Modal */ "./resources/js/components/receptionist/Modal.js");
+/* harmony import */ var _components_receptionist_FormSearch__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/receptionist/FormSearch */ "./resources/js/components/receptionist/FormSearch.js");
+/* harmony import */ var _components_receptionist_PaymntSlip__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/receptionist/PaymntSlip */ "./resources/js/components/receptionist/PaymntSlip.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .main-content-side {\n        \n        \n        .recept-content {\n            display: flex;\n            margin: 20px 60px 0 0;\n\n            .recep-content-main {\n                width: 80%;\n                margin: 0 15px 0 15px;\n\n                .search-fd {\n                    width: 70%;\n                   \n                }\n\n                hr{\n                    margin: 10px 0 10px 0;\n                    border: 0.3px solid #FFDF00\n                }\n\n                .component-section {\n                    display: flex;\n                    justify-content: space-around\n                }\n            }\n\n            .notification {\n                float: right;\n            }\n        }\n    }\n\n    @media (max-width: 1000px) {\n        .component-section {\n            flex-direction: column;\n        }\n    }\n\n    @media (max-width: 700px) {\n        .recept-content {\n            width: 100%;\n\n            .recep-content-main {\n                width: 100% !important;\n\n                .component-section {\n                    flex-direction: column;\n                }\n            }\n\n        }\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+
+
+
+
+
+var MainRecepWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
+
+var PaymentRecep = function PaymentRecep() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    width: true,
+    toggleNav: true,
+    modalShow: false
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      data = _useState2[0],
+      setData = _useState2[1];
+
+  var handleToggle = function handleToggle() {
+    setData({
+      width: !data.width,
+      toggleNav: !data.toggleNav
+    });
+  };
+
+  var handleModalShow = function handleModalShow() {
+    setData({
+      modalShow: true
+    });
+  };
+
+  var handleModalHide = function handleModalHide() {
+    setData({
+      modalShow: false
+    });
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainRecepWrapper, null, data.modalShow && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_Modal__WEBPACK_IMPORTED_MODULE_6__["default"], {
+    handleModalHide: handleModalHide,
+    to: "/reception/payment"
+  }), data.toggleNav && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_SideBar__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "main-content-side",
+    style: {
+      width: data.width ? '80.5%' : '100%'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    handleToggle: handleToggle
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recept-content"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recep-content-main"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "search-fd"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_FormSearch__WEBPACK_IMPORTED_MODULE_7__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "component-section"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_CreateCust__WEBPACK_IMPORTED_MODULE_5__["default"], {
+    handleModalShow: handleModalShow
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_PaymntSlip__WEBPACK_IMPORTED_MODULE_8__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "notification"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Notifications__WEBPACK_IMPORTED_MODULE_4__["default"], null)))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (PaymentRecep);
+
+/***/ }),
+
 /***/ "./resources/js/pages/receptionist/Reception.js":
 /*!******************************************************!*\
   !*** ./resources/js/pages/receptionist/Reception.js ***!
@@ -75779,6 +75997,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _MainRecep__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ./MainRecep */ "./resources/js/pages/receptionist/MainRecep.js");
 /* harmony import */ var _ResultRecep__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ResultRecep */ "./resources/js/pages/receptionist/ResultRecep.js");
 /* harmony import */ var _CreateJobR__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CreateJobR */ "./resources/js/pages/receptionist/CreateJobR.js");
+/* harmony import */ var _PaymentRecep__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./PaymentRecep */ "./resources/js/pages/receptionist/PaymentRecep.js");
+
 
 
 
@@ -75798,6 +76018,10 @@ var Reception = function Reception() {
     exact: true,
     path: "/reception/createjob/",
     component: _CreateJobR__WEBPACK_IMPORTED_MODULE_4__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/reception/payment/",
+    component: _PaymentRecep__WEBPACK_IMPORTED_MODULE_5__["default"]
   }));
 };
 

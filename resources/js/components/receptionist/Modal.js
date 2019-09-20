@@ -122,7 +122,7 @@ const ModalWrapper = styled.div `
     }
 `;
 
-const Modal = ({handleModalHide}) => {
+const Modal = ({handleModalHide, to}) => {
     const [tel, setTel] = useState('');
 
     const handleChange = e => {
@@ -145,7 +145,7 @@ const Modal = ({handleModalHide}) => {
                         handleChange={handleChange}
                     />
                     <div className="btn-form-sect">
-                        <Link to="reception" onClick={handleModalHide}>cancel</Link>
+                        <Link to={to} onClick={handleModalHide}>cancel</Link>
                         <Button style={{background: "#2B5680"}}>search</Button>
                     </div>
                 </form>

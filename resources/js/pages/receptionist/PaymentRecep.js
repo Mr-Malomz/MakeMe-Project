@@ -4,9 +4,9 @@ import SideBar from '../../components/receptionist/SideBar';
 import HeaderMain from '../../components/HeaderMain';
 import Notifications from '../../components/Notifications';
 import CreateCust from '../../components/receptionist/CreateCust';
-import CustTable from '../../components/receptionist/CustTable';
 import Modal from '../../components/receptionist/Modal';
 import FormSearch from '../../components/receptionist/FormSearch';
+import PaymntSlip from '../../components/receptionist/PaymntSlip';
 
 const MainRecepWrapper = styled.div `
     width: 100vw;
@@ -70,7 +70,7 @@ const MainRecepWrapper = styled.div `
 `;
 
 
-const MainRecep = () => {
+const PaymentRecep = () => {
     const [data, setData] = useState({
         width: true,
         toggleNav: true,
@@ -94,7 +94,7 @@ const MainRecep = () => {
 
     return (
         <MainRecepWrapper>
-            {data.modalShow && <Modal handleModalHide={handleModalHide} to='reception'/>}
+            {data.modalShow && <Modal handleModalHide={handleModalHide} to='/reception/payment'/>}
             {data.toggleNav && <SideBar />}
             <div className="main-content-side" style={{width: data.width ? '80.5%' : '100%'}}>
                 <HeaderMain handleToggle={handleToggle}/>
@@ -106,7 +106,7 @@ const MainRecep = () => {
                         <hr/>
                         <div className="component-section">
                             <CreateCust handleModalShow={handleModalShow}/>
-                            <CustTable />
+                            <PaymntSlip />
                         </div>
                     </div>
                     <div className="notification">
@@ -118,4 +118,4 @@ const MainRecep = () => {
     )
 }
 
-export default MainRecep
+export default PaymentRecep
