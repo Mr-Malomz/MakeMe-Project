@@ -129,12 +129,15 @@ const SideBar = () => {
     const urlCheck = location.href
     const path1 = '/reception';
     const path2 = '/reception/createcustomer';
+    const path2_1 = '/reception/viewcustomer';
+    const path2_2 = '/reception/editcustomer';
     const path3 = '/reception/results';
     const path4 = '/reception/createjob';
     const path5 = '/reception/payment';
     
+    
     return (
-        <SideBarWrapper>
+        <SideBarWrapper className="nav-hgt">
            <RecepSVG2 /> 
            <div className="responsive-sidebar"></div>
            <div className="profile-content">
@@ -154,7 +157,9 @@ const SideBar = () => {
                 </NavLink>
                 <NavLink
                     to={path2} 
-                    activeClassName={urlCheck.endsWith(path2) ? 'active' : null}
+                    activeClassName = {
+                        urlCheck.endsWith(path2) || urlCheck.endsWith(path2_1) || urlCheck.endsWith(path2_2)
+                    ? 'active' : null}
                 >
                   <i className="material-icons">person_add</i>  create customer
                 </NavLink>

@@ -3,17 +3,18 @@ import styled from 'styled-components';
 import SideBar from '../../components/receptionist/SideBar';
 import HeaderMain from '../../components/HeaderMain';
 import Notifications from '../../components/Notifications';
-import CreateCust from '../../components/receptionist/CreateCust';
-import CustTable from '../../components/receptionist/CustTable';
-import Modal from '../../components/receptionist/Modal';
 import FormSearch from '../../components/receptionist/FormSearch';
-import CustomerCreateForm from '../../components/receptionist/CustomerCreateForm';
+import ViewCstRecepForm from '../../components/receptionist/ViewCstRecepForm';
 
 const MainRecepWrapper = styled.div `
     width: 100vw;
     height: 100vh;
     display: float;
     position: relative;
+
+    .nav-hgt {
+        height: 125%
+    }
 
     .main-content-side {
         
@@ -52,9 +53,17 @@ const MainRecepWrapper = styled.div `
         .component-section {
             flex-direction: column;
         }
+
+        .nav-hgt {
+            height: 140%
+        }
     }
 
     @media (max-width: 700px) {
+
+        .nav-hgt {
+            height: 180%
+        }
         .recept-content {
             width: 100%;
 
@@ -71,7 +80,7 @@ const MainRecepWrapper = styled.div `
 `;
 
 
-const CreateJobR = () => {
+const ViewCustomerRecep = () => {
     const [data, setData] = useState({
         width: true,
         toggleNav: true,
@@ -85,17 +94,9 @@ const CreateJobR = () => {
         })
     }
 
-    const handleModalShow = () => {
-        setData({modalShow: true})
-    };
-
-    const handleModalHide = () => {
-        setData({modalShow: false})
-    };
 
     return (
         <MainRecepWrapper>
-            {data.modalShow && <Modal handleModalHide={handleModalHide}/>}
             {data.toggleNav && <SideBar />}
             <div className="main-content-side" style={{width: data.width ? '80.5%' : '100%'}}>
                 <HeaderMain handleToggle={handleToggle} to='/reception/edit'/>
@@ -106,8 +107,7 @@ const CreateJobR = () => {
                         </div>
                         <hr/>
                         <div className="component-section">
-                            <CustomerCreateForm />
-                            <CustTable />
+                            <ViewCstRecepForm />
                         </div>
                     </div>
                     <div className="notification">
@@ -119,4 +119,4 @@ const CreateJobR = () => {
     )
 }
 
-export default CreateJobR
+export default ViewCustomerRecep

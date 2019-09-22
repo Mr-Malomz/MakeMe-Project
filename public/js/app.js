@@ -65266,7 +65266,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -74744,6 +74744,245 @@ var Pagination = function Pagination() {
 
 /***/ }),
 
+/***/ "./resources/js/components/receptionist/CreateCstRecepForm.js":
+/*!********************************************************************!*\
+  !*** ./resources/js/components/receptionist/CreateCstRecepForm.js ***!
+  \********************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _FormInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../FormInput */ "./resources/js/components/FormInput.js");
+/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Button */ "./resources/js/components/Button.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    height: auto;\n    background: #ffffff;\n    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.25);\n    border-radius: 5px;\n\n    h5 {\n        height: 35px;\n        background: #E9EEF8;\n        text-align: center;\n        text-transform: capitalize;\n        line-height: 35px;\n    }\n\n    form {\n        padding: 30px;\n\n        .header{\n            display: flex;\n            justify-content: space-between;\n            \n\n            .upload-sect {\n                img {\n                    width: 130px;\n                    height: 130px;\n                    border-radius: 50%;\n                    margin-bottom: 20px\n                }\n\n                .upload {\n                    margin-bottom: 20px;\n\n                    label {\n                        display: flex;\n                        border: 1px solid #C4C4C4;\n                        padding: 5px 15px 5px 15px;\n                        opacity: 0.7;\n                        font-weight: bold;\n                        border-radius: 5px;\n                        cursor: pointer;\n                        font-size: 12px;\n\n                        span {\n                            transform: translateY(5px)\n                        }\n\n                        i {\n                            display: block;\n                            margin-right: 10px;\n                        }\n\n                        input[type='file'] {\n                            color: transparent;\n                            display: none;\n                        }\n                    }\n                }\n            }\n\n            .member-sect {\n                text-align: left;\n                font-size: 14px;\n                margin-top: 23px;\n                width: 45%;\n\n                input[type='radio'] {\n                    margin-bottom: 20px;\n                }\n            }\n        }\n\n        .input-wrp {\n            margin-bottom: 10px;\n        }\n\n        .btn-wrapper {\n            text-align: center\n        }\n    }\n\n    @media (max-width: 700px) {\n        .header {\n            flex-direction: column;\n\n            label {\n                width: 65%\n            }\n\n            .member-sect {\n                width: 80% !important;\n                margin-bottom: 30px;\n            }\n        }\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+var CreateCstRecepFormWrap = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].section(_templateObject());
+
+var CreateCstRecepForm = function CreateCstRecepForm() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    selectedInput: '',
+    name: '',
+    email: '',
+    gender: 'gender',
+    phonenumber: '',
+    address: '',
+    city: '',
+    file: 'https://via.placeholder.com/150',
+    //radio btns
+    vip: 'vip'
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      data = _useState2[0],
+      setData = _useState2[1];
+
+  var handleChange = function handleChange(e) {
+    setData(_objectSpread({}, data, _defineProperty({}, e.target.name, e.target.value)));
+  };
+
+  var inputChange = function inputChange(e) {
+    setData(_objectSpread({}, data, {
+      selectedInput: e.target.value
+    }));
+  };
+
+  var selectHandle = function selectHandle(e) {
+    setData(_objectSpread({}, data, {
+      gender: e.target.value
+    }));
+  }; //display uploaded image
+
+
+  var handleImageChange = function handleImageChange(e) {
+    var file = data.file;
+    setData({
+      file: URL.createObjectURL(e.target.files[0])
+    });
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CreateCstRecepFormWrap, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "customer data form"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    action: ""
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "header"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "upload-sect"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: data.file,
+    alt: "profile picture"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "upload"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "imageUpload"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "material-icons"
+  }, "cloud_upload"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "change profile picture"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "file",
+    id: "imageUpload",
+    accept: "image/*",
+    onChange: handleImageChange
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "member-sect"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "member",
+    value: "vip",
+    checked: data.selectedInput === 'vip',
+    onChange: inputChange
+  }), " VIP Client ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "member",
+    value: "member",
+    checked: data.selectedInput === 'member',
+    onChange: inputChange
+  }), " Exclusive Member ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "member",
+    value: "partner",
+    checked: data.selectedInput === 'partner',
+    onChange: inputChange
+  }), " Exclusive Partner  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "member",
+    value: "dealer",
+    checked: data.selectedInput === 'dealer',
+    onChange: inputChange
+  }), " Sub Dealer  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "member",
+    value: "other",
+    checked: data.selectedInput === 'other',
+    onChange: inputChange
+  }), " Other  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "text",
+    name: "name",
+    placeholder: "Name",
+    value: data.name,
+    required: true,
+    handleChange: handleChange,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "email",
+    name: "email",
+    placeholder: "Email",
+    required: true,
+    value: data.email,
+    handleChange: handleChange,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "gender",
+    id: "",
+    required: true,
+    value: data.gender,
+    onChange: selectHandle,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px',
+      width: '100%',
+      height: '35px',
+      borderWidth: '0.7px',
+      paddingLeft: '7px'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: ""
+  }, "Gender"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "male"
+  }, "Male"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "female"
+  }, "Female"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "tel",
+    name: "phonenumber",
+    placeholder: "Phonenumber",
+    value: data.phonenumber,
+    required: true,
+    handleChange: handleChange,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "text",
+    name: "address",
+    placeholder: "Address",
+    value: data.address,
+    required: true,
+    handleChange: handleChange,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "text",
+    name: "city",
+    placeholder: "City",
+    value: data.city,
+    handleChange: handleChange,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "btn-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    type: "submit",
+    style: {
+      background: '#2B5680'
+    }
+  }, "save"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CreateCstRecepForm);
+
+/***/ }),
+
 /***/ "./resources/js/components/receptionist/CreateCust.js":
 /*!************************************************************!*\
   !*** ./resources/js/components/receptionist/CreateCust.js ***!
@@ -74928,6 +75167,244 @@ var CustomerCreateForm = function CustomerCreateForm() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CustomerCreateForm);
+
+/***/ }),
+
+/***/ "./resources/js/components/receptionist/EditCstRecepForm.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/receptionist/EditCstRecepForm.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _FormInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../FormInput */ "./resources/js/components/FormInput.js");
+/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Button */ "./resources/js/components/Button.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    height: auto;\n    background: #ffffff;\n    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.25);\n    border-radius: 5px;\n\n    h5 {\n        height: 35px;\n        background: #E9EEF8;\n        text-align: center;\n        text-transform: capitalize;\n        line-height: 35px;\n    }\n\n    form {\n        padding: 30px;\n\n        .header{\n            display: flex;\n            justify-content: space-around;\n            \n\n            .upload-sect {\n                img {\n                    width: 130px;\n                    height: 130px;\n                    border-radius: 50%;\n                    margin-bottom: 20px\n                }\n\n                .upload {\n                    margin-bottom: 20px;\n\n                    label {\n                        display: flex;\n                        border: 1px solid #C4C4C4;\n                        padding: 5px 15px 5px 15px;\n                        opacity: 0.7;\n                        font-weight: bold;\n                        border-radius: 5px;\n                        cursor: pointer;\n                        font-size: 12px;\n\n                        span {\n                            transform: translateY(5px)\n                        }\n\n                        i {\n                            display: block;\n                            margin-right: 10px;\n                        }\n\n                        input[type='file'] {\n                            color: transparent;\n                            display: none;\n                        }\n                    }\n                }\n            }\n\n            .member-sect {\n                text-align: left;\n                font-size: 14px;\n                margin-top: 23px;\n                /* width: 45%; */\n\n                input[type='radio'] {\n                    margin-bottom: 20px;\n                }\n            }\n\n            section {\n                width: 200px;\n                height: 100px;\n                background: #ffffff;\n                text-align: center;\n                margin-bottom: 30px;\n                padding: 5px;\n                border-radius: 10px;\n                box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.25), 0px 12px 20px rgba(0, 0, 0, 0.25);\n\n                h5 {\n                    text-transform: capitalize;\n                    font-weight: bold;\n                    opacity: 0.7;\n                    background: none;\n                }\n\n                span {\n                    width: 130px;\n                    height: 40px;\n                    border-radius: 10px;\n                    background: rgba(43, 86, 128, 0.18);\n                    display: block;\n                    color: #000000;\n                    font-size: 16px;\n                    text-align: center;\n                    font-weight: bold;\n                    margin: 5px auto;\n                    line-height: 40px;\n                }\n            }\n        }\n\n        .input-wrp {\n            margin-bottom: 10px;\n        }\n\n        .btn-wrapper {\n            text-align: center;\n        }\n    }\n\n    @media (max-width: 700px) {\n        .header {\n            flex-direction: column;\n\n            label {\n                width: 65%\n            }\n\n            .member-sect {\n                width: 80% !important;\n                margin-bottom: 30px;\n            }\n        }\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+var CreateCstRecepFormWrap = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].section(_templateObject());
+
+var EditCstRecepForm = function EditCstRecepForm() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    selectedInput: '',
+    name: '',
+    email: '',
+    gender: 'gender',
+    phonenumber: '',
+    address: '',
+    city: '',
+    file: 'https://via.placeholder.com/150'
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      data = _useState2[0],
+      setData = _useState2[1];
+
+  var handleChange = function handleChange(e) {
+    setData(_objectSpread({}, data, _defineProperty({}, e.target.name, e.target.value)));
+  };
+
+  var inputChange = function inputChange(e) {
+    setData(_objectSpread({}, data, {
+      selectedInput: e.target.value
+    }));
+  };
+
+  var selectHandle = function selectHandle(e) {
+    setData(_objectSpread({}, data, {
+      gender: e.target.value
+    }));
+  }; //display uploaded image
+
+
+  var handleImageChange = function handleImageChange(e) {
+    var file = data.file;
+    setData({
+      file: URL.createObjectURL(e.target.files[0])
+    });
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CreateCstRecepFormWrap, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "customer data form"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    action: ""
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "header"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "upload-sect"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: data.file,
+    alt: "profile picture"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "upload"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "imageUpload"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
+    className: "material-icons"
+  }, "cloud_upload"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, "change profile picture"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "file",
+    id: "imageUpload",
+    accept: "image/*",
+    onChange: handleImageChange
+  })))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "member-sect"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "member",
+    value: "vip",
+    checked: data.selectedInput === 'vip',
+    onChange: inputChange
+  }), " VIP Client ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "member",
+    value: "member",
+    checked: data.selectedInput === 'member',
+    onChange: inputChange
+  }), " Exclusive Member ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "member",
+    value: "partner",
+    checked: data.selectedInput === 'partner',
+    onChange: inputChange
+  }), " Exclusive Partner  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "member",
+    value: "dealer",
+    checked: data.selectedInput === 'dealer',
+    onChange: inputChange
+  }), " Sub Dealer  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "member",
+    value: "other",
+    checked: data.selectedInput === 'other',
+    onChange: inputChange
+  }), " Other  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "wallet balance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " \u20A6 100,000"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "text",
+    name: "name",
+    placeholder: "Name",
+    value: data.name,
+    required: true,
+    handleChange: handleChange,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "email",
+    name: "email",
+    placeholder: "Email",
+    required: true,
+    value: data.email,
+    handleChange: handleChange,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "gender",
+    id: "",
+    required: true,
+    value: data.gender,
+    onChange: selectHandle,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px',
+      width: '100%',
+      height: '35px',
+      borderWidth: '0.7px',
+      paddingLeft: '7px'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: ""
+  }, "Gender"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "male"
+  }, "Male"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "female"
+  }, "Female"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "tel",
+    name: "phonenumber",
+    placeholder: "Phonenumber",
+    value: data.phonenumber,
+    required: true,
+    handleChange: handleChange,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "text",
+    name: "address",
+    placeholder: "Address",
+    value: data.address,
+    required: true,
+    handleChange: handleChange,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "text",
+    name: "city",
+    placeholder: "City",
+    value: data.city,
+    required: true,
+    handleChange: handleChange,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "btn-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    type: "submit",
+    style: {
+      background: '#2B5680'
+    }
+  }, "save"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (EditCstRecepForm);
 
 /***/ }),
 
@@ -75262,10 +75739,14 @@ var SideBar = function SideBar() {
   var urlCheck = location.href;
   var path1 = '/reception';
   var path2 = '/reception/createcustomer';
+  var path2_1 = '/reception/viewcustomer';
+  var path2_2 = '/reception/editcustomer';
   var path3 = '/reception/results';
   var path4 = '/reception/createjob';
   var path5 = '/reception/payment';
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SideBarWrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_assets_svg_RecepSVG2__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(SideBarWrapper, {
+    className: "nav-hgt"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_assets_svg_RecepSVG2__WEBPACK_IMPORTED_MODULE_3__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "responsive-sidebar"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "profile-content"
@@ -75281,13 +75762,229 @@ var SideBar = function SideBar() {
     className: "material-icons"
   }, "assignment"), "  completed job"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["NavLink"], {
     to: path2,
-    activeClassName: urlCheck.endsWith(path2) ? 'active' : null
+    activeClassName: urlCheck.endsWith(path2) || urlCheck.endsWith(path2_1) || urlCheck.endsWith(path2_2) ? 'active' : null
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("i", {
     className: "material-icons"
   }, "person_add"), "  create customer")));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SideBar);
+
+/***/ }),
+
+/***/ "./resources/js/components/receptionist/ViewCstRecepForm.js":
+/*!******************************************************************!*\
+  !*** ./resources/js/components/receptionist/ViewCstRecepForm.js ***!
+  \******************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _FormInput__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../FormInput */ "./resources/js/components/FormInput.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    height: auto;\n    background: #ffffff;\n    box-shadow: 0 8px 10px rgba(0, 0, 0, 0.25);\n    border-radius: 5px;\n\n    h5 {\n        height: 35px;\n        background: #E9EEF8;\n        text-align: center;\n        text-transform: capitalize;\n        line-height: 35px;\n    }\n\n    form {\n        padding: 30px;\n\n        .header{\n            display: flex;\n            justify-content: space-around;\n            \n\n            .upload-sect {\n                img {\n                    width: 130px;\n                    height: 130px;\n                    border-radius: 50%;\n                    margin-bottom: 20px\n                }\n\n                .upload {\n                    margin-bottom: 20px;\n\n                    label {\n                        display: flex;\n                        border: 1px solid #C4C4C4;\n                        padding: 5px 15px 5px 15px;\n                        opacity: 0.7;\n                        font-weight: bold;\n                        border-radius: 5px;\n                        cursor: pointer;\n                        font-size: 12px;\n\n                        span {\n                            transform: translateY(5px)\n                        }\n\n                        i {\n                            display: block;\n                            margin-right: 10px;\n                        }\n\n                        input[type='file'] {\n                            color: transparent;\n                            display: none;\n                        }\n                    }\n                }\n            }\n\n            .member-sect {\n                text-align: left;\n                font-size: 14px;\n                margin-top: 23px;\n                /* width: 45%; */\n\n                input[type='radio'] {\n                    margin-bottom: 20px;\n                }\n            }\n\n            section {\n                width: 200px;\n                height: 100px;\n                background: #ffffff;\n                text-align: center;\n                margin-bottom: 30px;\n                padding: 5px;\n                border-radius: 10px;\n                box-shadow: 0px 12px 20px rgba(0, 0, 0, 0.25), 0px 12px 20px rgba(0, 0, 0, 0.25);\n\n                h5 {\n                    text-transform: capitalize;\n                    font-weight: bold;\n                    opacity: 0.7;\n                    background: none;\n                }\n\n                span {\n                    width: 130px;\n                    height: 40px;\n                    border-radius: 10px;\n                    background: rgba(43, 86, 128, 0.18);\n                    display: block;\n                    color: #000000;\n                    font-size: 16px;\n                    text-align: center;\n                    font-weight: bold;\n                    margin: 5px auto;\n                    line-height: 40px;\n                }\n            }\n        }\n\n        .input-wrp {\n            margin-bottom: 10px;\n        }\n\n        .btn-wrapper {\n            text-align: center;\n\n            a {\n                width: 120px;\n                height: 38px;\n                font-size: 14px;\n                color: #ffffff;\n                text-transform: capitalize;\n                border-radius: 7px;\n                font-weight: bold;\n                background: #525252;\n                text-decoration: none;\n                display: inline-block;\n                line-height: 38px;\n\n                :hover {\n                    transform: scale(1.01)\n                }\n            }\n        }\n    }\n\n    @media (max-width: 700px) {\n        .header {\n            flex-direction: column;\n\n            label {\n                width: 65%\n            }\n\n            .member-sect {\n                width: 80% !important;\n                margin-bottom: 30px;\n            }\n        }\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+var CreateCstRecepFormWrap = styled_components__WEBPACK_IMPORTED_MODULE_2__["default"].section(_templateObject());
+
+var ViewCstRecepForm = function ViewCstRecepForm() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    selectedInput: '',
+    name: '',
+    email: '',
+    gender: 'gender',
+    phonenumber: '',
+    address: '',
+    city: '',
+    file: 'https://via.placeholder.com/150'
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      data = _useState2[0],
+      setData = _useState2[1];
+
+  var handleChange = function handleChange(e) {
+    setData(_objectSpread({}, data, _defineProperty({}, e.target.name, e.target.value)));
+  };
+
+  var inputChange = function inputChange(e) {
+    setData(_objectSpread({}, data, {
+      selectedInput: e.target.value
+    }));
+  };
+
+  var selectHandle = function selectHandle(e) {
+    setData(_objectSpread({}, data, {
+      gender: e.target.value
+    }));
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CreateCstRecepFormWrap, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "customer data form"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    action: ""
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "header"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "upload-sect"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("img", {
+    src: data.file,
+    alt: "profile picture"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "member-sect"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "member",
+    value: "vip",
+    checked: data.selectedInput === 'vip',
+    onChange: inputChange
+  }), " VIP Client ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "member",
+    value: "member",
+    checked: data.selectedInput === 'member',
+    onChange: inputChange
+  }), " Exclusive Member ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "member",
+    value: "partner",
+    checked: data.selectedInput === 'partner',
+    onChange: inputChange
+  }), " Exclusive Partner  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "member",
+    value: "dealer",
+    checked: data.selectedInput === 'dealer',
+    onChange: inputChange
+  }), " Sub Dealer  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "radio",
+    name: "member",
+    value: "other",
+    checked: data.selectedInput === 'other',
+    onChange: inputChange
+  }), " Other  ", react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("section", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", null, "wallet balance"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", null, " \u20A6 100,000"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    type: "text",
+    name: "name",
+    placeholder: "Name",
+    value: data.name,
+    disabled: true,
+    handleChange: handleChange,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    type: "email",
+    name: "email",
+    placeholder: "Email",
+    disabled: true,
+    value: data.email,
+    handleChange: handleChange,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "gender",
+    id: "",
+    disabled: true,
+    value: data.gender,
+    onChange: selectHandle,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px',
+      width: '100%',
+      height: '35px',
+      borderWidth: '0.7px',
+      paddingLeft: '7px'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: ""
+  }, "Gender"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "male"
+  }, "Male"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "female"
+  }, "Female"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    type: "tel",
+    name: "phonenumber",
+    placeholder: "Phonenumber",
+    value: data.phonenumber,
+    disabled: true,
+    handleChange: handleChange,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    type: "text",
+    name: "address",
+    placeholder: "Address",
+    value: data.address,
+    disabled: true,
+    handleChange: handleChange,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "input-wrp"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    type: "text",
+    name: "city",
+    placeholder: "City",
+    value: data.city,
+    disabled: true,
+    handleChange: handleChange,
+    style: {
+      borderColor: '#7C7C7C',
+      borderRadius: '5px'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "btn-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Link"], {
+    to: "/reception/editcustomer"
+  }, "edit"))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ViewCstRecepForm);
 
 /***/ }),
 
@@ -75894,6 +76591,100 @@ var Login_SignUp = function Login_SignUp() {
 
 /***/ }),
 
+/***/ "./resources/js/pages/receptionist/CreateCustomerRecep.js":
+/*!****************************************************************!*\
+  !*** ./resources/js/pages/receptionist/CreateCustomerRecep.js ***!
+  \****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _components_receptionist_SideBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/receptionist/SideBar */ "./resources/js/components/receptionist/SideBar.js");
+/* harmony import */ var _components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/HeaderMain */ "./resources/js/components/HeaderMain.js");
+/* harmony import */ var _components_Notifications__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Notifications */ "./resources/js/components/Notifications.js");
+/* harmony import */ var _components_receptionist_FormSearch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/receptionist/FormSearch */ "./resources/js/components/receptionist/FormSearch.js");
+/* harmony import */ var _components_receptionist_CreateCstRecepForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/receptionist/CreateCstRecepForm */ "./resources/js/components/receptionist/CreateCstRecepForm.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .nav-hgt {\n        height: 125%\n    }\n\n    .main-content-side {\n        \n        \n        .recept-content {\n            display: flex;\n            margin: 20px 60px 0 0;\n\n            .recep-content-main {\n                width: 80%;\n                margin: 0 15px 0 15px;\n\n                .search-fd {\n                    width: 70%;\n                   \n                }\n\n                hr{\n                    margin: 10px 0 10px 0;\n                    border: 0.3px solid #FFDF00\n                }\n\n                .component-section {\n                    display: flex;\n                    justify-content: space-around\n                }\n            }\n\n            .notification {\n                float: right;\n            }\n        }\n    }\n\n    @media (max-width: 1000px) {\n        .component-section {\n            flex-direction: column;\n        }\n\n        .nav-hgt {\n            height: 140%\n        }\n    }\n\n    @media (max-width: 700px) {\n\n        .nav-hgt {\n            height: 180%\n        }\n        .recept-content {\n            width: 100%;\n\n            .recep-content-main {\n                width: 100% !important;\n\n                .component-section {\n                    flex-direction: column;\n                }\n            }\n\n        }\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+
+
+
+var MainRecepWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
+
+var CreateCustomerRecep = function CreateCustomerRecep() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    width: true,
+    toggleNav: true,
+    modalShow: false
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      data = _useState2[0],
+      setData = _useState2[1];
+
+  var handleToggle = function handleToggle() {
+    setData({
+      width: !data.width,
+      toggleNav: !data.toggleNav
+    });
+  };
+
+  var handleModalShow = function handleModalShow() {
+    setData({
+      modalShow: true
+    });
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainRecepWrapper, null, data.toggleNav && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_SideBar__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "main-content-side",
+    style: {
+      width: data.width ? '80.5%' : '100%'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    handleToggle: handleToggle,
+    to: "/reception/edit"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recept-content"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recep-content-main"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "search-fd"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_FormSearch__WEBPACK_IMPORTED_MODULE_5__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "component-section"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_CreateCstRecepForm__WEBPACK_IMPORTED_MODULE_6__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "notification"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Notifications__WEBPACK_IMPORTED_MODULE_4__["default"], null)))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (CreateCustomerRecep);
+
+/***/ }),
+
 /***/ "./resources/js/pages/receptionist/CreateJobR.js":
 /*!*******************************************************!*\
   !*** ./resources/js/pages/receptionist/CreateJobR.js ***!
@@ -75983,7 +76774,8 @@ var CreateJobR = function CreateJobR() {
       width: data.width ? '80.5%' : '100%'
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    handleToggle: handleToggle
+    handleToggle: handleToggle,
+    to: "/reception/edit"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "recept-content"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -75998,6 +76790,147 @@ var CreateJobR = function CreateJobR() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (CreateJobR);
+
+/***/ }),
+
+/***/ "./resources/js/pages/receptionist/EditCustomerRecep.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/pages/receptionist/EditCustomerRecep.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _components_receptionist_SideBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/receptionist/SideBar */ "./resources/js/components/receptionist/SideBar.js");
+/* harmony import */ var _components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/HeaderMain */ "./resources/js/components/HeaderMain.js");
+/* harmony import */ var _components_Notifications__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Notifications */ "./resources/js/components/Notifications.js");
+/* harmony import */ var _components_receptionist_FormSearch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/receptionist/FormSearch */ "./resources/js/components/receptionist/FormSearch.js");
+/* harmony import */ var _components_receptionist_EditCstRecepForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/receptionist/EditCstRecepForm */ "./resources/js/components/receptionist/EditCstRecepForm.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .nav-hgt {\n        height: 125%\n    }\n\n    .main-content-side {\n        \n        \n        .recept-content {\n            display: flex;\n            margin: 20px 60px 0 0;\n\n            .recep-content-main {\n                width: 80%;\n                margin: 0 15px 0 15px;\n\n                .search-fd {\n                    width: 70%;\n                   \n                }\n\n                hr{\n                    margin: 10px 0 10px 0;\n                    border: 0.3px solid #FFDF00\n                }\n\n                .component-section {\n                    display: flex;\n                    justify-content: space-around\n                }\n            }\n\n            .notification {\n                float: right;\n            }\n        }\n    }\n\n    @media (max-width: 1000px) {\n        .component-section {\n            flex-direction: column;\n        }\n\n        .nav-hgt {\n            height: 140%\n        }\n    }\n\n    @media (max-width: 700px) {\n\n        .nav-hgt {\n            height: 180%\n        }\n        .recept-content {\n            width: 100%;\n\n            .recep-content-main {\n                width: 100% !important;\n\n                .component-section {\n                    flex-direction: column;\n                }\n            }\n\n        }\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+
+
+
+var MainRecepWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
+
+var EditCustomerRecep = function EditCustomerRecep() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    width: true,
+    toggleNav: true,
+    modalShow: false
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      data = _useState2[0],
+      setData = _useState2[1];
+
+  var handleToggle = function handleToggle() {
+    setData({
+      width: !data.width,
+      toggleNav: !data.toggleNav
+    });
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainRecepWrapper, null, data.toggleNav && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_SideBar__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "main-content-side",
+    style: {
+      width: data.width ? '80.5%' : '100%'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    handleToggle: handleToggle,
+    to: "/reception/edit"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recept-content"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recep-content-main"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "search-fd"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_FormSearch__WEBPACK_IMPORTED_MODULE_5__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "component-section"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_EditCstRecepForm__WEBPACK_IMPORTED_MODULE_6__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "notification"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Notifications__WEBPACK_IMPORTED_MODULE_4__["default"], null)))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (EditCustomerRecep);
+
+/***/ }),
+
+/***/ "./resources/js/pages/receptionist/EditReception.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/pages/receptionist/EditReception.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _components_Header__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/Header */ "./resources/js/components/Header.js");
+/* harmony import */ var _assets_svg_RecepSVG1__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../assets/svg/RecepSVG1 */ "./resources/js/assets/svg/RecepSVG1.js");
+/* harmony import */ var _components_FormUpload__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/FormUpload */ "./resources/js/components/FormUpload.js");
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    overflow-x: hidden;\n    width: 100vw;\n\n    .main-content {\n        width: 100vw;\n        position: relative;\n\n        svg {\n            width: 100%;\n            transform: translateY(-12px);\n            position: relative;\n        }\n    }\n\n    .responsive-edit {\n        width: 100%;\n        background: #55ACEE;\n        height: 120px;\n        position: absolute;\n        display: none\n    }\n\n    .content-section {\n        position: absolute;\n        width: 40%;\n        left: 30vw;\n        top: 15%;\n\n        h2 {\n            color: #ffffff;\n            opacity: 0.8;\n            text-transform: capitalize;\n            text-align: center;\n            margin-bottom: 30px;\n        }\n    }\n\n    @media (max-width: 1200px) {\n        svg {\n            transform: translateY(-19px) !important\n        }\n    }\n\n    @media (max-width: 1000px) {\n        svg {\n            transform: translateY(-35px) !important\n        }\n\n        .content-section {\n            width: 90%;\n            left: 5vw;\n        }\n    }\n\n    @media (max-width: 900px) {\n        svg {\n            transform: translateY(-19px) !important;\n            display: none;\n        }\n\n        .responsive-edit {\n            display: block;\n        }\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+
+var EditWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
+
+var EditReception = function EditReception() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(EditWrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Header__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    to: "/reception/edit"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "main-content"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_assets_svg_RecepSVG1__WEBPACK_IMPORTED_MODULE_3__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "responsive-edit"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "content-section"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h2", null, "nail technician"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_FormUpload__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    path: "/reception/",
+    color: "#55ACEE"
+  })));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (EditReception);
 
 /***/ }),
 
@@ -76082,14 +77015,15 @@ var MainRecep = function MainRecep() {
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainRecepWrapper, null, data.modalShow && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_Modal__WEBPACK_IMPORTED_MODULE_7__["default"], {
     handleModalHide: handleModalHide,
-    to: "reception"
+    to: "/reception"
   }), data.toggleNav && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_SideBar__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main-content-side",
     style: {
       width: data.width ? '80.5%' : '100%'
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    handleToggle: handleToggle
+    handleToggle: handleToggle,
+    to: "/reception/edit"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "recept-content"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -76197,7 +77131,8 @@ var PaymentRecep = function PaymentRecep() {
       width: data.width ? '80.5%' : '100%'
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    handleToggle: handleToggle
+    handleToggle: handleToggle,
+    to: "/reception/edit"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "recept-content"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
@@ -76233,6 +77168,14 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _ResultRecep__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ./ResultRecep */ "./resources/js/pages/receptionist/ResultRecep.js");
 /* harmony import */ var _CreateJobR__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ./CreateJobR */ "./resources/js/pages/receptionist/CreateJobR.js");
 /* harmony import */ var _PaymentRecep__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ./PaymentRecep */ "./resources/js/pages/receptionist/PaymentRecep.js");
+/* harmony import */ var _CreateCustomerRecep__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ./CreateCustomerRecep */ "./resources/js/pages/receptionist/CreateCustomerRecep.js");
+/* harmony import */ var _ViewCustomerRecep__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ./ViewCustomerRecep */ "./resources/js/pages/receptionist/ViewCustomerRecep.js");
+/* harmony import */ var _EditCustomerRecep__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ./EditCustomerRecep */ "./resources/js/pages/receptionist/EditCustomerRecep.js");
+/* harmony import */ var _EditReception__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ./EditReception */ "./resources/js/pages/receptionist/EditReception.js");
+
+
+
+
 
 
 
@@ -76257,6 +77200,22 @@ var Reception = function Reception() {
     exact: true,
     path: "/reception/payment/",
     component: _PaymentRecep__WEBPACK_IMPORTED_MODULE_5__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/reception/createcustomer/",
+    component: _CreateCustomerRecep__WEBPACK_IMPORTED_MODULE_6__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/reception/viewcustomer/",
+    component: _ViewCustomerRecep__WEBPACK_IMPORTED_MODULE_7__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/reception/editcustomer/",
+    component: _EditCustomerRecep__WEBPACK_IMPORTED_MODULE_8__["default"]
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_1__["Route"], {
+    exact: true,
+    path: "/reception/edit/",
+    component: _EditReception__WEBPACK_IMPORTED_MODULE_9__["default"]
   }));
 };
 
@@ -76279,11 +77238,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var _components_receptionist_SideBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/receptionist/SideBar */ "./resources/js/components/receptionist/SideBar.js");
 /* harmony import */ var _components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/HeaderMain */ "./resources/js/components/HeaderMain.js");
 /* harmony import */ var _components_Notifications__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Notifications */ "./resources/js/components/Notifications.js");
-/* harmony import */ var _components_receptionist_CreateCust__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/receptionist/CreateCust */ "./resources/js/components/receptionist/CreateCust.js");
-/* harmony import */ var _components_receptionist_CustTable__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/receptionist/CustTable */ "./resources/js/components/receptionist/CustTable.js");
-/* harmony import */ var _components_receptionist_Modal__WEBPACK_IMPORTED_MODULE_7__ = __webpack_require__(/*! ../../components/receptionist/Modal */ "./resources/js/components/receptionist/Modal.js");
-/* harmony import */ var _components_receptionist_FormSearch__WEBPACK_IMPORTED_MODULE_8__ = __webpack_require__(/*! ../../components/receptionist/FormSearch */ "./resources/js/components/receptionist/FormSearch.js");
-/* harmony import */ var _components_receptionist_SearchResults__WEBPACK_IMPORTED_MODULE_9__ = __webpack_require__(/*! ../../components/receptionist/SearchResults */ "./resources/js/components/receptionist/SearchResults.js");
+/* harmony import */ var _components_receptionist_FormSearch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/receptionist/FormSearch */ "./resources/js/components/receptionist/FormSearch.js");
+/* harmony import */ var _components_receptionist_SearchResults__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/receptionist/SearchResults */ "./resources/js/components/receptionist/SearchResults.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -76303,9 +77259,6 @@ function _templateObject() {
 }
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
-
-
-
 
 
 
@@ -76339,35 +77292,116 @@ var ResultRecep = function ResultRecep() {
     });
   };
 
-  var handleModalHide = function handleModalHide() {
-    setData({
-      modalShow: false
-    });
-  };
-
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainRecepWrapper, null, data.modalShow && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_Modal__WEBPACK_IMPORTED_MODULE_7__["default"], {
-    handleModalHide: handleModalHide
-  }), data.toggleNav && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_SideBar__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainRecepWrapper, null, data.toggleNav && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_SideBar__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "main-content-side",
     style: {
       width: data.width ? '80.5%' : '100%'
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__["default"], {
-    handleToggle: handleToggle
+    handleToggle: handleToggle,
+    to: "/reception/edit"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "recept-content"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "recep-content-main"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "search-fd"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_FormSearch__WEBPACK_IMPORTED_MODULE_8__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_FormSearch__WEBPACK_IMPORTED_MODULE_5__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "component-section"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_SearchResults__WEBPACK_IMPORTED_MODULE_9__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_SearchResults__WEBPACK_IMPORTED_MODULE_6__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "notification"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Notifications__WEBPACK_IMPORTED_MODULE_4__["default"], null)))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (ResultRecep);
+
+/***/ }),
+
+/***/ "./resources/js/pages/receptionist/ViewCustomerRecep.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/pages/receptionist/ViewCustomerRecep.js ***!
+  \**************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var _components_receptionist_SideBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/receptionist/SideBar */ "./resources/js/components/receptionist/SideBar.js");
+/* harmony import */ var _components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/HeaderMain */ "./resources/js/components/HeaderMain.js");
+/* harmony import */ var _components_Notifications__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/Notifications */ "./resources/js/components/Notifications.js");
+/* harmony import */ var _components_receptionist_FormSearch__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/receptionist/FormSearch */ "./resources/js/components/receptionist/FormSearch.js");
+/* harmony import */ var _components_receptionist_ViewCstRecepForm__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/receptionist/ViewCstRecepForm */ "./resources/js/components/receptionist/ViewCstRecepForm.js");
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .nav-hgt {\n        height: 125%\n    }\n\n    .main-content-side {\n        \n        \n        .recept-content {\n            display: flex;\n            margin: 20px 60px 0 0;\n\n            .recep-content-main {\n                width: 80%;\n                margin: 0 15px 0 15px;\n\n                .search-fd {\n                    width: 70%;\n                   \n                }\n\n                hr{\n                    margin: 10px 0 10px 0;\n                    border: 0.3px solid #FFDF00\n                }\n\n                .component-section {\n                    display: flex;\n                    justify-content: space-around\n                }\n            }\n\n            .notification {\n                float: right;\n            }\n        }\n    }\n\n    @media (max-width: 1000px) {\n        .component-section {\n            flex-direction: column;\n        }\n\n        .nav-hgt {\n            height: 140%\n        }\n    }\n\n    @media (max-width: 700px) {\n\n        .nav-hgt {\n            height: 180%\n        }\n        .recept-content {\n            width: 100%;\n\n            .recep-content-main {\n                width: 100% !important;\n\n                .component-section {\n                    flex-direction: column;\n                }\n            }\n\n        }\n    }\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+
+
+
+
+var MainRecepWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
+
+var ViewCustomerRecep = function ViewCustomerRecep() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    width: true,
+    toggleNav: true,
+    modalShow: false
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      data = _useState2[0],
+      setData = _useState2[1];
+
+  var handleToggle = function handleToggle() {
+    setData({
+      width: !data.width,
+      toggleNav: !data.toggleNav
+    });
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainRecepWrapper, null, data.toggleNav && react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_SideBar__WEBPACK_IMPORTED_MODULE_2__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "main-content-side",
+    style: {
+      width: data.width ? '80.5%' : '100%'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    handleToggle: handleToggle,
+    to: "/reception/edit"
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recept-content"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "recep-content-main"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "search-fd"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_FormSearch__WEBPACK_IMPORTED_MODULE_5__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "component-section"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_receptionist_ViewCstRecepForm__WEBPACK_IMPORTED_MODULE_6__["default"], null))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "notification"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_Notifications__WEBPACK_IMPORTED_MODULE_4__["default"], null)))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (ViewCustomerRecep);
 
 /***/ }),
 
@@ -77060,8 +78094,8 @@ var Workers = function Workers() {
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! C:\xampp\htdocs\makeme\resources\js\app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! C:\xampp\htdocs\makeme\resources\sass\app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! C:\Users\DemolaM\Desktop\SAP\Web Dev\SAED\makeme\resources\js\app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! C:\Users\DemolaM\Desktop\SAP\Web Dev\SAED\makeme\resources\sass\app.scss */"./resources/sass/app.scss");
 
 
 /***/ })

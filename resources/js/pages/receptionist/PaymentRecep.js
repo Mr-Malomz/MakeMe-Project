@@ -97,7 +97,7 @@ const PaymentRecep = () => {
             {data.modalShow && <Modal handleModalHide={handleModalHide} to='/reception/payment'/>}
             {data.toggleNav && <SideBar />}
             <div className="main-content-side" style={{width: data.width ? '80.5%' : '100%'}}>
-                <HeaderMain handleToggle={handleToggle}/>
+                <HeaderMain handleToggle={handleToggle} to='/reception/edit'/>
                 <div className="recept-content">
                     <div className="recep-content-main">
                         <div className="search-fd">

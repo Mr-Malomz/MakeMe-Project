@@ -3,9 +3,6 @@ import styled from 'styled-components';
 import SideBar from '../../components/receptionist/SideBar';
 import HeaderMain from '../../components/HeaderMain';
 import Notifications from '../../components/Notifications';
-import CreateCust from '../../components/receptionist/CreateCust';
-import CustTable from '../../components/receptionist/CustTable';
-import Modal from '../../components/receptionist/Modal';
 import FormSearch from '../../components/receptionist/FormSearch';
 import SearchResults from '../../components/receptionist/SearchResults';
 
@@ -89,16 +86,12 @@ const ResultRecep = () => {
         setData({modalShow: true})
     };
 
-    const handleModalHide = () => {
-        setData({modalShow: false})
-    };
 
     return (
         <MainRecepWrapper>
-            {data.modalShow && <Modal handleModalHide={handleModalHide}/>}
             {data.toggleNav && <SideBar />}
             <div className="main-content-side" style={{width: data.width ? '80.5%' : '100%'}}>
-                <HeaderMain handleToggle={handleToggle}/>
+                <HeaderMain handleToggle={handleToggle} to='/reception/edit'/>
                 <div className="recept-content">
                     <div className="recep-content-main">
                         <div className="search-fd">
