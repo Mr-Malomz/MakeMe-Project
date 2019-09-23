@@ -23,15 +23,16 @@ const MainSupervisWrapper = styled.div `
             display: flex;
             display: block;
             margin-left: auto;
-            margin-right: auto; 
-           
+            margin-right: auto;
+            background: rgba(166, 206, 227, 0.2); 
+            height: 799px;
 
             .SuperVs-content {
                 display: flex;
                 margin: 20px 60px 0 0;
                 width: 100%;
-                height: 799px;
-                background: rgba(166, 206, 227, 0.2);
+               
+                
 
                 .supervs-content-main{
                     position: absolute;
@@ -69,11 +70,12 @@ const MainSupervis = () => {
                 <div className="SuperVsCard">
                     <div className="SuperVs-content">
                         <JobTableTitleSV />
-                        <div className="supervs-content-main">
+                    </div>
+                    <div className="supervs-content-main">
+                        
                         <TableSV />
 
                         <PaginateSV />
-                        </div>
                     </div>
                 </div>
             </div>

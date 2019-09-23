@@ -5,7 +5,7 @@ import FormInput from '../FormInput';
 
 const CardWrapper = styled.div `
     .jobTableContent{
-       margin: 60px 10px 60px 10px;
+       margin: 60px 10px 0 10px;
        width: 100%;
 
         .header-title{

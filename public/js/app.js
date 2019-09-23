@@ -75246,7 +75246,7 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    .jobTableContent{\n       margin: 60px 10px 60px 10px;\n       width: 100%;\n\n        .header-title{\n            font-style: normal;\n            font-weight: 300;\n            font-size: 26px;\n            width: 200px;\n            color: #000000;\n            margin: 0 18rem 0 0;\n        }\n        button{\n            width: 200px;\n            height: 35px;\n            top: 160px;\n            background: #3B5998;\n            color: #FFFFFF;\n            border-radius: 7px;\n            font-style: normal;\n            font-weight: 600;\n            font-size: 12px;\n        }\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    .jobTableContent{\n       margin: 60px 10px 0 10px;\n       width: 100%;\n\n        .header-title{\n            font-style: normal;\n            font-weight: 300;\n            font-size: 26px;\n            width: 200px;\n            color: #000000;\n            margin: 0 18rem 0 0;\n        }\n        button{\n            width: 200px;\n            height: 35px;\n            top: 160px;\n            background: #3B5998;\n            color: #FFFFFF;\n            border-radius: 7px;\n            font-style: normal;\n            font-weight: 600;\n            font-size: 12px;\n        }\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -76648,7 +76648,7 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .main-content-side {\n        justify-content: center;\n        flex-direction: row;\n        \n        .SuperVsCard{\n            width: 85%;\n            margin: 40px 20px 20px 20px;\n            text-align: center;\n            display: flex;\n            display: block;\n            margin-left: auto;\n            margin-right: auto; \n           \n\n            .SuperVs-content {\n                display: flex;\n                margin: 20px 60px 0 0;\n                width: 100%;\n                height: 799px;\n                background: rgba(166, 206, 227, 0.2);\n\n                .supervs-content-main{\n                    position: absolute;\n                }\n            }\n        }\n    }\n\n    @media (max-width: 700px) {\n        .SuperVs-content {\n            width: 100%;\n\n        }\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .main-content-side {\n        justify-content: center;\n        flex-direction: row;\n        \n        .SuperVsCard{\n            width: 85%;\n            margin: 40px 20px 20px 20px;\n            text-align: center;\n            display: flex;\n            display: block;\n            margin-left: auto;\n            margin-right: auto;\n            background: rgba(166, 206, 227, 0.2); \n            height: 799px;\n\n            .SuperVs-content {\n                display: flex;\n                margin: 20px 60px 0 0;\n                width: 100%;\n               \n                \n\n                .supervs-content-main{\n                    position: absolute;\n                }\n            }\n        }\n    }\n\n    @media (max-width: 700px) {\n        .SuperVs-content {\n            width: 100%;\n\n        }\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -76695,9 +76695,9 @@ var MainSupervis = function MainSupervis() {
     className: "SuperVsCard"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "SuperVs-content"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_supervisor_JobTableTitleSV__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_supervisor_JobTableTitleSV__WEBPACK_IMPORTED_MODULE_4__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "supervs-content-main"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_supervisor_TableSV__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_supervisor_PaginateSV__WEBPACK_IMPORTED_MODULE_6__["default"], null))))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_supervisor_TableSV__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_supervisor_PaginateSV__WEBPACK_IMPORTED_MODULE_6__["default"], null)))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MainSupervis);
