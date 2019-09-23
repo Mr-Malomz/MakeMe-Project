@@ -65266,7 +65266,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
+/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -75224,10 +75224,10 @@ var AssignJobSV = function AssignJobSV() {
 
 /***/ }),
 
-/***/ "./resources/js/components/supervisor/JobTableSV.js":
-/*!**********************************************************!*\
-  !*** ./resources/js/components/supervisor/JobTableSV.js ***!
-  \**********************************************************/
+/***/ "./resources/js/components/supervisor/JobTableTitleSV.js":
+/*!***************************************************************!*\
+  !*** ./resources/js/components/supervisor/JobTableTitleSV.js ***!
+  \***************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -75246,7 +75246,7 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    .jobTableContent{\n        margin: 60px 10px 60px 10px;\n\n        .header-title{\n            font-style: normal;\n            font-weight: 300;\n            font-size: 26px;\n            color: #000000;\n            margin: 0 16rem 0 0;\n        }\n        .buttonStyle{\n            width: 157px;\n            height: 35px;\n            top: 60px;\n            background: #3B5998;\n            color: #FFFFFF;\n            border-radius: 7px;\n            font-style: normal;\n            font-weight: 600;\n            font-size: 12px;\n        }\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    .jobTableContent{\n       margin: 60px 10px 60px 10px;\n       width: 100%;\n\n        .header-title{\n            font-style: normal;\n            font-weight: 300;\n            font-size: 26px;\n            width: 200px;\n            color: #000000;\n            margin: 0 18rem 0 0;\n        }\n        button{\n            width: 200px;\n            height: 35px;\n            top: 160px;\n            background: #3B5998;\n            color: #FFFFFF;\n            border-radius: 7px;\n            font-style: normal;\n            font-weight: 600;\n            font-size: 12px;\n        }\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -75260,9 +75260,9 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var CardWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].form(_templateObject());
+var CardWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
 
-var JobTableSV = function JobTableSV() {
+var JobTableTitleSV = function JobTableTitleSV() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
       _useState2 = _slicedToArray(_useState, 2),
       search = _useState2[0],
@@ -75274,7 +75274,7 @@ var JobTableSV = function JobTableSV() {
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CardWrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "jobTableContent"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
     className: "header-title"
   }, "Created Job Cards"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
     type: "search",
@@ -75285,19 +75285,68 @@ var JobTableSV = function JobTableSV() {
     style: {
       border: '1px solid #C4C4C4',
       borderRadius: '7px',
-      width: '232px',
+      width: '200px',
       boxSizing: 'border-box',
       height: '35px',
-      margin: '0 4rem 0 0'
+      margin: '0 3rem 0 0'
     },
     handleChange: handleChange
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
-    className: "buttonStyle",
     type: "submit"
   }, "Create a Job Card")));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (JobTableSV);
+/* harmony default export */ __webpack_exports__["default"] = (JobTableTitleSV);
+
+/***/ }),
+
+/***/ "./resources/js/components/supervisor/PaginateSV.js":
+/*!**********************************************************!*\
+  !*** ./resources/js/components/supervisor/PaginateSV.js ***!
+  \**********************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n    width: 85%;\n    display: flex;\n    display: block;\n    margin-left: auto;\n    margin-right: auto; \n\n    nav {\n        margin: 30px auto 30px auto;\n        width: 100%;\n    }\n    \n    .pagination {\n        display: flex;\n        font-size: 12px;\n        \n            li {\n                list-style: none;\n                padding: 5px 10px 5px 10px;\n                border: 0.5px solid #C4C4C4;\n\n                &:first-child {\n                    border-radius: 4px 0 0 4px;\n                    font-weight: bold;\n                }\n\n                &:last-child {\n                    border-radius: 0 4px 4px 0;\n                    font-weight: bold;\n                }\n\n                a {\n                    text-decoration: none;\n                    color: #000000;\n                }\n            }\n    }\n\n    .active {\n        background: #C4C4C4;\n        color: #ffffff\n    }\n\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+var PaginationWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].section(_templateObject());
+
+var Pagination = function Pagination() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(PaginationWrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("nav", {
+    "aria-label": "Page navigation example"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("ul", {
+    className: "pagination"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "http://127.0.0.1:8000/#/Supervisor"
+  }, "Previous")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", {
+    className: "active"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "http://127.0.0.1:8000/#/Supervisor"
+  }, "1")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "http://127.0.0.1:8000/#/Supervisor"
+  }, "2")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("li", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("a", {
+    href: "http://127.0.0.1:8000/#/Supervisor"
+  }, "Next")))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (Pagination);
 
 /***/ }),
 
@@ -75366,6 +75415,62 @@ var SideBar = function SideBar() {
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (SideBar);
+
+/***/ }),
+
+/***/ "./resources/js/components/supervisor/TableSV.js":
+/*!*******************************************************!*\
+  !*** ./resources/js/components/supervisor/TableSV.js ***!
+  \*******************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! react */ "./node_modules/react/index.js");
+/* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
+/* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function _templateObject() {
+  var data = _taggedTemplateLiteral(["\n\n\n"]);
+
+  _templateObject = function _templateObject() {
+    return data;
+  };
+
+  return data;
+}
+
+function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
+
+
+var TableStyle = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].section(_templateObject());
+
+var TableSV = function TableSV() {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TableStyle, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "table-wrapper"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "#"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Descripton"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Customer's Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "CREATED ON"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "COMPLETED"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "washing and Setting"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Ademola Motunrayo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A650,000"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "25-Sep-2017"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Assign"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Fixing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Chinenye Agungi"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A610,000"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "2-Dec-2018"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Assign"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "3"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Braids"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Chiamaka Nnamdi"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A64,000"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "26-Feb-2017"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Assign"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "4"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Wig Making"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Rebecca Nnammadi"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A64,000"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "26-Feb-2019"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Assign"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox",
+    value: "checked"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "5"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Pedicure and Manicure"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Ruth Joshua"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A64,000"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "29-Dec-2019"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Assign"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox",
+    value: "checked"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "6"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Contact Lense"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Esther Frodd"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A64,000"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "29-Dec-2019"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Assign"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox"
+  }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "7"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Make Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Kafilat Ogunbaide"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A64,000"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "29-Dec-2019"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Assign"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+    type: "checkbox"
+  })))))));
+};
+
+/* harmony default export */ __webpack_exports__["default"] = (TableSV);
 
 /***/ }),
 
@@ -76531,7 +76636,9 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _components_supervisor_SideBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/supervisor/SideBar */ "./resources/js/components/supervisor/SideBar.js");
 /* harmony import */ var _components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/HeaderMain */ "./resources/js/components/HeaderMain.js");
-/* harmony import */ var _components_supervisor_JobTableSV__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/supervisor/JobTableSV */ "./resources/js/components/supervisor/JobTableSV.js");
+/* harmony import */ var _components_supervisor_JobTableTitleSV__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/supervisor/JobTableTitleSV */ "./resources/js/components/supervisor/JobTableTitleSV.js");
+/* harmony import */ var _components_supervisor_TableSV__WEBPACK_IMPORTED_MODULE_5__ = __webpack_require__(/*! ../../components/supervisor/TableSV */ "./resources/js/components/supervisor/TableSV.js");
+/* harmony import */ var _components_supervisor_PaginateSV__WEBPACK_IMPORTED_MODULE_6__ = __webpack_require__(/*! ../../components/supervisor/PaginateSV */ "./resources/js/components/supervisor/PaginateSV.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -76541,7 +76648,7 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\nwidth: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .main-content-side {\n        \n        \n        .SuperVs-content {\n            display: flex;\n            margin: 20px 60px 0 0;\n\n            .supervs-content-main{\n                position: absolute;\n                width: 998px;\n                height: 799px;\n                left: 346px;\n                top: 148px;\n                background: rgba(166, 206, 227, 0.2);\n            }\n        }\n    }\n\n    @media (max-width: 700px) {\n        .SuperVs-content {\n            width: 100%;\n\n        }\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .main-content-side {\n        justify-content: center;\n        flex-direction: row;\n        \n        .SuperVsCard{\n            width: 85%;\n            margin: 40px 20px 20px 20px;\n            text-align: center;\n            display: flex;\n            display: block;\n            margin-left: auto;\n            margin-right: auto; \n           \n\n            .SuperVs-content {\n                display: flex;\n                margin: 20px 60px 0 0;\n                width: 100%;\n                height: 799px;\n                background: rgba(166, 206, 227, 0.2);\n\n                .supervs-content-main{\n                    position: absolute;\n                }\n            }\n        }\n    }\n\n    @media (max-width: 700px) {\n        .SuperVs-content {\n            width: 100%;\n\n        }\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -76551,6 +76658,8 @@ function _templateObject() {
 }
 
 function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(0); } return Object.freeze(Object.defineProperties(strings, { raw: { value: Object.freeze(raw) } })); }
+
+
 
 
 
@@ -76583,10 +76692,12 @@ var MainSupervis = function MainSupervis() {
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__["default"], {
     handleToggle: handleToggle
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "SuperVs-content"
+    className: "SuperVsCard"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "SuperVs-content"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_supervisor_JobTableTitleSV__WEBPACK_IMPORTED_MODULE_4__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "supervs-content-main"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_supervisor_JobTableSV__WEBPACK_IMPORTED_MODULE_4__["default"], null)))));
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_supervisor_TableSV__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_supervisor_PaginateSV__WEBPACK_IMPORTED_MODULE_6__["default"], null))))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (MainSupervis);
