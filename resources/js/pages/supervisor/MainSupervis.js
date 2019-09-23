@@ -25,7 +25,7 @@ const MainSupervisWrapper = styled.div `
             margin-left: auto;
             margin-right: auto;
             background: rgba(166, 206, 227, 0.2); 
-            height: 799px;
+            height: 550px;
 
             .SuperVs-content {
                 display: flex;
@@ -71,6 +71,7 @@ const MainSupervis = () => {
                     <div className="SuperVs-content">
                         <JobTableTitleSV />
                     </div>
+                    <br/>
                     <div className="supervs-content-main">
                         
                         <TableSV />

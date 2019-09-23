@@ -3,10 +3,11 @@ import styled from 'styled-components';
 
 const PaginationWrapper = styled.section `
     width: 85%;
-    display: flex;
-    display: block;
-    margin-left: auto;
-    margin-right: auto; 
+    // display: block;
+    // margin-left: auto;
+    // margin-right: auto; 
+    // justify-content: center;
+    //     flex-direction: row;
 
     nav {
         margin: 30px auto 30px auto;
