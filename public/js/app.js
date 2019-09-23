@@ -65266,7 +65266,7 @@ if (false) {} else {
 /*!***************************************************************!*\
   !*** ./node_modules/react-router-dom/esm/react-router-dom.js ***!
   \***************************************************************/
-/*! exports provided: MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext, BrowserRouter, HashRouter, Link, NavLink */
+/*! exports provided: BrowserRouter, HashRouter, Link, NavLink, MemoryRouter, Prompt, Redirect, Route, Router, StaticRouter, Switch, generatePath, matchPath, withRouter, __RouterContext */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
 "use strict";
@@ -76541,7 +76541,7 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\nwidth: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    SideBar{overflow: none;}\n\n    .main-content-side {\n        \n        \n        .SuperVs-content {\n            display: flex;\n            margin: 20px 60px 0 0;\n\n            .supervs-content-main{\n                position: absolute;\n                width: 998px;\n                height: 799px;\n                left: 346px;\n                top: 148px;\n                background: rgba(166, 206, 227, 0.2);\n\n            }\n        }\n    }\n\n    @media (max-width: 700px) {\n        .SuperVs-content {\n            width: 100%;\n\n        }\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\nwidth: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .main-content-side {\n        \n        \n        .SuperVs-content {\n            display: flex;\n            margin: 20px 60px 0 0;\n\n            .supervs-content-main{\n                position: absolute;\n                width: 998px;\n                height: 799px;\n                left: 346px;\n                top: 148px;\n                background: rgba(166, 206, 227, 0.2);\n            }\n        }\n    }\n\n    @media (max-width: 700px) {\n        .SuperVs-content {\n            width: 100%;\n\n        }\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;

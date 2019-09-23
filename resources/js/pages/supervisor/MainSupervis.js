@@ -10,14 +10,13 @@ width: 100vw;
     display: float;
     position: relative;
 
-    SideBar{overflow: none;}
-
     .main-content-side {
         
         
         .SuperVs-content {
             display: flex;
             margin: 20px 60px 0 0;
+            
 
             .supervs-content-main{
                 position: absolute;
@@ -26,7 +25,6 @@ width: 100vw;
                 left: 346px;
                 top: 148px;
                 background: rgba(166, 206, 227, 0.2);
-
             }
         }
     }
