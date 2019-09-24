@@ -2,17 +2,33 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
 
-const TableStyle = styled.section `
-
-
+const TableStyle = styled.table`
+    border-collapse: collapse;
+    width: 100%;
+        th,td{
+            text-align: left;
+            //padding: 10px 0 10px 0;
+            height: 35px;
+        }
+        td{
+            background: white;
+            // border-bottom: 10px solid rgba(166, 206, 227, 0.2);
+        }
+    //    tbody{
+    //     tr{
+    //         dsiplay: none
+    //     }
+    //    }
+       tr {
+           height: 40px;
+           margin-bottom: 10px
+       }
 `;
 
 const TableSV = () => {
     return (
         <TableStyle>
-            <div className="table-wrapper">
-
-                <table>
+      
                     <thead>
                         <tr>
                             <th>#</th>
@@ -89,9 +105,7 @@ const TableSV = () => {
                             <td><input type="checkbox"/></td>
                         </tr>
                     </tbody>
-                </table>
 
-            </div>
         </TableStyle>
 
     )

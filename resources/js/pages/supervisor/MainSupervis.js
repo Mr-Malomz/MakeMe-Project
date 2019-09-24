@@ -13,23 +13,21 @@ const MainSupervisWrapper = styled.div `
     position: relative;
 
     .main-content-side {
-        justify-content: center;
-        flex-direction: row;
         
         .SuperVsCard{
-            width: 85%;
-            margin: 40px 20px 20px 20px;
-            text-align: center;
+            width: 90%;
             display: flex;
             display: block;
+            margin-top: 40px;
             margin-left: auto;
             margin-right: auto;
+            padding: 20px;
             background: rgba(166, 206, 227, 0.2); 
-            height: 550px;
 
-            .SuperVs-content {
+            .SuperVs-content-title {
                 display: flex;
-                margin: 20px 60px 0 0;
+                // margin-top: 20px 60px 0 0;
+                margin-top: 1px auto;
                 width: 100%;
                
                 
@@ -68,7 +66,7 @@ const MainSupervis = () => {
             <div className="main-content-side" style={{width: data.width ? '80.5%' : '100%'}}>
                 <HeaderMain handleToggle={handleToggle}/>
                 <div className="SuperVsCard">
-                    <div className="SuperVs-content">
+                    <div className="SuperVs-content-title">
                         <JobTableTitleSV />
                     </div>
                     <br/>

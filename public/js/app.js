@@ -75237,6 +75237,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _FormInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../FormInput */ "./resources/js/components/FormInput.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -75246,7 +75247,7 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    .jobTableContent{\n       margin: 60px 10px 0 10px;\n       width: 100%;\n\n        .header-title{\n            font-style: normal;\n            font-weight: 300;\n            font-size: 26px;\n            width: 200px;\n            color: #000000;\n            margin: 0 18rem 0 0;\n        }\n        button{\n            width: 200px;\n            height: 35px;\n            top: 160px;\n            background: #3B5998;\n            color: #FFFFFF;\n            border-radius: 7px;\n            font-style: normal;\n            font-weight: 600;\n            font-size: 12px;\n        }\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    width: 100%;\n\n    .jobTableContent{\n        width: 100%;\n        display: flex;\n        margin: 0 auto;\n\n        .header-title{\n            margin: auto;\n            font-style: normal;\n            font-weight: 300;\n            font-size: 26px;\n            width: 100%;\n            color: #000000;\n            opacity: 0.7;\n        }\n        .link-style{\n            width: 70%;\n            height: 35px;\n            padding: 10.5px 0 10.5px 0;\n            background: #3B5998;\n            text-decoration: none;\n            color: #FFFFFF;\n            border-radius: 7px;\n            font-style: normal;\n            font-weight: 600;\n            font-size: 12px;\n            text-align: center;\n        }\n        .searchLink{\n            display: flex;\n            float: right;\n            width: 100%;\n        }\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -75260,7 +75261,8 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var CardWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
+
+var CardWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].section(_templateObject());
 
 var JobTableTitleSV = function JobTableTitleSV() {
   var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])(''),
@@ -75274,9 +75276,11 @@ var JobTableTitleSV = function JobTableTitleSV() {
 
   return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CardWrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "jobTableContent"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("span", {
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h3", {
     className: "header-title"
-  }, "Created Job Cards"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+  }, "Created Job Cards"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "searchLink"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
     type: "search",
     value: search,
     name: "searchJob",
@@ -75285,15 +75289,18 @@ var JobTableTitleSV = function JobTableTitleSV() {
     style: {
       border: '1px solid #C4C4C4',
       borderRadius: '7px',
-      width: '200px',
+      width: '100%',
       boxSizing: 'border-box',
       height: '35px',
-      margin: '0 3rem 0 0'
+      margin: '0 2rem 0 0' // paddingRight: '30px',
+
     },
     handleChange: handleChange
-  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("button", {
+  }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_3__["Link"], {
+    to: "/supervisor/createjob/",
+    className: "link-style",
     type: "submit"
-  }, "Create a Job Card")));
+  }, "Create a Job Card"))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (JobTableTitleSV);
@@ -75432,7 +75439,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n\n\n"]);
+  var data = _taggedTemplateLiteral(["\n    border-collapse: collapse;\n    width: 100%;\n        th,td{\n            text-align: left;\n            //padding: 10px 0 10px 0;\n            height: 35px;\n        }\n        td{\n            background: white;\n            // border-bottom: 10px solid rgba(166, 206, 227, 0.2);\n        }\n    //    tbody{\n    //     tr{\n    //         dsiplay: none\n    //     }\n    //    }\n       tr {\n           height: 40px;\n           margin-bottom: 10px\n       }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -75446,12 +75453,10 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var TableStyle = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].section(_templateObject());
+var TableStyle = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].table(_templateObject());
 
 var TableSV = function TableSV() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TableStyle, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "table-wrapper"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("table", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "#"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Descripton"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Customer's Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "CREATED ON"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "COMPLETED"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "washing and Setting"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Ademola Motunrayo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A650,000"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "25-Sep-2017"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Assign"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(TableStyle, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("thead", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "#"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Descripton"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Customer's Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "CREATED ON"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("th", null, "COMPLETED"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tbody", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "1"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "washing and Setting"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Ademola Motunrayo"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A650,000"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "25-Sep-2017"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Assign"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "checkbox"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "2"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Fixing"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Chinenye Agungi"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A610,000"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "2-Dec-2018"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Assign"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "checkbox"
@@ -75467,7 +75472,7 @@ var TableSV = function TableSV() {
     type: "checkbox"
   }))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("tr", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "7"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Make Up"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "Kafilat Ogunbaide"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "\u20A64,000"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, "29-Dec-2019"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Assign"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_2__["Link"], null, "Edit")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("td", null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("input", {
     type: "checkbox"
-  })))))));
+  })))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (TableSV);
@@ -76648,7 +76653,7 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .main-content-side {\n        justify-content: center;\n        flex-direction: row;\n        \n        .SuperVsCard{\n            width: 85%;\n            margin: 40px 20px 20px 20px;\n            text-align: center;\n            display: flex;\n            display: block;\n            margin-left: auto;\n            margin-right: auto;\n            background: rgba(166, 206, 227, 0.2); \n            height: 550px;\n\n            .SuperVs-content {\n                display: flex;\n                margin: 20px 60px 0 0;\n                width: 100%;\n               \n                \n\n                .supervs-content-main{\n                    position: absolute;\n                }\n            }\n        }\n    }\n\n    @media (max-width: 700px) {\n        .SuperVs-content {\n            width: 100%;\n\n        }\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .main-content-side {\n        \n        .SuperVsCard{\n            width: 90%;\n            display: flex;\n            display: block;\n            margin-top: 40px;\n            margin-left: auto;\n            margin-right: auto;\n            padding: 20px;\n            background: rgba(166, 206, 227, 0.2); \n\n            .SuperVs-content-title {\n                display: flex;\n                // margin-top: 20px 60px 0 0;\n                margin-top: 1px auto;\n                width: 100%;\n               \n                \n\n                .supervs-content-main{\n                    position: absolute;\n                }\n            }\n        }\n    }\n\n    @media (max-width: 700px) {\n        .SuperVs-content {\n            width: 100%;\n\n        }\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -76694,7 +76699,7 @@ var MainSupervis = function MainSupervis() {
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "SuperVsCard"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "SuperVs-content"
+    className: "SuperVs-content-title"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_supervisor_JobTableTitleSV__WEBPACK_IMPORTED_MODULE_4__["default"], null)), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("br", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "supervs-content-main"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_supervisor_TableSV__WEBPACK_IMPORTED_MODULE_5__["default"], null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_supervisor_PaginateSV__WEBPACK_IMPORTED_MODULE_6__["default"], null)))));
