@@ -42,6 +42,10 @@ const HeaderWrapper = styled.header `
         }
     }
 
+    @media (max-width: 2000px) {
+        width: 104.6%
+    }
+
     @media (max-width: 700px) {
         nav {
             .nav-link-edit {

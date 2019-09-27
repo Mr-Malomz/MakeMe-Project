@@ -32,6 +32,13 @@ const HomeWrapper = styled.div `
 
     }
 
+    @media (max-width: 2000px) {
+        > .slide {
+            img {
+                width: 66vw;
+            }
+    }
+
     @media(max-width:960px) {
         overflow: hidden;
         img {
