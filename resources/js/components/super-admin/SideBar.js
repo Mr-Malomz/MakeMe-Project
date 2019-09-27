@@ -129,11 +129,14 @@ const SideBarWrapper = styled.nav `
 
 const SideBar = () => {
     // add active links to navbar based on url
-    const urlCheck = location.href
+    const urlCheck = location.href;
     const path1 = '/superadmin';
     const path2 = '/superadmin/edit';
     const path3 = '/superadmin/employees';
     const path4 = '/superadmin/employees/create';
+    const path5 = '/superadmin/employees/edit';
+    const path6 = '/superadmin/employees/salary';
+    const path7 = '/superadmin/employees/message';
     
     
     return (
@@ -149,7 +152,7 @@ const SideBar = () => {
                 <NavLink 
                     to={path1} 
                     activeClassName = {
-                        urlCheck.endsWith(path1) 
+                        urlCheck.endsWith(path1)  || urlCheck.endsWith(path2)
                     ? 'active' : null}
                 >
                   <i className="material-icons">dashboard</i>  dashboard
@@ -157,23 +160,23 @@ const SideBar = () => {
                 <NavLink
                     to={path3} 
                     activeClassName = {
-                        urlCheck.endsWith(path3) || urlCheck.endsWith(path4)
+                        urlCheck.endsWith(path3) || urlCheck.endsWith(path4) || urlCheck.endsWith(path5)
                     ? 'active' : null}
                 >
                   <i className="material-icons">group</i>  employees
                 </NavLink>
                 <NavLink
-                    to={path2} 
+                    to={path6} 
                     activeClassName = {
-                        urlCheck.endsWith(path2) 
+                        urlCheck.endsWith(path6) 
                     ? 'active' : null}
                 >
                   <i className="material-icons">account_balance</i>  salary breakdown
                 </NavLink>
                 <NavLink
-                    to={path2} 
+                    to={path7} 
                     activeClassName = {
-                        urlCheck.endsWith(path2) 
+                        urlCheck.endsWith(path7) 
                     ? 'active' : null}
                 >
                   <i className="material-icons">message</i>  messaging

@@ -94,7 +94,7 @@ const MainSuperAdmin = () => {
         <MainSuperAdminWrapper>
             {inputs.toggleNav && <SideBar />}
             <div className="main-content-side" style={{width: inputs.width ? '80.5%' : '100%'}}>
-                <HeaderMain handleToggle={handleToggle} to='/'/>
+                <HeaderMain handleToggle={handleToggle} to='/superadmin/edit'/>
                 <div className="superad-content">
                     <span className="title"><i className="material-icons">dashboard</i>  dashboard</span>
                     <div className="super-content-main">

@@ -7,6 +7,7 @@ import Workers from './pages/workers/Workers';
 import Reception from './pages/receptionist/Reception';
 import Supervisor from './pages/supervisor/Supervisor';
 import SuperAdmin from './pages/super-admin/SuperAdmin';
+import Accountant from './pages/accountant/Accountant';
 
 const GlobalStyle = createGlobalStyle `
     * {
@@ -32,6 +33,7 @@ const Main = () => {
                 <Route path='/reception/' component={Reception}/>
                 <Route path='/supervisor/' component={Supervisor}/>
                 <Route path='/superadmin/' component={SuperAdmin}/>
+                <Route path='/accountant/' component={Accountant}/>
             </Switch>
         </>
     )
