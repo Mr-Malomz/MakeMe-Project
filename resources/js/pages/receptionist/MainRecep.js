@@ -47,6 +47,10 @@ const MainRecepWrapper = styled.div `
         }
     }
 
+    /* @media (max-width: 2600px) {
+        width: 115%
+    } */
+
     @media (max-width: 1000px) {
         .component-section {
             flex-direction: column;
