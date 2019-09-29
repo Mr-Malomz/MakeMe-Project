@@ -9,3 +9,5 @@ Homestead.json
 Homestead.yaml
 npm-debug.log
 yarn-error.log
+.app/Recharge.php
+/database/migrations/2019_09_27_083220_create_recharges_table.php
