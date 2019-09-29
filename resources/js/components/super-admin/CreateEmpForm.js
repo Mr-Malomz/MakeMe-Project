@@ -232,7 +232,7 @@ const CreateEmpForm = () => {
                 </div>
                 <div className="btn-wrapper">
                     <Button type="submit" style={{background: '#3B5998'}}>create</Button>
-                    <Link>cancel</Link>
+                    <Link to='/superadmin/employees'>cancel</Link>
                 </div>
             </form>
             <div className="svg-wrp">

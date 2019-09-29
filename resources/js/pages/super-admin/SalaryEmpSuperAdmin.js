@@ -2,9 +2,9 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import SideBar from '../../components/super-admin/SideBar';
 import HeaderMain from '../../components/HeaderMain';
-import CreateEmpForm from '../../components/super-admin/CreateEmpForm';
+import SalaryList from '../../components/super-admin/SalaryList';
 
-const CreateEmpSuperAdminWrapper = styled.div `
+const SalaryEmpSuperAdminWrapper = styled.div `
     width: 100vw;
     height: 100vh;
     display: float;
@@ -75,7 +75,7 @@ const CreateEmpSuperAdminWrapper = styled.div `
 `;
 
 
-const CreateEmpSuperAdmin = () => {
+const SalaryEmpSuperAdmin = () => {
     const [inputs, setInputs] = useState({
         width: true,
         toggleNav: true,
@@ -90,20 +90,20 @@ const CreateEmpSuperAdmin = () => {
     }
 
     return (
-        <CreateEmpSuperAdminWrapper>
+        <SalaryEmpSuperAdminWrapper>
             {inputs.toggleNav && <SideBar />}
             <div className="main-content-side" style={{width: inputs.width ? '80.5%' : '100%'}}>
                 <HeaderMain handleToggle={handleToggle} to='/superadmin/edit'/>
                 <div className="superad-content">
-                    <span className="title"><i className="material-icons">group</i>  employees</span>
+                    <span className="title"><i className="material-icons">account_balance</i>  salary breakdown</span>
                     <div className="super-content-main">
-                        <CreateEmpForm />
+                        <SalaryList />
                     </div>
                 </div>
             </div>
-        </CreateEmpSuperAdminWrapper>
+        </SalaryEmpSuperAdminWrapper>
     )
 }
 
-export default CreateEmpSuperAdmin
+export default SalaryEmpSuperAdmin
 

@@ -1,10 +1,10 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import SideBar from '../../components/super-admin/SideBar';
+import SideBar from '../../components/accountant/Sidebar';
 import HeaderMain from '../../components/HeaderMain';
-import CreateEmpForm from '../../components/super-admin/CreateEmpForm';
+import PaymentList from '../../components/accountant/PaymentList';
 
-const CreateEmpSuperAdminWrapper = styled.div `
+const PaymentAccountantWrapper = styled.div `
     width: 100vw;
     height: 100vh;
     display: float;
@@ -20,25 +20,10 @@ const CreateEmpSuperAdminWrapper = styled.div `
         .superad-content {
             margin: 20px 60px 0 0;
 
-            .title {
-                color: #ffffff;
-                background: rgba(43, 86, 128, 0.8);
-                padding: 5px 30px 10px 30px;
-                border-radius: 0 5px 5px 0;
-                text-transform: capitalize;
-                font-weight: bold;
-                margin: 20px 0;
-                display: inline-block;
-                
-                i {
-                    transform: translateY(5px);
-                    margin-right: 5px;
-                }
-            }
 
             .super-content-main {
                 width: 100%;
-                margin: 15px 15px 0 15px;
+                margin: 60px 15px 0 15px;
                 
             }
         }
@@ -66,20 +51,16 @@ const CreateEmpSuperAdminWrapper = styled.div `
                 }
             }
 
-            .title {
-                font-size: 12px
-            }
 
         }
     }
 `;
 
 
-const CreateEmpSuperAdmin = () => {
+const PaymentAccountant = () => {
     const [inputs, setInputs] = useState({
         width: true,
         toggleNav: true,
-        
     });
 
     const handleToggle = () => {
@@ -90,20 +71,19 @@ const CreateEmpSuperAdmin = () => {
     }
 
     return (
-        <CreateEmpSuperAdminWrapper>
+        <PaymentAccountantWrapper>
             {inputs.toggleNav && <SideBar />}
             <div className="main-content-side" style={{width: inputs.width ? '80.5%' : '100%'}}>
-                <HeaderMain handleToggle={handleToggle} to='/superadmin/edit'/>
+                <HeaderMain handleToggle={handleToggle} to='/accountant/edit'/>
                 <div className="superad-content">
-                    <span className="title"><i className="material-icons">group</i>  employees</span>
                     <div className="super-content-main">
-                        <CreateEmpForm />
+                        <PaymentList />
                     </div>
                 </div>
             </div>
-        </CreateEmpSuperAdminWrapper>
+        </PaymentAccountantWrapper>
     )
 }
 
-export default CreateEmpSuperAdmin
+export default PaymentAccountant
 

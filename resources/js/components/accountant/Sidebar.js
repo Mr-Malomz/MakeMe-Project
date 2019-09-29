@@ -1,26 +1,25 @@
 import React from 'react';
 import styled from 'styled-components';
 import {NavLink} from 'react-router-dom';
-import SupAdSVG1 from '../../assets/svg/SupADSVG1';
 import pic1 from '../../assets/img/pic1.jpg';
+import AccountSVG1 from '../../assets/svg/AccountSVG1';
 
 
 const SideBarWrapper = styled.nav `
     width: 250px;
     height: 100%;
-    background: #ffffff;
-    box-shadow: 0 12px 20px rgba(0, 0, 0, 0.25);
+    background: #3B5998;
     position: relative;
 
     svg {
         width: 100%;
-        transform: translateY(-30px);
     }
 
     .responsive-sidebar {
         width: 100%;
         height: 200px;
-        background: #2B5680;
+        background: #DBE5FF;
+        opacity: 0.5;
         position: absolute;
         display: none
     }
@@ -53,7 +52,7 @@ const SideBarWrapper = styled.nav `
 
     section.mini-nav {
         position: relative;
-        margin-top: -20px;
+        margin-top: 40px;
 
         a {
             display: block;
@@ -63,7 +62,7 @@ const SideBarWrapper = styled.nav `
             text-align: left;
             padding-left: 15px;
             font-weight: bold;
-            color: #2B5680;
+            color: #ffffff;
             font-weight: bold;
             font-size: 14px;
 
@@ -74,10 +73,10 @@ const SideBarWrapper = styled.nav `
         }
 
         .active {
-            background: rgba(196, 196, 196, 0.2);
+            background: #DBE5FF;
             color: #3B5998;
             padding: 15px;
-            border-left: 5px solid  #2B5680;
+            border-left: 5px solid  #022547;
         }
 
     }
@@ -113,7 +112,6 @@ const SideBarWrapper = styled.nav `
 
         section.mini-nav {
             top: 200px;
-            margin-top: 40px;
 
             a {
                 font-size: 11px;
@@ -129,19 +127,16 @@ const SideBarWrapper = styled.nav `
 
 const SideBar = () => {
     // add active links to navbar based on url
-    const urlCheck = location.href;
-    const path1 = '/superadmin';
-    const path2 = '/superadmin/edit';
-    const path3 = '/superadmin/employees';
-    const path4 = '/superadmin/employees/create';
-    const path5 = '/superadmin/employees/edit';
-    const path6 = '/superadmin/employees/salary';
-    const path7 = '/superadmin/employees/message';
+    const urlCheck = location.href
+    const path1 = '/accountant';
+    const path2 = '/accountant/service/create';
+    const path3 = '/accountant/payment';
+    const path4 = '/accountant/service/edit';
     
     
     return (
         <SideBarWrapper className="nav-hgt">
-           <SupAdSVG1 /> 
+           <AccountSVG1 />
            <div className="responsive-sidebar"></div>
            <div className="profile-content">
                 <img src={pic1} alt="profile photo"/>
@@ -152,34 +147,18 @@ const SideBar = () => {
                 <NavLink 
                     to={path1} 
                     activeClassName = {
-                        urlCheck.endsWith(path1)  || urlCheck.endsWith(path2)
+                        urlCheck.endsWith(path1) || urlCheck.endsWith(path2) || urlCheck.endsWith(path4)
                     ? 'active' : null}
                 >
-                  <i className="material-icons">dashboard</i>  dashboard
+                  <i className="material-icons">shopping_cart</i>  services
                 </NavLink>
                 <NavLink
                     to={path3} 
                     activeClassName = {
-                        urlCheck.endsWith(path3) || urlCheck.endsWith(path4) || urlCheck.endsWith(path5)
-                    ? 'active' : null}
-                >
-                  <i className="material-icons">group</i>  employees
-                </NavLink>
-                <NavLink
-                    to={path6} 
-                    activeClassName = {
-                        urlCheck.endsWith(path6) 
+                        urlCheck.endsWith(path3) 
                     ? 'active' : null}
                 >
                   <i className="material-icons">account_balance</i>  salary breakdown
-                </NavLink>
-                <NavLink
-                    to={path7} 
-                    activeClassName = {
-                        urlCheck.endsWith(path7) 
-                    ? 'active' : null}
-                >
-                  <i className="material-icons">message</i>  messaging
                 </NavLink>
            </section>
         </SideBarWrapper>

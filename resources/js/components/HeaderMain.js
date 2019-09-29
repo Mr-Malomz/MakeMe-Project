@@ -73,7 +73,7 @@ const HeaderMain = ({handleClick, handleToggle, ...otherProps}) => {
         <HeaderWrapper>
             <i className="material-icons" onClick={handleToggle}>menu</i>
             <nav>
-                {!location.href.endsWith(to) && <Link {...otherProps} className="nav-link-edit">edit profile</Link>}
+                {<Link {...otherProps} className="nav-link-edit">edit profile</Link>}
                 <Link handleClick={handleClick} {...otherProps} className="nav-link-signout">sign out</Link>
             </nav>
         </HeaderWrapper>
