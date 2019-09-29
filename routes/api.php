@@ -16,3 +16,9 @@ use Illuminate\Http\Request;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+Route::resource('/recharges', 'RechargeController');
+Route::any('/show/{id}', 'RechargeController@show');
+Route::any('/store', 'RechargeController@store');
+
+Route::post('/create','Auth\AuthController@createJobCard');//C:\xampp\htdocs\makeme\app\Http\Controllers\.php
