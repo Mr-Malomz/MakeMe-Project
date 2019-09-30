@@ -6,6 +6,7 @@ import CreateJobSV from './CreateJobSV';
 import EditJobSV from './EditJobSV';
 import CreateCusSV from './CreateCusSV';
 import EditCusSV from './EditCusSV';
+import EditSupervisor from './EditSupervisor';
 
 const Supervisor = () => {
     return (
@@ -16,6 +17,7 @@ const Supervisor = () => {
             <Route exact path='/supervisor/editjob/' component={EditJobSV}/>
             <Route exact path='/supervisor/createcustomer/' component={CreateCusSV}/>
             <Route exact path='/supervisor/editcustomer/' component={EditCusSV}/>
+            <Route exact path='/supervisor/editprofile/' component={EditSupervisor}/>
         </Switch>
     )
 }

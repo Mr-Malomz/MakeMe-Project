@@ -4,7 +4,7 @@ import FormInput from '../FormInput';
 
 const CardWrapper = styled.form `
    .header-bg{
-        position: absolute;
+        position: absolute; 
         width: 934px;
         height: 60px;
         background: #FFFFFF;
