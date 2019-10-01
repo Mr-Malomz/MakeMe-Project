@@ -6,7 +6,7 @@ import JobCardSV from '../../components/supervisor/JobCardSV';
 
 
 const MainSupervisWrapper = styled.div `
-width: 100vw;
+    width: 100vw;
     height: 100vh;
     display: float;
     position: relative;
@@ -17,9 +17,7 @@ width: 100vw;
     .SuperVs-content {
         width: 35%;
         display: block;
-        margin-top: 30px;
-        margin-left: auto;
-        margin-right: auto;
+        margin: 30px auto 30px auto;
 
             .superVs-content-main{
                 width: 100%;

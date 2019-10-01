@@ -115139,10 +115139,10 @@ var SideBar = function SideBar() {
 
 /***/ }),
 
-/***/ "./resources/js/components/supervisor/AssignJobSV.js":
-/*!***********************************************************!*\
-  !*** ./resources/js/components/supervisor/AssignJobSV.js ***!
-  \***********************************************************/
+/***/ "./resources/js/components/supervisor/AssignJobInput.js":
+/*!**************************************************************!*\
+  !*** ./resources/js/components/supervisor/AssignJobInput.js ***!
+  \**************************************************************/
 /*! exports provided: default */
 /***/ (function(module, __webpack_exports__, __webpack_require__) {
 
@@ -115152,8 +115152,24 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var react__WEBPACK_IMPORTED_MODULE_0___default = /*#__PURE__*/__webpack_require__.n(react__WEBPACK_IMPORTED_MODULE_0__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _FormInput__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../FormInput */ "./resources/js/components/FormInput.js");
+/* harmony import */ var _Button__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../Button */ "./resources/js/components/Button.js");
+/* harmony import */ var react_router_dom__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! react-router-dom */ "./node_modules/react-router-dom/esm/react-router-dom.js");
+function ownKeys(object, enumerableOnly) { var keys = Object.keys(object); if (Object.getOwnPropertySymbols) { var symbols = Object.getOwnPropertySymbols(object); if (enumerableOnly) symbols = symbols.filter(function (sym) { return Object.getOwnPropertyDescriptor(object, sym).enumerable; }); keys.push.apply(keys, symbols); } return keys; }
+
+function _objectSpread(target) { for (var i = 1; i < arguments.length; i++) { var source = arguments[i] != null ? arguments[i] : {}; if (i % 2) { ownKeys(source, true).forEach(function (key) { _defineProperty(target, key, source[key]); }); } else if (Object.getOwnPropertyDescriptors) { Object.defineProperties(target, Object.getOwnPropertyDescriptors(source)); } else { ownKeys(source).forEach(function (key) { Object.defineProperty(target, key, Object.getOwnPropertyDescriptor(source, key)); }); } } return target; }
+
+function _defineProperty(obj, key, value) { if (key in obj) { Object.defineProperty(obj, key, { value: value, enumerable: true, configurable: true, writable: true }); } else { obj[key] = value; } return obj; }
+
+function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
+
+function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
+
+function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) || Object.prototype.toString.call(arr) === "[object Arguments]")) { return; } var _arr = []; var _n = true; var _d = false; var _e = undefined; try { for (var _i = arr[Symbol.iterator](), _s; !(_n = (_s = _i.next()).done); _n = true) { _arr.push(_s.value); if (i && _arr.length === i) break; } } catch (err) { _d = true; _e = err; } finally { try { if (!_n && _i["return"] != null) _i["return"](); } finally { if (_d) throw _e; } } return _arr; }
+
+function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
+
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n   .header-bg{\n        position: absolute; \n        width: 934px;\n        height: 60px;\n        background: #FFFFFF;\n        box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);\n        border-radius: 10px 10px 0px 0px;\n\n        .header-title{\n            margin: 15px 0 0 35px;\n            font-style: normal;\n            font-weight: 600;\n            font-size: 20px;\n            color: rgba(0, 0, 0, 0.6); \n        }\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    width: 100%;\n\n        .content-width{\n            width: 60%;\n            display: block;\n            margin: 30px auto 30px auto;\n            \n            label{\n                width: 20%;\n                font-family: Montserrat;\n                font-style: normal;\n                font-weight: 600;\n                font-size: 12px;\n                color: rgba(0, 0, 0, 0.7);\n            }\n            .content-styl{\n                width: 80%;\n            }\n        }\n        hr{\n            margin: 40px 0 0 0;\n            border: 0.5px solid #C4C4C4;\n        }\n        .btn-style{\n            display: flex;\n            float: right;\n            padding: 0 15px 0 0;\n        }\n\n        .link-style{\n            text-decoration: none;\n            font-family: Montserrat;\n            font-style: normal;\n            font-weight: bold;\n            font-size: 14px;\n            color: rgba(0, 0, 0, 0.8);\n            margin: 10px 0 0 0;\n            width: 120px;\n            height: 35px;\n            text-transform: capitalize;\n            border-radius: 5px;\n            text-align: center;\n            padding: 10px 20px 10px 20px;\n            box-sizing: border-box;\n            background: #D9E1E8;\n\n        :hover {\n            transform: scale(1.01)\n        }\n    \n    }\n\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -115167,17 +115183,139 @@ function _taggedTemplateLiteral(strings, raw) { if (!raw) { raw = strings.slice(
 
 
 
-var CardWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].form(_templateObject());
 
-var AssignJobSV = function AssignJobSV() {
-  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(CardWrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "header-bg"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
-    className: "header-title"
-  }, "Assign Employee(s) to Job Card")));
+
+var MainSupervisWrapper = styled_components__WEBPACK_IMPORTED_MODULE_1__["default"].div(_templateObject());
+
+var AssignJobInput = function AssignJobInput() {
+  var _useState = Object(react__WEBPACK_IMPORTED_MODULE_0__["useState"])({
+    assignEmply: '',
+    assign: ''
+  }),
+      _useState2 = _slicedToArray(_useState, 2),
+      data = _useState2[0],
+      setData = _useState2[1];
+
+  var handleChange = function handleChange(e) {
+    setData(_objectSpread({}, data, _defineProperty({}, e.target.name, e.target.value)));
+  };
+
+  var selectHandle = function selectHandle(e) {
+    setData(_objectSpread({}, data, {
+      assign: e.target.value
+    }));
+  };
+
+  return react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(MainSupervisWrapper, null, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("form", {
+    action: ""
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "content-width"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Assigned Employee(s)"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "content-styl"
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "content-width"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Description"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "text",
+    value: "",
+    name: "discription",
+    placeholder: "Washing and setting",
+    disabled: true,
+    style: {
+      width: '80%',
+      height: '35px',
+      border: '1px solid #C4C4C4',
+      boxSizing: 'border-box'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "content-width"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Cust. Name"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "text",
+    name: "custName",
+    value: data.name,
+    placeholder: "Chiamaka Adelakun",
+    disabled: true,
+    style: {
+      width: '80%',
+      height: '35px',
+      border: '1px solid #C4C4C4',
+      boxSizing: 'border-box'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "content-width"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Price"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "text",
+    name: "price",
+    value: data.name,
+    placeholder: " \u20A6 50000",
+    disabled: true,
+    style: {
+      width: '80%',
+      height: '35px',
+      border: '1px solid #C4C4C4',
+      boxSizing: 'border-box'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "content-width"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Date"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "Date",
+    name: "date",
+    value: data.name,
+    placeholder: "29-Dec-2019",
+    disabled: true,
+    style: {
+      width: '80%',
+      height: '35px',
+      border: '1px solid #C4C4C4',
+      boxSizing: 'border-box'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "content-width"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", null, "Assign"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+    name: "assign",
+    id: "",
+    required: true,
+    value: data.assign,
+    onChange: selectHandle,
+    style: {
+      borderColor: '#C4C4C4',
+      width: '80%',
+      height: '35px',
+      borderWidth: '0.7px',
+      paddingLeft: '7px'
+    }
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: ""
+  }, "Assign an Employee ..."), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "Funke"
+  }, "Funke Jenny"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "Vivian"
+  }, "Amed Vivian"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "Joy"
+  }, "Aunty sis"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "Peace"
+  }, "Brother bros"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
+    value: "Uncle"
+  }, "Uncle bro"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("hr", null), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "btn-style"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    style: {
+      backgroundColor: '#3B5998',
+      height: '35px',
+      margin: '10px 15px 0 0'
+    }
+  }, "create"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(react_router_dom__WEBPACK_IMPORTED_MODULE_4__["Link"], {
+    to: "/Supervisor/",
+    className: "link-style"
+  }, "Cancel"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_Button__WEBPACK_IMPORTED_MODULE_3__["default"], {
+    style: {
+      backgroundColor: '#3B5998',
+      height: '35px',
+      margin: '10px 0 0 15px'
+    }
+  }, "create"))));
 };
 
-/* harmony default export */ __webpack_exports__["default"] = (AssignJobSV);
+/* harmony default export */ __webpack_exports__["default"] = (AssignJobInput);
 
 /***/ }),
 
@@ -115380,7 +115518,7 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    position: relative;\n\n        .mainCard{\n            position: absolute;\n            width: 100%;\n            margin: 20px auto 0 auto;\n            box-shadow: 0px 12px 20px rgba(43, 86, 128, 0.25);\n\n            .card-title{\n                font-family: Montserrat;\n                font-style: normal;\n                font-weight: 300;\n                font-size: 36px;\n                line-height: 44px;\n                color: #000000;\n                text-align: center;\n            }\n            .content-paddn{\n                margin: 25px 0 0 0;\n                padding: 0 20px 0 20px;\n            \n                .cusName,.groupName, .Service{\n                    font-family: Montserrat;\n                    font-style: normal;\n                    font-weight: 600;\n                    font-size: 12px;\n                    line-height: 15px;\n                    color: rgba(0, 0, 0, 0.7);\n                }\n              \n                .xs{\n                    background: #F5F5F5;\n                    margin-bottom: -20px;\n                }\n                    table{\n                        border-collapse: separate;\n                        width: 100%;\n                        border-spacing: 0 10px;\n                        padding: 0 0 35px 0;\n                        //background: #F5F5F5;\n                    }\n\n                    thead>tr>th:nth-child(1){\n                        width 100%;\n                        height: 35px\n                        background: #E9EEF8;\n                        font-family: Montserrat;\n                        font-style: normal;\n                        font-weight: 600;\n                        font-size: 12px;\n                        color: rgba(0, 0, 0, 0.6);\n                        padding: 0 0 0 15px;\n                        text-align: left;\n                    }\n                    thead>tr>th:nth-child(2){\n                        width 100%;\n                        height: 35px\n                        background: #E9EEF8;\n                        font-family: Montserrat;\n                        font-style: normal;\n                        font-weight: 600;\n                        font-size: 12px;\n                        color: rgba(0, 0, 0, 0.6);\n                        margin: 0 100px 0 0;\n                        padding: 0 20px 0 3px;\n                    }\n                        tr>td{\n                            font-family: Montserrat;\n                            font-style: normal;\n                            font-weight: normal;\n                            height: 35px;\n                            font-size: 12px;\n                            color: #000000;\n                            background: rgba(217, 225, 232, 0.6);\n                        }\n                        tr>td:nth-child(1){\n                            margin: 0 0 0 12px;\n                        padding: 0 0 0 15px;\n                        }\n                        \n                        tr>td:nth-child(2){\n                            margin: 0 100px 0 0px;\n                        }\n                        // tr>td>input[type=checkbox]{\n                        //     border: 1px solid black;\n                        //     background-color: white;\n                        // }\n\n                    \n                        .tableFoot{\n                            width 100%;\n                            height: 35px\n                            font-family: Montserrat;\n                            font-style: normal;\n                            font-weight: 700;\n                            font-size: 13px;\n                            color: rgba(0, 0, 0, 0.6);\n                            text-align: left;\n\n                        }\n                        .tableFoot>th:nth-child(1){\n                            margin: 15px 0 0 0;\n                            padding: 15px 0 0 15px;\n                        }\n                        .tableFoot>th:nth-child(2){\n                            margin: 15px 0 0 0;\n                            padding: 15px 0 0 1px;\n                        }\n                    input{\n                        background: #FFFFFF;\n                        border: 1px solid #363636;\n                        box-sizing: border-box;\n                    }\n\n                    .link-align{\n                        width: 100%;\n                        margin: 30px 0 0 0;\n                    }\n                    a.link-style{\n                        position: absolute;\n                        text-decoration: none;\n                        font-weight: bolder;\n                        margin: 20px 0 0 30px;\n                        width: 120px;\n                        height: 38px;\n                        font-size: 14px;\n                        color: #3B5998; \n                        text-transform: capitalize;\n                        border-radius: 7px;\n                        border: 2px solid #3B5998; \n                        text-align: center;\n                        padding: 8px 20px 10px 20px;\n                        box-sizing: border-box;\n\n                    :hover {\n                        transform: scale(1.08)\n                    }\n                }\n            }\n            .svgWidth{\n                width: 100%;\n            }\n\n        }\n"]);
+  var data = _taggedTemplateLiteral(["\n    width: 100%;\n    position: relative;\n\n        .mainCard{\n            position: absolute;\n            width: 100%;\n            margin: 20px auto 0 auto;\n            box-shadow: 0px 12px 20px rgba(43, 86, 128, 0.25);\n\n            .card-title{\n                font-family: Montserrat;\n                font-style: normal;\n                font-weight: 300;\n                font-size: 36px;\n                line-height: 44px;\n                color: #000000;\n                text-align: center;\n            }\n            .content-paddn{\n                margin: 25px 0 0 0;\n                padding: 0 20px 0 20px;\n            \n                .cusName,.groupName, .Service{\n                    font-family: Montserrat;\n                    font-style: normal;\n                    font-weight: 600;\n                    font-size: 12px;\n                    line-height: 15px;\n                    color: rgba(0, 0, 0, 0.7);\n                }\n              \n                .xs{\n                    background: #F5F5F5;\n                    margin-bottom: -20px;\n                }\n                    table{\n                        border-collapse: separate;\n                        width: 100%;\n                        border-spacing: 0 10px;\n                        padding: 0 0 35px 0;\n                        //background: #F5F5F5;\n                    }\n\n                    thead>tr>th:nth-child(1){\n                        width 100%;\n                        height: 35px\n                        background: #E9EEF8;\n                        font-family: Montserrat;\n                        font-style: normal;\n                        font-weight: 600;\n                        font-size: 12px;\n                        color: rgba(0, 0, 0, 0.6);\n                        padding: 0 0 0 15px;\n                        text-align: left;\n                    }\n                    thead>tr>th:nth-child(2){\n                        width 100%;\n                        height: 35px\n                        background: #E9EEF8;\n                        font-family: Montserrat;\n                        font-style: normal;\n                        font-weight: 600;\n                        font-size: 12px;\n                        color: rgba(0, 0, 0, 0.6);\n                        margin: 0 100px 0 0;\n                        padding: 0 20px 0 3px;\n                    }\n                        tr>td{\n                            font-family: Montserrat;\n                            font-style: normal;\n                            font-weight: normal;\n                            height: 35px;\n                            font-size: 12px;\n                            color: #000000;\n                            background: rgba(217, 225, 232, 0.6);\n                        }\n                        tr>td:nth-child(1){\n                            margin: 0 0 0 12px;\n                        padding: 0 0 0 15px;\n                        }\n                        \n                        tr>td:nth-child(2){\n                            margin: 0 100px 0 0px;\n                        }\n                        // tr>td>input[type=checkbox]{\n                        //     border: 1px solid black;\n                        //     background-color: white;\n                        // }\n\n                    \n                        .tableFoot{\n                            width 100%;\n                            height: 35px\n                            font-family: Montserrat;\n                            font-style: normal;\n                            font-weight: 700;\n                            font-size: 13px;\n                            color: rgba(0, 0, 0, 0.6);\n                            text-align: left;\n\n                        }\n                        .tableFoot>th:nth-child(1){\n                            margin: 15px 0 0 0;\n                            padding: 15px 0 0 15px;\n                        }\n                        .tableFoot>th:nth-child(2){\n                            margin: 15px 0 0 0;\n                            padding: 15px 0 0 1px;\n                        }\n                    input{\n                        background: #FFFFFF;\n                        border: 1px solid #363636;\n                        box-sizing: border-box;\n                    }\n\n                    .link-align{\n                        width: 100%;\n                        margin: 30px 0 0 0;\n                    }\n                    a.link-style{\n                        position: absolute;\n                        text-decoration: none;\n                        font-weight: bolder;\n                        margin: 20px 0 0 30px;\n                        width: 120px;\n                        height: 38px;\n                        font-size: 14px;\n                        color: #3B5998; \n                        text-transform: capitalize;\n                        border-radius: 7px;\n                        border: 2px solid #3B5998; \n                        text-align: center;\n                        padding: 8px 20px 10px 20px;\n                        box-sizing: border-box;\n\n                    :hover {\n                        transform: scale(1.01)\n                    }\n                }\n            }\n            .svgWidth{\n                width: 100%;\n            }\n\n        }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -118052,7 +118190,7 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony import */ var styled_components__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! styled-components */ "./node_modules/styled-components/dist/styled-components.browser.esm.js");
 /* harmony import */ var _components_supervisor_SideBar__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../components/supervisor/SideBar */ "./resources/js/components/supervisor/SideBar.js");
 /* harmony import */ var _components_HeaderMain__WEBPACK_IMPORTED_MODULE_3__ = __webpack_require__(/*! ../../components/HeaderMain */ "./resources/js/components/HeaderMain.js");
-/* harmony import */ var _components_supervisor_AssignJobSV__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/supervisor/AssignJobSV */ "./resources/js/components/supervisor/AssignJobSV.js");
+/* harmony import */ var _components_supervisor_AssignJobInput__WEBPACK_IMPORTED_MODULE_4__ = __webpack_require__(/*! ../../components/supervisor/AssignJobInput */ "./resources/js/components/supervisor/AssignJobInput.js");
 function _slicedToArray(arr, i) { return _arrayWithHoles(arr) || _iterableToArrayLimit(arr, i) || _nonIterableRest(); }
 
 function _nonIterableRest() { throw new TypeError("Invalid attempt to destructure non-iterable instance"); }
@@ -118062,7 +118200,7 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .main-content-side {\n        \n        \n        .SuperVs-content {\n            display: flex;\n            margin: 20px 60px 0 0;\n            // width: 80%;\n            // display: block;\n            // margin-top: 20px;\n            // margin-left: auto;\n            // margin-right: auto;\n\n            .superVS-content-main {\n                // margin: 0 15px 0 15px;\n                // background: #F5F5F5;\n                // height: 734px;\n                // box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.25);\n                // border-radius: 10px;\n\n            // .supervs-content-main{\n                position: absolute;\n                width: 80%;\n                height: 734px;\n                background: #F5F5F5;\n                box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.25);\n                border-radius: 10px;\n\n             }\n        }\n    }\n\n    @media (max-width: 700px) {\n        .SuperVs-content {\n            width: 100%;\n\n        }\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .main-content-side {\n        \n        \n        .superVs-content {\n            width: 80%;\n            display: block;\n            margin: 30px auto 30px auto;\n\n\n            .superVs-content-main {\n                width: 100%;\n                background: #F5F5F5;\n                padding: 0 0 55px 0;\n                box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.25);\n                border-radius: 10px;\n\n                .header-bg{\n                    width: 100%;\n                    height: 60px;\n                    background: #FFFFFF;\n                    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);\n                    border-radius: 10px 10px 0px 0px;\n            \n                    .header-title{\n                        display: flex;\n                        position: absolute;\n                        margin: 15px 0 0 35px;\n                        font-style: normal;\n                        font-weight: 600;\n                        font-size: 20px;\n                        color: rgba(0, 0, 0, 0.6); \n                    }\n                }\n\n             }\n\n             \n        }\n    }\n\n    @media (max-width: 700px) {\n        .superVs-content {\n            width: 95%;\n\n        }\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -118105,10 +118243,14 @@ var AssignJob = function AssignJob() {
     handleToggle: handleToggle,
     to: "/supervisor/editprofile"
   }), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "SuperVs-content"
+    className: "superVs-content"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
-    className: "supervs-content-main"
-  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_supervisor_AssignJobSV__WEBPACK_IMPORTED_MODULE_4__["default"], null)))));
+    className: "superVs-content-main"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "header-bg"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("h5", {
+    className: "header-title"
+  }, "Assign Employee(s) to Job Card")), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_components_supervisor_AssignJobInput__WEBPACK_IMPORTED_MODULE_4__["default"], null)))));
 };
 
 /* harmony default export */ __webpack_exports__["default"] = (AssignJob);
@@ -118219,7 +118361,7 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\nwidth: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .main-content-side {\n        \n        \n    .SuperVs-content {\n        width: 35%;\n        display: block;\n        margin-top: 30px;\n        margin-left: auto;\n        margin-right: auto;\n\n            .superVs-content-main{\n                width: 100%;\n            }\n\n        }\n    }\n\n    @media (max-width: 700px) {\n        .SuperVs-content {\n            width: 90%;\n\n        }\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .main-content-side {\n        \n        \n    .SuperVs-content {\n        width: 35%;\n        display: block;\n        margin: 30px auto 30px auto;\n\n            .superVs-content-main{\n                width: 100%;\n            }\n\n        }\n    }\n\n    @media (max-width: 700px) {\n        .SuperVs-content {\n            width: 90%;\n\n        }\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;
@@ -118376,7 +118518,7 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\nwidth: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .main-content-side {\n        \n        \n    .SuperVs-content {\n        width: 35%;\n        display: block;\n        margin-top: 30px;\n        margin-left: auto;\n        margin-right: auto;\n\n            .superVs-content-main{\n                width: 100%;\n            }\n\n        }\n    }\n\n    @media (max-width: 700px) {\n        .SuperVs-content {\n            width: 90%;\n\n        }\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\nwidth: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .main-content-side {\n        \n        \n    .SuperVs-content {\n        width: 35%;\n        display: block;\n        margin: 30px auto 30px auto;\n        \n            .superVs-content-main{\n                width: 100%;\n            }\n\n        }\n    }\n\n    @media (max-width: 700px) {\n        .SuperVs-content {\n            width: 90%;\n\n        }\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;

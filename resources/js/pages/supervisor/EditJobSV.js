@@ -17,10 +17,8 @@ width: 100vw;
     .SuperVs-content {
         width: 35%;
         display: block;
-        margin-top: 30px;
-        margin-left: auto;
-        margin-right: auto;
-
+        margin: 30px auto 30px auto;
+        
             .superVs-content-main{
                 width: 100%;
             }

@@ -2,7 +2,8 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import SideBar from '../../components/supervisor/SideBar';
 import HeaderMain from '../../components/HeaderMain';
-import AssignJobSV from '../../components/supervisor/AssignJobSV';
+import AssignJobInput from '../../components/supervisor/AssignJobInput'; 
+
 
 const MainSupervisWrapper = styled.div `
     width: 100vw;
@@ -13,37 +14,46 @@ const MainSupervisWrapper = styled.div `
     .main-content-side {
         
         
-        .SuperVs-content {
-            display: flex;
-            margin: 20px 60px 0 0;
-            // width: 80%;
-            // display: block;
-            // margin-top: 20px;
-            // margin-left: auto;
-            // margin-right: auto;
+        .superVs-content {
+            width: 80%;
+            display: block;
+            margin: 30px auto 30px auto;
 
-            .superVS-content-main {
-                // margin: 0 15px 0 15px;
-                // background: #F5F5F5;
-                // height: 734px;
-                // box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.25);
-                // border-radius: 10px;
 
-            // .supervs-content-main{
-                position: absolute;
-                width: 80%;
-                height: 734px;
+            .superVs-content-main {
+                width: 100%;
                 background: #F5F5F5;
+                padding: 0 0 55px 0;
                 box-shadow: 4px 5px 10px rgba(0, 0, 0, 0.25);
                 border-radius: 10px;
 
+                .header-bg{
+                    width: 100%;
+                    height: 60px;
+                    background: #FFFFFF;
+                    box-shadow: 0px 0px 8px rgba(0, 0, 0, 0.25);
+                    border-radius: 10px 10px 0px 0px;
+            
+                    .header-title{
+                        display: flex;
+                        position: absolute;
+                        margin: 15px 0 0 35px;
+                        font-style: normal;
+                        font-weight: 600;
+                        font-size: 20px;
+                        color: rgba(0, 0, 0, 0.6); 
+                    }
+                }
+
              }
+
+             
         }
     }
 
     @media (max-width: 700px) {
-        .SuperVs-content {
-            width: 100%;
+        .superVs-content {
+            width: 95%;
 
         }
     }
@@ -67,9 +77,12 @@ const AssignJob = () => {
             {data.toggleNav && <SideBar />}
             <div className="main-content-side" style={{width: data.width ? '80.5%' : '100%'}}>
                 <HeaderMain handleToggle={handleToggle} to='/supervisor/editprofile' />
-                <div className="SuperVs-content">
-                    <div className="supervs-content-main">
-                        <AssignJobSV />
+                <div className="superVs-content">
+                    <div className="superVs-content-main">
+                        <div className="header-bg">
+                            <h5 className="header-title">Assign Employee(s) to Job Card</h5>
+                        </div>
+                        <AssignJobInput />
                     </div>
                 </div>
             </div>

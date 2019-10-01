@@ -143,7 +143,7 @@ const SupervisJobCard = styled.div `
                         box-sizing: border-box;
 
                     :hover {
-                        transform: scale(1.08)
+                        transform: scale(1.01)
                     }
                 }
             }
@@ -215,7 +215,7 @@ const JobCardSV = () => {
                                 border: '1px solid #3B5998',
                                 boxSizing: 'border-box',
                                 color: '#4C5A76'
-                            }}
+                            }} 
                             required
                             onChange={e => setGroup(Number(e.target.value))}
                             >
