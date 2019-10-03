@@ -1,8 +1,7 @@
 import React from 'react';
 import styled from 'styled-components';
 import Header from '../../components/Header';
-//import SuperVSSVG from '../../assets/svg/SuperVSSVG';
-import RecepSVG1 from '../../assets/svg/RecepSVG1';
+import SuperVSSVG2 from '../../assets/svg/SuperVSSVG2';
 import FormUpload from '../../components/FormUpload'; 
 
 const EditWrapper = styled.div `
@@ -77,8 +76,7 @@ const EditSupervisor = () => {
         <EditWrapper>
             <Header to='/reception/edit'/>
             <div className="main-content">
-                {/* <SuperVSSVG /> */}
-                <RecepSVG1 />
+                <SuperVSSVG2 />
             </div>
             <div className="responsive-edit"></div>
             <div className="content-section">
