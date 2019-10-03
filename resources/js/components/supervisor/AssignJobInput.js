@@ -3,17 +3,22 @@ import styled from 'styled-components';
 import FormInput from '../FormInput'; 
 import Button from '../Button'; 
 import {Link} from 'react-router-dom';
+import SelectFile from './SelectFile'; 
 
 const MainSupervisWrapper = styled.div `
     width: 100%;
 
+        table{
+            border-collapse: separate;
+            border-spacing: 5px 20px;
+        }
         .content-width{
             width: 60%;
             display: block;
             margin: 30px auto 30px auto;
-            
+            table{width: 100%}
             label{
-                width: 20%;
+               // width: 100%;
                 font-family: Montserrat;
                 font-style: normal;
                 font-weight: 600;
@@ -24,7 +29,7 @@ const MainSupervisWrapper = styled.div `
                 width: 80%;
             }
         }
-        hr{
+        hr.clas{
             margin: 40px 0 0 0;
             border: 0.5px solid #C4C4C4;
         }
@@ -51,11 +56,11 @@ const MainSupervisWrapper = styled.div `
             box-sizing: border-box;
             background: #D9E1E8;
 
-        :hover {
-            transform: scale(1.01)
+            :hover {
+                transform: scale(1.01)
+            }
+
         }
-    
-    }
 
 `;
 
@@ -73,114 +78,129 @@ const AssignJobInput = () => {
         })
     };
 
-    const selectHandle = e => {
-        setData({...data, assign: e.target.value})
-    };
 
     return (
         <MainSupervisWrapper>
             <form action="">
                 <div className="content-width">
-                    <label>Assigned Employee(s)</label>
-                    <div className="content-styl">
-
-                    </div>
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td><label>Description</label></td>
+                                <td>
+                                    <FormInput 
+                                        type="text"
+                                        value=""
+                                        name="discription"
+                                        placeholder="Washing and setting"
+                                        disabled
+                                        style={{
+                                            width: '100%',
+                                            height: '35px',
+                                            border: '1px solid #C4C4C4',
+                                            boxSizing: 'border-box'
+                                        }}
+                                
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Assign Employee(s)</label></td>
+                                <td>
+                                    <SelectFile 
+                                        handleChange={handleChange}
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Description</label></td>
+                                <td>
+                                    <FormInput 
+                                    type="text"
+                                    value=""
+                                    name="discription"
+                                    placeholder="Manicure and Pedicure"
+                                    disabled
+                                    style={{
+                                        width: '100%',
+                                        height: '35px',
+                                        border: '1px solid #C4C4C4',
+                                        boxSizing: 'border-box'
+                                    }}
+                                
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Assign Employee(s)</label></td>
+                                <td>
+                                    <SelectFile 
+                                        handleChange={handleChange}
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Cust. Name</label></td>
+                                <td>
+                                    <FormInput
+                                        type="text"
+                                        name="custName"
+                                        value={data.name}
+                                        placeholder="Chiamaka Adelakun"
+                                        disabled
+                                        style={{
+                                            width: '100%',
+                                            height: '35px',
+                                            border: '1px solid #C4C4C4',
+                                            boxSizing: 'border-box'
+                                        }}
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Price</label></td>
+                                <td>
+                                    <FormInput
+                                        type="text"
+                                        name="price"
+                                        value={data.name}
+                                        placeholder=" &#x20A6; 50000"
+                                        disabled
+                                        style={{
+                                            width: '100%',
+                                            height: '35px',
+                                            border: '1px solid #C4C4C4',
+                                            boxSizing: 'border-box'
+                                        }}
+                                    />
+                                </td>
+                            </tr>
+                            <tr>
+                                <td><label>Date</label></td>
+                                <td>
+                                    <FormInput
+                                        type="Date"
+                                        name="date"
+                                        value={data.name}
+                                        disabled
+                                        style={{
+                                            width: '100%',
+                                            height: '35px',
+                                            border: '1px solid #C4C4C4',
+                                            boxSizing: 'border-box'
+                                        }}
+                                    />
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
                 </div>
-                <div className="content-width">
-                    <label>Description</label>
-                    <FormInput 
-                        type="text"
-                        value=""
-                        name="discription"
-                        placeholder="Washing and setting"
-                        disabled
-                        style={{
-                            width: '80%',
-                            height: '35px',
-                            border: '1px solid #C4C4C4',
-                            boxSizing: 'border-box'
-                        }}
-                    
-
-                    />
-                </div>
-                <div className="content-width">
-                    <label>Cust. Name</label>
-                    <FormInput
-                        type="text"
-                        name="custName"
-                        value={data.name}
-                        placeholder="Chiamaka Adelakun"
-                        disabled
-                        style={{
-                            width: '80%',
-                            height: '35px',
-                            border: '1px solid #C4C4C4',
-                            boxSizing: 'border-box'
-                        }}
-                    />
-                </div>
-                <div className="content-width">
-                    <label>Price</label>
-                    <FormInput
-                        type="text"
-                        name="price"
-                        value={data.name}
-                        placeholder=" &#x20A6; 50000"
-                        disabled
-                        style={{
-                            width: '80%',
-                            height: '35px',
-                            border: '1px solid #C4C4C4',
-                            boxSizing: 'border-box'
-                        }}
-                    />
-                </div>
-                <div className="content-width">
-                    <label>Date</label>
-                    <FormInput
-                        type="Date"
-                        name="date"
-                        value={data.name}
-                        placeholder="29-Dec-2019"
-                        disabled
-                        style={{
-                            width: '80%',
-                            height: '35px',
-                            border: '1px solid #C4C4C4',
-                            boxSizing: 'border-box'
-                        }}
-                    />
-                </div>
-                <div className="content-width">
-                    <label>Assign</label>
-                    <select 
-                        name="assign" 
-                        id="" 
-                        required
-                        value={data.assign}
-                        onChange={selectHandle}
-                        style={{
-                            borderColor: '#C4C4C4', 
-                            width: '80%', 
-                            height: '35px', 
-                            borderWidth: '0.7px',
-                            paddingLeft: '7px'
-                            }}
-                    >
-                        <option value="">Assign an Employee ...</option>
-                        <option value="Funke">Funke Jenny</option>
-                        <option value="Vivian">Amed Vivian</option>
-                        <option value="Joy">Aunty sis</option>
-                        <option value="Peace">Brother bros</option>
-                        <option value="Uncle">Uncle bro</option>
-                    </select>
-                </div>
-                <hr />
+                
+                <hr className="clas" />
                 <div className="btn-style">
-                    <Button style={{backgroundColor: '#3B5998', height: '35px', margin: '10px 15px 0 0'}}>create</Button>
+                    <Button style={{backgroundColor: 'rgba(59, 89, 152, 0.79)', height: '35px', margin: '10px 15px 0 0'}}>create</Button>
                     <Link to="/Supervisor/" className="link-style">Cancel</Link>
-                    <Button style={{backgroundColor: '#3B5998', height: '35px', margin: '10px 0 0 15px'}}>create</Button>
+                    <Button style={{backgroundColor: '#EA5E5E', height: '35px', margin: '10px 0 0 15px'}}>create</Button>
                 </div>
             </form>
         </MainSupervisWrapper>

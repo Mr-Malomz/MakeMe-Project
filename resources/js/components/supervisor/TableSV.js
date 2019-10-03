@@ -50,13 +50,26 @@ const TableStyle = styled.table`
 `;
 
 const TableSV = () => {
+    const [data, setData] = useState({
+        price: '',
+        isAssign: 'Assigned',
+        isChecked: false
+    })
+
+    const handleCheck = e => {
+        setData({
+            ...data,
+            isChecked: !data.isChecked
+        })
+    }
+
     return (
         <TableStyle>
       
                     <thead>
                         <tr>
                             <th>#</th>
-                            <th>Descripton</th>
+                            <th>Service ID</th>
                             <th>Customer's Name</th>
                             <th>Price</th>
                             <th>CREATED ON</th>
@@ -68,73 +81,73 @@ const TableSV = () => {
                     <tbody>
                         <tr>
                             <td>1</td>
-                            <td>washing and Setting</td>
+                            <td>120014</td>
                             <td>Ademola Motunrayo</td>
                             <td>&#x20A6;50,000</td>
                             <td>25-Sep-2017</td>
-                            <td><Link>Assign</Link></td>
-                            <td><Link>Edit</Link></td>
-                            <td><input type="checkbox"/></td>
+                            <td><Link to="/supervisor/assignjob/">{data.isAssign ? 'Assign' : 'Assigned'}</Link></td>
+                            <td><Link to="/supervisor/editjob/">Edit</Link></td>
+                            <td><input type="checkbox" name="complete" checked={data.isChecked} onChange={handleCheck} /></td>
                         </tr>
                         <tr>
                             <td>2</td>
-                            <td>Fixing</td>
+                            <td>120013</td>
                             <td>Chinenye Agungi</td>
                             <td>&#x20A6;10,000</td>
                             <td>2-Dec-2018</td>
-                            <td><Link>Assign</Link></td>
-                            <td><Link>Edit</Link></td>
-                            <td><input type="checkbox"/></td>
+                            <td><Link to="/supervisor/assignjob/">{data.isAssign ? 'Assign' : 'Assigned'}</Link></td>
+                            <td><Link to="/supervisor/editjob/">Edit</Link></td>
+                            <td><input type="checkbox" name="complete" checked={data.isChecked} onChange={handleCheck} /></td>
                         </tr>
                         <tr>
                             <td>3</td>
-                            <td>Braids</td>
+                            <td>120012</td>
                             <td>Chiamaka Nnamdi</td>
                             <td>&#x20A6;4,000</td>
                             <td>26-Feb-2017</td>
-                            <td><Link>Assign</Link></td>
-                            <td><Link>Edit</Link></td>
-                            <td><input type="checkbox"/></td>
+                            <td><Link to="/supervisor/assignjob/">{data.isAssign ? 'Assign' : 'Assigned'}</Link></td>
+                            <td><Link to="/supervisor/editjob/">Edit</Link></td>
+                            <td><input type="checkbox" name="complete" checked={data.isChecked} onChange={handleCheck} /></td>
                         </tr>
                         <tr>
                             <td>4</td>
-                            <td>Wig Making</td>
+                            <td>120011</td>
                             <td>Rebecca Nnammadi</td>
                             <td>&#x20A6;4,000</td>
                             <td>26-Feb-2019</td>
-                            <td><Link>Assigned</Link></td>
-                            <td><Link>Edit</Link></td>
-                            <td><input type="checkbox" checked="checked"/></td>
+                            <td><Link to="/supervisor/assignjob/">{data.isAssign ? 'Assign' : 'Assigned'}</Link></td>
+                            <td><Link to="/supervisor/editjob/">Edit</Link></td>
+                            <td><input type="checkbox" name="complete" checked={data.isChecked} onChange={handleCheck} /></td>
                         </tr>
                         <tr>
                             <td>5</td>
-                            <td>Pedicure and Manicure</td>
+                            <td>120010</td>
                             <td>Ruth Joshua</td>
                             <td>&#x20A6;4,000</td>
                             <td>29-Dec-2019</td>
-                            <td><Link>Assigned</Link></td>
-                            <td><Link>Edit</Link></td>
-                            <td><input type="checkbox" checked="checked"/></td>
+                            <td><Link to="/supervisor/assignjob/">{data.isAssign ? 'Assign' : 'Assigned'}</Link></td>
+                            <td><Link to="/supervisor/editjob/">Edit</Link></td>
+                            <td><input type="checkbox" name="complete" checked={data.isChecked} onChange={handleCheck} /></td>
                         </tr>
                         <tr>
                             <td>6</td>
-                            <td>Contact Lense</td>
+                            <td>12009</td>
                             <td>Esther Frodd</td>
                             <td>&#x20A6;4,000</td>
                             <td>29-Dec-2019</td>
-                            <td><Link>Assign</Link></td>
-                            <td><Link>Edit</Link></td>
-                            <td><input type="checkbox"/></td>
+                            <td><Link to="/supervisor/assignjob/">{data.isAssign ? 'Assign' : 'Assigned'}</Link></td>
+                            <td><Link to="/supervisor/editjob/">Edit</Link></td>
+                            <td><input type="checkbox" name="complete" checked={data.isChecked} onChange={handleCheck} /></td>
                         </tr>
                         <tr>
                             <td>7</td>
-                            <td>Make Up</td>
+                            <td>12008</td>
                             <td>Kafilat Ogunbaide</td>
                             <td>&#x20A6;4,000</td>
                             <td>29-Dec-2019</td>
-                            <td><Link>Assign</Link></td>
-                            <td><Link>Edit</Link></td>
-                            <td><input type="checkbox"/></td>
+                            <td><Link to="/supervisor/assignjob/">{data.isAssign ? 'Assign' : 'Assigned'}</Link></td>
+                            <td><Link to="/supervisor/editjob/">Edit</Link></td>
+                            <td><input type="checkbox" name="complete" checked={data.isChecked} onChange={handleCheck} /></td>
                         </tr>
                     </tbody>
 
