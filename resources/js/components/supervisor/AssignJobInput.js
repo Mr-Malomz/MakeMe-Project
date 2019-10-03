@@ -66,8 +66,12 @@ const MainSupervisWrapper = styled.div `
 
 const AssignJobInput = () => {
     const [data, setData] = useState({
-        assignEmply: '',
-        assign: ''
+        description: 'Washing and setting',
+        assignEmployee: '',
+        description_1: 'Manicure and Pedicure',
+        assignEmployee_1: '',
+        customerName: 'Chiamaka Adelakun',
+        date: '29-12-2019'
 
     });
 
@@ -90,9 +94,9 @@ const AssignJobInput = () => {
                                 <td>
                                     <FormInput 
                                         type="text"
-                                        value=""
+                                        value={data.description}
                                         name="discription"
-                                        placeholder="Washing and setting"
+                                        placeholder=""
                                         disabled
                                         style={{
                                             width: '100%',
@@ -100,7 +104,7 @@ const AssignJobInput = () => {
                                             border: '1px solid #C4C4C4',
                                             boxSizing: 'border-box'
                                         }}
-                                
+                                        handleChange={handleChange}
                                     />
                                 </td>
                             </tr>
@@ -108,6 +112,7 @@ const AssignJobInput = () => {
                                 <td><label>Assign Employee(s)</label></td>
                                 <td>
                                     <SelectFile 
+                                        value={data.assignEmployee_1} 
                                         handleChange={handleChange}
                                     />
                                 </td>
@@ -117,9 +122,8 @@ const AssignJobInput = () => {
                                 <td>
                                     <FormInput 
                                     type="text"
-                                    value=""
+                                    value={data.description_1}
                                     name="discription"
-                                    placeholder="Manicure and Pedicure"
                                     disabled
                                     style={{
                                         width: '100%',
@@ -127,14 +131,15 @@ const AssignJobInput = () => {
                                         border: '1px solid #C4C4C4',
                                         boxSizing: 'border-box'
                                     }}
-                                
+                                    handleChange={handleChange}
                                     />
                                 </td>
                             </tr>
                             <tr>
                                 <td><label>Assign Employee(s)</label></td>
                                 <td>
-                                    <SelectFile 
+                                    <SelectFile
+                                        value={data.assignEmployee_1} 
                                         handleChange={handleChange}
                                     />
                                 </td>
@@ -145,8 +150,8 @@ const AssignJobInput = () => {
                                     <FormInput
                                         type="text"
                                         name="custName"
-                                        value={data.name}
-                                        placeholder="Chiamaka Adelakun"
+                                        value={data.customerName}
+                                        placeholder=""
                                         disabled
                                         style={{
                                             width: '100%',
@@ -154,6 +159,7 @@ const AssignJobInput = () => {
                                             border: '1px solid #C4C4C4',
                                             boxSizing: 'border-box'
                                         }}
+                                    handleChange={handleChange}
                                     />
                                 </td>
                             </tr>
@@ -163,8 +169,8 @@ const AssignJobInput = () => {
                                     <FormInput
                                         type="text"
                                         name="price"
-                                        value={data.name}
-                                        placeholder=" &#x20A6; 50000"
+                                        value=""                                        
+                                        placeholder="&#x20A6; 50000"
                                         disabled
                                         style={{
                                             width: '100%',
@@ -172,6 +178,7 @@ const AssignJobInput = () => {
                                             border: '1px solid #C4C4C4',
                                             boxSizing: 'border-box'
                                         }}
+                                        handleChange={handleChange}
                                     />
                                 </td>
                             </tr>
@@ -179,9 +186,9 @@ const AssignJobInput = () => {
                                 <td><label>Date</label></td>
                                 <td>
                                     <FormInput
-                                        type="Date"
+                                        type="text"
                                         name="date"
-                                        value={data.name}
+                                        value={data.date}
                                         disabled
                                         style={{
                                             width: '100%',
@@ -189,6 +196,7 @@ const AssignJobInput = () => {
                                             border: '1px solid #C4C4C4',
                                             boxSizing: 'border-box'
                                         }}
+                                        handleChange={handleChange}
                                     />
                                 </td>
                             </tr>
