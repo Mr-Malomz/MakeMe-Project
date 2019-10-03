@@ -13,7 +13,6 @@ const MainSupervisWrapper = styled.div `
 
     .main-content-side {
         
-        
     .SuperVs-content {
         width: 35%;
         display: block;

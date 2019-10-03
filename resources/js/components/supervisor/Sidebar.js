@@ -148,13 +148,13 @@ const SideBar = () => {
                         urlCheck.endsWith(path1) || urlCheck.endsWith(path3) || urlCheck.endsWith(path4)
                     ? 'active' : null}
                 >
-                  <i className="material-icons">assignment</i>  Job Board
+                    <i className="material-icons">assignment</i>  Job Board
                 </NavLink>
                 <NavLink
                     to={path2} 
                     activeClassName={urlCheck.endsWith(path3) ? 'active' : null}
                 >
-                  <i className="material-icons">person_add</i>  Create Customer
+                    <i className="material-icons">person_add</i>  Create Customer
                 </NavLink>
            </section>
         </SideBarWrapper>

@@ -97,7 +97,7 @@ const SupervisJobCard = styled.div `
                         // }
 
                     
-                        .tableFoot{
+                        tfoot>tr{
                             width 100%;
                             height: 35px
                             font-family: Montserrat;
@@ -108,13 +108,13 @@ const SupervisJobCard = styled.div `
                             text-align: left;
 
                         }
-                        .tableFoot>th:nth-child(1){
+                        tfoot>tr>th:nth-child(1){
                             margin: 15px 0 0 0;
                             padding: 15px 0 0 15px;
                         }
-                        .tableFoot>th:nth-child(2){
+                        tfoot>tr>th:nth-child(2){
                             margin: 15px 0 0 0;
-                            padding: 15px 0 0 1px;
+                            padding: 15px 0 0 0;
                         }
                     input{
                         background: #FFFFFF;
@@ -143,7 +143,7 @@ const SupervisJobCard = styled.div `
                         box-sizing: border-box;
 
                     :hover {
-                        transform: scale(1.08)
+                        transform: scale(1.01)
                     }
                 }
             }
@@ -155,30 +155,31 @@ const SupervisJobCard = styled.div `
 `;
 
 const EditJobCardSV = () => {
-    const [customerName, setName] = useState('');
-    const [Group, setGroup] = useState('');
-
+    const [data, setData] = useState({
+        customerName: 'Adebayo Aderibigbe',
+        selectGroup: 'Select Customer Group'
+    })
 
     const handleChange = e => {
-        setName(e.target.value)
+        setData({
+            ...data,
+            [e.target.name]: e.target.value
+        })
+    };
+
+    const selectHandle = e => {
+        setData({
+            ...data,
+            selectGroup: e.target.value
+        })
     };
 
     
-      const groupList= [
-        { id: 1, name: 'Select Customer Group' },
-        { id: 2, name: 'VIP Client' },
-        { id: 3, name: 'Exclusive Member' },
-        { id: 4, name: 'Exclusive Partner' },
-        { id: 5, name: 'Sub Dealer' },
-      ];
-
-
-    // const handleChange2 = e => {
-    //     setGroup(e.target.value)
-    // };
-
+   
+   // 'Select Customer Group' 
+    
     return (
-        <SupervisJobCard>
+        <SupervisJobCard>  
             <div className="mainCard">
                 <JobCardSVG1 />
                 <h3 className="card-title">Edit Job Card</h3>
@@ -187,8 +188,8 @@ const EditJobCardSV = () => {
                         <div className="cusName">Customer's Name *</div>
                             <FormInput 
                                 type="text"
-                                value={customerName}
-                                name="customNam"
+                                value={data.customerName}
+                                name="customerName"
                                 placeholder="Enter Customer's Name"
                                 required
                                 style={{
@@ -204,9 +205,12 @@ const EditJobCardSV = () => {
                             />
 
                         <div className="groupName">Group</div>
-                        <select
-                            name="SelectGroup"
-                            value={Group}
+                        <select 
+                            name="selectGroup" 
+                            id="" 
+                            required
+                            value={data.selectGroup}
+                            onChange={selectHandle}
                             style={{
                                 margin: '5px 0 5px 0',
                                 width: '100%', 
@@ -215,15 +219,13 @@ const EditJobCardSV = () => {
                                 border: '1px solid #3B5998',
                                 boxSizing: 'border-box',
                                 color: '#4C5A76'
-                            }}
-                            required
-                            onChange={e => setGroup(Number(e.target.value))}
-                            >
-                            {groupList.map(group => (
-                            <option key={group.id} value={group.id}>
-                                {group.name}
-                            </option>
-                            ))}
+                                }}
+                        >
+                            <option value="">Select Customer Group</option>
+                            <option value="VIP Client">VIP Client</option>
+                            <option value="Exclusive Member">Exclusive Member</option>
+                            <option value="Exclusive Partner">Exclusive Partner</option>
+                            <option value="Sub Dealer">Sub Dealer</option>
                         </select>
 
                         <div className="Service">Services</div>
@@ -238,33 +240,35 @@ const EditJobCardSV = () => {
                                 <tbody>
                                     <tr>
                                         <td><input type="checkbox" /> Ghana weaving and crochet</td>
-                                        <td>&#x20A6;100</td>
+                                        <td>&#x20A6;1000</td>
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox" /> Manicure and Pedicure</td>
-                                        <td>&#x20A6;100</td>
+                                        <td>&#x20A6;1000</td>
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox" /> Weavon</td>
-                                        <td>&#x20A6;100</td>
+                                        <td>&#x20A6;1000</td>
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox" /> Brazilian Wig</td>
-                                        <td>&#x20A6;100</td>
+                                        <td>&#x20A6;1000</td>
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox" /> Braids and Setting</td>
-                                        <td>&#x20A6;100</td>
+                                        <td>&#x20A6;1000</td>
                                     </tr>
                                     <tr>
                                         <td><input type="checkbox" /> Attachment and Washing</td>
-                                        <td>&#x20A6;100</td>
+                                        <td>&#x20A6;1000</td>
                                     </tr>
                                 </tbody>
-                                    <tr className="tableFoot">
+                                <tfoot>
+                                    <tr>
                                         <th>Total</th>
-                                        <th>&#x20A6; </th>
+                                        <th>&#x20A6;6000</th>
                                     </tr>
+                                </tfoot>
                             </table>
                         </div>
                         <div className="link-align">
