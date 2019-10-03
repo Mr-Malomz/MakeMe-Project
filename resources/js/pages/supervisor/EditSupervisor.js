@@ -1,8 +1,9 @@
 import React from 'react';
 import styled from 'styled-components';
 import Header from '../../components/Header';
-import SuperVSSVG from '../../assets/svg/SuperVSSVG';
-import FormUpload from '../../components/FormUpload';
+//import SuperVSSVG from '../../assets/svg/SuperVSSVG';
+import RecepSVG1 from '../../assets/svg/RecepSVG1';
+import FormUpload from '../../components/FormUpload'; 
 
 const EditWrapper = styled.div `
     overflow-x: hidden;
@@ -76,11 +77,12 @@ const EditSupervisor = () => {
         <EditWrapper>
             <Header to='/reception/edit'/>
             <div className="main-content">
-                <SuperVSSVG />
+                {/* <SuperVSSVG /> */}
+                <RecepSVG1 />
             </div>
             <div className="responsive-edit"></div>
             <div className="content-section">
-                <h2>nail technician</h2>
+                <h2>Supervisor</h2>
                 <FormUpload path='/reception/' color='#55ACEE'/>
             </div>
         </EditWrapper>
