@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import FormInput from '../FormInput';
+import FormInput from '../FormInput'; 
 import {Link} from 'react-router-dom';
 
 
@@ -37,7 +37,7 @@ const CardWrapper = styled.section `
         .searchLink{
             display: flex;
             float: right;
-            width: 100%;
+            width: 100%; 
         }
     }
 `

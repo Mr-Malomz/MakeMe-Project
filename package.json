@@ -29,12 +29,14 @@
     "dependencies": {
         "@emotion/core": "^10.0.17",
         "chart.js": "^2.8.0",
+        "chroma-js": "^2.0.6",
         "react-chartjs-2": "^2.8.0",
         "react-glide": "^3.2.0",
         "react-loader-spinner": "^3.1.2",
         "react-paginate": "^6.3.0",
         "react-router": "^5.0.1",
         "react-router-dom": "^5.0.1",
+        "react-select": "^3.0.8",
         "styled-components": "^4.3.2"
     }
 }
