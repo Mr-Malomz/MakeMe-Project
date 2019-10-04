@@ -114393,7 +114393,7 @@ var CreateEmpForm = function CreateEmpForm() {
     className: "inpt-wrap"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "select"
-  }, "title / role"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+  }, "role"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     name: "role",
     id: "",
     required: true,
@@ -114417,6 +114417,19 @@ var CreateEmpForm = function CreateEmpForm() {
   }, "Receptionist"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "workers"
   }, "Workers"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "inpt-wrap"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "lastname"
+  }, "job title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_4__["default"], {
+    type: "text",
+    name: "lastname",
+    required: true,
+    value: data.lastname,
+    handleChange: handleChange,
+    style: {
+      borderColor: '#C4C4C4'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "inpt-wrap"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "payment"
@@ -114662,7 +114675,7 @@ var EditEmpForm = function EditEmpForm() {
     className: "inpt-wrap"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "select"
-  }, "title/role"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
+  }, "role"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("select", {
     name: "role",
     id: "",
     required: true,
@@ -114673,7 +114686,7 @@ var EditEmpForm = function EditEmpForm() {
       width: '100%',
       height: '30px',
       borderWidth: '0.5px',
-      marginLeft: '4px'
+      marginLeft: '36px'
     }
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: ""
@@ -114686,6 +114699,23 @@ var EditEmpForm = function EditEmpForm() {
   }, "Receptionist"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("option", {
     value: "workers"
   }, "Workers"))), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
+    className: "inpt-wrap"
+  }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
+    htmlFor: "lastname",
+    style: {
+      width: '70px'
+    }
+  }, "job title"), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement(_FormInput__WEBPACK_IMPORTED_MODULE_2__["default"], {
+    type: "text",
+    name: "lastname",
+    required: true,
+    value: data.lastname,
+    handleChange: handleChange,
+    style: {
+      borderColor: '#C4C4C4',
+      marginLeft: '8px'
+    }
+  })), react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("div", {
     className: "inpt-wrap"
   }, react__WEBPACK_IMPORTED_MODULE_0___default.a.createElement("label", {
     htmlFor: "payment"
@@ -117123,7 +117153,7 @@ function _iterableToArrayLimit(arr, i) { if (!(Symbol.iterator in Object(arr) ||
 function _arrayWithHoles(arr) { if (Array.isArray(arr)) return arr; }
 
 function _templateObject() {
-  var data = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .nav-hgt {\n        height: 145%;\n    }\n\n    .main-content-side {\n        \n        \n        .superad-content {\n            margin: 20px 60px 0 0;\n\n            .title {\n                color: #ffffff;\n                background: rgba(43, 86, 128, 0.8);\n                padding: 5px 30px 10px 30px;\n                border-radius: 0 5px 5px 0;\n                text-transform: capitalize;\n                font-weight: bold;\n                margin: 20px 0;\n                display: inline-block;\n                \n                i {\n                    transform: translateY(5px);\n                    margin-right: 5px;\n                }\n            }\n\n            .super-content-main {\n                width: 100%;\n                margin: 15px 15px 0 15px;\n                \n            }\n        }\n    }\n\n    @media (max-width: 1000px) {\n        .component-section {\n            flex-direction: column;\n        }\n    }\n\n    @media (max-width: 700px) {\n\n        .nav-hgt {\n            height: 176%;\n        }\n        .superad-content {\n            width: 100%;\n\n            .super-content-main {\n                width: 100% !important;\n\n                .component-section {\n                    flex-direction: column;\n                }\n            }\n\n            .title {\n                font-size: 12px\n            }\n\n        }\n    }\n"]);
+  var data = _taggedTemplateLiteral(["\n    width: 100vw;\n    height: 100vh;\n    display: float;\n    position: relative;\n\n    .nav-hgt {\n        height: 165%;\n    }\n\n    .main-content-side {\n        \n        \n        .superad-content {\n            margin: 20px 60px 0 0;\n\n            .title {\n                color: #ffffff;\n                background: rgba(43, 86, 128, 0.8);\n                padding: 5px 30px 10px 30px;\n                border-radius: 0 5px 5px 0;\n                text-transform: capitalize;\n                font-weight: bold;\n                margin: 20px 0;\n                display: inline-block;\n                \n                i {\n                    transform: translateY(5px);\n                    margin-right: 5px;\n                }\n            }\n\n            .super-content-main {\n                width: 100%;\n                margin: 15px 15px 0 15px;\n                \n            }\n        }\n    }\n\n    @media (max-width: 1000px) {\n        .component-section {\n            flex-direction: column;\n        }\n    }\n\n    @media (max-width: 700px) {\n\n        .nav-hgt {\n            height: 176%;\n        }\n        .superad-content {\n            width: 100%;\n\n            .super-content-main {\n                width: 100% !important;\n\n                .component-section {\n                    flex-direction: column;\n                }\n            }\n\n            .title {\n                font-size: 12px\n            }\n\n        }\n    }\n"]);
 
   _templateObject = function _templateObject() {
     return data;

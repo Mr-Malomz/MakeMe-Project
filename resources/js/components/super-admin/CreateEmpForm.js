@@ -149,7 +149,7 @@ const CreateEmpForm = () => {
                     />
                 </div>
                 <div className="inpt-wrap">
-                    <label htmlFor="select">title / role</label>
+                    <label htmlFor="select">role</label>
                     <select 
                         name="role" 
                         id="" 
@@ -170,6 +170,17 @@ const CreateEmpForm = () => {
                         <option value="receptionist">Receptionist</option>
                         <option value="workers">Workers</option>
                     </select>
+                </div>
+                <div className="inpt-wrap">
+                    <label htmlFor="lastname">job title</label>
+                    <FormInput
+                        type="text"
+                        name='lastname'
+                        required
+                        value={data.lastname}
+                        handleChange={handleChange}
+                        style={{borderColor: '#C4C4C4'}}
+                    />
                 </div>
                 <div className="inpt-wrap">
                     <label htmlFor="payment">payment option</label>
