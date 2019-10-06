@@ -16,7 +16,6 @@ const MainSupervisWrapper = styled.div `
         
         .SuperVsCard{
             width: 90%;
-            display: flex;
             display: block;
             margin-top: 40px;
             margin-left: auto;
@@ -31,11 +30,11 @@ const MainSupervisWrapper = styled.div `
                 width: 100%;
                
                 
-
                 .supervs-content-main{
                     position: absolute;
                 }
             }
+
         }
     }
 
@@ -64,7 +63,7 @@ const MainSupervis = () => {
         <MainSupervisWrapper>
             {data.toggleNav && <SideBar />}
             <div className="main-content-side" style={{width: data.width ? '80.5%' : '100%'}}>
-                <HeaderMain handleToggle={handleToggle}/>
+                <HeaderMain handleToggle={handleToggle} to='/supervisor/editprofile' />
                 <div className="SuperVsCard">
                     <div className="SuperVs-content-title">
                         <JobTableTitleSV />
@@ -73,8 +72,9 @@ const MainSupervis = () => {
                     <div className="supervs-content-main">
                         
                         <TableSV />
-
+                    <div className="paginate-position">
                         <PaginateSV />
+                    </div>
                     </div>
                 </div>
             </div>

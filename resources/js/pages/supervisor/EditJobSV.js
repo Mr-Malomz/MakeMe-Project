@@ -2,6 +2,8 @@ import React, {useState} from 'react';
 import styled from 'styled-components';
 import SideBar from '../../components/supervisor/SideBar';
 import HeaderMain from '../../components/HeaderMain';
+import EditJobCardSV from '../../components/supervisor/EditJobCardSV';
+
 
 const MainSupervisWrapper = styled.div `
 width: 100vw;
@@ -13,19 +15,25 @@ width: 100vw;
         
         
     .SuperVs-content {
-            display: flex;
-            margin: 20px 60px 0 0;
+        width: 35%;
+        display: block;
+        margin: 30px auto 30px auto;
+        
+            .superVs-content-main{
+                width: 100%;
+            }
 
         }
     }
 
     @media (max-width: 700px) {
         .SuperVs-content {
-            width: 100%;
+            width: 90%;
 
         }
     }
 `;
+
 
 const EditJobSV = () => {
     const [data, setData] = useState({
@@ -44,10 +52,10 @@ const EditJobSV = () => {
         <MainSupervisWrapper>
             {data.toggleNav && <SideBar />}
             <div className="main-content-side" style={{width: data.width ? '80.5%' : '100%'}}>
-                <HeaderMain handleToggle={handleToggle}/>
+                <HeaderMain handleToggle={handleToggle} to='/supervisor/editprofile' />
                 <div className="SuperVs-content">
-                    <div className="recep-content-main">
-
+                    <div className="superVs-content-main">
+                        <EditJobCardSV />
                     </div>
                 </div>
             </div>
