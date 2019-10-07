@@ -97,7 +97,7 @@ const TableSV = () => {
                             <td>2-Dec-2018</td>
                             <td><Link to="/supervisor/assignjob/">{data.isAssign ? 'Assign' : 'Assigned'}</Link></td>
                             <td><Link to="/supervisor/editjob/">Edit</Link></td>
-                            <td><input type="checkbox" name="complete" checked={data.isChecked} onChange={handleCheck} /></td>
+                            <td><input type="checkbox" name="complete" /></td>
                         </tr>
                         <tr>
                             <td>3</td>
@@ -107,7 +107,7 @@ const TableSV = () => {
                             <td>26-Feb-2017</td>
                             <td><Link to="/supervisor/assignjob/">{data.isAssign ? 'Assign' : 'Assigned'}</Link></td>
                             <td><Link to="/supervisor/editjob/">Edit</Link></td>
-                            <td><input type="checkbox" name="complete" checked={data.isChecked} onChange={handleCheck} /></td>
+                            <td><input type="checkbox" name="complete" /></td>
                         </tr>
                         <tr>
                             <td>4</td>
@@ -117,7 +117,7 @@ const TableSV = () => {
                             <td>26-Feb-2019</td>
                             <td><Link to="/supervisor/assignjob/">{data.isAssign ? 'Assign' : 'Assigned'}</Link></td>
                             <td><Link to="/supervisor/editjob/">Edit</Link></td>
-                            <td><input type="checkbox" name="complete" checked={data.isChecked} onChange={handleCheck} /></td>
+                            <td><input type="checkbox" name="complete" /></td>
                         </tr>
                         <tr>
                             <td>5</td>
@@ -127,7 +127,7 @@ const TableSV = () => {
                             <td>29-Dec-2019</td>
                             <td><Link to="/supervisor/assignjob/">{data.isAssign ? 'Assign' : 'Assigned'}</Link></td>
                             <td><Link to="/supervisor/editjob/">Edit</Link></td>
-                            <td><input type="checkbox" name="complete" checked={data.isChecked} onChange={handleCheck} /></td>
+                            <td><input type="checkbox" name="complete" /></td>
                         </tr>
                         <tr>
                             <td>6</td>
@@ -137,7 +137,7 @@ const TableSV = () => {
                             <td>29-Dec-2019</td>
                             <td><Link to="/supervisor/assignjob/">{data.isAssign ? 'Assign' : 'Assigned'}</Link></td>
                             <td><Link to="/supervisor/editjob/">Edit</Link></td>
-                            <td><input type="checkbox" name="complete" checked={data.isChecked} onChange={handleCheck} /></td>
+                            <td><input type="checkbox" name="complete" /></td>
                         </tr>
                         <tr>
                             <td>7</td>
@@ -147,7 +147,7 @@ const TableSV = () => {
                             <td>29-Dec-2019</td>
                             <td><Link to="/supervisor/assignjob/">{data.isAssign ? 'Assign' : 'Assigned'}</Link></td>
                             <td><Link to="/supervisor/editjob/">Edit</Link></td>
-                            <td><input type="checkbox" name="complete" checked={data.isChecked} onChange={handleCheck} /></td>
+                            <td><input type="checkbox" name="complete" /></td>
                         </tr>
                     </tbody>
 
@@ -156,4 +156,4 @@ const TableSV = () => {
     )
 }
 
-export default TableSV
+export default TableSV;
