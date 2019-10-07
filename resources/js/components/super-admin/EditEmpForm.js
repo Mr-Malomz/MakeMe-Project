@@ -171,7 +171,7 @@ const EditEmpForm = () => {
                         />
                     </div>
                     <div className="inpt-wrap">
-                        <label htmlFor="select">title/role</label>
+                        <label htmlFor="select">role</label>
                         <select 
                             name="role" 
                             id="" 
@@ -183,7 +183,7 @@ const EditEmpForm = () => {
                                 width: '100%', 
                                 height: '30px', 
                                 borderWidth: '0.5px',
-                                marginLeft: '4px'
+                                marginLeft: '36px'
                                 }}
                         >
                             <option value=""></option>
@@ -192,6 +192,17 @@ const EditEmpForm = () => {
                             <option value="receptionist">Receptionist</option>
                             <option value="workers">Workers</option>
                         </select>
+                    </div>
+                    <div className="inpt-wrap">
+                        <label htmlFor="lastname" style={{width: '70px'}}>job title</label>
+                        <FormInput
+                            type="text"
+                            name='lastname'
+                            required
+                            value={data.lastname}
+                            handleChange={handleChange}
+                            style={{borderColor: '#C4C4C4', marginLeft: '8px'}}
+                        />
                     </div>
                     <div className="inpt-wrap">
                         <label htmlFor="payment">pay. option</label>
