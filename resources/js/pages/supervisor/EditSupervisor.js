@@ -81,7 +81,7 @@ const EditSupervisor = () => {
             <div className="responsive-edit"></div>
             <div className="content-section">
                 <h2>Supervisor</h2>
-                <FormUpload path='/reception/' color='#55ACEE'/>
+                <FormUpload path='/Supervisor/' color='#3B5998'/>
             </div>
         </EditWrapper>
     )
