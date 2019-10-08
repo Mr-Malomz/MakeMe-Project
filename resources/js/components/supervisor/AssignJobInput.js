@@ -44,7 +44,7 @@ const MainSupervisWrapper = styled.div `
             font-family: Montserrat;
             font-style: normal;
             font-weight: bold;
-            font-size: 14px;
+            font-size: 13px;
             color: rgba(0, 0, 0, 0.8);
             margin: 10px 0 0 0;
             width: 120px;
@@ -206,9 +206,9 @@ const AssignJobInput = () => {
                 
                 <hr className="clas" />
                 <div className="btn-style">
-                    <Button style={{backgroundColor: 'rgba(59, 89, 152, 0.79)', height: '35px', margin: '10px 15px 0 0'}}>create</Button>
+                    <Button style={{backgroundColor: 'rgba(59, 89, 152, 0.79)', height: '35px', margin: '10px 15px 0 0', fontSize: '13px'}}>create</Button>
                     <Link to="/Supervisor/" className="link-style">Cancel</Link>
-                    <Button style={{backgroundColor: '#EA5E5E', height: '35px', margin: '10px 0 0 15px'}}>create</Button>
+                    <Button style={{backgroundColor: '#EA5E5E', height: '35px', margin: '10px 0 0 15px', fontSize: '13px'}}>Delete Job Card</Button>
                 </div>
             </form>
         </MainSupervisWrapper>

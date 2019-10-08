@@ -11,6 +11,10 @@ const MainSupervisWrapper = styled.div `
     display: float;
     position: relative;
 
+    .nav-height{
+        height: 120%;
+    }
+
     .main-content-side {
         
     .SuperVs-content {

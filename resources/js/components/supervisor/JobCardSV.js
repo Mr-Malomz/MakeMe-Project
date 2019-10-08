@@ -52,7 +52,7 @@ const SupervisJobCard = styled.div `
 
                     thead>tr>th:nth-child(1){
                         width 100%;
-                        height: 35px
+                        height: 35px;
                         background: #E9EEF8;
                         font-family: Montserrat;
                         font-style: normal;
@@ -64,7 +64,7 @@ const SupervisJobCard = styled.div `
                     }
                     thead>tr>th:nth-child(2){
                         width 100%;
-                        height: 35px
+                        height: 35px;
                         background: #E9EEF8;
                         font-family: Montserrat;
                         font-style: normal;
@@ -99,7 +99,7 @@ const SupervisJobCard = styled.div `
                     
                         tfoot>tr{
                             width 100%;
-                            height: 35px
+                            height: 35px;
                             font-family: Montserrat;
                             font-style: normal;
                             font-weight: 700;
@@ -143,7 +143,7 @@ const SupervisJobCard = styled.div `
                         box-sizing: border-box;
 
                     :hover {
-                        transform: scale(1.01)
+                        transform: scale(1.01);
                     }
                 }
             }
@@ -277,7 +277,7 @@ const JobCardSV = () => {
                     </form>
                 </div>
                 <div className="svgWidth">
-                    <JobCardSVG2 style={{width: '100%', transform: 'translateY(9.2px)'}}/>
+                    <JobCardSVG2 style={{width: '100%', transform: 'translateY(8.9px)'}}/>
                 </div>
             </div>
 

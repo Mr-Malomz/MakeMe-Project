@@ -279,7 +279,7 @@ const EditJobCardSV = () => {
                     </form>
                 </div>
                 <div className="svgWidth">
-                    <JobCardSVG2 style={{width: '100%', transform: 'translateY(9.2px)'}}/>
+                    <JobCardSVG2 style={{width: '100%', transform: 'translateY(8.9px)'}}/>
                 </div>
             </div>
 
