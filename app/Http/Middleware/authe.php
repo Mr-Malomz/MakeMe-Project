@@ -15,7 +15,7 @@ class authe
      */
     public function handle($request, Closure $next)
     {
-        if ()
+        //if ()
         return $next($request);
     }
 }
