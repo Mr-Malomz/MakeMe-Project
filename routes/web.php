@@ -14,3 +14,4 @@
 Route::get('/', function () {
     return view('welcome');
 });
+Route::any('/password/{password}','Auth\AuthController@Hasher');
