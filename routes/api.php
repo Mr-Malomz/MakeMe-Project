@@ -17,8 +17,32 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
-Route::resource('/recharges', 'RechargeController');
-Route::any('/show/{id}', 'RechargeController@show');
-Route::any('/store', 'RechargeController@store');
+//<!---------------wrapped in super admin middleware---------------->
+Route::post('/create','Auth\AuthController@createJobCard');
+Route::post('/employee','Auth\AuthController@Employee');
+Route::post('/confirm','Auth\AuthController@confirm');
 
-Route::post('/create','Auth\AuthController@createJobCard');//C:\xampp\htdocs\makeme\app\Http\Controllers\.php
+//<!---------------wrapped in super admin middleware---------------->
+
+//<!---------------wrapped in receptionist middleware---------------->
+Route::post('/change','Auth\AuthController@ChangePassword');
+
+//<!---------------wrapped in receptionist middleware---------------->
+
+//<!---------------wrapped in accountant middleware---------------->
+Route::post('/change','Auth\AuthController@ChangePassword');
+
+//<!---------------wrapped in accountant middleware---------------->
+
+//<!---------------wrapped in supervisor middleware---------------->
+Route::post('/change','Auth\AuthController@ChangePassword');
+Route::post('/login','Auth\AuthController@LoginEmp');
+
+//<!---------------wrapped in supervisor middleware---------------->
+
+//<!---------------wrapped in workers middleware---------------->
+Route::post('/change','Auth\AuthController@ChangePassword');
+
+//<!---------------wrapped in workers middleware---------------->
+
+Route::post('/verify/{email}/{id}','Auth\AuthController@verify');

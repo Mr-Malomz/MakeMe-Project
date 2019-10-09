@@ -81,34 +81,74 @@ class AuthController extends Controller
     //Endpoint to add employee
     public function Employee(Request $request)
     {
-        $pass = Hash::make($request->password);
-        $pro = DB::insert('call spMakeMeEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+        $pro = DB::insert('call spMakeMeForEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             1001,
+            null, //empid
             $request->title,
+            $request->email,
             $request->surn,
             $request->fname,
             $request->midnme,
-            $pass,
             $request->dob,
-            $request->email,
             $request->phone,
-            $request->addr,
+            $request->payment,
             $request->salary,
             $request->comm,
             $request->role,
-            $request->oldpass
+            null,//$request->pass,
+            null//$request->passold
         ]);
+        
         return response()->json($pro);
+    }
+
+    //Endpoint to verify user
+    public function verify($email, $id)
+    {
+        $veri = DB::statement('call spMakeMeVerifyAccount (?, ?)', [
+            $id,
+            $email
+        ]);
+        return response()->json($veri);
+    }
+    
+    
+    public function FunctionName($email)
+    {
+        # code...
+    }
+
+    //Endpoint to finish user sign up 
+    public function confirm(Request $request)
+    {
+        $pass = Hash::make($request->pass);
+        $veri = DB::select('call spConfirm_Passwd (?, ?)', [
+            $request->email,
+            $pass,
+        ]);
+        return response()->json($veri);
     }
 
     //Endpoint for employee login
     public function LoginEmp(Request $request)
     {
         $pass = Hash::make($request->password);
-        $pro = DB::select('call spMakeMeEmp (?, ?)',[
+        $pro = DB::select('call spMakeMeForEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             1002,
-            $pass,
-            $request->email
+            null, //empid
+            null,
+            $request->email,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            $request->pass,
+            null//$request->passold
         ]);
         return response()->json($pro);
     }
