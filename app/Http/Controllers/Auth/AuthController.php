@@ -5,6 +5,7 @@ namespace App\Http\Controllers\Auth;
 use App\Http\Controllers\Controller;
 //use App\Http\Controllers\Controller;
 use DB;
+use crypt;
 use Hash;
 use Illuminate\Http\Request;
 
@@ -98,24 +99,39 @@ class AuthController extends Controller
             null,//$request->pass,
             null//$request->passold
         ]);
-        
-        return response()->json($pro);
+        if ($pro) {
+            //encrypt the email and id using .encrypt($email & $id) each
+            //send the mail with the email and the id to the get route
+            //of the email e.g: /mail/{email}/{id}
+            $d_email = encrypt($pro->email);
+            $d_id = encrypt($pro->id);
+            return redirect('mail/'.$d_email.'/'.$d_id);
+        }
+        else {
+            $msg = "error, something happened";
+            return response()->json($msg);
+        }
+    }
+
+    //Endpoint to send email
+    public function Sendmail($email, $id)
+    {
+        $d_email = encrypt($pro->email);
+        $d_id = encrypt($pro->id);
+        return redirect('mail/'.$d_email.'/'.$d_id);
     }
 
     //Endpoint to verify user
     public function verify($email, $id)
     {
+        //decrypt the email and id using decrypt($email & $id) each
+        $d_email = decrypt($email);
+        $d_id = decrypt($id);
         $veri = DB::statement('call spMakeMeVerifyAccount (?, ?)', [
-            $id,
-            $email
+            $d_id,
+            $d_email
         ]);
         return response()->json($veri);
-    }
-    
-    
-    public function FunctionName($email)
-    {
-        # code...
     }
 
     //Endpoint to finish user sign up 

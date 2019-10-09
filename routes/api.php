@@ -21,7 +21,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::post('/create','Auth\AuthController@createJobCard');
 Route::post('/employee','Auth\AuthController@Employee');
 Route::post('/confirm','Auth\AuthController@confirm');
-
+Route::any('/mail/{email}/{id}', 'MailController@send');
 //<!---------------wrapped in super admin middleware---------------->
 
 //<!---------------wrapped in receptionist middleware---------------->
@@ -46,3 +46,4 @@ Route::post('/change','Auth\AuthController@ChangePassword');
 //<!---------------wrapped in workers middleware---------------->
 
 Route::post('/verify/{email}/{id}','Auth\AuthController@verify');
+Route::post('/sendmail/{email}/{id}','Auth\AuthController@Sendmail');
