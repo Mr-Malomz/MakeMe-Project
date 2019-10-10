@@ -9,14 +9,9 @@ use Illuminate\Http\Request;
 class MailController extends Controller
 {
     public function send($email, $id)
-    {
-        dd($email.$id);
+    {        
         $e_email = decrypt($email);
-        $params = [
-            $email,
-            $id
-        ];
-        $sent = Mail::to($e_email)->send(new MailTrap($params));
+        $sent = Mail::to($e_email)->send(new MailTrap());
         $msg = "";
         if ($sent) {
             $msg = "mail sent successfully";

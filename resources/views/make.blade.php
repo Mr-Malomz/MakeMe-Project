@@ -81,13 +81,11 @@ div[style*="margin: 16px 0"] {
                     </ul>
                     
                     <ul>
-                        <li>Before proceeding, click <u><a href={{'//verify/'.$email.'/'.$id}}  style="color: blue;">here</a></u> to activate your account OR  click on the link below</li>
+                        <li>Before proceeding, click <u><a href={{'http://localhost:8000/api/verify/'.$email.'/'.$id}}  style="color: blue;">here</a></u> to activate your account OR  click on the link below</li>
                     </ul>
                     <br>
                     
                     <p>If you have not registered to join Makeme, please ignore this mail.</p>
-
-
 
 
                     

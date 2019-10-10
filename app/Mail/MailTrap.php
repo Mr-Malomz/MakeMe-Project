@@ -2,6 +2,7 @@
 
 namespace App\Mail;
 
+use Illuminate\Http\Request;
 use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
@@ -26,13 +27,18 @@ class MailTrap extends Mailable
      *
      * @return $this
      */
-    public function build()
+    public function build(Request $request)
     {
+        
+        $url = $request->url();
+        $all = ltrim($url, 'http://localhost:8000/api/mail/');
+        $pos = strpos($all, '/');
+        $email = strtok($all,'/');
+        $id = substr($all,$pos+1);
         $param = [
-            'email' => '',
-            'id' => ''
+            'email' => $email,
+            'id' => $id
         ];
-        dd($params);
-        return $this->view('view.make')->with($param);
+        return $this->view('make')->with($param);
     }
 }

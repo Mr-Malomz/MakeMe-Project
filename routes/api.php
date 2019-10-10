@@ -13,37 +13,22 @@ use Illuminate\Http\Request;
 |
 */
 
-Route::middleware('auth:api')->get('/user', function (Request $request) {
-    return $request->user();
-});
+// Route::middleware('auth:api')->get( function (Request $request) {
+//     return $request->user();
+// });
+
+Route::get('/user','Auth\AuthController@apis')->middleware('auth:api');
 
 //<!---------------wrapped in super admin middleware---------------->
 Route::post('/create','Auth\AuthController@createJobCard');
 Route::post('/employee','Auth\AuthController@Employee');
 Route::post('/confirm','Auth\AuthController@confirm');
 Route::any('/mail/{email}/{id}', 'MailController@send');
-//<!---------------wrapped in super admin middleware---------------->
+//Route::any('/build/{email}/{id}', 'MailTrap@build');
 
-//<!---------------wrapped in receptionist middleware---------------->
-Route::post('/change','Auth\AuthController@ChangePassword');
-
-//<!---------------wrapped in receptionist middleware---------------->
-
-//<!---------------wrapped in accountant middleware---------------->
-Route::post('/change','Auth\AuthController@ChangePassword');
-
-//<!---------------wrapped in accountant middleware---------------->
-
-//<!---------------wrapped in supervisor middleware---------------->
-Route::post('/change','Auth\AuthController@ChangePassword');
 Route::post('/login','Auth\AuthController@LoginEmp');
 
-//<!---------------wrapped in supervisor middleware---------------->
-
-//<!---------------wrapped in workers middleware---------------->
 Route::post('/change','Auth\AuthController@ChangePassword');
 
-//<!---------------wrapped in workers middleware---------------->
-
-Route::post('/verify/{email}/{id}','Auth\AuthController@verify');
-Route::post('/sendmail/{email}/{id}','Auth\AuthController@Sendmail');
+Route::any('/verify/{email}/{id}','Auth\AuthController@verify');
+Route::any('/sendmail/{email}/{id}','Auth\AuthController@Sendmail');

@@ -11,6 +11,13 @@ use Illuminate\Http\Request;
 
 class AuthController extends Controller
 {
+
+    //api Route
+    public function apis(Request $request)
+    {
+        return $request->user();
+    }
+    
     //Endpoint to create job
     public function createJobCard(Request $request)
     {
@@ -30,7 +37,7 @@ class AuthController extends Controller
     //Endpoint to register customer
     public function Pro(Request $request)
     { 
-        $emp = DB::insert('call spMakeMePro (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+        $emp = DB::insert('call spMakemeCustomer (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             100,
             $request->title,
             $request->surn,
@@ -52,14 +59,14 @@ class AuthController extends Controller
     //Endpoint to search for customer
     public function SearchCustomer(Request $request)
     {
-        $emp = DB::select('call spMakeMePro (?, ?)', [
+        $emp = DB::select('call spMakemeCustomer (?, ?)', [
         102, $request->phone]);
     }
 
     //Endpoint to edit customer details
     public function EditCustomer(Request $request)
     {
-        $emp = DB::insert('call spMakeMePro (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+        $emp = DB::insert('call spMakemeCustomer (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             $request->Cid,
             100,
             $request->title,
@@ -116,9 +123,10 @@ class AuthController extends Controller
     //Endpoint to send email
     public function Sendmail($email, $id)
     {
-        $d_email = encrypt($pro->email);
-        $d_id = encrypt($pro->id);
-        return redirect('mail/'.$d_email.'/'.$d_id);
+        $d_email = encrypt($email);
+        $d_id = encrypt($id);
+        //dd($d_id);
+        return redirect('api/mail/'.$d_email.'/'.$d_id);
     }
 
     //Endpoint to verify user
@@ -126,23 +134,38 @@ class AuthController extends Controller
     {
         //decrypt the email and id using decrypt($email & $id) each
         $d_email = decrypt($email);
-        $d_id = decrypt($id);
+        $d_id = 'Essential';
         $veri = DB::statement('call spMakeMeVerifyAccount (?, ?)', [
             $d_id,
             $d_email
         ]);
-        return response()->json($veri);
+        if ($veri) {
+            $this->confirm($d_email, $d_id);
+        }
+        else {
+            $msg = "Error, something happened.";
+            return response()->json($msg);
+        }
     }
 
     //Endpoint to finish user sign up 
-    public function confirm(Request $request)
+    public function confirm($email, $pass)
     {
-        $pass = Hash::make($request->pass);
+        //dd($pass);
+        $pass = Hash::make($pass);
         $veri = DB::select('call spConfirm_Passwd (?, ?)', [
-            $request->email,
+            $email,
             $pass,
         ]);
-        return response()->json($veri);
+        if ($veri) {
+            return response()->json($veri);
+            //dd($pass);
+        }
+        else {
+            die('fail');
+            $veri = "Error, something happened.";
+            return response()->json($veri);
+        }
     }
 
     //Endpoint for employee login
@@ -170,9 +193,8 @@ class AuthController extends Controller
     }
     
     //Enpoint for employee to change password
-    public function ChangePassword()
+    public function ChangePassword($email)
     {
-        $pass = Hash::make('C0dename47');
-        return response()->json($pass);
+        dd($email);
     }
 }
