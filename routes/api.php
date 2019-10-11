@@ -20,8 +20,8 @@ use Illuminate\Http\Request;
 Route::get('/user','Auth\AuthController@apis')->middleware('auth:api');
 
 //<!--------------BEGIN INTERNAL OPERATIONS--------------->
-Route::any('/mail/{email}/{id}', 'MailController@send');
-//Route::any('/build/{email}/{id}', 'MailTrap@build');
+Route::any('/mail/{email}/{id}', 'MailController@send');//SEND MAIL
+Route::any('/emps', 'Auth\AuthController@Emps');//SHOWS ALL EMPLOYEE NAMES
 //<!--------------BEGIN INTERNAL OPERATIONS--------------->
 
 
