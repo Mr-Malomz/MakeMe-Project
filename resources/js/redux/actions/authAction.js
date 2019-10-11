@@ -35,6 +35,31 @@ const loginError = (message) => {
 
 export const loginUser = creds => {
     
+    let config = {
+        method: 'POST',
+        headers: {'Content-Type': 'application/json'},
+        body: `username=${creds.username}&password=${creds.password}`
+    }
+
+    return dispatch => {
+        //starting the login process with redux action creator
+        dispatch(requestLogin(creds))
+
+        return fetch('http://localhost:8000/api/login', config)
+            .then(response => response.json())
+            .then(user => ({ user, response }))
+            .then(({ user, response }) => {
+                //if reponse is not okay
+                if (!response.ok) {
+                    dispatch(loginError(user.message))
+                    return Promise.reject(user)
+                } else {
+                    // if response is okay
+                    localStorage.setItem('id_token', user.id_token)
+                    
+                }
+            })
+    }
 }
 
 
