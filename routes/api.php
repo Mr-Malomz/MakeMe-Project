@@ -19,19 +19,43 @@ use Illuminate\Http\Request;
 
 Route::get('/user','Auth\AuthController@apis')->middleware('auth:api');
 
-//<!---------------wrapped in super admin middleware---------------->
-Route::post('/create','Auth\AuthController@createJobCard');
-Route::post('/employee','Auth\AuthController@Employee');
-Route::post('/confirm','Auth\AuthController@confirm');
+//<!--------------BEGIN INTERNAL OPERATIONS--------------->
 Route::any('/mail/{email}/{id}', 'MailController@send');
 //Route::any('/build/{email}/{id}', 'MailTrap@build');
+//<!--------------BEGIN INTERNAL OPERATIONS--------------->
 
-Route::post('/login','Auth\AuthController@LoginEmp');
 
-//Route::post('/change','Auth\AuthController@ChangePassword');
+//<!--------------BEGIN CUSTOMER OPERATIONS-------------->
+Route::post('/create','Auth\AuthController@createJobCard');//CREATE JOB CARD
+Route::post('/pro','Auth\AuthController@Pro');//REGISTER CUSTOMER
+Route::post('/search','Auth\AuthController@SearchCustomer');//SEARCH FOR CUSTOMER
+Route::post('/editCus','Auth\AuthController@EditCustomer');//EDIT/UPDATE CUSTOMER DETAILS
+Route::get('/delCus/{id}','Auth\AuthController@DeleteCustomer');//DELETE CUSTOMER
+//<!--------------END CUSTOMER OPERATIONS-------------->
 
-Route::any('/verify/{email}/{id}','Auth\AuthController@verify');
-Route::any('/sendmail/{email}/{id}','Auth\AuthController@Sendmail');
-Route::get('/reset','Auth\AuthController@ChangePassword');
-Route::get('/forgot/{email}','Auth\AuthController@forgotPass');
 
+
+//<!--------------BEGIN SUPER ADMIN OPERATIONS-------------->
+Route::post('/employee','Auth\AuthController@Employee');//CREATE EMPLOYEE
+Route::post('/update','Auth\AuthController@UpdateEmployee');//UPDATE EMPLOYEE DETAIL
+Route::post('/employee/{id}','Auth\AuthController@DeleteEmp');//DELETE EMPLOYEE
+Route::post('/notif','Auth\AuthController@CreateNotif');//CREATE NOTIFICATION
+Route::post('/notifs','Auth\AuthController@Employee');//SHOW ALL NOTIFICATION
+//<!--------------END SUPER ADMIN OPERATIONS-------------->
+
+
+
+//<!--------------BEGIN SIGN UP OPERATION-------------->
+Route::any('/verify/{email}/{id}','Auth\AuthController@verify');//CHANGE VERIFIED STATUS
+Route::any('/sendmail/{email}/{id}','Auth\AuthController@Sendmail');//SEND THE MAIL ON EMP CREATION
+Route::any('/comfirm/{email}/{id}','Auth\AuthController@confirm');//FINISH USER SIGN UP
+//<!--------------END SIGN UP OPERATION-------------->
+
+
+
+//<!--------------BEGIN EMPLOYEE OPERATIONS-------------->
+Route::post('/login','Auth\AuthController@LoginEmp');//EMPLOYEE LOGIN
+Route::get('/reset','Auth\AuthController@ChangePassword');//RESET/CHANGE PASSWORD
+Route::post('/update','Auth\AuthController@UpdateEmp');//UPDATE EMPLOYEE PROFILE
+Route::get('/forgot/{email}','Auth\AuthController@forgotPass');//FORGOT PASSWORD
+//<!--------------END EMPLOYEE OPERATIONS-------------->
