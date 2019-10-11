@@ -28,7 +28,10 @@ Route::any('/mail/{email}/{id}', 'MailController@send');
 
 Route::post('/login','Auth\AuthController@LoginEmp');
 
-Route::post('/change','Auth\AuthController@ChangePassword');
+//Route::post('/change','Auth\AuthController@ChangePassword');
 
 Route::any('/verify/{email}/{id}','Auth\AuthController@verify');
 Route::any('/sendmail/{email}/{id}','Auth\AuthController@Sendmail');
+Route::get('/reset','Auth\AuthController@ChangePassword');
+Route::get('/forgot/{email}','Auth\AuthController@forgotPass');
+

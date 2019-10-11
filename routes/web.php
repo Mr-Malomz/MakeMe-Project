@@ -11,9 +11,9 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
+Route::get('/', function () {
+    return view('welcome');
+});
 Route::any('/password/{password}','Auth\AuthController@Hasher');
 
 //Route::post('/sendmail/{email}/{id}','Auth\AuthController@Sendmail');
