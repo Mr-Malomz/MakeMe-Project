@@ -96,9 +96,9 @@ class AuthController extends Controller
             $request->email,
             $request->surn,
             $request->fname,
-            $request->midnme,
-            $request->dob,
-            $request->phone,
+            null,//$request->midnme,
+            null,//$request->dob,
+            null,//$request->phone,
             $request->payment,
             $request->salary,
             $request->comm,
@@ -116,6 +116,63 @@ class AuthController extends Controller
         }
         else {
             $msg = "error, something happened";
+            return response()->json($msg);
+        }
+    }
+
+    //Endpoint to update employee by super admin
+    public function UpdateEmployee(Request $request)
+    {
+        $pro = DB::insert('call spUpdateProfileEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            $request->empid,
+            $request->title,
+            $request->email,
+            $request->surn,
+            $request->fname,
+            $request->midnme,
+            null,//$request->pass,
+            $request->dob,
+            $request->phone,
+            $request->payment,
+            $request->salary,
+            $request->comm,
+            $request->role,
+            null,//$request->avatar
+        ]);
+        if ($pro) {
+            return response()->json($pro);
+        }
+        else {
+            $msg = "error, something happened.";
+            return response()->json($msg);
+        }
+    }
+
+    //Endpoint to update employee by employee
+    public function UpdateEmp(Request $request)
+    {
+        $pro = DB::insert('call spUpdateProfileEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            $request->empid,
+            null,//$request->title,
+            null,//$request->email,
+            $request->surn,
+            $request->fname,
+            null,//$request->midnme,
+            null,//$request->pass,
+            null,//$request->dob,
+            $request->phone,
+            null,//$request->payment,
+            null,//$request->salary,
+            null,//$request->comm,
+            null,//$request->role,
+            $request->avatar,
+            $request->addr
+        ]);
+        if ($pro) {
+            return response()->json($pro);
+        }
+        else {
+            $msg = "error, something happened.";
             return response()->json($msg);
         }
     }
@@ -189,12 +246,72 @@ class AuthController extends Controller
             $request->pass,
             null//$request->passold
         ]);
-        return response()->json($pro);
+        if($pro){
+            return response()->json($pro);
+        }
+        else {
+            $pro = "Error, something happened.";
+            return response()->json($pro);
+        }
     }
     
     //Enpoint for employee to change password
-    public function ChangePassword($email)
+    public function ChangePassword($pass, $id)
     {
-        dd($email);
+        // $email = $request->email;
+        // $id = $request->id;
+        //dd($email);
+        $pass = DB::insert('call spMakeMeReset_Passwd(?, ?)', [$id, $pass]);
+        if ($pass) {
+            return response()->json($pass);
+        }
+        else {
+            $pass = "Error, something happened";
+            return response()->json($pass);
+        }
+        
+    }
+
+    //Enpoint to create notification
+    public function CreateNotif(Request $request)
+    {
+        $notif = DB::insert('call spNotification (?, ?)',[
+            101,
+            $request->messg
+        ]);
+        if ($notif) {
+            return response()->json($notif);
+        }
+        else {
+            $notif = "Error, something happened.";
+            return response()->json($notif);
+        }
+    }
+    
+    //Enpoint to show notification
+    public function showNotif()
+    {
+        $notif = DB::select('call spNotification (?)',[102]);
+        if ($notif) {
+            return response()->json($notif);
+        }
+        else {
+            $notif = "Error, something happened.";
+            return response()->json($notif);
+        }
+    }
+
+    //Endpoint for forgot password
+    public function forgotPass($email)
+    {
+        $pass = DB::select('call spMakeMe_Forgot_Pssword (?)', [$email]);
+        if ($pass) {
+            $id = $pass[0]->Emp_Id;
+            $this->ChangePassword($id);
+        }
+        else {
+            $pass = "Error, something happened.";
+            return response()->json($pass);
+        }
     }
 }
