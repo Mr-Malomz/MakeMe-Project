@@ -37,9 +37,12 @@ const CreateEmpFormWrap = styled.section `
 
             .radio-wrp {
                 display: flex;
-                justify-content: space-between;
+                /* justify-content: space-evenly; */
 
                 span {
+                    :nth-child(2) {
+                        transform: translateX(40px)
+                    }
                     span {
                         margin-left: 10px;
                         text-transform: capitalize;
@@ -85,6 +88,7 @@ const CreateEmpForm = () => {
         firstname: '',
         lastname: '',
         email: '',
+        salary: '',
         value: '',
         showVal: false,
         selectedInput: 'none',
@@ -183,18 +187,18 @@ const CreateEmpForm = () => {
                     />
                 </div>
                 <div className="inpt-wrap">
+                    <label htmlFor="salary">salary</label>
+                    <FormInput
+                        type="text"
+                        name='salary'
+                        value={data.salary}
+                        handleChange={handleChange}
+                        style={{borderColor: '#C4C4C4'}}
+                    />
+                </div>
+                <div className="inpt-wrap">
                     <label htmlFor="payment">payment option</label>
                     <div className="radio-wrp">
-                        <span>
-                            <input 
-                                type="radio" 
-                                name="payment" 
-                                value="salary" 
-                                checked={data.selectedInput === 'salary'}
-                                onChange={inputChangeOpen}
-                            />
-                            <span>salary</span>
-                        </span>
                         <span>
                             <input 
                                 type="radio"
@@ -223,7 +227,7 @@ const CreateEmpForm = () => {
                         type="text"
                         name='value'
                         required
-                        placeholder="enter a percentage / salary"
+                        placeholder="enter a percentage"
                         value={data.value}
                         handleChange={handleChange}
                         style={{borderColor: '#C4C4C4'}}
