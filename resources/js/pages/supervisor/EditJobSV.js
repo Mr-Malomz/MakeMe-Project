@@ -11,8 +11,11 @@ width: 100vw;
     display: float;
     position: relative;
 
+    .nav-height{
+        height: 125%;
+    }
+
     .main-content-side {
-        
         
     .SuperVs-content {
         width: 35%;
