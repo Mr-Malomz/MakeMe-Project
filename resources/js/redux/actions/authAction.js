@@ -7,7 +7,7 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 const requestLogin = (creds) => {
     return {
         type: LOGIN_REQUEST,
-        isFetching: true,
+        isLoading: true,
         isAuthenticated: false,
         creds
     };
@@ -16,9 +16,10 @@ const requestLogin = (creds) => {
 const receiveLogin = (user) => {
     return {
         type: LOGIN_SUCCCESS,
-        isFetching: false,
+        isLoading: false,
         isAuthenticated: true,
         id_token: user.id_token,
+        role: user.role,
         user
     };
 };
@@ -26,7 +27,7 @@ const receiveLogin = (user) => {
 const loginError = (message) => {
     return {
         type: LOGIN_FAILURE,
-        isFetching: false,
+        isLoading: false,
         isAuthenticated: false,
         message
     };
@@ -38,7 +39,7 @@ export const loginUser = creds => {
     let config = {
         method: 'POST',
         headers: {'Content-Type': 'application/json'},
-        body: `username=${creds.username}&password=${creds.password}`
+        body: `email=${creds.email}&pass=${creds.password}`
     }
 
     return dispatch => {
@@ -56,10 +57,40 @@ export const loginUser = creds => {
                 } else {
                     // if response is okay
                     localStorage.setItem('id_token', user.id_token)
-                    
+                    dispatch(receiveLogin(user))
                 }
-            })
+            }).catch(err => console.log(err))
+    }
+};
+
+//logout actions
+export const LOGOUT_REQUEST = 'LOGOUT_REQUEST';
+export const LOGOUT_SUCCESS = 'LOGOUT_SUCCESS';
+export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
+
+//logout action creators
+const requestLogout = () => {
+    return {
+        type: LOGIN_REQUEST,
+        isLoading: true,
+        isAuthenticated: true
+    };
+};
+
+const recieveLogout = () => {
+    return {
+        type: LOGOUT_SUCCESS,
+        isLoading: false,
+        isAuthenticated: false
+    };
+};
+
+
+//log out
+export const logoutUser = () => {
+    return dispatch => {
+        dispatch(requestLogout())
+        localStorage.removeItem('id_token')
+        dispatch(recieveLogout())
     }
 }
-
-
