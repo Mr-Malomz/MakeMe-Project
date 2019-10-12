@@ -27,7 +27,7 @@ const Loader = ({loading}) => {
             css={style}
             sizeUnit={"px"}
             size={40}
-            color={'#2B5680'}
+            color={'#3B5998'}
             loading={loading}
             />
         </LoaderContainer>

@@ -1,9 +1,14 @@
-import {LOGIN_REQUEST, LOGIN_SUCCCESS, LOGIN_FAILURE, LOGOUT_SUCCESS} from '../actions/authAction';
+import {LOGIN_REQUEST, LOGIN_SUCCCESS, LOGIN_FAILURE,LOGOUT_REQUEST, LOGOUT_SUCCESS, LOGOUT_FAILURE} 
+    from '../actions/authAction';
 
 const initialState = {
-    isLoading: false,
+    isLoggingIn: false,
+    isLoggingOut: false,
+    loginError: false,
+    logoutError: false,
     isAuthenticated: localStorage.getItem('id_token') ? true : false,
-    role: null
+    role: null,
+    user: {}
 }
 
 export const authReducer = (state = initialState, action) => {
@@ -11,9 +16,46 @@ export const authReducer = (state = initialState, action) => {
         case LOGIN_REQUEST:
             return {
                 ...state,
-                isLoading: true,
-                isAuthenticated: false,
+                isLoggingIn: true,
                 creds: action.creds
+            }
+            
+        case LOGIN_SUCCCESS:
+            return {
+                ...state,
+                isLoggingIn: false,
+                isAuthenticated: true,
+                role: action.role,
+                user: action.user,
+            }
+        
+        case LOGIN_FAILURE:
+            return {
+                ...state,
+                isLoggingIn: false,
+                isAuthenticated: false,
+                loginError: true
+            }
+
+        case LOGOUT_REQUEST:
+            return {
+                ...state,
+                isLoggingOut: true,
+                logoutError: false,
+            }
+
+        case LOGOUT_SUCCESS:
+            return {
+                ...state,
+                isLoggingOut: false,
+                isAuthenticated: false,
+                user: {}
+            }
+
+        case LOGOUT_FAILURE: 
+            return {
+                ...state,
+                logoutError: true
             }
     
         default:

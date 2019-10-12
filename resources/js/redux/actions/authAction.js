@@ -7,8 +7,6 @@ export const LOGIN_FAILURE = 'LOGIN_FAILURE';
 const requestLogin = (creds) => {
     return {
         type: LOGIN_REQUEST,
-        isLoading: true,
-        isAuthenticated: false,
         creds
     };
 };
@@ -16,20 +14,15 @@ const requestLogin = (creds) => {
 const receiveLogin = (user) => {
     return {
         type: LOGIN_SUCCCESS,
-        isLoading: false,
-        isAuthenticated: true,
-        id_token: user.id_token,
-        role: user.role,
+        id_token: user.Trans_Id,
+        role: user.Job_Role,
         user
     };
 };
 
-const loginError = (message) => {
+const loginError = () => {
     return {
         type: LOGIN_FAILURE,
-        isLoading: false,
-        isAuthenticated: false,
-        message
     };
 };
 
@@ -38,8 +31,8 @@ export const loginUser = creds => {
     
     let config = {
         method: 'POST',
-        headers: {'Content-Type': 'application/json'},
-        body: `email=${creds.email}&pass=${creds.password}`
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json',},
+        body: `email=${creds.email}&password=${creds.password}`
     }
 
     return dispatch => {
@@ -48,18 +41,12 @@ export const loginUser = creds => {
 
         return fetch('http://localhost:8000/api/login', config)
             .then(response => response.json())
-            .then(user => ({ user, response }))
-            .then(({ user, response }) => {
-                //if reponse is not okay
-                if (!response.ok) {
-                    dispatch(loginError(user.message))
-                    return Promise.reject(user)
-                } else {
-                    // if response is okay
-                    localStorage.setItem('id_token', user.id_token)
-                    dispatch(receiveLogin(user))
-                }
-            }).catch(err => console.log(err))
+        .then(user => {
+            localStorage.setItem('id_token', user.Trans_Id)
+            dispatch(receiveLogin(user))
+        })
+        .catch(err => dispatch(loginError()))
+            
     }
 };
 
@@ -72,16 +59,12 @@ export const LOGOUT_FAILURE = 'LOGOUT_FAILURE';
 const requestLogout = () => {
     return {
         type: LOGIN_REQUEST,
-        isLoading: true,
-        isAuthenticated: true
     };
 };
 
 const recieveLogout = () => {
     return {
         type: LOGOUT_SUCCESS,
-        isLoading: false,
-        isAuthenticated: false
     };
 };
 

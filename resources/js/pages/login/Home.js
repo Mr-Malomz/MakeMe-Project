@@ -1,5 +1,8 @@
 import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
+import { connect } from 'react-redux';
+import { loginUser } from '../../redux/actions/authAction';
+import { Redirect, withRouter } from 'react-router-dom';
 import { Glide } from 'react-glide';
 import "react-glide/lib/reactGlide.css";
 import LoginSVG1 from '../../assets/svg/LoginSVG1';
@@ -7,6 +10,8 @@ import LoginSVG2 from '../../assets/svg/LoginSVG2';
 import pic1 from '../../assets/img/pic1.jpg';
 import pic2 from '../../assets/img/pic2.png';
 import pic3 from '../../assets/img/pic3.png';
+import ErrorField from '../../components/ErrorField';
+import Loader from '../../components/Loader'
 
 
 const HomeWrapper = styled.div `
@@ -37,9 +42,10 @@ const HomeWrapper = styled.div `
             img {
                 width: 66vw;
             }
+        }
     }
 
-    @media(max-width:960px) {
+    @media (max-width:960px) {
         overflow: hidden;
         img {
             width: 100%;
@@ -237,13 +243,13 @@ const FormHomeWrapper = styled.div `
     }
 `;
 
-const Home = () => {
+const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser}) => {
 
     const initialState = {
         email: "",
         password: "",
-        isSubmitting: false,
-        errorMessage: null
+        // isSubmitting: false,
+        // errorMessage: null
     };
 
     const [value, setValue] = useState(initialState)
@@ -254,17 +260,53 @@ const Home = () => {
             [e.target.name]: e.target.value
         })
     }
-    
+
+    const handleSubmit = (e) => {
+        e.preventDefault();
+        const {email, password} = value;
+        const creds = {email: email, password: password};
+        loginUser(creds)
+        setValue({...value, email: '', password: ''})
+    }
+
+    //check for authentication
+    if (isAuthenticated) {
+        switch (user.Job_Role) {
+            case "Super Admin":
+                return <Redirect to="/superadmin/" />
+                break;
+            
+            case "Accountant":
+                return <Redirect to="/accountant/" />
+                break;
+            
+            case "Supervisor":
+                return <Redirect to="/supervisor/" />
+                break;
+
+            case "Reception":
+                return <Redirect to="/reception/" />
+                break;
+
+            case "Workers":
+                return <Redirect to="/workers/" />
+                break;
+            
+        }
+    }
     return (
         <HomeWrapper>
+            {isLoggingIn && <Loader />}
             <FormHomeWrapper>
-                <LoginSVG1 />
+                <LoginSVG1 /> 
                 <LoginSVG2 />
                 <div className="form-content">
                     <section>
                         <h1>welcome back</h1>
                         <p>Please log in with your details</p>
-                        <form action="">
+                        {loginError && <ErrorField error="Incorrect Password or Username" />}
+                        {/* <ErrorField error={location.state.message}/> */}
+                        <form action="" onSubmit={handleSubmit}>
                             <div className="form-input-log">
                                 <label htmlFor="email">Email</label>
                                 <input type="email" name="email" className="input-home" value={value.email} onChange={handleChange} required/>
@@ -300,6 +342,21 @@ const Home = () => {
             </div>
         </HomeWrapper>
     )
+};
+
+const MapStateToProps = state => {
+    return {
+        isLoggingIn: state.auth.isLoggingIn,
+        loginError: state.auth.loginError,
+        isAuthenticated: state.auth.isAuthenticated,
+        user: state.auth.user
+    }
 }
 
-export default Home
+const MapDispatchToProps = dispatch => {
+    return {
+        loginUser: (creds) => dispatch(loginUser(creds))
+    };
+};
+
+export default connect(MapStateToProps, MapDispatchToProps)(Home);
