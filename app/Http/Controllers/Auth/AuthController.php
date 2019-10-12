@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
-//use App\Http\Controllers\Controller;
 use DB;
 use crypt;
 use Hash;
@@ -17,7 +16,8 @@ class AuthController extends Controller
     {
         return $request->user();
     }
-    
+
+//<!--------------BEGIN CUSTOMER OPERATIONS-------------->
     //Endpoint to create job
     public function createJobCard(Request $request)
     {
@@ -86,6 +86,24 @@ class AuthController extends Controller
         
     }
 
+    //Endpoint to delete customer
+    public function DeleteCustomer($id)
+    {
+        $act = DB::insert('call spDeleteCustomer (?)',[$id]);
+        if ($act) {
+            return response()->json($act);
+        }
+        else {
+            $act = "Error, something happened.";
+            return response()->json($act);
+        }
+    }
+
+//<!--------------END CUSTOMER OPERATIONS-------------->
+
+
+//<!--------------BEGIN SUPER ADMIN OPERATIONS-------------->
+  
     //Endpoint to add employee
     public function Employee(Request $request)
     {
@@ -148,34 +166,53 @@ class AuthController extends Controller
         }
     }
 
-    //Endpoint to update employee by employee
-    public function UpdateEmp(Request $request)
+   
+    //Endpoint to delete Employee
+    public function DeleteEmp($id)
     {
-        $pro = DB::insert('call spUpdateProfileEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
-            $request->empid,
-            null,//$request->title,
-            null,//$request->email,
-            $request->surn,
-            $request->fname,
-            null,//$request->midnme,
-            null,//$request->pass,
-            null,//$request->dob,
-            $request->phone,
-            null,//$request->payment,
-            null,//$request->salary,
-            null,//$request->comm,
-            null,//$request->role,
-            $request->avatar,
-            $request->addr
-        ]);
-        if ($pro) {
-            return response()->json($pro);
+        $act = DB::insert('call spDeleteEmp (?)',[$id]);
+        if ($act) {
+            return response()->json($act);
         }
         else {
-            $msg = "error, something happened.";
-            return response()->json($msg);
+            $act = "Error, something happened.";
+            return response()->json($act);
         }
     }
+
+    //Enpoint to create notification
+    public function CreateNotif(Request $request)
+    {
+        $notif = DB::insert('call spNotification (?, ?)',[
+            101,
+            $request->messg
+        ]);
+        if ($notif) {
+            return response()->json($notif);
+        }
+        else {
+            $notif = "Error, something happened.";
+            return response()->json($notif);
+        }
+    }
+    
+    //Enpoint to show notification
+    public function showNotif()
+    {
+        $notif = DB::select('call spNotification (?)',[102]);
+        if ($notif) {
+            return response()->json($notif);
+        }
+        else {
+            $notif = "Error, something happened.";
+            return response()->json($notif);
+        }
+    }
+
+//<!--------------END SUPER ADMIN OPERATIONS-------------->
+
+
+//<!--------------BEGIN SIGN UP OPERATION-------------->
 
     //Endpoint to send email
     public function Sendmail($email, $id)
@@ -225,10 +262,18 @@ class AuthController extends Controller
         }
     }
 
+//<!--------------END SIGN UP OPERATION-------------->
+    
+
+//<!--------------BEGIN EMPLOYEE OPERATIONS-------------->
+
     //Endpoint for employee login
     public function LoginEmp(Request $request)
     {
-        $pass = Hash::make($request->password);
+        //$pass = Hash::make($request->password);
+        //$pass1 = encrypt($request->password);
+        $pass = base64_encode($request->password);
+        //return response()->json($pass2);
         $pro = DB::select('call spMakeMeForEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             1002,
             null, //empid
@@ -243,7 +288,7 @@ class AuthController extends Controller
             null,
             null,
             null,
-            $request->pass,
+            $pass,
             null//$request->passold
         ]);
         if($pro){
@@ -272,32 +317,32 @@ class AuthController extends Controller
         
     }
 
-    //Enpoint to create notification
-    public function CreateNotif(Request $request)
+    //Endpoint to update employee by employee
+    public function UpdateEmp(Request $request)
     {
-        $notif = DB::insert('call spNotification (?, ?)',[
-            101,
-            $request->messg
+        $pro = DB::insert('call spUpdateProfileEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            $request->empid,
+            null,//$request->title,
+            null,//$request->email,
+            $request->surn,
+            $request->fname,
+            null,//$request->midnme,
+            null,//$request->pass,
+            null,//$request->dob,
+            $request->phone,
+            null,//$request->payment,
+            null,//$request->salary,
+            null,//$request->comm,
+            null,//$request->role,
+            $request->avatar,
+            $request->addr
         ]);
-        if ($notif) {
-            return response()->json($notif);
+        if ($pro) {
+            return response()->json($pro);
         }
         else {
-            $notif = "Error, something happened.";
-            return response()->json($notif);
-        }
-    }
-    
-    //Enpoint to show notification
-    public function showNotif()
-    {
-        $notif = DB::select('call spNotification (?)',[102]);
-        if ($notif) {
-            return response()->json($notif);
-        }
-        else {
-            $notif = "Error, something happened.";
-            return response()->json($notif);
+            $msg = "error, something happened.";
+            return response()->json($msg);
         }
     }
 
@@ -314,4 +359,24 @@ class AuthController extends Controller
             return response()->json($pass);
         }
     }
+
+//<!--------------END EMPLOYEE OPERATIONS-------------->
+
+
+//<!--------------BEGIN OTHER OPERATIONS-------------->
+
+//Endpoint to return all employee details
+public function Emps()
+{
+    $emp = DB::select('call spSelectAllEmp');
+    if ($emp) {
+        return response()->json($emp);
+    }
+    else {
+        $msg = "error, something happened.";
+        return response()->json($msg);
+    }
+}
+//<!--------------END OTHER OPERATIONS-------------->
+
 }
