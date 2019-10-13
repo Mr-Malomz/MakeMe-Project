@@ -254,6 +254,8 @@ const Home = () => {
             [e.target.name]: e.target.value
         })
     }
+
+    
     
     return (
         <HomeWrapper>
