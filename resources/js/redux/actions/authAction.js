@@ -1,3 +1,5 @@
+import axios from 'axios'
+
 //Login actions
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCCESS = 'LOGIN_SUCCESS';
@@ -41,11 +43,11 @@ export const loginUser = creds => {
 
         return fetch('http://localhost:8000/api/login', config)
             .then(response => response.json())
-        .then(user => {
-            localStorage.setItem('id_token', user.Trans_Id)
-            dispatch(receiveLogin(user))
-        })
-        .catch(err => dispatch(loginError()))
+            .then(user => {
+                localStorage.setItem('id_token', user.Trans_Id)
+                dispatch(receiveLogin(user))
+            })
+            .catch(err => dispatch(loginError()))
             
     }
 };

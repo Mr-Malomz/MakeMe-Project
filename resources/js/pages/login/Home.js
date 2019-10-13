@@ -11,7 +11,8 @@ import pic1 from '../../assets/img/pic1.jpg';
 import pic2 from '../../assets/img/pic2.png';
 import pic3 from '../../assets/img/pic3.png';
 import ErrorField from '../../components/ErrorField';
-import Loader from '../../components/Loader'
+import Loader from '../../components/Loader';
+import axios from 'axios'
 
 
 const HomeWrapper = styled.div `
@@ -267,6 +268,22 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser}) => {
         const creds = {email: email, password: password};
         loginUser(creds)
         setValue({...value, email: '', password: ''})
+
+        // axios.post('http://127.0.0.1:8000/api/login', {
+        //     headers: {
+        //         // 'Content-Type': 'application/json',
+        //         // 'Accept': 'application/json',
+        //     },
+        //     body: `email=${creds.email}&password=${creds.password}`
+        // })
+        //     .then(response => console.log(response.data))
+            // .then(user => {
+            //     localStorage.setItem('id_token', user.Trans_Id)
+            //     console.log(user)
+            //     // dispatch(receiveLogin(user))
+            // })
+            // .catch(err => dispatch(loginError()))
+        
     }
 
     //check for authentication
@@ -294,6 +311,8 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser}) => {
             
         }
     }
+    
+
     return (
         <HomeWrapper>
             {isLoggingIn && <Loader />}
@@ -304,8 +323,8 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser}) => {
                     <section>
                         <h1>welcome back</h1>
                         <p>Please log in with your details</p>
-                        {loginError && <ErrorField error="Incorrect Password or Username" />}
-                        {/* <ErrorField error={location.state.message}/> */}
+                        {loginError || typeof user === 'string' && <ErrorField error="Incorrect Password or Username" />}
+                        {/* <ErrorField error={location.message}/> */}
                         <form action="" onSubmit={handleSubmit}>
                             <div className="form-input-log">
                                 <label htmlFor="email">Email</label>

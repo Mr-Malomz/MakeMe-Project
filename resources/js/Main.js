@@ -24,7 +24,7 @@ const GlobalStyle = createGlobalStyle `
     }
 `
 
-const Main = ({isAuthenticated, user}) => {
+const Main = ({isAuthenticated, user}, props) => {
     return (
         <>
             <GlobalStyle />
