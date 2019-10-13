@@ -14,7 +14,9 @@
 Route::get('/', function () {
     return view('welcome');
 });
-Route::any('/password/{password}','Auth\AuthController@Hasher');
+Route::group(['middleware' => 'cors'], function(){
+    Route::any('/password/{password}','Auth\AuthController@Hasher');
+    //Route::post('/sendmail/{email}/{id}','Auth\AuthController@Sendmail');
+    Route::any('/change/{email}','Auth\AuthController@ChangePassword');
+});
 
-//Route::post('/sendmail/{email}/{id}','Auth\AuthController@Sendmail');
-Route::any('/change/{email}','Auth\AuthController@ChangePassword');
