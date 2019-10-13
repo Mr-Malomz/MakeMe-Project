@@ -266,17 +266,17 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser}) => {
         e.preventDefault();
         const {email, password} = value;
         const creds = {email: email, password: password};
-        // loginUser(creds)
-        // setValue({...value, email: '', password: ''})
+        loginUser(creds)
+        setValue({...value, email: '', password: ''})
 
-        axios.post('http://127.0.0.1:8000/api/login', {
-            headers: {
-                // 'Content-Type': 'application/json',
-                // 'Accept': 'application/json',
-            },
-            body: `email=${creds.email}&password=${creds.password}`
-        })
-            .then(response => console.log(response.data))
+        // axios.post('http://127.0.0.1:8000/api/login', {
+        //     headers: {
+        //         // 'Content-Type': 'application/json',
+        //         // 'Accept': 'application/json',
+        //     },
+        //     body: `email=${creds.email}&password=${creds.password}`
+        // })
+        //     .then(response => console.log(response.data))
             // .then(user => {
             //     localStorage.setItem('id_token', user.Trans_Id)
             //     console.log(user)
