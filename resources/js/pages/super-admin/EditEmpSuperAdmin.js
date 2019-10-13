@@ -11,7 +11,7 @@ const EditEmpSuperAdminWrapper = styled.div `
     position: relative;
 
     .nav-hgt {
-        height: 165%;
+        height: 170%;
     }
 
     .main-content-side {

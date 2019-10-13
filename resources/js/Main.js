@@ -1,6 +1,7 @@
 import React from 'react';
 import { createGlobalStyle } from 'styled-components';
 import {Switch, Route} from 'react-router-dom';
+import { connect } from 'react-redux'
 import Home from './pages/login/Home';
 import Login_SignUp from './pages/login/Login_SignUp';
 import Workers from './pages/workers/Workers';
@@ -8,6 +9,7 @@ import Reception from './pages/receptionist/Reception';
 import Supervisor from './pages/supervisor/Supervisor';
 import SuperAdmin from './pages/super-admin/SuperAdmin';
 import Accountant from './pages/accountant/Accountant';
+import PrivateRoute from './components/PrivateRoute';
 
 const GlobalStyle = createGlobalStyle `
     * {
@@ -22,21 +24,37 @@ const GlobalStyle = createGlobalStyle `
     }
 `
 
-const Main = () => {
+const Main = ({isAuthenticated, user}, props) => {
     return (
         <>
             <GlobalStyle />
             <Switch>
                 <Route exact path='/' component={Home} />
                 <Route path='/register/' component={Login_SignUp}/>
-                <Route path='/workers/' component={Workers}/>
-                <Route path='/reception/' component={Reception}/>
-                <Route path='/supervisor/' component={Supervisor}/>
-                <Route path='/superadmin/' component={SuperAdmin}/>
-                <Route path='/accountant/' component={Accountant}/>
+                <PrivateRoute 
+                    path='/workers/' component={Workers} role="Workers" isAuthenticated={isAuthenticated} user={user}
+                />
+                <PrivateRoute 
+                    path='/reception/' component={Reception} role="Receptionist" isAuthenticated={isAuthenticated} user={user}
+                />
+                <PrivateRoute 
+                    path='/supervisor/' component={Supervisor} role="Supervisor" isAuthenticated={isAuthenticated} user={user}
+                />
+                <PrivateRoute 
+                    path='/superadmin/' component={SuperAdmin} role="Super Admin" isAuthenticated={isAuthenticated} user={user}
+                />
+                <PrivateRoute 
+                    path='/accountant/' component={Accountant} role="Accountant" isAuthenticated={isAuthenticated} user={user}
+                />
             </Switch>
         </>
     )
 }
 
-export default Main
+const mapStateToProps = state => {
+    return {
+        isAuthenticated: state.auth.isAuthenticated,
+        user: state.auth.user
+    }
+}
+export default connect(mapStateToProps)(Main)

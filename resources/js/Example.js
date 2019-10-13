@@ -1,6 +1,8 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {HashRouter as Router} from 'react-router-dom'
+import {BrowserRouter as Router} from 'react-router-dom';
+import { Provider } from 'react-redux';
+import store from './redux/store'
 import Main from './Main';
 
 
@@ -17,7 +19,9 @@ export default Example;
 
 if (document.getElementById('example')) {
     ReactDOM.render(
-        <Router>
-            <Example />
-        </Router>, document.getElementById('example'));
+        <Provider store={store}>
+            <Router>
+                <Example />
+            </Router>
+        </Provider>, document.getElementById('example'));
 }

@@ -43,11 +43,14 @@ const EditEmpFormWrap = styled.section `
 
                 .radio-wrp {
                     display: flex;
-                    justify-content: space-between;
+                    /* justify-content: space-between; */
                     margin-left: -10px;
                     width: 80%;
 
                     span {
+                        :nth-child(2) {
+                            transform: translateX(40px)
+                        }
                         span {
                             margin-left: 10px;
                             text-transform: capitalize;
@@ -108,6 +111,7 @@ const EditEmpForm = () => {
         lastname: '',
         email: '',
         value: '',
+        salary: '',
         showVal: false,
         selectedInput: 'none',
         role: ''
@@ -205,18 +209,18 @@ const EditEmpForm = () => {
                         />
                     </div>
                     <div className="inpt-wrap">
+                        <label htmlFor="salary">salary</label>
+                        <FormInput
+                            type="text"
+                            name='salary'
+                            value={data.salary}
+                            handleChange={handleChange}
+                            style={{borderColor: '#C4C4C4', marginLeft: '25px'}}
+                        />
+                    </div>
+                    <div className="inpt-wrap">
                         <label htmlFor="payment">pay. option</label>
                         <div className="radio-wrp">
-                            <span>
-                                <input 
-                                    type="radio" 
-                                    name="payment" 
-                                    value="salary" 
-                                    checked={data.selectedInput === 'salary'}
-                                    onChange={inputChangeOpen}
-                                />
-                                <span>salary</span>
-                            </span>
                             <span>
                                 <input 
                                     type="radio"
@@ -245,7 +249,7 @@ const EditEmpForm = () => {
                             type="text"
                             name='value'
                             required
-                            placeholder="enter a percentage / salary"
+                            placeholder="enter a percentage"
                             value={data.value}
                             handleChange={handleChange}
                             style={{borderColor: '#C4C4C4', marginLeft: '103px'}}

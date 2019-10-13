@@ -11,7 +11,7 @@ const CreateEmpSuperAdminWrapper = styled.div `
     position: relative;
 
     .nav-hgt {
-        height: 145%;
+        height: 155%;
     }
 
     .main-content-side {

@@ -1,9 +1,10 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import log from '../../assets/img/log.png';
 import FormInput from '../../components/FormInput';
 import Button from '../../components/Button';
+import ErrorField from '../../components/ErrorField';
 
 const LoginSignUpWrapper = styled.div `
     display: flex;
@@ -72,6 +73,11 @@ const ContentWrapper = styled.section `
         opacity: 0.7;
         }
 
+        small {
+            margin-bottom: 10px;
+            text-align: left !important;
+        }
+
         h1, p {
             margin-bottom: 20px;
         }
@@ -125,14 +131,59 @@ const Login_SignUp = () => {
     const [value, setValue] = useState({
         email: '',
         password1: '',
-        password2: ''
-    })
+        password2: '',
+        btnDisabled: true,
+        errorMsg: '',
+        isRegistered: false
+    });
 
     const handleChange = e => {
         setValue({
             ...value,
             [e.target.name]: e.target.value
         })
+    };
+
+    const passwordValidator = e => {
+        const password1 = document.getElementsByName('password1')[0].value;
+        const password2 = document.getElementsByName('password2')[0].value;
+        const number_count = /^.{6,}$/;
+
+        if (!number_count.test(password1)) {
+            setValue({
+                ...value,
+                errorMsg: 'Password must be greater than 6 Characters',
+                btnDisabled: true
+            })
+        } else if (password1 !== password2) {
+            setValue({
+                ...value,
+                errorMsg: 'Please check that you\'ve entered and confirmed your password on both field!',
+                btnDisabled: true
+            })
+        } else {
+            setValue({
+                ...value,
+                errorMsg: '',
+                btnDisabled: false
+            })
+        }
+    };
+
+    const handleSubmit = e => {
+        e.preventDefault()
+        setValue({...value, isRegistered: true})
+    }
+
+    if (value.isRegistered) {
+       return <Redirect to={{
+            pathname: '/',
+            state: { message: 'Please login with your email and password' }
+        }}/>
+    //    history.push({
+    //        pathname: '/',
+    //        state: {message: 'Please login with your email and password'}
+    //    })
     }
 
     return (
@@ -148,7 +199,7 @@ const Login_SignUp = () => {
                 <div className="login-logout-container">
                     <h1>welcome</h1>
                     <p>Let's get your account setup</p>
-                    <form action="">
+                    <form action="" onSubmit={handleSubmit}>
                         <div className="login-signup-cont">
                             <label htmlFor="email">Email *</label>
                             <FormInput 
@@ -171,6 +222,7 @@ const Login_SignUp = () => {
                                 required
                                 value={value.password1}
                                 handleChange={handleChange}
+                                onKeyUp={passwordValidator}
                             />
                         </div>
                         <div className="login-signup-cont">
@@ -183,10 +235,12 @@ const Login_SignUp = () => {
                                 required
                                 value={value.password2}
                                 handleChange={handleChange}
+                                onKeyUp={passwordValidator}
                             />
                         </div>
+                        <ErrorField error={value.errorMsg} />
                         <div className="login-signp-btn">
-                            <Button style={{backgroundColor: '#3B5998'}}>create</Button>
+                            <Button style={{backgroundColor: '#3B5998'}} disabled={value.btnDisabled}>create</Button>
                             <Link to='/' className="cancel-btn-home">cancel</Link>
                         </div>
                         <span>Already have an account ? <Link to='/'>Sign In</Link></span>
