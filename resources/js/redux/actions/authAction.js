@@ -34,7 +34,8 @@ export const loginUser = creds => {
     let config = {
         method: 'POST',
         headers: {'Content-Type': 'application/json', 'Accept': 'application/json',},
-        body: `email=${creds.email}&password=${creds.password}`
+        body: JSON.stringify({email: creds.email, password: creds.password})
+        // `email=${creds.email}&password=${creds.password}`
     }
 
     return dispatch => {
@@ -44,8 +45,8 @@ export const loginUser = creds => {
         return fetch('http://localhost:8000/api/login', config)
             .then(response => response.json())
             .then(user => {
-                localStorage.setItem('id_token', user.Trans_Id)
-                dispatch(receiveLogin(user))
+                localStorage.setItem('id_token', user[0].Trans_Id)
+                dispatch(receiveLogin(user[0]))
             })
             .catch(err => dispatch(loginError()))
             
@@ -74,8 +75,9 @@ const recieveLogout = () => {
 //log out
 export const logoutUser = () => {
     return dispatch => {
-        dispatch(requestLogout())
-        localStorage.removeItem('id_token')
-        dispatch(recieveLogout())
+        dispatch(requestLogout());
+        localStorage.removeItem('id_token');
+        localStorage.clear();
+        dispatch(recieveLogout());
     }
 }

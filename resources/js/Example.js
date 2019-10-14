@@ -1,9 +1,12 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import {BrowserRouter as Router} from 'react-router-dom';
+import {HashRouter as Router} from 'react-router-dom';
 import { Provider } from 'react-redux';
-import store from './redux/store'
+import {store} from './redux/store';
+import {persistor} from './redux/store';
+import { PersistGate } from 'redux-persist/integration/react';
 import Main from './Main';
+import Loader from './components/Loader';
 
 
 
@@ -20,8 +23,10 @@ export default Example;
 if (document.getElementById('example')) {
     ReactDOM.render(
         <Provider store={store}>
-            <Router>
-                <Example />
-            </Router>
+            <PersistGate loading={null} persistor={persistor}>
+                <Router>
+                    <Example />
+                </Router>
+            </PersistGate>
         </Provider>, document.getElementById('example'));
 }

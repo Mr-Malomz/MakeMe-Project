@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logoutUser } from '../redux/actions/authAction'
+import Loader from './Loader';
+import ErrorField from '../components/ErrorField';
 
 const HeaderWrapper = styled.header `
     min-width: 100%;
@@ -59,17 +63,34 @@ const HeaderWrapper = styled.header `
     }
 `;
 
-const Header = ({handleClick, ...otherProps}) => {
+const Header = ({isLoggingOut, logoutError, logoutUser, ...otherProps}) => {
     const {to} = {...otherProps};
+    const handleClick = () => {
+        return logoutUser();
+    }
     
     return (
         <HeaderWrapper>
             <nav>
                 {!location.href.endsWith(to) && <Link {...otherProps} className="nav-link-edit">edit profile</Link>}
-                <Link handleClick={handleClick} {...otherProps} className="nav-link-signout">sign out</Link>
+                <Link onClick={handleClick} {...otherProps} className="nav-link-signout">sign out</Link>
             </nav>
         </HeaderWrapper>
     )
 }
 
-export default Header
+const MapStateToProps = state => {
+    return {
+        isLoggingOut: state.auth.isLoggingOut,
+        logoutError: state.auth.logoutError
+    };
+};
+
+const MapDispatchToProps = dispatch => {
+    return {
+        logoutUser: () => dispatch(logoutUser())
+    };
+};
+
+export default connect(MapStateToProps, MapDispatchToProps)(Header);
+
