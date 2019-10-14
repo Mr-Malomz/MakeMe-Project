@@ -5,6 +5,7 @@ import FromSVG1 from '../../assets/svg/FormSVG1';
 import FormInput from '../FormInput';
 import Button from '../Button';
 import FormSVG from '../../assets/svg/FormSVG2';
+import { PostAPI } from '../PostAPI';
 
 const CreateEmpFormWrap = styled.section `
     width: 380px;
@@ -90,9 +91,12 @@ const CreateEmpForm = () => {
         email: '',
         salary: '',
         value: '',
+        jobtitle: '',
         showVal: false,
         selectedInput: 'none',
-        role: ''
+        role: '',
+        isLoading: false,
+        error: ''
     })
     
     const handleChange = e => {
@@ -125,11 +129,19 @@ const CreateEmpForm = () => {
         })
     };
 
+    const handleSubmit = e => {
+        e.preventDefault();
+        const datas = {
+
+        }
+        PostAPI('employee', datas, 'POST')
+    }
+
     return (
         <CreateEmpFormWrap>
             <FromSVG1 />
             <h1>new employee</h1>
-            <form action="">
+            <form action="" onSubmit={handleSubmit}>
                 <div className="inpt-wrap">
                     <label htmlFor="firstname">firstname</label>
                     <FormInput
@@ -176,12 +188,12 @@ const CreateEmpForm = () => {
                     </select>
                 </div>
                 <div className="inpt-wrap">
-                    <label htmlFor="lastname">job title</label>
+                    <label htmlFor="jobtitle">job title</label>
                     <FormInput
                         type="text"
-                        name='lastname'
+                        name='jobtitle'
                         required
-                        value={data.lastname}
+                        value={data.jobtitle}
                         handleChange={handleChange}
                         style={{borderColor: '#C4C4C4'}}
                     />

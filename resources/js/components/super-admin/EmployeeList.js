@@ -1,7 +1,9 @@
-import React from 'react';
+import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import FormInput from '../FormInput';
+import { GetAPI } from '../GetAPI';
+import Loader from '../Loader';
 
 const EmployeeListWrap = styled.section `
     width: 100%;
@@ -126,7 +128,40 @@ const EmployeeListWrap = styled.section `
     }
 `;
 
-const EmployeeList = ({handleChange}) => {
+const EmployeeList = () => {
+    const [data, setData] = useState({
+        search: '',
+        employees: [],
+        isLoading: false
+    });
+
+    useEffect(() => {
+        const fetchData = async () => {
+            setData({...data, isLoading: true}) 
+            await GetAPI('emps')
+            .then(result => {
+                setData({
+                    ...data,
+                    isLoading: false,
+                    employees: result
+                })
+            })
+        }
+        fetchData()
+        return () => {
+            
+        };
+    }, []);
+
+    const handleChange = e => {
+        setData({
+            ...data,
+            search: e.target.value
+        })
+    };
+
+    const {employees, isLoading} = data;
+
     return (
         <EmployeeListWrap>
             <div className="header-sect">
@@ -135,35 +170,41 @@ const EmployeeList = ({handleChange}) => {
                     <FormInput 
                         type="search"
                         style={{borderColor: '#C4C4C4', borderRadius: '5px', width: '200px', height: '35px'}}
-                        value=""
+                        value={data.search}
                         placeholder="search for an employee"
-                        handleChange={handleChange}
+                        onChange={handleChange}
                     />
                     <Link to='/superadmin/employees/create'>create new employee</Link>
                 </div>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>firstname</th>
-                        <th>lastname</th>
-                        <th>title</th>
-                        <th>created on</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>oluwakemi</td>
-                        <td>adedunmola</td>
-                        <td>nail technician</td>
-                        <td>25-sep-2019</td>
-                        <td><Link>manage</Link></td>
-                    </tr>
-                </tbody>
-            </table>
+            {isLoading ? <Loader /> : (
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>firstname</th>
+                            <th>lastname</th>
+                            <th>title</th>
+                            <th>created on</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {employees.map((employee, i) => (
+                            <tr key={i}>
+                                <td>{i+1}</td>
+                                <td>{employee.Employees}</td>
+                                <td>adedunmola</td>
+                                <td>nail technician</td>
+                                <td>25-sep-2019</td>
+                                <td><Link>manage</Link></td>
+                            </tr>
+                        ))}
+                        
+                    </tbody>
+                </table>
+            )}
+            
         </EmployeeListWrap>
     )
 }

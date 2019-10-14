@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import { createGlobalStyle } from 'styled-components';
 import {Switch, Route} from 'react-router-dom';
 import { connect } from 'react-redux'
@@ -24,7 +24,9 @@ const GlobalStyle = createGlobalStyle `
     }
 `
 
-const Main = ({isAuthenticated, user}, props) => {
+const Main = ({isAuthenticated, user, receiveLogin}) => {
+    
+    
     return (
         <>
             <GlobalStyle />
@@ -56,5 +58,7 @@ const mapStateToProps = state => {
         isAuthenticated: state.auth.isAuthenticated,
         user: state.auth.user
     }
-}
+};
+
+
 export default connect(mapStateToProps)(Main)

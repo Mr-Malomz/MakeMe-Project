@@ -13,6 +13,7 @@ const LoaderContainer = styled.section`
     position: absolute;
     right: 40%;
     top: 50%;
+    z-index: 20;
 
     @media(max-width: 450px) {
         right: 25%
