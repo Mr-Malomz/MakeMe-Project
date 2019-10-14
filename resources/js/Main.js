@@ -3,6 +3,7 @@ import { createGlobalStyle } from 'styled-components';
 import {Switch, Route} from 'react-router-dom';
 import { connect } from 'react-redux'
 import Home from './pages/login/Home';
+//import Success from './pages/login/Success';
 import Login_SignUp from './pages/login/Login_SignUp';
 import Workers from './pages/workers/Workers';
 import Reception from './pages/receptionist/Reception';
