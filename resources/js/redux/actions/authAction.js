@@ -31,7 +31,7 @@ export const loginUser = creds => {
     
     let config = {
         method: 'POST',
-        headers: {'Content-Type': 'application/json', 'Accept': 'application/json',},
+        headers: {'Content-Type': 'application/json', 'Accept': 'application/json'},
         body: JSON.stringify({email: creds.email, password: creds.password})
         // `email=${creds.email}&password=${creds.password}`
     }

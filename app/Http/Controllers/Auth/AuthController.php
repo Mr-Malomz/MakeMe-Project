@@ -359,7 +359,7 @@ class AuthController extends Controller
     //Endpoint to return all employee details
     public function Emps()
     {
-        $emp = DB::select('call spSelectAllEmp')->simplePaginate(25);
+        $emp = DB::select('call AllEmp');
         if ($emp) {
             return response()->json($emp);
         } else {

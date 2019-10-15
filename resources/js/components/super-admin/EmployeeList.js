@@ -182,12 +182,12 @@ const EmployeeList = ({fetchEmployees, isLoading, fetchError, employees}) => {
                     </thead>
                     <tbody>
                         {employees.map((employee, i) => (
-                            <tr key={i}>
+                            <tr key={employee.Emp_Id}>
                                 <td>{i+1}</td>
-                                <td>{employee.Employees}</td>
-                                <td>adedunmola</td>
-                                <td>nail technician</td>
-                                <td>25-sep-2019</td>
+                                <td>{employee.Firstname}</td>
+                                <td>{employee.Surname}</td>
+                                <td>{employee.Title}</td>
+                                <td>{employee.Date_Created.replace(/ .*/,'')}</td>
                                 <td><Link>manage</Link></td>
                             </tr>
                         ))}
