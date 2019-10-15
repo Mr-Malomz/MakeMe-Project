@@ -1,5 +1,3 @@
-import axios from 'axios'
-
 //Login actions
 export const LOGIN_REQUEST = 'LOGIN_REQUEST';
 export const LOGIN_SUCCCESS = 'LOGIN_SUCCESS';
