@@ -125,10 +125,10 @@ class AuthController extends Controller
             //encrypt the email and id using .encrypt($email & $id) each
             //send the mail with the email and the id to the get route
             //of the email e.g: /mail/{email}/{id}
-            $email = encrypt($pro->email);
-            $id = encrypt($pro->id);
-            
-            return redirect('mail/' . $email . '/' . $id);
+            $d_email = encrypt($pro->email);
+            $d_id = encrypt($pro->id);
+            //dd($p->id.'<br/>'.$pro->email);
+            return redirect('mail/' . $d_email . '/' . $d_id);
         } else {
             $msg = "error, something happened";
             return response()->json($msg);

@@ -266,19 +266,6 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser, locati
         e.preventDefault();
         const {email, password} = value;
         const creds = {email: email, password: password};
-<<<<<<< HEAD
-        // loginUser(creds)
-        // setValue({...value, email: '', password: ''})
-
-        axios.post('https://httpbin.org/post', {
-            headers: {
-                'Content-Type': 'application/json',
-                // 'Accept': 'application/json',
-            },
-            body: `email=${creds.email}&password=${creds.password}`
-        })
-            .then(response => console.log(response.data))
-=======
         loginUser(creds)
         setValue({...value, email: '', password: ''})
 
@@ -290,7 +277,6 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser, locati
         //     body: `email=${creds.email}&password=${creds.password}`
         // })
         //     .then(response => console.log(response))
->>>>>>> 1e0183744d5e4f5d5e7b3074340868781dbdc00f
             // .then(user => {
             //     localStorage.setItem('id_token', user.Trans_Id)
             //     console.log(user)
