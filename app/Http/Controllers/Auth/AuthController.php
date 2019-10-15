@@ -296,7 +296,7 @@ class AuthController extends Controller
         }
         else {
             $pro = "Error, something happened.";
-            return response()->json($pro);
+            return response()->json($pro, 400);
         }
     }
     
