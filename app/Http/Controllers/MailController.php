@@ -9,7 +9,8 @@ use Illuminate\Http\Request;
 class MailController extends Controller
 {
     public function send($email, $id)
-    {        
+    {   
+        dd($email);     
         $e_email = decrypt($email);
         $sent = Mail::to($e_email)->send(new MailTrap());
         $msg = "";
