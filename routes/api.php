@@ -38,7 +38,7 @@ Route::group(['middleware' => 'cors'],function(){
     Route::post('/update','Auth\AuthController@UpdateEmployee');//UPDATE EMPLOYEE DETAIL
     Route::post('/employee/{id}','Auth\AuthController@DeleteEmp');//DELETE EMPLOYEE
     Route::post('/notif','Auth\AuthController@CreateNotif');//CREATE NOTIFICATION
-    Route::get('/notifs','Auth\AuthController@Employee');//SHOW ALL NOTIFICATION
+    Route::get('/notifs','Auth\AuthController@showNotif');//SHOW ALL NOTIFICATION
     //<!--------------END SUPER ADMIN OPERATIONS-------------->
 
     //<!--------------BEGIN SIGN UP OPERATION-------------->
@@ -48,7 +48,7 @@ Route::group(['middleware' => 'cors'],function(){
     //<!--------------END SIGN UP OPERATION-------------->
 
     //<!--------------BEGIN EMPLOYEE OPERATIONS-------------->
-    Route::post('/login','Auth\AuthController@LoginEmp');//EMPLOYEE LOGIN
+    Route::get('/login','Auth\AuthController@LoginEmp');//EMPLOYEE LOGIN
     Route::get('/reset','Auth\AuthController@ChangePassword');//RESET/CHANGE PASSWORD
     Route::post('/update','Auth\AuthController@UpdateEmp');//UPDATE EMPLOYEE PROFILE
     Route::get('/forgot/{email}','Auth\AuthController@forgotPass');//FORGOT PASSWORD

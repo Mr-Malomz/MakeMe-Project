@@ -125,9 +125,10 @@ class AuthController extends Controller
             //encrypt the email and id using .encrypt($email & $id) each
             //send the mail with the email and the id to the get route
             //of the email e.g: /mail/{email}/{id}
-            $d_email = encrypt($pro->email);
-            $d_id = encrypt($pro->id);
-            return redirect('mail/' . $d_email . '/' . $d_id);
+            $email = encrypt($pro->email);
+            $id = encrypt($pro->id);
+            
+            return redirect('mail/' . $email . '/' . $id);
         } else {
             $msg = "error, something happened";
             return response()->json($msg);
@@ -177,8 +178,9 @@ class AuthController extends Controller
     //Enpoint to create notification
     public function CreateNotif(Request $request)
     {
-        $notif = DB::insert('call spNotification (?, ?)', [
+        $notif = DB::insert('call spNotification (?, ?, ?)', [
             101,
+            null,//notificatio_id
             $request->messg
         ]);
         if ($notif) {
@@ -192,7 +194,11 @@ class AuthController extends Controller
     //Enpoint to show notification
     public function showNotif()
     {
-        $notif = DB::select('call spNotification (?)', [102]);
+        $notif = DB::select('call spNotification (?, ?, ?)', [
+            102,
+            null,//notificatio_id
+            null//$request->messg
+        ]);
         if ($notif) {
             return response()->json($notif);
         } else {
@@ -285,7 +291,7 @@ class AuthController extends Controller
             return response()->json($pro, 200, ['Access-Control-Allow-Origin' => '*']);
         } else {
             $pro = "Error, something happened.";
-            return response()->json($pro);
+            return response()->json($pro, 400);
         }
     }
 
@@ -353,7 +359,7 @@ class AuthController extends Controller
     //Endpoint to return all employee details
     public function Emps()
     {
-        $emp = DB::select('call spSelectAllEmp');
+        $emp = DB::select('call spSelectAllEmp')->simplePaginate(25);
         if ($emp) {
             return response()->json($emp);
         } else {
