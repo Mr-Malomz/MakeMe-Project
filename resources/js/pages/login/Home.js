@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { loginUser } from '../../redux/actions/authAction';
-import { Redirect, withRouter } from 'react-router-dom';
+import { Redirect } from 'react-router-dom';
 import { Glide } from 'react-glide';
 import "react-glide/lib/reactGlide.css";
 import LoginSVG1 from '../../assets/svg/LoginSVG1';
@@ -244,7 +244,7 @@ const FormHomeWrapper = styled.div `
     }
 `;
 
-const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser}) => {
+const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser, location}) => {
 
     const initialState = {
         email: "",
@@ -266,6 +266,7 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser}) => {
         e.preventDefault();
         const {email, password} = value;
         const creds = {email: email, password: password};
+<<<<<<< HEAD
         // loginUser(creds)
         // setValue({...value, email: '', password: ''})
 
@@ -277,6 +278,19 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser}) => {
             body: `email=${creds.email}&password=${creds.password}`
         })
             .then(response => console.log(response.data))
+=======
+        loginUser(creds)
+        setValue({...value, email: '', password: ''})
+
+        // axios.post('http://127.0.0.1:8000/api/login', {
+        //     headers: {
+        //         // 'Content-Type': 'application/json',
+        //         // 'Accept': 'application/json',
+        //     },
+        //     body: `email=${creds.email}&password=${creds.password}`
+        // })
+        //     .then(response => console.log(response))
+>>>>>>> 1e0183744d5e4f5d5e7b3074340868781dbdc00f
             // .then(user => {
             //     localStorage.setItem('id_token', user.Trans_Id)
             //     console.log(user)
@@ -287,26 +301,27 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser}) => {
     }
 
     //check for authentication
+    const referer = location.state ? location.state.from : null;
     if (isAuthenticated) {
         switch (user.Job_Role) {
             case "Super Admin":
-                return <Redirect to="/superadmin/" />
+                return <Redirect to={referer || "/superadmin"} />
                 break;
             
             case "Accountant":
-                return <Redirect to="/accountant/" />
+                return <Redirect to={referer || "/accountant"} />
                 break;
             
             case "Supervisor":
-                return <Redirect to="/supervisor/" />
+                return <Redirect to={referer || "/supervisor"} />
                 break;
 
             case "Reception":
-                return <Redirect to="/reception/" />
+                return <Redirect to={referer || "/reception"} />
                 break;
 
             case "Workers":
-                return <Redirect to="/workers/" />
+                return <Redirect to={referer || "/workers"} />
                 break;
             
         }
@@ -324,7 +339,6 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser}) => {
                         <h1>welcome back</h1>
                         <p>Please log in with your details</p>
                         {loginError || typeof user === 'string' && <ErrorField error="Incorrect Password or Username" />}
-                        {/* <ErrorField error={location.message}/> */}
                         <form action="" onSubmit={handleSubmit}>
                             <div className="form-input-log">
                                 <label htmlFor="email">Email</label>
