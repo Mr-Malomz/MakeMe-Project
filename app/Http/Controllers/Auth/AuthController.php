@@ -7,6 +7,10 @@ use DB;
 use crypt;
 use Hash;
 use Illuminate\Http\Request;
+use Illuminate\Contracts\Support\Jsonable;
+use \Illuminate\Pagination\LengthAwarePaginator;
+//use Illuminate\Http\JsonResponse;
+use \Illuminate\Routing\ResponseFactory;
 
 class AuthController extends Controller
 {
@@ -104,7 +108,10 @@ class AuthController extends Controller
     //Endpoint to add employee
     public function Employee(Request $request)
     {
-        $pro = DB::insert('call spMakeMeForEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+        $payment = ($request->payment == '')? null : $request->payment;
+        $salary = ($request->salary == '')? null : $request->salary;
+        $commission = ($request->commission == ''? null : $request->commission);
+        $pro = DB::select('call spMakeMeForEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             1001,
             null, //empid
             $request->title,
@@ -114,9 +121,9 @@ class AuthController extends Controller
             null, //$request->midnme,
             null, //$request->dob,
             null, //$request->phone,
-            $request->payment,
-            $request->salary,
-            $request->commission,
+            $payment,
+            $salary,
+            $commission,
             $request->role,
             null, //$request->pass,
             null //$request->passold
@@ -125,10 +132,12 @@ class AuthController extends Controller
             //encrypt the email and id using .encrypt($email & $id) each
             //send the mail with the email and the id to the get route
             //of the email e.g: /mail/{email}/{id}
-            $d_email = encrypt($pro->email);
-            $d_id = encrypt($pro->id);
+
+            $email = encrypt($pro[0]->Email);
+            $id = encrypt($pro[0]->Emp_Id);
             //dd($p->id.'<br/>'.$pro->email);
-            return redirect('mail/' . $d_email . '/' . $d_id);
+            //return response()->json($pro);
+            return redirect('//mail/' . $email . '/' . $id);
         } else {
             $msg = "error, something happened";
             return response()->json($msg);
@@ -359,9 +368,14 @@ class AuthController extends Controller
     //Endpoint to return all employee details
     public function Emps()
     {
-        $emp = DB::select('call spSelectAllEmp')->simplePaginate(25);
+        $emp = DB::select(DB::raw('call AllEmp'));
         if ($emp) {
-            return response()->json($emp);
+            $current_page = LengthAwarePaginator::resolveCurrentPage();
+            $paginator = 10;
+            $emps = array_slice($emp, ($current_page * $paginator) - 1, $paginator, true );
+            $empr = new LengthAwarePaginator($current_page, count($emps), $paginator);  
+            //$semp = $emp->paginate(6)->toJson();
+            return response()->json($empr);
         } else {
             $msg = "error, something happened.";
             return response()->json($msg);
