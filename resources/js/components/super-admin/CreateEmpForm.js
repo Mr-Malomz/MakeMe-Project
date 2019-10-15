@@ -6,6 +6,7 @@ import FormInput from '../FormInput';
 import Button from '../Button';
 import FormSVG from '../../assets/svg/FormSVG2';
 import { PostAPI } from '../PostAPI';
+import Loader from '../Loader';
 
 const CreateEmpFormWrap = styled.section `
     width: 380px;
@@ -132,13 +133,29 @@ const CreateEmpForm = () => {
     const handleSubmit = e => {
         e.preventDefault();
         const datas = {
-
+            firstname: data.firstname,
+            lastname: data.lastname,
+            email: data.email,
+            role: data.role,
+            title: data.jobtitle,
+            salary: data.salary,
+            payment: data.selectedInput,
+            commission: data.value
         }
-        PostAPI('employee', datas, 'POST')
+        setData({...data, isLoading: true});
+        PostAPI('employee', datas, 'POST').then(response => console.log(response))
+            // .then(response => { 
+            //     // if (response) {
+                    
+            //     // } else {
+                    
+            //     // }
+            // })
     }
 
     return (
         <CreateEmpFormWrap>
+            {data.isLoading && <Loader />}
             <FromSVG1 />
             <h1>new employee</h1>
             <form action="" onSubmit={handleSubmit}>

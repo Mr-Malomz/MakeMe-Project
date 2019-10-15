@@ -112,6 +112,7 @@ const EditEmpForm = () => {
         email: '',
         value: '',
         salary: '',
+        jobTitle: '',
         showVal: false,
         selectedInput: 'none',
         role: ''
@@ -198,12 +199,12 @@ const EditEmpForm = () => {
                         </select>
                     </div>
                     <div className="inpt-wrap">
-                        <label htmlFor="lastname" style={{width: '70px'}}>job title</label>
+                        <label htmlFor="jobTitle" style={{width: '70px'}}>job title</label>
                         <FormInput
                             type="text"
-                            name='lastname'
+                            name='jobTitle'
                             required
-                            value={data.lastname}
+                            value={data.jobTitle}
                             handleChange={handleChange}
                             style={{borderColor: '#C4C4C4', marginLeft: '8px'}}
                         />
