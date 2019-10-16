@@ -108,9 +108,9 @@ class AuthController extends Controller
     //Endpoint to add employee
     public function Employee(Request $request)
     {
-        $payment = ($request->payment == '')? null : $request->payment;
-        $salary = ($request->salary == '')? null : $request->salary;
-        $commission = ($request->commission == ''? null : $request->commission);
+        $payment = ($request->payment == '') ? null : $request->payment;
+        $salary = ($request->salary == '') ? null : $request->salary;
+        $commission = ($request->commission == '' ? null : $request->commission);
         $pro = DB::select('call spMakeMeForEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             1001,
             null, //empid
@@ -189,7 +189,7 @@ class AuthController extends Controller
     {
         $notif = DB::insert('call spNotification (?, ?, ?)', [
             101,
-            null,//notificatio_id
+            null, //notificatio_id
             $request->messg
         ]);
         if ($notif) {
@@ -205,8 +205,8 @@ class AuthController extends Controller
     {
         $notif = DB::select('call spNotification (?, ?, ?)', [
             102,
-            null,//notificatio_id
-            null//$request->messg
+            null, //notificatio_id
+            null //$request->messg
         ]);
         if ($notif) {
             return response()->json($notif);
@@ -368,16 +368,12 @@ class AuthController extends Controller
     //Endpoint to return all employee details
     public function Emps()
     {
-<<<<<<< HEAD
-        $emp = DB::select('call AllEmp');
-=======
         $emp = DB::select(DB::raw('call AllEmp'));
->>>>>>> c9a95697ca33ce7ce623bcc57f93e8383df24149
         if ($emp) {
             $current_page = LengthAwarePaginator::resolveCurrentPage();
             $paginator = 10;
-            $emps = array_slice($emp, ($current_page * $paginator) - 1, $paginator, true );
-            $empr = new LengthAwarePaginator($current_page, count($emps), $paginator);  
+            $emps = array_slice($emp, ($current_page * $paginator) - 1, $paginator, true);
+            $empr = new LengthAwarePaginator($current_page, count($emps), $paginator);
             //$semp = $emp->paginate(6)->toJson();
             return response()->json($empr);
         } else {

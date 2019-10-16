@@ -3,9 +3,6 @@ import { createGlobalStyle } from 'styled-components';
 import {Switch, Route} from 'react-router-dom';
 import { connect } from 'react-redux'
 import Home from './pages/login/Home';
-//import NewPassword from './pages/login/NewPassword';
-//import ForgotPassword from './pages/login/ForgotPassword';
-//import Success from './pages/login/Success';
 import Login_SignUp from './pages/login/Login_SignUp';
 import Workers from './pages/workers/Workers';
 import Reception from './pages/receptionist/Reception';
@@ -14,6 +11,8 @@ import SuperAdmin from './pages/super-admin/SuperAdmin';
 import Accountant from './pages/accountant/Accountant';
 import PrivateRoute from './components/PrivateRoute';
 import Success from './pages/login/Success';
+import NewPassword from './pages/login/NewPassword';
+import ForgotPassword from './pages/login/ForgotPassword';
 
 const GlobalStyle = createGlobalStyle `
     * {
@@ -38,6 +37,8 @@ const Main = ({isAuthenticated, user, receiveLogin}) => {
                 <Route exact path='/' component={Home} />
                 <Route path='/register/' component={Login_SignUp}/>
                 <Route path='/congratulations/' component={Success} />
+                <Route path='/forgotpassword/' component={ForgotPassword} />
+                <Route path='/newpassword/' component={NewPassword} />
                 <PrivateRoute 
                     path='/workers/' component={Workers} role="Workers" isAuthenticated={isAuthenticated} user={user}
                 />

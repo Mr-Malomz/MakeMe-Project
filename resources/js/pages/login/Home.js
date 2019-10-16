@@ -343,7 +343,7 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser, locati
                             <div className="form-input-log">
                                 <label htmlFor="password">Password</label>
                                 <input type="password" name="password" className="input-home" value={value.password} onChange={handleChange} required/>
-                                <Link to="/">Forget your password ?</Link>
+                                <Link to="/forgotpassword">Forget your password ?</Link>
                             </div>
                             <button>sign in</button>
                          </form>
