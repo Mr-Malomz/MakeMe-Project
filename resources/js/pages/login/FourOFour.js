@@ -1,0 +1,45 @@
+import React from 'react';
+import styled from 'styled-components';
+import FourOFourSVG from '../../assets/svg/FourOFourSVG';
+import {Link} from 'react-router-dom';
+
+
+const FourOFourWrapper = styled.div`
+    background: #F5F5F5;
+    width: 100%;
+    height: 100vh;
+
+    .info-center{
+        width: 100%;
+        text-align: center;
+        margin-bottom: 50px;
+
+        h1{
+            opacity: 0.6;
+            padding-top: 3rem;
+            margin-bottom: 30px;
+        }
+        a{
+            text-decoration: none;
+            background: #3B5998;
+            color: white;
+            padding: 5px 25px 5px 25px;
+            border-radius: 7px;
+        }
+    }
+    
+`;
+
+export default function FourOFour() {
+    return (
+        <FourOFourWrapper>
+            <div className="info-center">
+                <h1>Page Doesn't exist</h1>
+                <Link to="/">Go Back</Link>
+            </div>
+            <div className="svg-container">
+                <FourOFourSVG />
+            </div>
+        </FourOFourWrapper>
+    )
+}
