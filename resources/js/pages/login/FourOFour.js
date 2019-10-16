@@ -7,7 +7,7 @@ import {Link} from 'react-router-dom';
 const FourOFourWrapper = styled.div`
     background: #F5F5F5;
     width: 100%;
-    height: 100vh;
+    height: fit-content;
 
     .info-center{
         width: 100%;
@@ -27,7 +27,9 @@ const FourOFourWrapper = styled.div`
             border-radius: 7px;
         }
     }
-    
+    @media (max-width: 1024px) {
+        height: 100vh;
+    }
 `;
 
 export default function FourOFour() {
