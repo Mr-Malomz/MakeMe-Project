@@ -276,10 +276,7 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser, locati
         e.preventDefault();
         const {email, password} = value;
         const creds = {email: email, password: password};
-<<<<<<< HEAD
-=======
         
->>>>>>> cc1bac454f5d34724b336db5a4acc97475ecba7d
         loginUser(creds)
         setValue({...value, email: '', password: ''})
 
