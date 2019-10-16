@@ -2,11 +2,11 @@ import React, {useEffect} from 'react';
 import { createGlobalStyle } from 'styled-components';
 import {Switch, Route} from 'react-router-dom';
 import { connect } from 'react-redux'
-import Home from './pages/login/Home';
+//import Home from './pages/login/Home';
 //import NewPassword from './pages/login/NewPassword';
 //import ForgotPassword from './pages/login/ForgotPassword';
 //import Success from './pages/login/Success';
-//import FourOFour from './pages/login/FourOFour';
+import FourOFour from './pages/login/FourOFour';
 import Login_SignUp from './pages/login/Login_SignUp';
 import Workers from './pages/workers/Workers';
 import Reception from './pages/receptionist/Reception';
@@ -36,7 +36,7 @@ const Main = ({isAuthenticated, user, receiveLogin}) => {
         <>
             <GlobalStyle />
             <Switch>
-                <Route exact path='/' component={Home} />
+                <Route exact path='/' component={FourOFour} />
                 <Route path='/register/' component={Login_SignUp}/>
                 <Route path='/congratulations/' component={Success} />
                 <PrivateRoute 

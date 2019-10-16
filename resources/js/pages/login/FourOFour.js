@@ -12,9 +12,9 @@ const FourOFourWrapper = styled.div`
     .info-center{
         width: 100%;
         text-align: center;
-        margin-bottom: 50px;
+        margin-bottom: 40px;
 
-        h1{
+        h2{
             opacity: 0.6;
             padding-top: 3rem;
             margin-bottom: 30px;
@@ -34,7 +34,7 @@ export default function FourOFour() {
     return (
         <FourOFourWrapper>
             <div className="info-center">
-                <h1>Page Doesn't exist</h1>
+                <h2>Page doesn't exist</h2>
                 <Link to="/">Go Back</Link>
             </div>
             <div className="svg-container">
