@@ -15,11 +15,13 @@ use \Illuminate\Routing\ResponseFactory;
 class AuthController extends Controller
 {
 
-    //api Route
-    public function apis(Request $request)
-    {
-        return $request->user();
-    }
+   //Endpoint to verify user
+   public function verif($email)
+   {
+       //decrypt the email and id using decrypt($email & $id) each
+       $d_email = encrypt($email);
+       return redirect('http://127.0.0.1:8000/#/register/'.$d_email)->with($email);
+   }
 
     //<!--------------BEGIN CUSTOMER OPERATIONS-------------->
     //Endpoint to create job
@@ -132,12 +134,10 @@ class AuthController extends Controller
             //encrypt the email and id using .encrypt($email & $id) each
             //send the mail with the email and the id to the get route
             //of the email e.g: /mail/{email}/{id}
-
             $email = encrypt($pro[0]->Email);
             $id = encrypt($pro[0]->Emp_Id);
-            //dd($p->id.'<br/>'.$pro->email);
-            //return response()->json($pro);
-            return redirect('//mail/' . $email . '/' . $id);
+            //response()->json('Successful.');
+            return redirect('/api/mail/' . $email . '/' . $id);
         } else {
             $msg = "error, something happened";
             return response()->json($msg);
@@ -235,13 +235,14 @@ class AuthController extends Controller
     {
         //decrypt the email and id using decrypt($email & $id) each
         $d_email = decrypt($email);
-        $d_id = 'Essential';
+        $d_id = decrypt($id);
         $veri = DB::statement('call spMakeMeVerifyAccount (?, ?)', [
             $d_id,
             $d_email
         ]);
         if ($veri) {
-            $this->confirm($d_email, $d_id);
+            //$this->confirm($d_email, $d_id);
+            return response()->json($d_email);
         } else {
             $msg = "Error, something happened.";
             return response()->json($msg);
@@ -249,10 +250,10 @@ class AuthController extends Controller
     }
 
     //Endpoint to finish user sign up 
-    public function confirm($email, $pass)
+    public function confirm($email, $password)
     {
         //dd($pass);
-        $pass = Hash::make($pass);
+        $pass = base64_encode($password);
         $veri = DB::select('call spConfirm_Passwd (?, ?)', [
             $email,
             $pass,

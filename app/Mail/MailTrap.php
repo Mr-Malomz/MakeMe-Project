@@ -7,6 +7,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
 use Illuminate\Contracts\Queue\ShouldQueue;
+use Illuminate\Support\Facades\Crypt;
 
 class MailTrap extends Mailable
 {
@@ -35,9 +36,11 @@ class MailTrap extends Mailable
         $pos = strpos($all, '/');
         $email = strtok($all,'/');
         $id = substr($all,$pos+1);
+        $d_email = decrypt($email);
         $param = [
             'email' => $email,
-            'id' => $id
+            'id' => $id,
+            'd_email' => $d_email
         ];
         return $this->view('make')->with($param);
     }

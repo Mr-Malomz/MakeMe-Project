@@ -1,6 +1,3 @@
-<?php 
-    
-?>
 
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
@@ -77,7 +74,7 @@ div[style*="margin: 16px 0"] {
                     <div>Welcome to Make me, your account was created with the email below</div>
                     <br>
                     <ul>
-                        <li>Your email is: <span><u style="color: blue;"> xyz@abc.com</u></span></li>
+                        <li>Your email is: <span><u style="color: blue;"> {{$d_email}}</u></span></li>
                     </ul>
                     
                     <ul>

@@ -19,7 +19,9 @@ use Illuminate\Http\Request;
 
 Route::get('/user', 'Auth\AuthController@apis')->middleware('auth:api');
 
-Route::group(['middleware' => 'cors'], function () {
+Route::any('/ver/{email}', 'Auth\AuthController@Verif');
+
+Route::group(['middleware' => 'cors'],function(){
     //<!--------------BEGIN INTERNAL OPERATIONS--------------->
     Route::any('/mail/{email}/{id}', 'MailController@send'); //SEND MAIL
     Route::any('/emps', 'Auth\AuthController@Emps'); //SHOWS ALL EMPLOYEE NAMES
@@ -42,9 +44,9 @@ Route::group(['middleware' => 'cors'], function () {
     //<!--------------END SUPER ADMIN OPERATIONS-------------->
 
     //<!--------------BEGIN SIGN UP OPERATION-------------->
-    Route::any('/verify/{email}/{id}', 'Auth\AuthController@verify'); //CHANGE VERIFIED STATUS
-    Route::any('/sendmail/{email}/{id}', 'Auth\AuthController@Sendmail'); //SEND THE MAIL ON EMP CREATION
-    Route::any('/comfirm/{email}/{id}', 'Auth\AuthController@confirm'); //FINISH USER SIGN UP
+    Route::any('/verify/{email}/{id}','Auth\AuthController@verify');//CHANGE VERIFIED STATUS
+    Route::any('/sendmail/{email}/{id}','Auth\AuthController@Sendmail');//SEND THE MAIL ON EMP CREATION
+    Route::any('/comfirm/{email}/{password}','Auth\AuthController@confirm');//FINISH USER SIGN UP
     //<!--------------END SIGN UP OPERATION-------------->
 
     Route::any('/ver/{email}', 'Auth\AuthController@verif'); //CHANGE VERIFIED STATUS
