@@ -14,6 +14,7 @@ import Supervisor from './pages/supervisor/Supervisor';
 import SuperAdmin from './pages/super-admin/SuperAdmin';
 import Accountant from './pages/accountant/Accountant';
 import PrivateRoute from './components/PrivateRoute';
+import Success from './pages/login/Success';
 
 const GlobalStyle = createGlobalStyle `
     * {
@@ -37,6 +38,7 @@ const Main = ({isAuthenticated, user, receiveLogin}) => {
             <Switch>
                 <Route exact path='/' component={Home} />
                 <Route path='/register/' component={Login_SignUp}/>
+                <Route path='/congratulations/' component={Success} />
                 <PrivateRoute 
                     path='/workers/' component={Workers} role="Workers" isAuthenticated={isAuthenticated} user={user}
                 />

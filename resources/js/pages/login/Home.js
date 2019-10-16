@@ -2,7 +2,7 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { connect } from 'react-redux';
 import { loginUser } from '../../redux/actions/authAction';
-import { Redirect } from 'react-router-dom';
+import { Redirect, Link } from 'react-router-dom';
 import { Glide } from 'react-glide';
 import "react-glide/lib/reactGlide.css";
 import LoginSVG1 from '../../assets/svg/LoginSVG1';
@@ -125,6 +125,16 @@ const FormHomeWrapper = styled.div `
                     > label {
                         margin-bottom: 8px;
                         display: block;
+                    }
+
+                    a {
+                        text-decoration: none;
+                        color: white;
+                        font-size: 12px;
+
+                        :hover {
+                            border-bottom: 1px solid white;
+                        }
                     }
 
                     > input {
@@ -266,6 +276,10 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser, locati
         e.preventDefault();
         const {email, password} = value;
         const creds = {email: email, password: password};
+<<<<<<< HEAD
+=======
+        
+>>>>>>> cc1bac454f5d34724b336db5a4acc97475ecba7d
         loginUser(creds)
         setValue({...value, email: '', password: ''})
 
@@ -333,6 +347,7 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser, locati
                             <div className="form-input-log">
                                 <label htmlFor="password">Password</label>
                                 <input type="password" name="password" className="input-home" value={value.password} onChange={handleChange} required/>
+                                <Link to="/">Forget your password ?</Link>
                             </div>
                             <button>sign in</button>
                          </form>

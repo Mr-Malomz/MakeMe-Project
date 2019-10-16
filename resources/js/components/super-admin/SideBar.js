@@ -146,7 +146,7 @@ const SideBar = () => {
            <div className="profile-content">
                 <img src={pic1} alt="profile photo"/>
                 <p>joy ayodeji</p>
-                <h4>receptionist</h4>
+                <h4>super admin</h4>
            </div>
            <section className="mini-nav">
                 <NavLink 

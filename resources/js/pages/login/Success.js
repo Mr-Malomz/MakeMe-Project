@@ -91,9 +91,11 @@ width: 100%;
                     font-size: 15px;
                 }
         }
+    }
 
     @media (max-width: 700px) {
-        background: white;
+            background: white;
+
             .login-logout-container {
                 margin: auto;
                 width: 460px;
@@ -109,6 +111,8 @@ width: 100%;
                     font-size: 15px;
                 }
         }
+
+    }
   
 `;
 const Success = () => {

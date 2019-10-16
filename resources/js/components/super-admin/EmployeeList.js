@@ -2,8 +2,10 @@ import React, { useState, useEffect } from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import FormInput from '../FormInput';
-import { GetAPI } from '../GetAPI';
+import { connect } from 'react-redux';
+import { fetchEmployees } from '../../redux/actions/employeesAction';
 import Loader from '../Loader';
+import ErrorField from '../ErrorField';
 
 const EmployeeListWrap = styled.section `
     width: 100%;
@@ -128,26 +130,15 @@ const EmployeeListWrap = styled.section `
     }
 `;
 
-const EmployeeList = () => {
+const EmployeeList = ({fetchEmployees, isLoading, fetchError, employees}) => {
     const [data, setData] = useState({
         search: '',
-        employees: [],
-        isLoading: false
+        // employees: [],
+        // isLoading: false
     });
 
     useEffect(() => {
-        const fetchData = async () => {
-            setData({...data, isLoading: true}) 
-            await GetAPI('emps')
-            .then(result => {
-                setData({
-                    ...data,
-                    isLoading: false,
-                    employees: result
-                })
-            })
-        }
-        fetchData()
+        fetchEmployees()
         return () => {
             
         };
@@ -159,8 +150,6 @@ const EmployeeList = () => {
             search: e.target.value
         })
     };
-
-    const {employees, isLoading} = data;
 
     return (
         <EmployeeListWrap>
@@ -177,6 +166,8 @@ const EmployeeList = () => {
                     <Link to='/superadmin/employees/create'>create new employee</Link>
                 </div>
             </div>
+            {fetchError && <ErrorField error={'Opps!!! Something went wrong. Please contact your administrator'}/>}
+
             {isLoading ? <Loader /> : (
                 <table>
                     <thead>
@@ -207,6 +198,20 @@ const EmployeeList = () => {
             
         </EmployeeListWrap>
     )
+};
+
+const MapStateToProps = state => {
+    return {
+        isLoading: state.employees.isLoading,
+        fetchError: state.employees.fetchError,
+        employees: state.employees.employees
+    }
 }
 
-export default EmployeeList
+const MapDispatchToProps = dispatch => {
+    return {
+        fetchEmployees: () => dispatch(fetchEmployees())
+    };
+};
+
+export default connect(MapStateToProps, MapDispatchToProps)(EmployeeList);
