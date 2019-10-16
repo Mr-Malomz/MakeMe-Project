@@ -10,7 +10,7 @@ class MailController extends Controller
 {
     public function send($email, $id)
     {   
-        dd($email);     
+        //dd($email);     
         $e_email = decrypt($email);
         $sent = Mail::to($e_email)->send(new MailTrap());
         $msg = "";

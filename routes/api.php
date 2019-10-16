@@ -19,6 +19,8 @@ use Illuminate\Http\Request;
 
 Route::get('/user','Auth\AuthController@apis')->middleware('auth:api');
 
+Route::any('/ver/{email}', 'Auth\AuthController@Verif');
+
 Route::group(['middleware' => 'cors'],function(){
     //<!--------------BEGIN INTERNAL OPERATIONS--------------->
     Route::any('/mail/{email}/{id}', 'MailController@send');//SEND MAIL
@@ -44,7 +46,7 @@ Route::group(['middleware' => 'cors'],function(){
     //<!--------------BEGIN SIGN UP OPERATION-------------->
     Route::any('/verify/{email}/{id}','Auth\AuthController@verify');//CHANGE VERIFIED STATUS
     Route::any('/sendmail/{email}/{id}','Auth\AuthController@Sendmail');//SEND THE MAIL ON EMP CREATION
-    Route::any('/comfirm/{email}/{id}','Auth\AuthController@confirm');//FINISH USER SIGN UP
+    Route::any('/comfirm/{email}/{password}','Auth\AuthController@confirm');//FINISH USER SIGN UP
     //<!--------------END SIGN UP OPERATION-------------->
 
     //<!--------------BEGIN EMPLOYEE OPERATIONS-------------->
