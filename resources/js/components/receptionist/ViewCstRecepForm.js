@@ -154,7 +154,8 @@ const CreateCstRecepFormWrap = styled.section `
 const ViewCstRecepForm = () => {
     const [data, setData] = useState({
         selectedInput: '',
-        name: '',
+        firstname: '',
+        lastname: '',
         email: '',
         gender: 'gender',
         phonenumber: '',
@@ -233,10 +234,21 @@ const ViewCstRecepForm = () => {
                 <div className="input-wrp">
                     <FormInput
                         type="text"
-                        name="name"
-                        placeholder="Name"
-                        value={data.name}
-                        disabled
+                        name="firstname"
+                        placeholder="Firstname"
+                        value={data.firstname}
+                        required
+                        handleChange={handleChange}
+                        style={{borderColor: '#7C7C7C', borderRadius: '5px'}}
+                    />
+                </div>
+                <div className="input-wrp">
+                    <FormInput
+                        type="text"
+                        name="lastname"
+                        placeholder="Lastname"
+                        value={data.lastname}
+                        required
                         handleChange={handleChange}
                         style={{borderColor: '#7C7C7C', borderRadius: '5px'}}
                     />
