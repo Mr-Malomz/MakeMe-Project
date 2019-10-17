@@ -246,6 +246,12 @@ const FormHomeWrapper = styled.div `
         width: 100%;
         .form-content {
             width: 100%;
+
+            .form-input-log {
+                a {
+                    display: inline-block;
+                }
+            }
         }
 
         section.socials{
@@ -276,7 +282,6 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser, locati
         e.preventDefault();
         const {email, password} = value;
         const creds = {email: email, password: password};
-        
         loginUser(creds)
         setValue({...value, email: '', password: ''})
 
@@ -344,7 +349,7 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser, locati
                             <div className="form-input-log">
                                 <label htmlFor="password">Password</label>
                                 <input type="password" name="password" className="input-home" value={value.password} onChange={handleChange} required/>
-                                <Link to="/">Forget your password ?</Link>
+                                <Link to="/forgotpassword">Forget your password ?</Link>
                             </div>
                             <button>sign in</button>
                          </form>

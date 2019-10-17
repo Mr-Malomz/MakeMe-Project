@@ -17,6 +17,7 @@ export const authReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoggingIn: true,
+                loginError: false,
                 creds: action.creds
             }
             
@@ -25,6 +26,7 @@ export const authReducer = (state = initialState, action) => {
                 ...state,
                 isLoggingIn: false,
                 isAuthenticated: true,
+                loginError: false,
                 role: action.role,
                 user: action.user,
             }

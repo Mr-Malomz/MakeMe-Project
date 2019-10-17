@@ -1,7 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import Button from '../Button';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { fetchNotifications } from '../../redux/actions/notificationsAction'
+import Loader from '../Loader';
+import { PostAPI } from '../../components/PostAPI'
+import ErrorField from '../ErrorField';
+import MessageField from '../MessageField';
 
 const MessageEmpFormWrap = styled.section `
     width: 100%;
@@ -17,6 +23,10 @@ const MessageEmpFormWrap = styled.section `
         color: rgba(0, 0, 0, 0.6);
         border-radius: 10px 10px 0px 0px;
         font-weight: 600
+    }
+
+    small {
+        margin-top: 10px;
     }
 
     form {
@@ -134,9 +144,12 @@ const MessageEmpFormWrap = styled.section `
     }
 `;
 
-const MessageEmpForm = () => {
+const MessageEmpForm = ({ fetchNotifications, notifications, notifError, isLoading }) => {
     const [data, setData] = useState({
         text: '',
+        loading: false,
+        error: false,
+        success: false
     })
 
     const handleChange = e => {
@@ -146,10 +159,45 @@ const MessageEmpForm = () => {
         })
     };
 
+    const handleSubmit = e => {
+        e.preventDefault();
+        setData({...data, loading: true});
+        let datas = {"messg": data.text};
+        PostAPI('notif', datas, 'POST')
+            .then(response => {
+                if (response) {
+                    setData({
+                        ...data,
+                        loading: false,
+                        error: false,
+                        success: true,
+                        text: ''
+                    })
+                } else {
+                    setData({
+                        ...data,
+                        loading: false,
+                        error: true,
+                        success: false
+                    })
+                }
+            });
+    };
+
+    useEffect(() => {
+        fetchNotifications()
+        return () => {
+            
+        };
+    }, []);
+
     return (
         <MessageEmpFormWrap>
             <h1>Notification System</h1>
-            <form action="">
+            {data.loading && <Loader />}
+            {data.error && <ErrorField error={'Opps!!! Something went wrong. Please contact your administrator'}/>}
+            {data.success && <MessageField msg={'Notification sent!!!'} />}
+            <form action="" onSubmit={handleSubmit}>
                 <div className="form-cont">
                     <div className="inpt-wrap">
                         <label htmlFor="firstname">message</label>
@@ -167,28 +215,47 @@ const MessageEmpForm = () => {
                 </div>    
                 <div className="btn-wrapper">
                     <h3>notification history</h3>
-                    <table>
-                        <thead>
-                            <tr>
-                                <th>messages</th>
-                                <th>action</th>
-                            </tr>
-                        </thead>
-                        <tbody>
-                            <tr>
-                                <td>There will be a meeting at by friday</td>
-                                <td><Link>delete</Link></td>
-                            </tr>
-                            <tr>
-                                <td>There will be a meeting at by friday</td>
-                                <td><Link>delete</Link></td>
-                            </tr>
-                        </tbody>
-                    </table>
+                    {notifError && <ErrorField error={'Opps!!! Something went wrong. Please contact your administrator'}/>}
+
+                    {isLoading ? <Loader /> : (
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>messages</th>
+                                    {/* <th>action</th> */}
+                                </tr>
+                            </thead>
+                            <tbody>
+                            {notifications.filter((notification, i) => (i < 5))
+                                .map((notification, i) => (
+                                <tr key={notification.Notf_Id}>
+                                    <td>{notification.Message}</td>
+                                    {/* <td><Link>delete</Link></td> */}
+                                </tr>
+                            ))
+                            }
+                            </tbody>
+                        </table>
+                    )} 
+                    
                 </div>
             </form>
         </MessageEmpFormWrap>
     )
-}
+};
 
-export default MessageEmpForm
+const MapStateToProps = state => {
+    return {
+        isLoading: state.notifications.isLoading,
+        notifError: state.notifications.fetchError,
+        notifications: state.notifications.notifications
+    }
+};
+
+const MapDispatchToProps = dispatch => {
+    return {
+        fetchNotifications: () => dispatch(fetchNotifications())
+    };
+};
+
+export default connect(MapStateToProps, MapDispatchToProps)(MessageEmpForm);

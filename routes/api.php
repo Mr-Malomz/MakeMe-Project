@@ -17,31 +17,36 @@ use Illuminate\Http\Request;
 //     return $request->user();
 // });
 
-Route::get('/user','Auth\AuthController@apis')->middleware('auth:api');
+Route::get('/user', 'Auth\AuthController@apis')->middleware('auth:api');
 
 Route::any('/ver/{email}', 'Auth\AuthController@Verif');
 
 Route::group(['middleware' => 'cors'],function(){
     //<!--------------BEGIN INTERNAL OPERATIONS--------------->
+<<<<<<< HEAD
     Route::any('/mail/{email}/{id}', 'MailController@send');//SEND MAIL
     Route::any('/pail/{email}/{id}', 'MailController@send');//SEND MAIL
     Route::any('/emps', 'Auth\AuthController@Emps');//SHOWS ALL EMPLOYEE NAMES
+=======
+    Route::any('/mail/{email}/{id}', 'MailController@send'); //SEND MAIL
+    Route::any('/emps', 'Auth\AuthController@Emps'); //SHOWS ALL EMPLOYEE NAMES
+>>>>>>> f91408a65c8d7e24ba3184a9931fdda63c3f54c8
     //<!--------------BEGIN INTERNAL OPERATIONS--------------->
 
     //<!--------------BEGIN CUSTOMER OPERATIONS-------------->
-    Route::post('/create','Auth\AuthController@createJobCard');//CREATE JOB CARD
-    Route::post('/pro','Auth\AuthController@Pro');//REGISTER CUSTOMER
-    Route::post('/search','Auth\AuthController@SearchCustomer');//SEARCH FOR CUSTOMER
-    Route::post('/editCus','Auth\AuthController@EditCustomer');//EDIT/UPDATE CUSTOMER DETAILS
-    Route::get('/delCus/{id}','Auth\AuthController@DeleteCustomer');//DELETE CUSTOMER
+    Route::post('/create', 'Auth\AuthController@createJobCard'); //CREATE JOB CARD
+    Route::post('/pro', 'Auth\AuthController@Pro'); //REGISTER CUSTOMER
+    Route::post('/search', 'Auth\AuthController@SearchCustomer'); //SEARCH FOR CUSTOMER
+    Route::post('/editCus', 'Auth\AuthController@EditCustomer'); //EDIT/UPDATE CUSTOMER DETAILS
+    Route::get('/delCus/{id}', 'Auth\AuthController@DeleteCustomer'); //DELETE CUSTOMER
     //<!--------------END CUSTOMER OPERATIONS-------------->
 
     //<!--------------BEGIN SUPER ADMIN OPERATIONS-------------->
-    Route::post('/employee','Auth\AuthController@Employee');//CREATE EMPLOYEE
-    Route::post('/update','Auth\AuthController@UpdateEmployee');//UPDATE EMPLOYEE DETAIL
-    Route::post('/employee/{id}','Auth\AuthController@DeleteEmp');//DELETE EMPLOYEE
-    Route::post('/notif','Auth\AuthController@CreateNotif');//CREATE NOTIFICATION
-    Route::get('/notifs','Auth\AuthController@showNotif');//SHOW ALL NOTIFICATION
+    Route::post('/employee', 'Auth\AuthController@Employee'); //CREATE EMPLOYEE
+    Route::post('/update', 'Auth\AuthController@UpdateEmployee'); //UPDATE EMPLOYEE DETAIL
+    Route::post('/employee/{id}', 'Auth\AuthController@DeleteEmp'); //DELETE EMPLOYEE
+    Route::post('/notif', 'Auth\AuthController@CreateNotif'); //CREATE NOTIFICATION
+    Route::get('/notifs', 'Auth\AuthController@showNotif'); //SHOW ALL NOTIFICATION
     //<!--------------END SUPER ADMIN OPERATIONS-------------->
 
     //<!--------------BEGIN SIGN UP OPERATION-------------->
@@ -50,10 +55,13 @@ Route::group(['middleware' => 'cors'],function(){
     Route::any('/comfirm/{email}/{password}','Auth\AuthController@confirm');//FINISH USER SIGN UP
     //<!--------------END SIGN UP OPERATION-------------->
 
+    Route::any('/ver/{email}', 'Auth\AuthController@verif'); //CHANGE VERIFIED STATUS
+
+
     //<!--------------BEGIN EMPLOYEE OPERATIONS-------------->
-    Route::post('/login','Auth\AuthController@LoginEmp');//EMPLOYEE LOGIN
-    Route::get('/reset','Auth\AuthController@ChangePassword');//RESET/CHANGE PASSWORD
-    Route::post('/update','Auth\AuthController@UpdateEmp');//UPDATE EMPLOYEE PROFILE
-    Route::get('/forgot/{email}','Auth\AuthController@forgotPass');//FORGOT PASSWORD
+    Route::post('/login', 'Auth\AuthController@LoginEmp'); //EMPLOYEE LOGIN
+    Route::get('/reset', 'Auth\AuthController@ChangePassword'); //RESET/CHANGE PASSWORD
+    Route::post('/update', 'Auth\AuthController@UpdateEmp'); //UPDATE EMPLOYEE PROFILE
+    Route::get('/forgot/{email}', 'Auth\AuthController@forgotPass'); //FORGOT PASSWORD
     //<!--------------END EMPLOYEE OPERATIONS-------------->
 });

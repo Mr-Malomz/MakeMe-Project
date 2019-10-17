@@ -18,6 +18,7 @@ export const employeesReducer = (state = initialState, action) => {
             return {
                 ...state,
                 isLoading: false,
+                fetchError: false,
                 employees: action.employees
             }
 
