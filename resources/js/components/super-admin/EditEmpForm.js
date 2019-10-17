@@ -1,8 +1,9 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import FormInput from '../FormInput';
 import Button from '../Button';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux'
 
 const EditEmpFormWrap = styled.section `
     width: 100%;
@@ -105,17 +106,18 @@ const EditEmpFormWrap = styled.section `
     }
 `;
 
-const EditEmpForm = () => {
+const EditEmpForm = (props) => {
     const [data, setData] = useState({
         firstname: '',
-        lastname: '',
+        surname: '',
         email: '',
         value: '',
         salary: '',
         jobTitle: '',
         showVal: false,
         selectedInput: 'none',
-        role: ''
+        role: '',
+        id: null
     })
 
     const handleChange = e => {
@@ -148,6 +150,19 @@ const EditEmpForm = () => {
         })
     };
 
+    useEffect(() => {
+        let id = props.props.match.params.Emp_Id;
+        setData({
+            ...data,
+            id: id,
+        })
+        return () => {
+           
+        };
+    }, []);
+
+    
+    const {employee} = props;
     return (
         <EditEmpFormWrap>
             <h1>Manage selected employee</h1>
@@ -159,20 +174,20 @@ const EditEmpForm = () => {
                             type="text"
                             name='firstname'
                             required
-                            value={data.firstname}
+                            value={employee[0].Firstname}
                             handleChange={handleChange}
                             style={{borderColor: '#C4C4C4'}}
                         />
                     </div>
                     <div className="inpt-wrap">
-                        <label htmlFor="lastname">lastname</label>
+                        <label htmlFor="surname">surname</label>
                         <FormInput
                             type="text"
-                            name='lastname'
+                            name='surname'
                             required
-                            value={data.lastname}
+                            value={employee[0].Surname}
                             handleChange={handleChange}
-                            style={{borderColor: '#C4C4C4'}}
+                            style={{borderColor: '#C4C4C4', marginLeft: '6px'}}
                         />
                     </div>
                     <div className="inpt-wrap">
@@ -181,7 +196,7 @@ const EditEmpForm = () => {
                             name="role" 
                             id="" 
                             required
-                            value={data.role}
+                            value={employee[0].Job_Role}
                             onChange={selectHandle}
                             style={{
                                 borderColor: '#7C7C7C', 
@@ -204,7 +219,7 @@ const EditEmpForm = () => {
                             type="text"
                             name='jobTitle'
                             required
-                            value={data.jobTitle}
+                            value={employee[0].Title}
                             handleChange={handleChange}
                             style={{borderColor: '#C4C4C4', marginLeft: '8px'}}
                         />
@@ -214,7 +229,7 @@ const EditEmpForm = () => {
                         <FormInput
                             type="text"
                             name='salary'
-                            value={data.salary}
+                            value={employee[0].Salary}
                             handleChange={handleChange}
                             style={{borderColor: '#C4C4C4', marginLeft: '25px'}}
                         />
@@ -251,7 +266,7 @@ const EditEmpForm = () => {
                             name='value'
                             required
                             placeholder="enter a percentage"
-                            value={data.value}
+                            value={employee[0].Commission}
                             handleChange={handleChange}
                             style={{borderColor: '#C4C4C4', marginLeft: '103px'}}
                         />
@@ -262,8 +277,8 @@ const EditEmpForm = () => {
                         <FormInput
                             type="text"
                             name='email'
-                            required
-                            value={data.email}
+                            disabled
+                            value={employee[0].Email}
                             handleChange={handleChange}
                             style={{borderColor: '#C4C4C4', marginLeft: '25px'}}
                         />
@@ -277,6 +292,13 @@ const EditEmpForm = () => {
             </form>
         </EditEmpFormWrap>
     )
+};
+
+const MapStateToProps = (state, props) => {
+    let id = props.props.match.params.Emp_Id;
+    return {
+        employee: state.employees.employees.filter(employee => employee.Emp_Id == id )
+    }
 }
 
-export default EditEmpForm
+export default connect(MapStateToProps)(EditEmpForm);

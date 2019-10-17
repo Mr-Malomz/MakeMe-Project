@@ -130,7 +130,7 @@ const EmployeeListWrap = styled.section `
     }
 `;
 
-const EmployeeList = ({fetchEmployees, isLoading, fetchError, employees}) => {
+const EmployeeList = ({fetchEmployees, isLoading, fetchError, employees, props}) => {
     const [data, setData] = useState({
         search: '',
         // employees: [],
@@ -138,7 +138,8 @@ const EmployeeList = ({fetchEmployees, isLoading, fetchError, employees}) => {
     });
 
     useEffect(() => {
-        fetchEmployees()
+        fetchEmployees();
+        
         return () => {
             
         };
@@ -150,7 +151,7 @@ const EmployeeList = ({fetchEmployees, isLoading, fetchError, employees}) => {
             search: e.target.value
         })
     };
-
+    
     return (
         <EmployeeListWrap>
             <div className="header-sect">
@@ -188,10 +189,9 @@ const EmployeeList = ({fetchEmployees, isLoading, fetchError, employees}) => {
                                 <td>{employee.Surname}</td>
                                 <td>{employee.Title}</td>
                                 <td>{employee.Date_Created.replace(/ .*/,'')}</td>
-                                <td><Link>manage</Link></td>
+                                <td><Link to={`/superadmin/employees/edit/${employee.Emp_Id}`}>manage</Link></td>
                             </tr>
                         ))}
-                        
                     </tbody>
                 </table>
             )}

@@ -75,7 +75,7 @@ const EmployeeSuperAdminWrapper = styled.div `
 `;
 
 
-const EmployeeSuperAdmin = () => {
+const EmployeeSuperAdmin = (props) => {
     const [inputs, setInputs] = useState({
         width: true,
         toggleNav: true,
@@ -97,7 +97,7 @@ const EmployeeSuperAdmin = () => {
                 <div className="superad-content">
                     <span className="title"><i className="material-icons">group</i>  employees</span>
                     <div className="super-content-main">
-                        <EmployeeList />
+                        <EmployeeList props={props}/>
                     </div>
                 </div>
             </div>

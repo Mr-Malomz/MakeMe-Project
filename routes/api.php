@@ -38,7 +38,7 @@ Route::group(['middleware' => 'cors'],function(){
 
     //<!--------------BEGIN SUPER ADMIN OPERATIONS-------------->
     Route::post('/employee', 'Auth\AuthController@Employee'); //CREATE EMPLOYEE
-    Route::post('/update', 'Auth\AuthController@UpdateEmployee'); //UPDATE EMPLOYEE DETAIL
+    Route::post('/updates', 'Auth\AuthController@UpdateEmployee'); //UPDATE EMPLOYEE DETAIL
     Route::post('/employee/{id}', 'Auth\AuthController@DeleteEmp'); //DELETE EMPLOYEE
     Route::post('/notif', 'Auth\AuthController@CreateNotif'); //CREATE NOTIFICATION
     Route::get('/notifs', 'Auth\AuthController@showNotif'); //SHOW ALL NOTIFICATION

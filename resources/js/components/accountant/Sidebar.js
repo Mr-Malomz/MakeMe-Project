@@ -140,8 +140,8 @@ const SideBar = () => {
            <div className="responsive-sidebar"></div>
            <div className="profile-content">
                 <img src={pic1} alt="profile photo"/>
-                <p>joy ayodeji</p>
-                <h4>receptionist</h4>
+                <p>chidinma Nnamani</p>
+                <h4>accountant</h4>
            </div>
            <section className="mini-nav">
                 <NavLink 
