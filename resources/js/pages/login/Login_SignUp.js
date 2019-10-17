@@ -180,7 +180,7 @@ const Login_SignUp = () => {
         e.preventDefault();
         const href = window.location.href;
         const trans_id = href.substring(href.lastIndexOf('/') + 1);
-        let datas = {'trans_id': trans_id, 'password': value.password1};
+        let datas = {'Trans_ID': trans_id, 'password': value.password1};
         setValue({...value, loading: true})
         PostAPI('confirm', datas, 'POST')
             .then(response => {
@@ -190,9 +190,9 @@ const Login_SignUp = () => {
                         loading: false,
                         errorFetch: false,
                         success: true,
-                        isRegistered: false
+                        isRegistered: true
                     })
-                } else {
+                } else {``
                     setValue({
                         ...value,
                         loading: false,
