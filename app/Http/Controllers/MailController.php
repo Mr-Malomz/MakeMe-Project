@@ -13,13 +13,12 @@ class MailController extends Controller
         //dd($email);     
         $e_email = decrypt($email);
         $sent = Mail::to($e_email)->send(new MailTrap());
-        $msg = "";
-        if ($sent) {
-            $msg = "mail sent successfully";
+        if (Mail::failures()) {
+            $msg = "mail wasn't sent.";           
             return response()->json($msg);
         }
         else {
-            $msg = "mail wasn't sent.";
+            $msg = "mail sent successfully";
             return response()->json($msg);
         }
     }

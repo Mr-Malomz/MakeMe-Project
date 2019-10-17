@@ -135,7 +135,7 @@ class AuthController extends Controller
             //send the mail with the email and the id to the get route
             //of the email e.g: /mail/{email}/{id}
             $email = encrypt($pro[0]->Email);
-            $id = encrypt($pro[0]->Emp_Id);
+            $id = encrypt($pro[0]->Trans_Id);
             //response()->json('Successful.');
             return redirect('/api/mail/' . $email . '/' . $id);
         } else {
@@ -298,22 +298,19 @@ class AuthController extends Controller
             null //$request->passold
         ]);
         if ($pro) {
-            return response()->json($pro, 200, ['Access-Control-Allow-Origin' => '*']);
+            return response()->json($pro);
         } else {
             $pro = "Error, something happened.";
-            return response()->json($pro, 400);
+            return response()->json($pro);
         }
     }
 
     //Enpoint for employee to change password
-    public function ChangePassword($pass, $id)
+    public function ChangePassword($password, $id)
     {
-        // $email = $request->email;
-        // $id = $request->id;
-        //dd($email);
-        $pass = DB::insert('call spMakeMeReset_Passwd(?, ?)', [$id, $pass]);
-        if ($pass) {
-            return response()->json($pass);
+        $pass = DB::insert('call spMakeMeReset_Passwd(?, ?)', [$id, $password]);
+        if ($password) {
+            return response()->json($password);
         } else {
             $pass = "Error, something happened";
             return response()->json($pass);
@@ -361,27 +358,93 @@ class AuthController extends Controller
         }
     }
 
+    //Endpoint to send email to reset
+    public function Sender($email, $id)
+    {
+        $d_email = encrypt($email);
+        $d_id = encrypt($id);
+        //dd($d_id);
+        return redirect('api/pail/' . $d_email . '/' . $d_id);
+    }
+
     //<!--------------END EMPLOYEE OPERATIONS-------------->
 
 
     //<!--------------BEGIN OTHER OPERATIONS-------------->
 
-    //Endpoint to return all employee details
-    public function Emps()
-    {
-        $emp = DB::select(DB::raw('call AllEmp'));
-        if ($emp) {
-            $current_page = LengthAwarePaginator::resolveCurrentPage();
-            $paginator = 10;
-            $emps = array_slice($emp, ($current_page * $paginator) - 1, $paginator, true );
-            $empr = new LengthAwarePaginator($current_page, count($emps), $paginator);  
-            //$semp = $emp->paginate(6)->toJson();
-            return response()->json($empr);
-        } else {
-            $msg = "error, something happened.";
-            return response()->json($msg);
-        }
-    }
+    // //Endpoint to return all employee details
+    // public function Emps()
+    // {
+    //     $emp = DB::select(DB::raw('call AllEmp'));
+    //     if ($emp) {
+    //         $current_page = LengthAwarePaginator::resolveCurrentPage();
+    //         $paginator = 10;
+    //         $emps = array_slice($emp, ($current_page * $paginator) - 1, $paginator, true );
+    //         $empr = new LengthAwarePaginator($current_page, count($emps), $paginator);  
+    //         //$semp = $emp->paginate(6)->toJson();
+    //         return response()->json($empr);
+    //     } else {
+    //         $msg = "error, something happened.";
+    //         return response()->json($msg);
+    //     }
+    // }
+     //Endpoint to return all employee details
+     public function Emps()
+     {
+         $emp = DB::select('call AllEmp');
+         if ($emp) {
+             return response()->json($emp);
+         } else {
+             $msg = "error, something happened.";
+             return response()->json($msg);
+         }
+     }
     //<!--------------END OTHER OPERATIONS-------------->
+
+    
+    //<!--------------BEGIN ACCOUNTANT OPERATIONS-------------->
+    //Endpoint to create nes service and price
+     public function CreateService(Request $request){
+        $crea = DB::select('call spCreateService (?, ?)',[
+            $request->name,
+            $request->price
+        ]);
+        if($crea){
+            return response()->json($crea);
+        }
+        else {
+            $crea = 'Error, something happened.';
+            return response()->json($crea);            
+        }
+     }
+
+     //Endpoint to call all services and price
+     public function Services(){
+        $crea = DB::select('call spSelectAllServices');
+        if($crea){
+            return response()->json($crea);
+        }
+        else {
+            $crea = 'Error, something happened.';
+            return response()->json($crea);            
+        }
+     }
+
+     //Endpoint to update service and price
+     public function UpdateService(Request $request){
+        $crea = DB::select('call spUpdateService (?, ?, ?)',[
+            $request->id,
+            $request->name,
+            $request->price
+        ]);
+        if($crea){
+            return response()->json($crea);
+        }
+        else {
+            $crea = 'Error, something happened.';
+            return response()->json($crea);            
+        }
+     }
+    //<!--------------END ACCOUNTANT OPERATIONS-------------->
 
 }
