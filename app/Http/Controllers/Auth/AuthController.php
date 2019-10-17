@@ -17,13 +17,13 @@ class AuthController extends Controller
 {
 
    //Endpoint to verify user
-   public function verif($email)
+   public function verif($email, $id)
    {
-       $pad = base64_encode($email);
+       //$pad = base64_encode($email);
        //dd($pad);
        //decrypt the email and id using decrypt($email & $id) each
-       $d_email = encrypt($email);
-    return URL::temporarySignedRoute('http://127.0.0.1:8000/#/register/{email}', now()->addMinutes(2));
+       //$d_email = encrypt($email);
+    return redirect('http://localhost:8000/api/'.$email.'/'.$id);
     //return redirect('url/'.$d_email);
    }
 
@@ -137,7 +137,7 @@ class AuthController extends Controller
     {
         $payment = ($request->payment == '') ? null : $request->payment;
         $salary = ($request->salary == '') ? null : $request->salary;
-        $commission = ($request->commission == '' ? null : $request->commission);
+        $commission = ($request->commission == '') ? null : $request->commission;
         $pro = DB::select('call spMakeMeForEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             1001,
             null, //empid
@@ -174,8 +174,8 @@ class AuthController extends Controller
     {
         $payment = ($request->payment == '') ? null : $request->payment;
         $salary = ($request->salary == '') ? null : $request->salary;
-        $commission = ($request->commission == '' ? null : $request->commission);
-        $pro = DB::insert('call spUpdateProfileEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+        $commission = ($request->commission == '') ? null : $request->commission;
+        $pro = DB::insert('call spUpdateProfileEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             null,//$request->empid,
             $request->title,
             $request->email,
@@ -183,7 +183,7 @@ class AuthController extends Controller
             $request->firstname,
             null,//$request->midnme,
             null, //$request->pass,
-            null,//$request->dob,
+            //null,//$request->dob,
             null,//$request->phone,
             $payment,
             $salary,
@@ -202,8 +202,9 @@ class AuthController extends Controller
 
 
     //Endpoint to delete Employee
-    public function DeleteEmp($id)
+    public function DeleteEmp(Request $request)
     {
+        $id = $request->id;
         $act = DB::insert('call spDeleteEmp (?)', [$id]);
         if ($act) {
             return response()->json($act);
@@ -300,7 +301,7 @@ class AuthController extends Controller
 
     //<!--------------END SIGN UP OPERATION-------------->
 
-    
+
     //<!--------------BEGIN EMPLOYEE OPERATIONS-------------->
 
     //Endpoint for employee login
@@ -400,10 +401,9 @@ class AuthController extends Controller
     }
 
     //Endpoint to verify and reset password
-    public function Email($email, $id)
+    public function Email($id)
     {
         //decrypt the email and id using decrypt($email & $id) each
-        $d_email = decrypt($email);
         $d_id = decrypt($id);
         return redirect('http://127.0.0.1:8000/#/newpassword/'.$d_id);
     }

@@ -20,4 +20,6 @@ Route::group(['middleware' => 'cors'], function(){
     //Route::post('/sendmail/{email}/{id}','Auth\AuthController@Sendmail');
     Route::any('/change/{email}','Auth\AuthController@ChangePassword');
 });
-
+Route::fallback(function () {
+    return redirect('http://localhost:8000/#/verify');
+});

@@ -78,9 +78,11 @@ div[style*="margin: 16px 0"] {
                     </ul>
                     
                     <ul>
-                        <li>Before proceeding, click <u><a href={{'http://localhost:8000/api/very/'.$email.'/'.$id}}  style="color: blue;">here</a></u> to activate your account OR  click on the link below</li>
+                        <li>Before proceeding, click <u><a href={{URL::temporarySignedRoute('very', now()->addMinutes(1440), ['id' => $id])}}  style="color: blue;">here</a></u> to activate your account OR  click on the link below</li>
+                        {{-- <li>Before proceeding, click <u><a href={{'http://localhost:8000/api/very/'.$id}}  style="color: blue;">here</a></u> to activate your account OR  click on the link below</li> --}}
                     </ul>
                     <br>
+                    <p>This link expires in 24 hours</p>
                     
                     <p>If you have not registered to join Makeme, please ignore this mail.</p>
 

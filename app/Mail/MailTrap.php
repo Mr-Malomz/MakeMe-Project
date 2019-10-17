@@ -41,7 +41,7 @@ class MailTrap extends Mailable
             $this->trim($url, 'http://localhost:8000/api/mail/', 'make');//for verify email on sign up
         }
         else{
-                return redirect('http://localhost:8000/twist');
+                return redirect('http://localhost:8000/verify');
             }
     }
 
