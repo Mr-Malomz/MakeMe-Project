@@ -44,11 +44,7 @@ class AuthController extends Controller
     //Endpoint to register customer
     public function Pro(Request $request)
     {
-<<<<<<< HEAD
         $emp = DB::insert('call spMakemeCustomer (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
-=======
-        $emp = DB::insert('call spCustomer (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
->>>>>>> b7290fb60185b65680494fc3028e5a2725014990
             null,
             100,
             $request->category,
