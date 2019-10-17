@@ -10,6 +10,7 @@ use Illuminate\Http\Request;
 use Illuminate\Contracts\Support\Jsonable;
 use \Illuminate\Pagination\LengthAwarePaginator;
 //use Illuminate\Http\JsonResponse;
+use Illuminate\Support\Facades\URL;
 use \Illuminate\Routing\ResponseFactory;
 #
 class AuthController extends Controller
@@ -19,10 +20,11 @@ class AuthController extends Controller
    public function verif($email)
    {
        $pad = base64_encode($email);
-       dd($pad);
+       //dd($pad);
        //decrypt the email and id using decrypt($email & $id) each
        $d_email = encrypt($email);
-       return redirect('http://127.0.0.1:8000/#/register/'.$d_email)->with($email);
+    return URL::temporarySignedRoute('http://127.0.0.1:8000/#/register/{email}', now()->addMinutes(2));
+    //return redirect('url/'.$d_email);
    }
 
     //<!--------------BEGIN CUSTOMER OPERATIONS-------------->
@@ -170,21 +172,25 @@ class AuthController extends Controller
     //Endpoint to update employee by super admin
     public function UpdateEmployee(Request $request)
     {
-        $pro = DB::insert('call spUpdateProfileEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
-            $request->empid,
+        $payment = ($request->payment == '') ? null : $request->payment;
+        $salary = ($request->salary == '') ? null : $request->salary;
+        $commission = ($request->commission == '' ? null : $request->commission);
+        $pro = DB::insert('call spUpdateProfileEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            null,//$request->empid,
             $request->title,
             $request->email,
-            $request->surn,
-            $request->fname,
-            $request->midnme,
+            $request->surname,
+            $request->firstname,
+            null,//$request->midnme,
             null, //$request->pass,
-            $request->dob,
-            $request->phone,
-            $request->payment,
-            $request->salary,
-            $request->comm,
+            null,//$request->dob,
+            null,//$request->phone,
+            $payment,
+            $salary,
+            $commission,
             $request->role,
             null, //$request->avatar
+            null,//$request->address
         ]);
         if ($pro) {
             return response()->json($pro);
@@ -294,7 +300,7 @@ class AuthController extends Controller
 
     //<!--------------END SIGN UP OPERATION-------------->
 
-
+    
     //<!--------------BEGIN EMPLOYEE OPERATIONS-------------->
 
     //Endpoint for employee login
@@ -344,7 +350,7 @@ class AuthController extends Controller
     //Endpoint to update employee by employee
     public function UpdateEmp(Request $request)
     {
-        $pro = DB::insert('call spUpdateProfileEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+        $pro = DB::insert('call spUpdateProfileEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             $request->empid,
             null, //$request->title,
             null, //$request->email,
@@ -370,12 +376,14 @@ class AuthController extends Controller
     }
 
     //Endpoint for forgot password
-    public function forgotPass($email)
+    public function forgotPass(Request $request)
     {
-        $pass = DB::select('call spMakeMe_Forgot_Pssword (?)', [$email]);
+        $email = encrypt($request->email);
+        $pass = DB::select('call spMakeMe_Forgot_Pssword (?)', [$request->email]);
         if ($pass) {
-            $id = $pass[0]->Emp_Id;
-            $this->ChangePassword($id);
+            $id = encrypt($pass[0]->Trans_Id);
+            return redirect('/api/pail/' . $email . '/' . $id);            
+            //return response()->json($pass);
         } else {
             $pass = "Error, something happened.";
             return response()->json($pass);
@@ -389,6 +397,15 @@ class AuthController extends Controller
         $d_id = encrypt($id);
         //dd($d_id);
         return redirect('api/pail/' . $d_email . '/' . $d_id);
+    }
+
+    //Endpoint to verify and reset password
+    public function Email($email, $id)
+    {
+        //decrypt the email and id using decrypt($email & $id) each
+        $d_email = decrypt($email);
+        $d_id = decrypt($id);
+        return redirect('http://127.0.0.1:8000/#/newpassword/'.$d_id);
     }
 
     //<!--------------END EMPLOYEE OPERATIONS-------------->

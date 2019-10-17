@@ -32,7 +32,23 @@ class MailTrap extends Mailable
     {
         
         $url = $request->url();
-        $all = ltrim($url, 'http://localhost:8000/api/mail/');
+        
+        if( stristr($url, 'pail') != ''){
+            $this->trim($url, 'http://localhost:8000/api/pail/', 'sake');//for reset password
+            //return $this->view('sake')->with($param);
+        }
+        else if ( stristr($url, 'mail') != ''){
+            $this->trim($url, 'http://localhost:8000/api/mail/', 'make');//for verify email on sign up
+        }
+        else{
+                return redirect('http://localhost:8000/twist');
+            }
+    }
+
+    public function trim($url, $ail, $view)
+    {
+        //$url = $request->url();
+        $all = ltrim($url, $ail);
         $pos = strpos($all, '/');
         $email = strtok($all,'/');
         $id = substr($all,$pos+1);
@@ -42,6 +58,6 @@ class MailTrap extends Mailable
             'id' => $id,
             'd_email' => $d_email
         ];
-        return $this->view('make')->with($param);
+        return $this->view($view)->with($param);
     }
 }
