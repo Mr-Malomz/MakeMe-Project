@@ -19,6 +19,7 @@ class MailController extends Controller
         }
         else {
             $msg = "mail sent successfully";
+            //$time = Mail::time();
             return response()->json($msg);
         }
     }

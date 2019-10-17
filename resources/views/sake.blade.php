@@ -71,15 +71,14 @@ div[style*="margin: 16px 0"] {
                     </div>  
                     <hr>
                     <p>Dear <span>[User]</span>,</p>
-                    <div>Welcome to Make me, your account was created with the email below</div>
+                    <div>Welcome to Make me, you want to reset your password</div>
                     <br>
                     <ul>
                         <li>Your email is: <span><u style="color: blue;"> {{$d_email}}</u></span></li>
                     </ul>
                     
                     <ul>
-                        <li>Before proceeding, click <u><a href={{'http://localhost:8000/api/ver/'.$email}}  style="color: blue;">here</a></u> to activate your account OR  click on the link below</li>
-                        {{-- <li>Before proceeding, click <u><a href={{'http://localhost:8000/api/verify/'.$email.'/'.$id}}  style="color: blue;">here</a></u> to activate your account OR  click on the link below</li> --}}
+                        <li>Before proceeding, click <u><a href={{'http://localhost:8000/api/very/'.$email.'/'.$id}}  style="color: blue;">here</a></u> to activate your account OR  click on the link below</li>
                     </ul>
                     <br>
                     
