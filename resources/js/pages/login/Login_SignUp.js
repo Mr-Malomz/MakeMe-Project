@@ -200,7 +200,7 @@ const Login_SignUp = () => {
                     <h1>welcome</h1>
                     <p>Let's get your account setup</p>
                     <form action="" onSubmit={handleSubmit}>
-                        <div className="login-signup-cont">
+                        {/* <div className="login-signup-cont">
                             <label htmlFor="email">Email *</label>
                             <FormInput 
                                 type="email" 
@@ -211,7 +211,7 @@ const Login_SignUp = () => {
                                 value={value.email}
                                 handleChange={handleChange}
                             />
-                        </div>
+                        </div> */}
                         <div className="login-signup-cont">
                             <label htmlFor="password1">Password *</label>
                             <FormInput 

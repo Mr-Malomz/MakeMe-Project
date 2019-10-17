@@ -13,6 +13,7 @@ import PrivateRoute from './components/PrivateRoute';
 import Success from './pages/login/Success';
 import NewPassword from './pages/login/NewPassword';
 import ForgotPassword from './pages/login/ForgotPassword';
+import FourOFour from './pages/login/FourOFour';
 
 const GlobalStyle = createGlobalStyle `
     * {
@@ -54,6 +55,7 @@ const Main = ({isAuthenticated, user, receiveLogin}) => {
                 <PrivateRoute 
                     path='/accountant/' component={Accountant} role="Accountant" isAuthenticated={isAuthenticated} user={user}
                 />
+                <Route component={FourOFour} />
             </Switch>
         </>
     )

@@ -246,6 +246,12 @@ const FormHomeWrapper = styled.div `
         width: 100%;
         .form-content {
             width: 100%;
+
+            .form-input-log {
+                a {
+                    display: inline-block;
+                }
+            }
         }
 
         section.socials{
