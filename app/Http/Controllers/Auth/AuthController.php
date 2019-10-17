@@ -175,7 +175,7 @@ class AuthController extends Controller
         $payment = ($request->payment == '') ? null : $request->payment;
         $salary = ($request->salary == '') ? null : $request->salary;
         $commission = ($request->commission == '' ? null : $request->commission);
-        $pro = DB::insert('call spUpdateProfileEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+        $pro = DB::insert('call spUpdateProfileEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             null,//$request->empid,
             $request->title,
             $request->email,
@@ -183,7 +183,7 @@ class AuthController extends Controller
             $request->firstname,
             null,//$request->midnme,
             null, //$request->pass,
-            null,//$request->dob,
+            // null,//$request->dob,
             null,//$request->phone,
             $payment,
             $salary,

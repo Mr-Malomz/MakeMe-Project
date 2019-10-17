@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import SideBar from '../../components/super-admin/SideBar';
 import HeaderMain from '../../components/HeaderMain';
 import EmployeeList from '../../components/super-admin/EmployeeList';
+import MessageField from '../../components/MessageField';
 
 const EmployeeSuperAdminWrapper = styled.div `
     width: 100vw;
@@ -89,6 +90,9 @@ const EmployeeSuperAdmin = (props) => {
         })
     }
 
+    const message = props.location.state ? props.location.state.message : null;
+    const delMessage = props.location.state ? props.location.state.delMessage : null;
+
     return (
         <EmployeeSuperAdminWrapper>
             {inputs.toggleNav && <SideBar />}
@@ -97,6 +101,8 @@ const EmployeeSuperAdmin = (props) => {
                 <div className="superad-content">
                     <span className="title"><i className="material-icons">group</i>  employees</span>
                     <div className="super-content-main">
+                        <MessageField msg={message} />
+                        <MessageField msg={delMessage} />
                         <EmployeeList props={props}/>
                     </div>
                 </div>
