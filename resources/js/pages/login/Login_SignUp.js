@@ -5,6 +5,9 @@ import log from '../../assets/img/log.png';
 import FormInput from '../../components/FormInput';
 import Button from '../../components/Button';
 import ErrorField from '../../components/ErrorField';
+import GetAPI from '../../components/GetAPI';
+import {PostAPI} from '../../components/PostAPI';
+import Loader from '../../components/Loader';
 
 const LoginSignUpWrapper = styled.div `
     display: flex;
@@ -129,12 +132,15 @@ const ContentWrapper = styled.section `
 `;
 const Login_SignUp = () => {
     const [value, setValue] = useState({
-        email: '',
+        token: '',
         password1: '',
         password2: '',
         btnDisabled: true,
         errorMsg: '',
-        isRegistered: false
+        isRegistered: false,
+        errorFetch: false,
+        loading: false,
+        success: false
     });
 
     const handleChange = e => {
@@ -171,8 +177,31 @@ const Login_SignUp = () => {
     };
 
     const handleSubmit = e => {
-        e.preventDefault()
-        setValue({...value, isRegistered: true})
+        e.preventDefault();
+        const href = window.location.href;
+        const trans_id = href.substring(href.lastIndexOf('/') + 1);
+        let datas = {'trans_id': trans_id, 'password': value.password1};
+        setValue({...value, loading: true})
+        PostAPI('confirm', datas, 'POST')
+            .then(response => {
+                if (response) {
+                    setValue({
+                        ...value,
+                        loading: false,
+                        errorFetch: false,
+                        success: true,
+                        isRegistered: false
+                    })
+                } else {
+                    setValue({
+                        ...value,
+                        loading: false,
+                        errorFetch: true,
+                        success: false,
+                        
+                    })
+                }
+            })
     }
 
     if (value.isRegistered) {
@@ -188,6 +217,7 @@ const Login_SignUp = () => {
 
     return (
         <LoginSignUpWrapper>
+            {value.loading && <Loader />}
             <ImageWrapper>
                 <h1>We speak your <br/>beauty language</h1>
             </ImageWrapper>
@@ -197,6 +227,8 @@ const Login_SignUp = () => {
                     <Link to='/' className="log-signup-home">home</Link>
                 </header>
                 <div className="login-logout-container">
+                    {value.errorFetch && <ErrorField error={'Oops!! Something went wrong. Please contact your administrator'}/>}
+                    
                     <h1>welcome</h1>
                     <p>Let's get your account setup</p>
                     <form action="" onSubmit={handleSubmit}>

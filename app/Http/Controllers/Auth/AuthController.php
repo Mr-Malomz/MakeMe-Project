@@ -42,7 +42,8 @@ class AuthController extends Controller
     //Endpoint to register customer
     public function Pro(Request $request)
     {
-        $emp = DB::insert('call spMakemeCustomer (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+        $emp = DB::insert('call spCustomer (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            null,
             100,
             $request->title,
             $request->surn,
@@ -63,15 +64,28 @@ class AuthController extends Controller
     //Endpoint to search for customer
     public function SearchCustomer(Request $request)
     {
-        $emp = DB::select('call spMakemeCustomer (?, ?)', [
-            102, $request->phone
+        $emp = DB::select('call spCustomer (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            null,
+            102, 
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            $request->phone,
+            null,
+            null,
+            null,
+            null,
         ]);
     }
 
     //Endpoint to edit customer details
     public function EditCustomer(Request $request)
     {
-        $emp = DB::insert('call spMakemeCustomer (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+        $emp = DB::insert('call spCustomer (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             $request->Cid,
             100,
             $request->title,
