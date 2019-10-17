@@ -13,6 +13,7 @@ import pic3 from '../../assets/img/pic3.png';
 import ErrorField from '../../components/ErrorField';
 import Loader from '../../components/Loader';
 import axios from 'axios'
+import MessageField from '../../components/MessageField';
 
 
 const HomeWrapper = styled.div `
@@ -329,6 +330,7 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser, locati
         }
     }
     
+    const message = location.state ? location.state.message : null
 
     return (
         <HomeWrapper>
@@ -340,6 +342,7 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser, locati
                     <section>
                         <h1>welcome back</h1>
                         <p>Please log in with your details</p>
+                        <MessageField msg={message}/>
                         {loginError || typeof user === 'string' && <ErrorField error="Incorrect Password or Username" />}
                         <form action="" onSubmit={handleSubmit}>
                             <div className="form-input-log">
