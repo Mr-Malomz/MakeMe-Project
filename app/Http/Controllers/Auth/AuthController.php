@@ -18,6 +18,8 @@ class AuthController extends Controller
    //Endpoint to verify user
    public function verif($email)
    {
+       $pad = base64_encode($email);
+       dd($pad);
        //decrypt the email and id using decrypt($email & $id) each
        $d_email = encrypt($email);
        return redirect('http://127.0.0.1:8000/#/register/'.$d_email)->with($email);
@@ -42,20 +44,21 @@ class AuthController extends Controller
     //Endpoint to register customer
     public function Pro(Request $request)
     {
-        $emp = DB::insert('call spMakemeCustomer (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+        $emp = DB::insert('call spMakemeCustomer (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            null,
             100,
-            $request->title,
-            $request->surn,
-            $request->fname,
-            $request->midnme,
-            $request->gen,
-            $request->dob,
+            $request->category,
+            $request->surname,
+            $request->firstname,
+            null,//$request->midnme,
+            $request->gender,
+            null,//$request->dob,
             $request->email,
             $request->phone,
-            $request->mobile,
-            $request->addr,
+            null,//$request->mobile,
+            $request->address,
             $request->state,
-            $request->country
+            null,//$request->country
         ]);
         return response()->json($emp);
     }
@@ -63,15 +66,35 @@ class AuthController extends Controller
     //Endpoint to search for customer
     public function SearchCustomer(Request $request)
     {
-        $emp = DB::select('call spMakemeCustomer (?, ?)', [
-            102, $request->phone
+        $emp = DB::select('call spCustomer (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            null,
+            102, 
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            null,
+            $request->phone,
+            null,
+            null,
+            null,
+            null
         ]);
+        if ($emp) {
+            return response()->json($emp);
+        }
+        else {
+            $emp = 'Error, something happened.';
+            return response()->json($emp);
+        }
     }
 
     //Endpoint to edit customer details
     public function EditCustomer(Request $request)
     {
-        $emp = DB::insert('call spMakemeCustomer (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+        $emp = DB::insert('call spCustomer (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             $request->Cid,
             100,
             $request->title,
@@ -242,7 +265,8 @@ class AuthController extends Controller
         ]);
         if ($veri) {
             //$this->confirm($d_email, $d_id);
-            return response()->json($d_email);
+            //return response()->json($d_email);
+            return redirect('http://localhost:8000/register/'.$d_id);
         } else {
             $msg = "Error, something happened.";
             return response()->json($msg);
@@ -250,12 +274,12 @@ class AuthController extends Controller
     }
 
     //Endpoint to finish user sign up 
-    public function confirm($email, $password)
+    public function confirm(Request $request)
     {
         //dd($pass);
-        $pass = base64_encode($password);
-        $veri = DB::select('call spConfirm_Passwd (?, ?)', [
-            $email,
+        $pass = base64_encode($request->password);
+        $veri = DB::insert('call spConfirm_Passwd (?, ?)', [
+            $request->id,
             $pass,
         ]);
         if ($veri) {
@@ -443,6 +467,18 @@ class AuthController extends Controller
         else {
             $crea = 'Error, something happened.';
             return response()->json($crea);            
+        }
+     }
+
+     //Endpoint to call all salary
+     public function Salary(){
+        $sal = DB::select('call spreturn');
+        if($sal){
+            return response()->json($sal);
+        }
+        else {
+            $sal = 'Error, something happened.';
+            return response()->json($sal);            
         }
      }
     //<!--------------END ACCOUNTANT OPERATIONS-------------->
