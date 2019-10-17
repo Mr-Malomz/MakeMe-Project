@@ -23,14 +23,9 @@ Route::any('/ver/{email}', 'Auth\AuthController@Verif');
 
 Route::group(['middleware' => 'cors'],function(){
     //<!--------------BEGIN INTERNAL OPERATIONS--------------->
-<<<<<<< HEAD
     Route::any('/mail/{email}/{id}', 'MailController@send');//SEND MAIL
     Route::any('/pail/{email}/{id}', 'MailController@send');//SEND MAIL
     Route::any('/emps', 'Auth\AuthController@Emps');//SHOWS ALL EMPLOYEE NAMES
-=======
-    Route::any('/mail/{email}/{id}', 'MailController@send'); //SEND MAIL
-    Route::any('/emps', 'Auth\AuthController@Emps'); //SHOWS ALL EMPLOYEE NAMES
->>>>>>> f91408a65c8d7e24ba3184a9931fdda63c3f54c8
     //<!--------------BEGIN INTERNAL OPERATIONS--------------->
 
     //<!--------------BEGIN CUSTOMER OPERATIONS-------------->
