@@ -11,7 +11,7 @@ use Illuminate\Contracts\Support\Jsonable;
 use \Illuminate\Pagination\LengthAwarePaginator;
 //use Illuminate\Http\JsonResponse;
 use \Illuminate\Routing\ResponseFactory;
-
+#
 class AuthController extends Controller
 {
 
@@ -80,7 +80,7 @@ class AuthController extends Controller
             null,
             null,
             null,
-            null,
+            null
         ]);
         if ($emp) {
             return response()->json($emp);
@@ -266,7 +266,7 @@ class AuthController extends Controller
         if ($veri) {
             //$this->confirm($d_email, $d_id);
             //return response()->json($d_email);
-            return redirect('http://localhost:8000/register/'.$d_id);
+            return redirect('http://127.0.0.1:8000/#/register/'.$d_id);
         } else {
             $msg = "Error, something happened.";
             return response()->json($msg);
@@ -279,7 +279,7 @@ class AuthController extends Controller
         //dd($pass);
         $pass = base64_encode($request->password);
         $veri = DB::insert('call spConfirm_Passwd (?, ?)', [
-            $request->id,
+            $request->Trans_ID,
             $pass,
         ]);
         if ($veri) {

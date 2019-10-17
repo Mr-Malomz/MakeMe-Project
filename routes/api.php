@@ -47,7 +47,7 @@ Route::group(['middleware' => 'cors'],function(){
     //<!--------------BEGIN SIGN UP OPERATION-------------->
     Route::any('/verify/{email}/{id}','Auth\AuthController@verify');//CHANGE VERIFIED STATUS
     Route::any('/sendmail/{email}/{id}','Auth\AuthController@Sendmail');//SEND THE MAIL ON EMP CREATION
-    Route::any('/comfirm','Auth\AuthController@confirm');//FINISH USER SIGN UP
+    Route::any('/confirm','Auth\AuthController@confirm');//FINISH USER SIGN UP
     //<!--------------END SIGN UP OPERATION-------------->
 
     Route::any('/ver/{email}', 'Auth\AuthController@verif'); //CHANGE VERIFIED STATUS
