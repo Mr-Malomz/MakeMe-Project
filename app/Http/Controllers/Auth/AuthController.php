@@ -80,11 +80,7 @@ class AuthController extends Controller
             null,
             null,
             null,
-<<<<<<< HEAD
-            null
-=======
             null,
->>>>>>> b7290fb60185b65680494fc3028e5a2725014990
         ]);
         if ($emp) {
             return response()->json($emp);
