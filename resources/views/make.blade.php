@@ -1,4 +1,7 @@
+<?php 
+use Illuminate\Support\Facades\URL;
 
+?>
 <!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
 <html xmlns="http://www.w3.org/1999/xhtml">
 <head>
@@ -78,11 +81,11 @@ div[style*="margin: 16px 0"] {
                     </ul>
                     
                     <ul>
-                        <li>Before proceeding, click <u><a href={{'http://localhost:8000/api/ver/'.$email}}  style="color: blue;">here</a></u> to activate your account OR  click on the link below</li>
-                        {{-- <li>Before proceeding, click <u><a href={{'http://localhost:8000/api/verify/'.$email.'/'.$id}}  style="color: blue;">here</a></u> to activate your account OR  click on the link below</li> --}}
+                        {{-- <li>Before proceeding, click <u><a href={{'http://localhost:8000/api/ver/'.$email}}  style="color: blue;">here</a></u> to activate your account OR  click on the link below</li> --}}
+                        <li>Before proceeding, click <u><a href={{URL::temporarySignedRoute('verify', now()->addMinutes(1440), ['email' => $email, 'id' => $id])}}  style="color: blue;">here</a></u> to activate your account OR  click on the link below</li>
                     </ul>
                     <br>
-                    
+                    <p>This link expires in 24 hours</p>
                     <p>If you have not registered to join Makeme, please ignore this mail.</p>
 
 
