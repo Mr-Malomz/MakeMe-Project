@@ -75,7 +75,7 @@ const EditEmpSuperAdminWrapper = styled.div `
 `;
 
 
-const EditEmpSuperAdmin = () => {
+const EditEmpSuperAdmin = (props) => {
     const [inputs, setInputs] = useState({
         width: true,
         toggleNav: true,
@@ -97,7 +97,7 @@ const EditEmpSuperAdmin = () => {
                 <div className="superad-content">
                     <span className="title"><i className="material-icons">group</i>  employees</span>
                     <div className="super-content-main">
-                        <EditEmpForm />
+                        <EditEmpForm props={props}/>
                     </div>
                 </div>
             </div>

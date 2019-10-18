@@ -4,6 +4,10 @@ import styled from 'styled-components';
 import log from '../../assets/img/log.png';
 import FormInput from '../../components/FormInput';
 import Button from '../../components/Button';
+import {PostAPI} from '../../components/PostAPI'
+import Loader from '../../components/Loader';
+import ErrorField from '../../components/ErrorField';
+import MessageField from '../../components/MessageField';
 
 const LoginSignUpWrapper = styled.div `
     display: flex;
@@ -133,7 +137,9 @@ const ContentWrapper = styled.section `
 const ForgotPassword = () => {
     const [value, setValue] = useState({
         email: '',
-        //isRegistered: false
+        isRegistered: false,
+        error: false,
+        isLoading: false
     });
 
     const handleChange = e => {
@@ -145,8 +151,28 @@ const ForgotPassword = () => {
 
 
     const handleSubmit = e => {
-        e.preventDefault()
-        //setValue({...value, isRegistered: true})
+        e.preventDefault();
+        setValue({...value, isLoading: true});
+        let datas = {'email': value.email}
+        PostAPI('forgot', datas, 'POST')
+            .then(response => {
+                if (response == 'mail sent successfully') {
+                    setValue({
+                        ...value,
+                        isRegistered: true,
+                        error: false,
+                        isLoading: false,
+                        email: ''
+                    })
+                } else {
+                    setValue({
+                        ...value,
+                        isRegistered: false,
+                        error: true,
+                        isLoading: false
+                    })
+                }
+            })
     }
 
     // if (value.isRegistered) {
@@ -162,11 +188,14 @@ const ForgotPassword = () => {
 
     return (
         <LoginSignUpWrapper>
+            {value.isLoading && <Loader />}
             <ImageWrapper>
                 <h1>We speak your <br/>beauty language</h1>
             </ImageWrapper>
             <ContentWrapper>
                 <div className="password-container">
+                    {value.error && <ErrorField error={"Opps!!! something went wrong. Please contact your administrator"}/>}
+                    {value.isRegistered && <MessageField msg={'A password recovery link has been sent to your mail. Please follow this link to reset your password'} />}
                     <h1>Password recovery</h1>
                     <p>Enter your registered email below</p>
                     <small>If your email exist, a forgot password link will be sent to your registered email, do check your email and follow the instruction </small>

@@ -5,6 +5,7 @@ import WorkerSVG from '../../assets/svg/WorkerSVG';
 import pic1 from '../../assets/img/pic1.jpg';
 import Notifications from '../../components/Notifications';
 import Timeline from '../../components/workers/Timeline';
+import { connect } from 'react-redux';
 
 const WorkersWrapper = styled.div `
 
@@ -151,7 +152,7 @@ const WorkersContent = styled.div `
     margin-top: 20px;
 `;
 
-const MainWorkers = () => {
+const MainWorkers = ({user}) => {
     return (
         <WorkersWrapper>
             <Header to='/workers/edit/'/>
@@ -160,12 +161,12 @@ const MainWorkers = () => {
                 <div className="responsive"></div>
                 <div className="mid-header-main">
                     <div className="mid-header-main-img">
-                        <img src={pic1} alt="profile picture" />
+                        <img src={user.Avatar} alt="profile picture" />
                         <section>
-                            <h3>chinenye agungi</h3>
-                            <p className="main-child">nail technician</p>
-                            <p>08050676783</p>
-                            <p>chinenye.agu@makeme.com</p>
+                            <h3>{`${user.Firstname}  ${user.Surname}`}</h3>
+                            <p className="main-child">{user.Title}</p>
+                            <p>{user.Phone_No}</p>
+                            <p>{user.Email}</p>
                         </section>
                     </div>
                     <section className="amount">
@@ -184,4 +185,10 @@ const MainWorkers = () => {
     )
 }
 
-export default MainWorkers
+const MapStateToProps = (state) => {
+    return {
+        user: state.auth.user
+    }
+}
+
+export default connect(MapStateToProps)(MainWorkers);

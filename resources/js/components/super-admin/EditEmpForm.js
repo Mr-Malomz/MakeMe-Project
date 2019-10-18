@@ -1,8 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import FormInput from '../FormInput';
 import Button from '../Button';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { confirmAlert } from 'react-confirm-alert'
+import { PostAPI } from '../../components/PostAPI';
+import Loader from '../../components/Loader';
+import ErrorField from '../../components/ErrorField';
 
 const EditEmpFormWrap = styled.section `
     width: 100%;
@@ -11,6 +16,7 @@ const EditEmpFormWrap = styled.section `
     border-radius: 10px;
     min-height: 400px;
     margin-left: 40px;
+
 
     h1 {
         background: #ffffff;
@@ -105,24 +111,30 @@ const EditEmpFormWrap = styled.section `
     }
 `;
 
-const EditEmpForm = () => {
+const EditEmpForm = (props) => {
     const [data, setData] = useState({
         firstname: '',
-        lastname: '',
+        surname: '',
         email: '',
         value: '',
         salary: '',
         jobTitle: '',
         showVal: false,
         selectedInput: 'none',
-        role: ''
+        role: '',
+        isLoading: false,
+        error: false,
+        success: false,
+        delError: false,
+        delSuccess: false
     })
 
     const handleChange = e => {
         setData({
             ...data,
             [e.target.name]: e.target.value
-        })
+        });
+        console.log(123)
     };
 
     const inputChangeOpen = e => {
@@ -148,10 +160,168 @@ const EditEmpForm = () => {
         })
     };
 
+    const handleDelete = e => {
+        console.log(props.props.match.params.Emp_Id);
+        confirmAlert({
+            customUI: ({ onClose }) => {
+                return (
+                <div className='custom-ui' 
+                    style={{
+                            position: "relative", 
+                            left: '40%',
+                            transform: 'translateY(-250px)',
+                            zIndex: '20',
+                            width: '400px',
+                            background: '#FFFFFF',
+                            boxShadow: '0px 5px 20px grey',
+                            height: '140px',
+                            fontSize: '12px',
+                            padding: '20px 20px'
+                        }}
+                >
+                    <h1 style={{marginBottom: "10px"}}>Are you sure?</h1>
+                    <p style={{marginBottom: "10px"}}>You want to delete this employee?</p>
+                    <button 
+                        style={{
+                            position: 'relative',
+                            width: '120px',
+                            height: '38px',
+                            fontSize: '12px',
+                            color: '#ffffff',
+                            textTransform: 'capitalize',
+                            borderRadius: '7px',
+                            fontWeight: 'bold',
+                            marginRight: '20px'
+                        }}
+                    onClick={onClose}>No</button>
+                    <button
+                    style={{
+                        position: 'relative',
+                        width: '120px',
+                        height: '38px',
+                        fontSize: '12px',
+                        color: '#ffffff',
+                        textTransform: 'capitalize',
+                        borderRadius: '7px',
+                        fontWeight: 'bold',
+                    }}
+                    onClick={() => {
+                        setData({...data, isLoading: true });
+                        let datas = {'id': props.props.match.params.Emp_Id};
+                        PostAPI('employeeDELETE', datas, 'DELETE')
+                            .then(response => {
+                                if(response) {
+                                    setData({
+                                        ...data,
+                                        isLoading: false,
+                                        delError: false,
+                                        delSuccess: true,
+                                    })
+                                } else {
+                                    setData({
+                                        ...data,
+                                        isLoading: false,
+                                        delError: true,
+                                        delSuccess: false
+                                    })
+                                }
+                            })
+                        onClose();
+                    }}
+                    >
+                    Yes, Delete it!
+                    </button>
+                </div>
+                );
+            }
+            });
+    }
+    const handleClickDelete = e => {
+
+    }
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        const datas = {
+            firstname: data.firstname,
+            surname: data.surname,
+            email: data.email,
+            role: data.role,
+            title: data.jobtitle,
+            salary: data.salary,
+            payment: data.selectedInput,
+            commission: data.value
+        }
+        setData({
+            ...data,
+            isLoading: true
+        });
+        PostAPI('updateEmp', datas, 'POST')
+            .then(response => {
+                if (response) {
+                    setData({
+                        ...data,
+                        isLoading: false,
+                        error: false,
+                        success: true,
+                        firstname: '',
+                        surname: '',
+                        email: '',
+                        role: '',
+                        title: '',
+                        salary: '',
+                        payment: '',
+                        commission: ''
+                    })
+                } else {
+                    setData({
+                        ...data,
+                        isLoading: false,
+                        error: true,
+                        success: false
+                    })
+                }
+            })
+    }
+
+    useEffect(() => {
+        let id = props.props.match.params.Emp_Id;
+        setData({
+            ...data,
+            firstname: props.employee[0].Firstname,
+            surname: props.employee[0].Surname,
+            role: props.employee[0].Job_Role,
+            jobTitle: props.employee[0].Title,
+            salary: props.employee[0].Salary,
+            email: props.employee[0].Email,
+        })
+        return () => {
+           
+        };
+    }, []);
+
+    
+    const {employee} = props;
+
+    if (data.success) {
+        return <Redirect to={{
+            pathname: '/superadmin/employees',
+            state: { message: 'Employee successfully updated' }
+        }}/>
+    } else if (data.delSuccess) {
+        return <Redirect to={{
+            pathname: '/superadmin/employees',
+            state: { delMessage: 'Employee deleted successfully' }
+        }}/>
+    }
+
     return (
         <EditEmpFormWrap>
+            {data.isLoading && <Loader />}
             <h1>Manage selected employee</h1>
-            <form action="">
+            {data.error && <ErrorField error={"Opps!!! something went wrong. Please contact your administrator"}/>}
+            {data.delError && <ErrorField error={"Opps!!! something went wrong. Please contact your administrator"}/>}
+            <form action="" onSubmit={handleSubmit}>
                 <div className="form-cont">
                     <div className="inpt-wrap">
                         <label htmlFor="firstname">firstname</label>
@@ -165,14 +335,14 @@ const EditEmpForm = () => {
                         />
                     </div>
                     <div className="inpt-wrap">
-                        <label htmlFor="lastname">lastname</label>
+                        <label htmlFor="surname">surname</label>
                         <FormInput
                             type="text"
-                            name='lastname'
+                            name='surname'
                             required
-                            value={data.lastname}
+                            value={data.surname}
                             handleChange={handleChange}
-                            style={{borderColor: '#C4C4C4'}}
+                            style={{borderColor: '#C4C4C4', marginLeft: '6px'}}
                         />
                     </div>
                     <div className="inpt-wrap">
@@ -251,7 +421,7 @@ const EditEmpForm = () => {
                             name='value'
                             required
                             placeholder="enter a percentage"
-                            value={data.value}
+                            value={employee[0].Commission}
                             handleChange={handleChange}
                             style={{borderColor: '#C4C4C4', marginLeft: '103px'}}
                         />
@@ -262,7 +432,7 @@ const EditEmpForm = () => {
                         <FormInput
                             type="text"
                             name='email'
-                            required
+                            disabled
                             value={data.email}
                             handleChange={handleChange}
                             style={{borderColor: '#C4C4C4', marginLeft: '25px'}}
@@ -272,11 +442,18 @@ const EditEmpForm = () => {
                 <div className="btn-wrapper">
                     <Button type="submit" style={{background: '#3B5998'}}>save</Button>
                     <Link to='/superadmin/employees'>cancel</Link>
-                    <Button type="submit" style={{background: '#EA5E5E'}}>delete user</Button>
+                    <Button type="button" onClick={handleDelete} style={{background: '#EA5E5E'}}>delete user</Button>
                 </div>
             </form>
         </EditEmpFormWrap>
     )
+};
+
+const MapStateToProps = (state, props) => {
+    let id = props.props.match.params.Emp_Id;
+    return {
+        employee: state.employees.employees.filter(employee => employee.Emp_Id == id )
+    }
 }
 
-export default EditEmpForm
+export default connect(MapStateToProps)(EditEmpForm);

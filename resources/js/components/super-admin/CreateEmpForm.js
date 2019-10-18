@@ -7,6 +7,8 @@ import Button from '../Button';
 import FormSVG from '../../assets/svg/FormSVG2';
 import { PostAPI } from '../PostAPI';
 import Loader from '../Loader';
+import ErrorField from '../ErrorField';
+import MessageField from '../MessageField';
 
 const CreateEmpFormWrap = styled.section `
     width: 380px;
@@ -88,7 +90,7 @@ const CreateEmpFormWrap = styled.section `
 const CreateEmpForm = () => {
     const [data, setData] = useState({
         firstname: '',
-        lastname: '',
+        surname: '',
         email: '',
         salary: '',
         value: '',
@@ -97,7 +99,8 @@ const CreateEmpForm = () => {
         selectedInput: 'none',
         role: '',
         isLoading: false,
-        error: ''
+        error: false,
+        success: false
     })
     
     const handleChange = e => {
@@ -134,7 +137,7 @@ const CreateEmpForm = () => {
         e.preventDefault();
         const datas = {
             firstname: data.firstname,
-            lastname: data.lastname,
+            surname: data.surname,
             email: data.email,
             role: data.role,
             title: data.jobtitle,
@@ -143,14 +146,32 @@ const CreateEmpForm = () => {
             commission: data.value
         }
         setData({...data, isLoading: true});
-        PostAPI('employee', datas, 'POST').then(response => console.log(response))
-            // .then(response => { 
-            //     // if (response) {
-                    
-            //     // } else {
-                    
-            //     // }
-            // })
+        PostAPI('employee', datas, 'POST')
+            .then(response => { 
+                if (response === 'mail sent successfully') {
+                    setData({
+                        ...data,
+                        isLoading: false,
+                        error: false,
+                        success: true,
+                        firstname: '',
+                        surname: '',
+                        email: '',
+                        role: '',
+                        title: '',
+                        salary: '',
+                        payment: '',
+                        commission: ''
+                    })
+                } else {
+                    setData({
+                        ...data,
+                        isLoading: false,
+                        error: true,
+                        success: false
+                    })
+                }
+            })
     }
 
     return (
@@ -158,6 +179,8 @@ const CreateEmpForm = () => {
             {data.isLoading && <Loader />}
             <FromSVG1 />
             <h1>new employee</h1>
+            {data.error && <ErrorField error={"Opps!!! something went wrong. Please contact your administrator"}/>}
+            {data.success && <MessageField msg={"Employee created successfully and confirmation mail sent to the specified email"}/>}
             <form action="" onSubmit={handleSubmit}>
                 <div className="inpt-wrap">
                     <label htmlFor="firstname">firstname</label>
@@ -171,12 +194,12 @@ const CreateEmpForm = () => {
                     />
                 </div>
                 <div className="inpt-wrap">
-                    <label htmlFor="lastname">lastname</label>
+                    <label htmlFor="surname">lastname</label>
                     <FormInput
                         type="text"
-                        name='lastname'
+                        name='surname'
                         required
-                        value={data.lastname}
+                        value={data.surname}
                         handleChange={handleChange}
                         style={{borderColor: '#C4C4C4'}}
                     />
@@ -198,10 +221,10 @@ const CreateEmpForm = () => {
                             }}
                     >
                         <option value=""></option>
-                        <option value="accountant">Accountant</option>
-                        <option value="supervisor">Supervisor</option>
-                        <option value="receptionist">Receptionist</option>
-                        <option value="workers">Workers</option>
+                        <option value="Accountant">Accountant</option>
+                        <option value="Supervisor">Supervisor</option>
+                        <option value="Receptionist">Receptionist</option>
+                        <option value="Workers">Workers</option>
                     </select>
                 </div>
                 <div className="inpt-wrap">
