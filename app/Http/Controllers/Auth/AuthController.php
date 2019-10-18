@@ -351,7 +351,7 @@ class AuthController extends Controller
     //Endpoint to update employee by employee
     public function UpdateEmp(Request $request)
     {
-        $pro = DB::insert('call spUpdateProfileEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+        $pro = DB::insert('call spUpdateProfileEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
             $request->empid,
             null, //$request->title,
             null, //$request->email,
@@ -359,7 +359,7 @@ class AuthController extends Controller
             $request->fname,
             null, //$request->midnme,
             null, //$request->pass,
-            null, //$request->dob,
+            //null, //$request->dob,
             $request->phone,
             null, //$request->payment,
             null, //$request->salary,

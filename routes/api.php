@@ -55,8 +55,8 @@ Route::group(['middleware' => 'cors'],function(){
 
     //<!--------------BEGIN EMPLOYEE OPERATIONS-------------->
     Route::post('/login', 'Auth\AuthController@LoginEmp'); //EMPLOYEE LOGIN
-    Route::get('/reset', 'Auth\AuthController@ChangePassword'); //RESET/CHANGE PASSWORD
+    Route::post('/reset', 'Auth\AuthController@ChangePassword'); //RESET/CHANGE PASSWORD
     Route::post('/update', 'Auth\AuthController@UpdateEmp'); //UPDATE EMPLOYEE PROFILE
-    Route::get('/forgot', 'Auth\AuthController@forgotPass'); //FORGOT PASSWORD
+    Route::post('/forgot', 'Auth\AuthController@forgotPass'); //FORGOT PASSWORD
     //<!--------------END EMPLOYEE OPERATIONS-------------->
 });
