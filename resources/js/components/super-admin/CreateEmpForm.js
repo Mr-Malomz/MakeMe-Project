@@ -241,7 +241,7 @@ const CreateEmpForm = () => {
                 <div className="inpt-wrap">
                     <label htmlFor="salary">salary</label>
                     <FormInput
-                        type="text"
+                        type="number"
                         name='salary'
                         value={data.salary}
                         handleChange={handleChange}
@@ -276,7 +276,7 @@ const CreateEmpForm = () => {
                 {data.showVal && 
                     <div className="inpt-wrap">
                     <FormInput
-                        type="text"
+                        type="number"
                         name='value'
                         required
                         placeholder="enter a percentage"
@@ -289,7 +289,7 @@ const CreateEmpForm = () => {
                 <div className="inpt-wrap">
                     <label htmlFor="email">email</label>
                     <FormInput
-                        type="text"
+                        type="email"
                         name='email'
                         required
                         value={data.email}

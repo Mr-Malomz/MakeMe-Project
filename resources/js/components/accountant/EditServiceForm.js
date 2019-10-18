@@ -2,11 +2,12 @@ import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import FormInput from '../FormInput';
 import Button from '../Button';
-import { Link } from 'react-router-dom';
+import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
 import { confirmAlert } from 'react-confirm-alert';
 import { PostAPI } from '../../components/PostAPI';
-import { relative } from 'path';
+import Loader from '../Loader';
+import ErrorField from '../ErrorField';
 
 const EditServiceFormWrap = styled.section `
     width: 100%;
@@ -136,7 +137,7 @@ const EditServiceForm = (props) => {
     }, [])
 
     const handleDelete = e => {
-        console.log(props.props.match.params.Emp_Id);
+        
         confirmAlert({
             customUI: ({ onClose }) => {
                 return (
@@ -194,8 +195,8 @@ const EditServiceForm = (props) => {
                         }}
                         onClick={() => {
                             setData({...data, isLoading: true });
-                            let datas = {'id': props.props.match.params.Emp_Id};
-                            PostAPI('', datas, 'DELETE')
+                            let datas = {'id': props.props.match.params.ID};
+                            PostAPI('deleteService', datas, 'DELETE')
                                 .then(response => {
                                     if(response) {
                                         setData({
@@ -223,13 +224,59 @@ const EditServiceForm = (props) => {
                 );
             }
             });
+    };
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        const datas = {
+            id: props.props.match.params.ID,
+            name: data.service,
+            price: data.price
+        }
+        setData({
+            ...data,
+            isLoading: true
+        });
+        PostAPI('editService', datas, 'POST')
+            .then(response => {
+                if (response) {
+                    setData({
+                        ...data,
+                        isLoading: false,
+                        error: false,
+                        success: true,
+                    })
+                } else {
+                    setData({
+                        ...data,
+                        isLoading: false,
+                        error: true,
+                        success: false
+                    })
+                }
+            })
+    }
+
+    if (data.success) {
+        return <Redirect to={{
+            pathname: '/accountant',
+            state: { message: 'Service successfully updated' }
+        }}/>
+    } else if (data.delSuccess) {
+        return <Redirect to={{
+            pathname: '/accountant',
+            state: { delMessage: 'Service deleted successfully' }
+        }}/>
     }
     
 
     return (
         <EditServiceFormWrap>
+            {data.isLoading && <Loader />} 
             <h1>Manage selected service</h1>
-            <form action="">
+            {data.error && <ErrorField error={"Opps!!! something went wrong. Please contact your administrator"}/>}
+            {data.delError && <ErrorField error={"Opps!!! something went wrong. Please contact your administrator"}/>}
+            <form action="" onSubmit={handleSubmit}>
                 <div className="form-cont">
                     <div className="inpt-wrap">
                         <label htmlFor="service">service</label>
@@ -245,7 +292,7 @@ const EditServiceForm = (props) => {
                     <div className="inpt-wrap">
                         <label htmlFor="price">price</label>
                         <FormInput
-                            type="text"
+                            type="number"
                             name='price'
                             required
                             value={data.price}
@@ -257,7 +304,7 @@ const EditServiceForm = (props) => {
                 <div className="btn-wrapper">
                     <Button type="submit" style={{background: '#3B5998'}}>save</Button>
                     <Link to='/accountant'>cancel</Link>
-                    <Button type="button" onClick={handleDelete} style={{background: '#EA5E5E'}}>delete user</Button>
+                    <Button type="button" onClick={handleDelete} style={{background: '#EA5E5E'}}>delete service</Button>
                 </div>
             </form>
         </EditServiceFormWrap>

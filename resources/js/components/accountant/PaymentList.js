@@ -1,6 +1,10 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import FormInput from '../FormInput';
+import { connect } from 'react-redux';
+import { fetchSalary  } from '../../redux/actions/salaryAction'
+import ErrorField from '../ErrorField';
+import Loader from '../Loader';
 
 const PaymentListWrap = styled.section `
     width: 100%;
@@ -113,7 +117,7 @@ const PaymentListWrap = styled.section `
     }
 `;
 
-const PaymentList = () => {
+const PaymentList = ({isLoading, salError, salary, fetchSalary}) => {
     const [data, setData] = useState({
         search: '',
         price: '',
@@ -127,15 +131,23 @@ const PaymentList = () => {
         })
     };
 
-    const handleCheck = e => {
+    const handleCheck = (e) => {
         setData({
             ...data,
             isChecked: !data.isChecked
         })
-    }
+    };
 
+    useEffect(() => {
+        fetchSalary()
+        return () => {
+            
+        };
+    }, [])
+    
     return (
         <PaymentListWrap>
+            {salError && <ErrorField error={"Opps!!! something went wrong. Please contact your administrator"}/>}
             <div className="header-sect">
                 <h1>january salary breakdown</h1>
                 <div className="header-right">
@@ -153,34 +165,53 @@ const PaymentList = () => {
                     </div>
                 </div>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>name</th>
-                        <th>title</th>
-                        <th>percentage</th>
-                        <th>amount</th>
-                        <th>status</th>
-                        <th>paid</th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>oluwakemi aderamola</td>
-                        <td>nail technician</td>
-                        <td>5</td>
-                        <td>&#x20A6; 1000</td>
-                        <td>{data.isChecked ? 'paid' : 'unpaid'}</td>
-                        <td>
-                            <input type="checkbox" name="paid" checked={data.isChecked} onChange={handleCheck}/>
-                        </td>
-                    </tr>
-                </tbody>
-            </table>
+            {isLoading ? <Loader /> : (
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>name</th>
+                            <th>title</th>
+                            <th>percentage</th>
+                            <th>amount</th>
+                            <th>status</th>
+                            <th>paid</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {salary.map((salary, i) => (
+                        <tr key={i}>
+                            <td>{i + 1}</td>
+                            <td>{`${salary.Firstname}  ${salary.Surname}`}</td>
+                            <td>{salary.Title}</td>
+                            <td>{salary.Commission}</td>
+                            <td>&#x20A6; {salary.Salary}</td>
+                            <td>{data.isChecked ? 'paid' : 'unpaid'}</td>
+                            <td>
+                                <input type="checkbox" name="paid"  checked={data.isChecked} onChange={() => handleCheck(i)}/>
+                            </td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            )}
+            
         </PaymentListWrap>
     )
+};
+
+const MapStateToProps = state => {
+    return{
+        isLoading: state.salary.isLoading,
+        salError: state.salary.salError,
+        salary: state.salary.salary
+    }
+};
+
+const MapDispatchToProps = dispatch => {
+    return {
+        fetchSalary: () => dispatch(fetchSalary())
+    }
 }
 
-export default PaymentList
+export default connect(MapStateToProps, MapDispatchToProps)(PaymentList);

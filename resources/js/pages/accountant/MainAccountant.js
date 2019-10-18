@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import SideBar from '../../components/accountant/Sidebar';
 import HeaderMain from '../../components/HeaderMain';
 import ServiceList from '../../components/accountant/ServiceList';
+import MessageField from '../../components/MessageField';
 
 const MainAccountantWrapper = styled.div `
     width: 100vw;
@@ -57,7 +58,7 @@ const MainAccountantWrapper = styled.div `
 `;
 
 
-const MainAccountant = () => {
+const MainAccountant = (props) => {
     const [inputs, setInputs] = useState({
         width: true,
         toggleNav: true,
@@ -69,7 +70,10 @@ const MainAccountant = () => {
             width: !inputs.width,
             toggleNav: !inputs.toggleNav
         })
-    }
+    };
+
+    const message = props.location.state ? props.location.state.message : null;
+    const delMessage = props.location.state ? props.location.state.delMessage : null;
 
     return (
         <MainAccountantWrapper>
@@ -78,6 +82,8 @@ const MainAccountant = () => {
                 <HeaderMain handleToggle={handleToggle} to='/accountant/edit'/>
                 <div className="superad-content">
                     <div className="super-content-main">
+                        <MessageField msg={message} /> 
+                        <MessageField msg={delMessage} />
                         <ServiceList />
                     </div>
                 </div>

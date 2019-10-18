@@ -284,7 +284,7 @@ const Home = ({isLoggingIn, loginError, isAuthenticated, user, loginUser, locati
         const {email, password} = value;
         const creds = {email: email, password: password};
         loginUser(creds)
-        setValue({...value, email: '', password: ''})
+        // setValue({...value, email: '', password: ''})
 
         // axios.post('http://127.0.0.1:8000/api/login', {
         //     headers: {

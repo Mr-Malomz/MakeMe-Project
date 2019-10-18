@@ -493,7 +493,7 @@ class AuthController extends Controller
 
       //Endpoint to delete a service and price
       public function DeleteService(Request $request){
-        $crea = DB::insert('call spDeleteServices (?)',[$id]);
+        $crea = DB::insert('call spDeleteServices (?)',[$request->id]);
         if($crea){
             return response()->json($crea);
         }
