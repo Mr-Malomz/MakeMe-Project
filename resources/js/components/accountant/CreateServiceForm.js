@@ -5,6 +5,11 @@ import FromSVG1 from '../../assets/svg/FormSVG1';
 import FormInput from '../FormInput';
 import Button from '../Button';
 import FormSVG from '../../assets/svg/FormSVG2';
+import { PostAPI } from '../../components/PostAPI'
+import ErrorField from '../ErrorField';
+import Loader from '../Loader';
+import MessageField from '../MessageField';
+
 
 const CreateServiceFormWrap = styled.section `
     width: 380px;
@@ -84,6 +89,9 @@ const CreateServiceForm = () => {
     const [data, setData] = useState({
         service: '',
         price: '',
+        isLoading: false,
+        error: false,
+        success: false
     })
     
     const handleChange = e => {
@@ -93,11 +101,43 @@ const CreateServiceForm = () => {
         })
     };
 
+    const handleSubmit = e => {
+        e.preventDefault();
+        setData({...data, isLoading: true});
+        let datas = {
+            name: data.service,
+            price: data.price,
+        };
+        PostAPI('addService', datas, 'POST')
+            .then(response => {
+                if (response) {
+                    setData({
+                        ...data,
+                        isLoading: false,
+                        error: false,
+                        success: true,
+                        service: '',
+                        price: ''
+                    })
+                } else {
+                    setData({
+                        ...data,
+                        isLoading: false,
+                        error: true,
+                        success: false
+                    })
+                }
+            })
+    }
+
     return (
         <CreateServiceFormWrap>
+            {data.isLoading && <Loader />}
             <FromSVG1 />
             <h1>new service</h1>
-            <form action="">
+            {data.error && <ErrorField error={"Opps!!! something went wrong. Please contact your administrator"}/>}
+            {data.success && <MessageField msg={"Service created successfully!!!!"}/>}
+            <form action="" onSubmit={handleSubmit}>
                 <div className="inpt-wrap">
                     <label htmlFor="service">service</label>
                     <FormInput

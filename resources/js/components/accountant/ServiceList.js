@@ -1,7 +1,11 @@
-import React from 'react';
+import React, {useEffect} from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import FormInput from '../FormInput';
+import { connect } from 'react-redux';
+import { fetchServices } from '../../redux/actions/servicesAction'
+import Loader from '../Loader';
+import ErrorField from '../ErrorField';
 
 const ServiceListWrap = styled.section `
     width: 100%;
@@ -128,9 +132,18 @@ const ServiceListWrap = styled.section `
     }
 `;
 
-const ServiceList = ({handleChange}) => {
+const ServiceList = ({isLoading, servError, fetchServices, services, handleChange}) => {
+
+    useEffect(() => {
+        fetchServices()
+        return () => {
+            
+        };
+    }, [])
+
     return (
         <ServiceListWrap>
+            {servError && <ErrorField error={"Opps!!! something went wrong. Please contact your administrator"}/>}
             <div className="header-sect">
                 <h1>service list</h1>
                 <div className="header-right">
@@ -144,28 +157,46 @@ const ServiceList = ({handleChange}) => {
                     <Link to='/accountant/service/create'>create new service</Link>
                 </div>
             </div>
-            <table>
-                <thead>
-                    <tr>
-                        <th>#</th>
-                        <th>description</th>
-                        <th>price</th>
-                        <th>created on</th>
-                        <th></th>
-                    </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>washing and setting</td>
-                        <td>adedunmola</td>
-                        <td>&#x20A6; 2500</td>
-                        <td><Link>manage</Link></td>
-                    </tr>
-                </tbody>
-            </table>
+            {isLoading ? <Loader /> : (
+                <table>
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>description</th>
+                            <th>price</th>
+                            <th>created on</th>
+                            <th></th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    {services.map(service => (
+                        <tr key={service.ID}>
+                            <td>{service.ID}</td>
+                            <td>{service.Service_Name}</td>
+                            <td>&#x20A6; {service.Price}</td>
+                            <td>{service.Date_Created.replace(/ .*/,'')}</td>
+                            <td><Link to={`/accountant/service/edit/${service.ID}`}>manage</Link></td>
+                        </tr>
+                    ))}
+                    </tbody>
+                </table>
+            )}
         </ServiceListWrap>
     )
 }
 
-export default ServiceList
+const MapStateToProps = state => {
+    return {
+        isLoading: state.services.isLoading,
+        servError: state.services.servError,
+        services: state.services.services
+    }
+};
+
+const MapDispatchToProps = dispatch => {
+    return {
+        fetchServices: () => dispatch(fetchServices())
+    }
+}
+
+export default connect(MapStateToProps, MapDispatchToProps)(ServiceList);

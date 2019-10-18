@@ -29,7 +29,7 @@ export const fetchServices = dispatch => {
     return dispatch => {
         dispatch(fetchServicesRequest());
 
-        return fetch('http://localhost:8000/api/notifs')
+        return fetch('http://localhost:8000/api/services')
             .then(response => response.json())
             .then(services => dispatch(fetchServicesSuccess(services)))
             .catch(err => dispatch(fetchServicesFailure()))

@@ -1,8 +1,12 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import FormInput from '../FormInput';
 import Button from '../Button';
 import { Link } from 'react-router-dom';
+import { connect } from 'react-redux';
+import { confirmAlert } from 'react-confirm-alert';
+import { PostAPI } from '../../components/PostAPI';
+import { relative } from 'path';
 
 const EditServiceFormWrap = styled.section `
     width: 100%;
@@ -102,10 +106,15 @@ const EditServiceFormWrap = styled.section `
     }
 `;
 
-const EditServiceForm = () => {
+const EditServiceForm = (props) => {
     const [data, setData] = useState({
         service: '',
-        price: ''
+        price: '',
+        isLoading: false,
+        error: false,
+        success: false,
+        delError: false,
+        delSuccess: false
     })
 
     const handleChange = e => {
@@ -114,6 +123,108 @@ const EditServiceForm = () => {
             [e.target.name]: e.target.value
         })
     };
+
+    useEffect(() => {
+        setData({
+            ...data,
+            service: props.service[0].Service_Name,
+            price: props.service[0].Price
+        })
+        return () => {
+            
+        };
+    }, [])
+
+    const handleDelete = e => {
+        console.log(props.props.match.params.Emp_Id);
+        confirmAlert({
+            customUI: ({ onClose }) => {
+                return (
+                // <div 
+                //     style={{
+                //         background: "#000000",
+                //         width: "104vw",
+                //         height: "100vh",
+                //         position: "absolute",
+                //         top: "0",
+                //         opacity: "0.6",
+                //         zIndex: "10"
+                //     }}
+                // >
+                    <div className='custom-ui' 
+                        style={{
+                                position: "absolute", 
+                                left: '40%',
+                                transform: 'translateY(-450px)',
+                                zIndex: '100',
+                                width: '400px',
+                                background: '#FFFFFF',
+                                boxShadow: '0px 5px 20px grey',
+                                height: '140px',
+                                fontSize: '12px',
+                                padding: '20px 20px'
+                            }}
+                    >
+                        <h1 style={{marginBottom: "10px"}}>Are you sure?</h1>
+                        <p style={{marginBottom: "10px"}}>You want to delete this service?</p>
+                        <button 
+                            style={{
+                                position: 'relative',
+                                width: '120px',
+                                height: '38px',
+                                fontSize: '12px',
+                                color: '#ffffff',
+                                textTransform: 'capitalize',
+                                borderRadius: '7px',
+                                fontWeight: 'bold',
+                                marginRight: '20px',
+                                background: "ffffff"
+                            }}
+                        onClick={onClose}>No</button>
+                        <button
+                        style={{
+                            position: 'relative',
+                            width: '120px',
+                            height: '38px',
+                            fontSize: '12px',
+                            color: '#ffffff',
+                            textTransform: 'capitalize',
+                            borderRadius: '7px',
+                            fontWeight: 'bold',
+                        }}
+                        onClick={() => {
+                            setData({...data, isLoading: true });
+                            let datas = {'id': props.props.match.params.Emp_Id};
+                            PostAPI('', datas, 'DELETE')
+                                .then(response => {
+                                    if(response) {
+                                        setData({
+                                            ...data,
+                                            isLoading: false,
+                                            delError: false,
+                                            delSuccess: true,
+                                        })
+                                    } else {
+                                        setData({
+                                            ...data,
+                                            isLoading: false,
+                                            delError: true,
+                                            delSuccess: false
+                                        })
+                                    }
+                                })
+                            onClose();
+                        }}
+                        >
+                        Yes, Delete it!
+                        </button>
+                    </div>
+                // </div>
+                );
+            }
+            });
+    }
+    
 
     return (
         <EditServiceFormWrap>
@@ -146,11 +257,18 @@ const EditServiceForm = () => {
                 <div className="btn-wrapper">
                     <Button type="submit" style={{background: '#3B5998'}}>save</Button>
                     <Link to='/accountant'>cancel</Link>
-                    <Button style={{background: '#EA5E5E'}}>delete user</Button>
+                    <Button type="button" onClick={handleDelete} style={{background: '#EA5E5E'}}>delete user</Button>
                 </div>
             </form>
         </EditServiceFormWrap>
     )
 }
 
-export default EditServiceForm
+const MapStateToProps = (state, ownProps) => {
+    let id = ownProps.props.match.params.ID;
+    return {
+        service: state.services.services.filter(service => service.ID == id)
+    }
+}
+
+export default connect(MapStateToProps)(EditServiceForm);

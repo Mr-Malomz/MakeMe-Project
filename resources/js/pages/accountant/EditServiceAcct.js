@@ -57,7 +57,7 @@ const EditServiceAcctWrapper = styled.div `
 `;
 
 
-const EditServiceAcct = () => {
+const EditServiceAcct = (props) => {
     const [inputs, setInputs] = useState({
         width: true,
         toggleNav: true,
@@ -78,7 +78,7 @@ const EditServiceAcct = () => {
                 <HeaderMain handleToggle={handleToggle} to='/accountant/edit'/>
                 <div className="superad-content">
                     <div className="super-content-main">
-                        <EditServiceForm />
+                        <EditServiceForm props={props}/>
                     </div>
                 </div>
             </div>

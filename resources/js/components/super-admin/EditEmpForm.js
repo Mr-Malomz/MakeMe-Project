@@ -4,7 +4,7 @@ import FormInput from '../FormInput';
 import Button from '../Button';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { confirmAlert } from 'react-confirm-alert'
+import { confirmAlert } from 'react-confirm-alert';
 import { PostAPI } from '../../components/PostAPI';
 import Loader from '../../components/Loader';
 import ErrorField from '../../components/ErrorField';
