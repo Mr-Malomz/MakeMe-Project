@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {NavLink} from 'react-router-dom';
 import SupAdSVG1 from '../../assets/svg/SupADSVG1';
 import pic1 from '../../assets/img/pic1.jpg';
+import { connect } from 'react-redux';
 
 
 const SideBarWrapper = styled.nav `
@@ -127,7 +128,7 @@ const SideBarWrapper = styled.nav `
     }
 `;
 
-const SideBar = () => {
+const SideBar = ({user}) => {
     // add active links to navbar based on url
     const urlCheck = location.href;
     const path1 = '/superadmin';
@@ -138,15 +139,15 @@ const SideBar = () => {
     const path6 = '/superadmin/employees/salary';
     const path7 = '/superadmin/employees/message';
     
-    
+    console.log(user.Avatar)
     return (
         <SideBarWrapper className="nav-hgt">
            <SupAdSVG1 /> 
            <div className="responsive-sidebar"></div>
            <div className="profile-content">
-                <img src={pic1} alt="profile photo"/>
-                <p>joy ayodeji</p>
-                <h4>super admin</h4>
+                <img src={user.Avatar} alt="profile photo"/>
+                <p>{`${user.Firstname}  ${user.Surname}`}</p>
+                <h4>{user.Title}</h4>
            </div>
            <section className="mini-nav">
                 <NavLink 
@@ -184,6 +185,12 @@ const SideBar = () => {
            </section>
         </SideBarWrapper>
     )
+};
+
+const MapStateToProps = (state) => {
+    return {
+        user: state.auth.user
+    }
 }
 
-export default SideBar
+export default connect(MapStateToProps)(SideBar);

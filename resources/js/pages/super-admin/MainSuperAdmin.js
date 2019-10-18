@@ -4,6 +4,7 @@ import SideBar from '../../components/super-admin/SideBar';
 import HeaderMain from '../../components/HeaderMain';
 import ChartWrapper from '../../components/super-admin/ChartWrapper';
 import JobTable from '../../components/super-admin/JobTable';
+import MessageField from '../../components/MessageField';
 
 const MainSuperAdminWrapper = styled.div `
     width: 100vw;
@@ -76,7 +77,7 @@ const MainSuperAdminWrapper = styled.div `
 `;
 
 
-const MainSuperAdmin = () => {
+const MainSuperAdmin = (props) => {
     const [inputs, setInputs] = useState({
         width: true,
         toggleNav: true,
@@ -90,6 +91,8 @@ const MainSuperAdmin = () => {
         })
     }
 
+    const message = props.location.state ? props.location.state.message : null;
+
     return (
         <MainSuperAdminWrapper>
             {inputs.toggleNav && <SideBar />}
@@ -97,6 +100,7 @@ const MainSuperAdmin = () => {
                 <HeaderMain handleToggle={handleToggle} to='/superadmin/edit'/>
                 <div className="superad-content">
                     <span className="title"><i className="material-icons">dashboard</i>  dashboard</span>
+                    <MessageField msg={message}/>
                     <div className="super-content-main">
                         <ChartWrapper />
                     </div>

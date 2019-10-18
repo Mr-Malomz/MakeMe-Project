@@ -207,8 +207,8 @@ const EditEmpForm = (props) => {
                     }}
                     onClick={() => {
                         setData({...data, isLoading: true });
-                        let datas = props.props.match.params.Emp_Id;
-                        PostAPI('employeeDelete', datas, 'POST')
+                        let datas = {'id': props.props.match.params.Emp_Id};
+                        PostAPI('employeeDELETE', datas, 'DELETE')
                             .then(response => {
                                 if(response) {
                                     setData({

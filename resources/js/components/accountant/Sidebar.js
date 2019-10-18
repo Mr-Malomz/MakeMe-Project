@@ -3,6 +3,7 @@ import styled from 'styled-components';
 import {NavLink} from 'react-router-dom';
 import pic1 from '../../assets/img/pic1.jpg';
 import AccountSVG1 from '../../assets/svg/AccountSVG1';
+import { connect } from 'react-redux';
 
 
 const SideBarWrapper = styled.nav `
@@ -125,7 +126,7 @@ const SideBarWrapper = styled.nav `
     }
 `;
 
-const SideBar = () => {
+const SideBar = ({user}) => {
     // add active links to navbar based on url
     const urlCheck = location.href
     const path1 = '/accountant';
@@ -139,9 +140,9 @@ const SideBar = () => {
            <AccountSVG1 />
            <div className="responsive-sidebar"></div>
            <div className="profile-content">
-                <img src={pic1} alt="profile photo"/>
-                <p>chidinma Nnamani</p>
-                <h4>accountant</h4>
+                <img src={user.Avatar} alt="profile photo"/>
+                <p>{`${user.Firstname}  ${user.Surname}`}</p>
+                <h4>{user.Title}</h4>
            </div>
            <section className="mini-nav">
                 <NavLink 
@@ -163,6 +164,12 @@ const SideBar = () => {
            </section>
         </SideBarWrapper>
     )
+};
+
+const MapStateToProps = (state) => {
+    return {
+        user: state.auth.user
+    }
 }
 
-export default SideBar
+export default connect(MapStateToProps)(SideBar);

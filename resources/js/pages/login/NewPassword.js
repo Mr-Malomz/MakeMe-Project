@@ -5,6 +5,8 @@ import log from '../../assets/img/log.png';
 import FormInput from '../../components/FormInput';
 import Button from '../../components/Button';
 import ErrorField from '../../components/ErrorField';
+import {PostAPI} from '../../components/PostAPI';
+import Loader from '../../components/Loader';
 
 const LoginSignUpWrapper = styled.div `
     display: flex;
@@ -136,7 +138,10 @@ const NewPassword = () => {
         password2: '',
         btnDisabled: true,
         errorMsg: '',
-        //isRegistered: false
+        isRegistered: false,
+        errorFetch: false,
+        loading: false,
+        success: false
     });
 
     const handleChange = e => {
@@ -174,26 +179,58 @@ const NewPassword = () => {
 
     const handleSubmit = e => {
         e.preventDefault()
-        //setValue({...value, isRegistered: true})
+         const href = window.location.href;
+         const trans_id = href.substring(href.lastIndexOf('/') + 1);
+         let datas = {
+             'Trans_ID': trans_id,
+             'password': value.password1
+         };
+         setValue({
+             ...value,
+             loading: true
+         })
+         PostAPI('reset', datas, 'POST').then(response => console.log(response))
+            //  .then(response => {
+            //      if (response) {
+            //          setValue({
+            //              ...value,
+            //              loading: false,
+            //              errorFetch: false,
+            //              success: true,
+            //              isRegistered: true
+            //          })
+            //      } else {
+            //          ``
+            //          setValue({
+            //              ...value,
+            //              loading: false,
+            //              errorFetch: true,
+            //              success: false,
+
+            //          })
+            //      }
+            //  })
     }
 
-    // if (value.isRegistered) {
-    //    return <Redirect to={{
-    //         pathname: '/',
-    //         state: { message: 'Please login with your email and password' }
-    //     }}/>
+    if (value.isRegistered) {
+       return <Redirect to={{
+            pathname: '/',
+            state: { message: 'Please login with your new password' }
+        }}/>
     //    history.push({
     //        pathname: '/',
     //        state: {message: 'Please login with your email and password'}
     //    })
-    //}
+    }
 
     return (
         <LoginSignUpWrapper>
+            {value.loading && <Loader />}
             <ImageWrapper>
                 <h1>We speak your <br/>beauty language</h1>
             </ImageWrapper>
             <ContentWrapper>
+                {value.errorFetch && <ErrorField error={'Oops!! Something went wrong. Please contact your administrator'}/>}
                 <div className="password-container">
                     <h1>Welcome</h1>
                     <p>Create your new password</p>
