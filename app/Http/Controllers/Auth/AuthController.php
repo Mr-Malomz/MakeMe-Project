@@ -17,13 +17,13 @@ class AuthController extends Controller
 {
 
    //Endpoint to verify user
-   public function verif($email, $id)
+   public function verif(Request $request)
    {
-       //$pad = base64_encode($email);
-       //dd($pad);
-       //decrypt the email and id using decrypt($email & $id) each
-       //$d_email = encrypt($email);
-    return redirect('http://localhost:8000/api/'.$email.'/'.$id);
+    $pass = DB::select('call spMakeMe_Forgot_Pssword (?)', [$request->email]);
+      
+        return response()->json($pass);
+   
+    //return redirect('http://localhost:8000/api/'.$email.'/'.$id);
     //return redirect('url/'.$d_email);
    }
 
@@ -307,8 +307,8 @@ class AuthController extends Controller
     //Endpoint for employee login
     public function LoginEmp(Request $request)
     {
-        //$pass = Hash::make($request->password);
-        //$pass1 = encrypt($request->password);
+        //$pes = base64_decode($request->password);
+        //return response()->json($pes);
         $pass = base64_encode($request->password);
         // return response()->json($pass2);
         $pro = DB::select('call spMakeMeForEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
@@ -337,11 +337,11 @@ class AuthController extends Controller
     }
 
     //Enpoint for employee to change password
-    public function ChangePassword($password, $id)
+    public function ChangePassword(Request $request)
     {
-        $pass = DB::insert('call spMakeMeReset_Passwd(?, ?)', [$id, $password]);
-        if ($password) {
-            return response()->json($password);
+        $pass = DB::insert('call spMakeMeReset_Passwd(?, ?)', [$request->Trans_ID, base64_encode($request->password)]);
+        if ($pass) {
+            return response()->json($pass);
         } else {
             $pass = "Error, something happened";
             return response()->json($pass);
@@ -382,8 +382,14 @@ class AuthController extends Controller
         $email = encrypt($request->email);
         $pass = DB::select('call spMakeMe_Forgot_Pssword (?)', [$request->email]);
         if ($pass) {
+            $verified = $pass[0]->Verified;
             $id = encrypt($pass[0]->Trans_Id);
-            return redirect('/api/pail/' . $email . '/' . $id);            
+            if ($verified == '0') {
+              return $this->verify($request->email, $id);
+            }
+            else {
+                return redirect('/api/pail/' . $email . '/' . $id);            
+            }
             //return response()->json($pass);
         } else {
             $pass = "Error, something happened.";

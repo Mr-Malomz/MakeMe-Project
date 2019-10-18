@@ -1,6 +1,6 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-//import {Link, Redirect} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import log from '../../assets/img/log.png';
 import FormInput from '../../components/FormInput';
 import Button from '../../components/Button';
@@ -189,27 +189,27 @@ const NewPassword = () => {
              ...value,
              loading: true
          })
-         PostAPI('reset', datas, 'POST').then(response => console.log(response))
-            //  .then(response => {
-            //      if (response) {
-            //          setValue({
-            //              ...value,
-            //              loading: false,
-            //              errorFetch: false,
-            //              success: true,
-            //              isRegistered: true
-            //          })
-            //      } else {
-            //          ``
-            //          setValue({
-            //              ...value,
-            //              loading: false,
-            //              errorFetch: true,
-            //              success: false,
+         PostAPI('reset', datas, 'POST')
+             .then(response => {
+                 if (response) {
+                     setValue({
+                         ...value,
+                         loading: false,
+                         errorFetch: false,
+                         success: true,
+                         isRegistered: true
+                     })
+                 } else {
+                     ``
+                     setValue({
+                         ...value,
+                         loading: false,
+                         errorFetch: true,
+                         success: false,
 
-            //          })
-            //      }
-            //  })
+                     })
+                 }
+             })
     }
 
     if (value.isRegistered) {

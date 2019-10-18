@@ -24,7 +24,7 @@ Route::get('/user', 'Auth\AuthController@apis')->middleware('auth:api');
 Route::group(['middleware' => 'cors'],function(){
     //<!--------------BEGIN INTERNAL OPERATIONS--------------->
     //URL::temporarySignedRoute('http://127.0.0.1:8000/#/register/{email}', now()->addMinutes(2))->name('url/{email}');
-    Route::any('/ver/{email}/{id}', 'Auth\AuthController@Verif')->name('ver')->middleware('signature');//VERIFY RESET PASSWORD
+    Route::any('/ver', 'Auth\AuthController@Verif')->name('ver');//VERIFY RESET PASSWORD
     Route::any('/mail/{email}/{id}', 'MailController@send');//SEND MAIL
     Route::any('/pail/{email}/{id}', 'MailController@send');//SEND MAIL
     Route::any('/emps', 'Auth\AuthController@Emps');//SHOWS ALL EMPLOYEE NAMES
@@ -57,6 +57,6 @@ Route::group(['middleware' => 'cors'],function(){
     Route::post('/login', 'Auth\AuthController@LoginEmp'); //EMPLOYEE LOGIN
     Route::post('/reset', 'Auth\AuthController@ChangePassword'); //RESET/CHANGE PASSWORD
     Route::post('/update', 'Auth\AuthController@UpdateEmp'); //UPDATE EMPLOYEE PROFILE
-    Route::post('/forgot', 'Auth\AuthController@forgotPass'); //FORGOT PASSWORD
+    Route::get('/forgot', 'Auth\AuthController@forgotPass'); //FORGOT PASSWORD
     //<!--------------END EMPLOYEE OPERATIONS-------------->
 });
