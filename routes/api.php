@@ -62,8 +62,9 @@ Route::group(['middleware' => 'cors'],function(){
 
     //<!--------------BEGIN ACCOUNTANT OPERATIONS-------------->
     Route::get('services', 'Auth\AuthController@Services');//LIST ALL SERVICES
-    Route::post('addService', 'Auth\AuthController@CreateServices');//ADD NEW SRVICE
+    Route::post('addService', 'Auth\AuthController@CreateService');//ADD NEW SRVICE
     Route::post('editService', 'Auth\AuthController@UpdateService');//EDIT SERVICE
+    Route::post('deleteService', 'Auth\AuthController@DeleteService');//EDIT SERVICE
     Route::get('salary', 'Auth\AuthController@Salary');//LIST NAMES AND SALARY
     //<!--------------END ACCOUNTANT OPERATIONS-------------->
 

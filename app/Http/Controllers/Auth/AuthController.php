@@ -175,20 +175,19 @@ class AuthController extends Controller
         $payment = ($request->payment == '') ? null : $request->payment;
         $salary = ($request->salary == '') ? null : $request->salary;
         $commission = ($request->commission == '') ? null : $request->commission;
-        $pro = DB::insert('call spUpdateProfileEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
-            null,//$request->empid,
+        $pro = DB::insert('call spManagUpdateProfile (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            1002,
             $request->title,
-            $request->email,
             $request->surname,
             $request->firstname,
             null,//$request->midnme,
-            null, //$request->pass,
-            //null,//$request->dob,
+            $request->email,
+            null, //$request->emailstaff,
             null,//$request->phone,
+            $request->role,
             $payment,
             $salary,
             $commission,
-            $request->role,
             null, //$request->avatar
             null,//$request->address
         ]);
@@ -351,22 +350,21 @@ class AuthController extends Controller
     //Endpoint to update employee by employee
     public function UpdateEmp(Request $request)
     {
-        $pro = DB::insert('call spUpdateProfileEmp (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
-            $request->empid,
+        $pro = DB::insert('call spManagUpdateProfile (?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?, ?)', [
+            1001,
             null, //$request->title,
-            null, //$request->email,
-            $request->surn,
-            $request->fname,
+            $request->surname,
+            $request->firstname,
             null, //$request->midnme,
-            null, //$request->pass,
-            //null, //$request->dob,
+            null, //$request->email,
+            $request->email,
             $request->phone,
+            null, //$request->role,
             null, //$request->payment,
             null, //$request->salary,
             null, //$request->comm,
-            null, //$request->role,
             $request->avatar,
-            $request->addr
+            $request->address
         ]);
         if ($pro) {
             return response()->json($pro);
@@ -484,6 +482,18 @@ class AuthController extends Controller
             $request->name,
             $request->price
         ]);
+        if($crea){
+            return response()->json($crea);
+        }
+        else {
+            $crea = 'Error, something happened.';
+            return response()->json($crea);            
+        }
+     }
+
+      //Endpoint to delete a service and price
+      public function DeleteService(Request $request){
+        $crea = DB::insert('call spDeleteServices (?)',[$id]);
         if($crea){
             return response()->json($crea);
         }
