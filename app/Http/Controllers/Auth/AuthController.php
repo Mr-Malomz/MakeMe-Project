@@ -27,7 +27,7 @@ class AuthController extends Controller
     //return redirect('url/'.$d_email);
    }
 
-    //<!--------------BEGIN CUSTOMER OPERATIONS-------------->
+//<!--------------BEGIN CUSTOMER OPERATIONS-------------->
     //Endpoint to create job
     public function createJobCard(Request $request)
     {
@@ -127,10 +127,10 @@ class AuthController extends Controller
         }
     }
 
-    //<!--------------END CUSTOMER OPERATIONS-------------->
+//<!--------------END CUSTOMER OPERATIONS-------------->
 
 
-    //<!--------------BEGIN SUPER ADMIN OPERATIONS-------------->
+//<!--------------BEGIN SUPER ADMIN OPERATIONS-------------->
 
     //Endpoint to add employee
     public function Employee(Request $request)
@@ -246,10 +246,10 @@ class AuthController extends Controller
         }
     }
 
-    //<!--------------END SUPER ADMIN OPERATIONS-------------->
+//<!--------------END SUPER ADMIN OPERATIONS-------------->
 
 
-    //<!--------------BEGIN SIGN UP OPERATION-------------->
+//<!--------------BEGIN SIGN UP OPERATION-------------->
 
     //Endpoint to send email
     public function Sendmail($email, $id)
@@ -299,10 +299,10 @@ class AuthController extends Controller
         }
     }
 
-    //<!--------------END SIGN UP OPERATION-------------->
+//<!--------------END SIGN UP OPERATION-------------->
 
 
-    //<!--------------BEGIN EMPLOYEE OPERATIONS-------------->
+//<!--------------BEGIN EMPLOYEE OPERATIONS-------------->
 
     //Endpoint for employee login
     public function LoginEmp(Request $request)
@@ -385,7 +385,7 @@ class AuthController extends Controller
             $verified = $pass[0]->Verified;
             $id = encrypt($pass[0]->Trans_Id);
             if ($verified == '0') {
-              return $this->verify($request->email, $id);
+                return redirect('/api/mail/' . $email . '/' . $id);
             }
             else {
                 return redirect('/api/pail/' . $email . '/' . $id);            
@@ -414,7 +414,7 @@ class AuthController extends Controller
         return redirect('http://127.0.0.1:8000/#/newpassword/'.$d_id);
     }
 
-    //<!--------------END EMPLOYEE OPERATIONS-------------->
+//<!--------------END EMPLOYEE OPERATIONS-------------->
 
 
     //<!--------------BEGIN OTHER OPERATIONS-------------->
@@ -450,7 +450,7 @@ class AuthController extends Controller
 
     
     //<!--------------BEGIN ACCOUNTANT OPERATIONS-------------->
-    //Endpoint to create nes service and price
+     //Endpoint to create nes service and price
      public function CreateService(Request $request){
         $crea = DB::select('call spCreateService (?, ?)',[
             $request->name,
