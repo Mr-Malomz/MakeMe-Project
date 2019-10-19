@@ -152,6 +152,10 @@ const EmployeeList = ({fetchEmployees, isLoading, fetchError, employees, props})
         })
     };
     
+    //implement search property based on first name
+    const filteredEmployees = employees.filter(employee => 
+        employee.Firstname.toLowerCase().includes(data.search.toLowerCase()));
+
     return (
         <EmployeeListWrap>
             <div className="header-sect">
@@ -182,7 +186,7 @@ const EmployeeList = ({fetchEmployees, isLoading, fetchError, employees, props})
                         </tr>
                     </thead>
                     <tbody>
-                        {employees.map((employee, i) => (
+                        {filteredEmployees.map((employee, i) => (
                             <tr key={employee.Emp_Id}>
                                 <td>{i+1}</td>
                                 <td>{employee.Firstname}</td>

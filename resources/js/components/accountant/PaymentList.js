@@ -143,7 +143,11 @@ const PaymentList = ({isLoading, salError, salary, fetchSalary}) => {
         return () => {
             
         };
-    }, [])
+    }, []);
+
+    //implement search property based on first name
+    const filteredSalary = salary.filter(salary =>
+        salary.Firstname.toLowerCase().includes(data.search.toLowerCase()));
     
     return (
         <PaymentListWrap>
@@ -157,7 +161,7 @@ const PaymentList = ({isLoading, salError, salary, fetchSalary}) => {
                         value={data.search}
                         name="search"
                         placeholder="search for an employee"
-                        handleChange={handleChange}
+                        onChange={handleChange}
                     />
                     <div className="sal-total">
                         <h6>paid total</h6>
@@ -179,7 +183,7 @@ const PaymentList = ({isLoading, salError, salary, fetchSalary}) => {
                         </tr>
                     </thead>
                     <tbody>
-                    {salary.map((salary, i) => (
+                    {filteredSalary.map((salary, i) => (
                         <tr key={i}>
                             <td>{i + 1}</td>
                             <td>{`${salary.Firstname}  ${salary.Surname}`}</td>

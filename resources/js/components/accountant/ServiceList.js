@@ -1,4 +1,4 @@
-import React, {useEffect} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
 import { Link } from 'react-router-dom';
 import FormInput from '../FormInput';
@@ -132,14 +132,29 @@ const ServiceListWrap = styled.section `
     }
 `;
 
-const ServiceList = ({isLoading, servError, fetchServices, services, handleChange}) => {
+const ServiceList = ({isLoading, servError, fetchServices, services}) => {
+
+    const [data, setData] = useState({
+        search: '',
+    });
+
+    const handleChange = e => {
+        setData({
+            ...data,
+            search: e.target.value
+        })
+    };
 
     useEffect(() => {
         fetchServices()
         return () => {
             
         };
-    }, [])
+    }, []);
+
+    //implement search property based on services
+    const filteredServices = services.filter(service =>
+        service.Service_Name.toLowerCase().includes(data.search.toLowerCase()));
 
     return (
         <ServiceListWrap>
@@ -150,9 +165,9 @@ const ServiceList = ({isLoading, servError, fetchServices, services, handleChang
                     <FormInput 
                         type="search"
                         style={{borderColor: '#C4C4C4', borderRadius: '5px', width: '200px', height: '35px'}}
-                        value=""
+                        value={data.search}
                         placeholder="search for a service"
-                        handleChange={handleChange}
+                        onChange={handleChange}
                     />
                     <Link to='/accountant/service/create'>create new service</Link>
                 </div>
@@ -169,7 +184,7 @@ const ServiceList = ({isLoading, servError, fetchServices, services, handleChang
                         </tr>
                     </thead>
                     <tbody>
-                    {services.map(service => (
+                    {filteredServices.map(service => (
                         <tr key={service.ID}>
                             <td>{service.ID}</td>
                             <td>{service.Service_Name}</td>
