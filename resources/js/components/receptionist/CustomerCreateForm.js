@@ -1,6 +1,7 @@
-import React from 'react';
+import React, {useState} from 'react';
 import styled from 'styled-components';
 import FormInput from '../FormInput';
+import Button from '../Button';
 
 const CustomerCreateFormWrap = styled.section `
     width: 45%;
@@ -69,10 +70,23 @@ const CustomerCreateFormWrap = styled.section `
                         padding-left: 10px;
                     }
                 }
+            }
 
-                .total-section {
-                    margin-top: auto;
+            .total-section {
+                margin-top: auto;
+                font-size: 12px;
+                font-weight: bold;
+                text-transform: capitalize;
+                padding: 15px 0;
+
+                .input-cover {
+                    float: right;
+                    input {
+                        border: none;
+                        background: none;
+                    }
                 }
+                
             }
         }
     }
@@ -88,6 +102,7 @@ const CustomerCreateFormWrap = styled.section `
 `;
 
 const CustomerCreateForm = () => {
+    const [value, setValue] = useState(3400)
     return (
         <CustomerCreateFormWrap>
             <h5>create a job</h5>
@@ -138,11 +153,12 @@ const CustomerCreateForm = () => {
                         </table>
                     </div>
                     <div className="total-section">
-                        <div className="total-main">
-                            <span>total</span>
-                            <input type="text"/>
+                        <span>total</span>
+                        <div className="input-cover">
+                            <input type="text" hidden name="amount" value={value}/><span>&#x20A6;{value}</span>
                         </div>
                     </div>
+                    <Button type="submit" style={{width: '100%', fontSize: '12px'}}>send job card to supervisor</Button>
                 </form>
             </div>
         </CustomerCreateFormWrap>

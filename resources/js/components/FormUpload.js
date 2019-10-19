@@ -1,9 +1,13 @@
-import React, {useState} from 'react';
+import React, {useState, useEffect} from 'react';
 import styled from 'styled-components';
-import {Link} from 'react-router-dom';
+import {Link, Redirect} from 'react-router-dom';
 import pic1 from '../assets/img/pic1.jpg';
 import FormInput from './FormInput';
 import Button from './Button';
+import { connect } from 'react-redux';
+import { PostAPI } from '../components/PostAPI'
+import ErrorField from './ErrorField';
+import Loader from './Loader';
 
 const FormWrapper = styled.form `
     background: #ffffff;
@@ -87,12 +91,16 @@ const FormWrapper = styled.form `
     
 `;
 
-const FormUpload = ({path, color}) => {
-    const [data, setData] = useState({
+const FormUpload = ({path, color, user}) => {
+    const [data, setData,] = useState({
         firstname: '',
         surname: '',
         phonenumber: '',
-        file: 'https://via.placeholder.com/150'
+        address: '',
+        isLoading: '',
+        file: '',
+        error: false,
+        success: false,
     })
 
     const handleChange = e => {
@@ -108,8 +116,62 @@ const FormUpload = ({path, color}) => {
         setData({file: URL.createObjectURL(e.target.files[0])})
     }
 
+    useEffect(() => {
+        setData({
+            ...data,
+            firstname: user.Firstname,
+            surname: user.Surname,
+            address: user.Emp_Addr,
+            file: user.Avatar,
+            phonenumber: user.Phone_No
+        })
+        return () => {
+            
+        };
+    }, []);
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        setData({...data, isLoading: true});
+        const datas ={
+            "empid": user.Emp_Id,
+            "surn": data.surname,
+            "fname": data.firstname,
+            "phone": data.phonenumber,
+            "avatar": data.avatar,
+            "addr": data.address
+        }
+        PostAPI('update', datas, 'POST')
+            .then(response => {
+                if (response) {
+                    setData({
+                        ...data,
+                        isLoading: false,
+                        error: false,
+                        success: true
+                    })
+                } else {
+                    setData({
+                        ...data,
+                        isLoading: false,
+                        error: true,
+                        success: false
+                    })
+                }
+            })
+    }
+
+    if (data.success) {
+        return <Redirect to={{
+            pathname: '/superadmin',
+            state: { message: 'Profile Updated Successfully' }
+        }}/>
+    }
+
     return (
-        <FormWrapper>
+        <FormWrapper onSubmit={handleSubmit}>
+            {data.isLoading && <Loader />}
+            {data.error && <ErrorField error={"Opps!!! something went wrong. Please contact your administrator"}/>}
             <section>
                 <img src={data.file} alt="Profile Upload"/>
                 <div className="upload">
@@ -132,13 +194,13 @@ const FormUpload = ({path, color}) => {
                 />
             </div>
             <div className="edit-form-cont">
-                <label htmlFor="lastname">lastname</label>
+                <label htmlFor="surname">surname</label>
                 <FormInput
                     type="text"
-                    name="lastname"
+                    name="surname"
                     style={{borderColor: '#3B5998'}}
                     required
-                    value={data.lastname}
+                    value={data.surname}
                     handleChange={handleChange}
                 />
             </div>
@@ -150,6 +212,17 @@ const FormUpload = ({path, color}) => {
                     style={{borderColor: '#3B5998'}}
                     required
                     value={data.phonenumber}
+                    handleChange={handleChange}
+                />
+            </div>
+            <div className="edit-form-cont">
+                <label htmlFor="address">address</label>
+                <FormInput
+                    type="text"
+                    name="address"
+                    style={{borderColor: '#3B5998'}}
+                    required
+                    value={data.address}
                     handleChange={handleChange}
                 />
             </div>
@@ -165,4 +238,10 @@ const FormUpload = ({path, color}) => {
     )
 }
 
-export default FormUpload
+const MapStateToProps = (state) => {
+    return {
+        user: state.auth.user
+    }
+}
+
+export default connect(MapStateToProps)(FormUpload);

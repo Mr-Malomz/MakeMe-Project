@@ -3,7 +3,7 @@ import styled from 'styled-components';
 import {NavLink} from 'react-router-dom';
 import RecepSVG2 from '../../assets/svg/RecepSVG2';
 import pic1 from '../../assets/img/pic1.jpg';
-
+import { connect } from 'react-redux'
 
 const SideBarWrapper = styled.nav `
     width: 250px;
@@ -124,35 +124,42 @@ const SideBarWrapper = styled.nav `
     }
 `;
 
-const SideBar = () => {
+const SideBar = ({user}) => {
     // add active links to navbar based on url
     const urlCheck = location.href
     const path1 = '/reception';
     const path2 = '/reception/createcustomer';
+    const path2_1 = '/reception/viewcustomer';
+    const path2_2 = '/reception/editcustomer';
     const path3 = '/reception/results';
     const path4 = '/reception/createjob';
+    const path5 = '/reception/payment';
+    
     
     return (
-        <SideBarWrapper>
+        <SideBarWrapper className="nav-hgt">
            <RecepSVG2 /> 
            <div className="responsive-sidebar"></div>
            <div className="profile-content">
-                <img src={pic1} alt="profile photo"/>
-                <p>joy ayodeji</p>
-                <h4>receptionist</h4>
+                <img src={user.Avatar} alt="profile photo"/>
+                <p>{`${user.Firstname}  ${user.Surname}`}</p>
+                <h4>{user.Title}</h4>
            </div>
            <section className="mini-nav">
                 <NavLink 
                     to={path1} 
                     activeClassName = {
-                        urlCheck.endsWith(path1) || urlCheck.endsWith(path3) || urlCheck.endsWith(path4)
+                        urlCheck.endsWith(path1) || urlCheck.endsWith(path3) || urlCheck.endsWith(path4) ||
+                        urlCheck.endsWith(path5)
                     ? 'active' : null}
                 >
                   <i className="material-icons">assignment</i>  completed job
                 </NavLink>
                 <NavLink
                     to={path2} 
-                    activeClassName={urlCheck.endsWith(path2) ? 'active' : null}
+                    activeClassName = {
+                        urlCheck.endsWith(path2) || urlCheck.endsWith(path2_1) || urlCheck.endsWith(path2_2)
+                    ? 'active' : null}
                 >
                   <i className="material-icons">person_add</i>  create customer
                 </NavLink>
@@ -161,4 +168,10 @@ const SideBar = () => {
     )
 }
 
-export default SideBar
+const MapStateToProps = (state) => {
+    return {
+        user: state.auth.user
+    }
+}
+
+export default connect(MapStateToProps)(SideBar);

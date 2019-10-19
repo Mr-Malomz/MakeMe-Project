@@ -1,6 +1,10 @@
 import React from 'react';
 import styled from 'styled-components';
 import {Link} from 'react-router-dom';
+import { connect } from 'react-redux';
+import { logoutUser } from '../redux/actions/authAction'
+import Loader from './Loader';
+import ErrorField from '../components/ErrorField';
 
 const HeaderWrapper = styled.header `
     min-width: 100%;
@@ -47,6 +51,10 @@ const HeaderWrapper = styled.header `
         }
     }
 
+    @media (max-width: 2000px) {
+        width: 104.6%
+    }
+
     @media (max-width: 700px) {
         padding-left: 10px;
 
@@ -62,18 +70,36 @@ const HeaderWrapper = styled.header `
     }
 `;
 
-const HeaderMain = ({handleClick, handleToggle, ...otherProps}) => {
+const HeaderMain = ({ handleToggle, isLoggingOut, logoutError, logoutUser, ...otherProps}) => {
     const {to} = {...otherProps};
-    
+    const handleClick = () => {
+        return logoutUser();
+    }
+
     return (
         <HeaderWrapper>
             <i className="material-icons" onClick={handleToggle}>menu</i>
             <nav>
-                {!location.href.endsWith(to) && <Link {...otherProps} className="nav-link-edit">edit profile</Link>}
-                <Link handleClick={handleClick} {...otherProps} className="nav-link-signout">sign out</Link>
+                {<Link {...otherProps} className="nav-link-edit">edit profile</Link>}
+                <Link onClick={handleClick} {...otherProps} className="nav-link-signout">sign out</Link>
             </nav>
+            {logoutError && <ErrorField error="Unable to logout. Please contact your administrator" />}
+            {isLoggingOut && <Loader />}
         </HeaderWrapper>
     )
-}
+};
 
-export default HeaderMain
+const MapStateToProps = state => {
+    return {
+        isLoggingOut: state.auth.isLoggingOut,
+        logoutError: state.auth.logoutError
+    };
+};
+
+const MapDispatchToProps = dispatch => {
+    return {
+        logoutUser: () => dispatch(logoutUser())
+    };
+};
+
+export default connect(MapStateToProps, MapDispatchToProps)(HeaderMain);

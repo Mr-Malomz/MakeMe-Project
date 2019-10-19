@@ -1,27 +1,37 @@
 import React, {useState} from 'react';
 import styled from 'styled-components';
-import SideBar from '../../components/supervisor/SideBar';
+import SideBar from '../../components/supervisor/SideBar'; 
 import HeaderMain from '../../components/HeaderMain';
+import JobCardSV from '../../components/supervisor/JobCardSV';
+
 
 const MainSupervisWrapper = styled.div `
-width: 100vw;
+    width: 100vw;
     height: 100vh;
     display: float;
     position: relative;
 
+    .nav-height{
+        height: 120%;
+    }
+
     .main-content-side {
         
-        
     .SuperVs-content {
-            display: flex;
-            margin: 20px 60px 0 0;
+        width: 35%;
+        display: block;
+        margin: 30px auto 30px auto;
+
+            .superVs-content-main{
+                width: 100%;
+            }
 
         }
     }
 
     @media (max-width: 700px) {
         .SuperVs-content {
-            width: 100%;
+            width: 90%;
 
         }
     }
@@ -44,14 +54,15 @@ const CreateJobSV = () => {
         <MainSupervisWrapper>
             {data.toggleNav && <SideBar />}
             <div className="main-content-side" style={{width: data.width ? '80.5%' : '100%'}}>
-                <HeaderMain handleToggle={handleToggle}/>
+                <HeaderMain handleToggle={handleToggle} to='/supervisor/editprofile' />
                 <div className="SuperVs-content">
-                    <div className="recep-content-main">
-
+                    <div className="superVs-content-main">
+                        <JobCardSV />
                     </div>
                 </div>
-            </div>
 
+            </div>
+            
         </MainSupervisWrapper>
     )
 }
