@@ -152,7 +152,7 @@ const CreateServiceForm = () => {
                 <div className="inpt-wrap">
                     <label htmlFor="price">price</label>
                     <FormInput
-                        type="text"
+                        type="number"
                         name='price'
                         required
                         value={data.price}

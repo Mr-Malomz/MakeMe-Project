@@ -12,7 +12,7 @@ const EmployeeSuperAdminWrapper = styled.div `
     position: relative;
 
     .nav-hgt {
-        height: 145%;
+        height: 157%;
     }
 
     .main-content-side {

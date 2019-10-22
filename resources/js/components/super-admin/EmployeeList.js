@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { fetchEmployees } from '../../redux/actions/employeesAction';
 import Loader from '../Loader';
 import ErrorField from '../ErrorField';
+import Pagination from '../Pagination';
 
 const EmployeeListWrap = styled.section `
     width: 100%;
@@ -133,8 +134,8 @@ const EmployeeListWrap = styled.section `
 const EmployeeList = ({fetchEmployees, isLoading, fetchError, employees, props}) => {
     const [data, setData] = useState({
         search: '',
-        // employees: [],
-        // isLoading: false
+        currentPage: 1,
+        itemPerpage: 10,
     });
 
     useEffect(() => {
@@ -151,9 +152,19 @@ const EmployeeList = ({fetchEmployees, isLoading, fetchError, employees, props})
             search: e.target.value
         })
     };
+
+        //pagination
+        const indexOfLastItem = data.currentPage * data.itemPerpage;
+        const indexOfFirstItem = indexOfLastItem - data.itemPerpage;
+        const currentItem = employees.slice(indexOfFirstItem, indexOfLastItem);
+
+        const paginate = pageNumber => setData({
+            ...data,
+            currentPage: pageNumber
+        })
     
     //implement search property based on first name
-    const filteredEmployees = employees.filter(employee => 
+    const filteredEmployees = currentItem.filter(employee => 
         employee.Firstname.toLowerCase().includes(data.search.toLowerCase()));
 
     return (
@@ -199,7 +210,12 @@ const EmployeeList = ({fetchEmployees, isLoading, fetchError, employees, props})
                     </tbody>
                 </table>
             )}
-            
+            <Pagination 
+                itemPerPage={data.itemPerpage} 
+                totalItem={employees.length} 
+                currentPage={data.currentPage}
+                paginate={paginate}
+            />
         </EmployeeListWrap>
     )
 };

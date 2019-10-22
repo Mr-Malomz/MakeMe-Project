@@ -4,10 +4,10 @@ import FormInput from '../FormInput';
 import Button from '../Button';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { confirmAlert } from 'react-confirm-alert';
 import { PostAPI } from '../../components/PostAPI';
 import Loader from '../../components/Loader';
 import ErrorField from '../../components/ErrorField';
+import swal from 'sweetalert';
 
 const EditEmpFormWrap = styled.section `
     width: 100%;
@@ -161,80 +161,44 @@ const EditEmpForm = (props) => {
     };
 
     const handleDelete = e => {
-        console.log(props.props.match.params.Emp_Id);
-        confirmAlert({
-            customUI: ({ onClose }) => {
-                return (
-                <div className='custom-ui' 
-                    style={{
-                            position: "relative", 
-                            left: '40%',
-                            transform: 'translateY(-250px)',
-                            zIndex: '20',
-                            width: '400px',
-                            background: '#FFFFFF',
-                            boxShadow: '0px 5px 20px grey',
-                            height: '140px',
-                            fontSize: '12px',
-                            padding: '20px 20px'
-                        }}
-                >
-                    <h1 style={{marginBottom: "10px"}}>Are you sure?</h1>
-                    <p style={{marginBottom: "10px"}}>You want to delete this employee?</p>
-                    <button 
-                        style={{
-                            position: 'relative',
-                            width: '120px',
-                            height: '38px',
-                            fontSize: '12px',
-                            color: '#ffffff',
-                            textTransform: 'capitalize',
-                            borderRadius: '7px',
-                            fontWeight: 'bold',
-                            marginRight: '20px'
-                        }}
-                    onClick={onClose}>No</button>
-                    <button
-                    style={{
-                        position: 'relative',
-                        width: '120px',
-                        height: '38px',
-                        fontSize: '12px',
-                        color: '#ffffff',
-                        textTransform: 'capitalize',
-                        borderRadius: '7px',
-                        fontWeight: 'bold',
-                    }}
-                    onClick={() => {
-                        setData({...data, isLoading: true });
-                        let datas = {'id': props.props.match.params.Emp_Id};
-                        PostAPI('employeeDELETE', datas, 'DELETE')
-                            .then(response => {
-                                if(response) {
-                                    setData({
-                                        ...data,
-                                        isLoading: false,
-                                        delError: false,
-                                        delSuccess: true,
-                                    })
-                                } else {
-                                    setData({
-                                        ...data,
-                                        isLoading: false,
-                                        delError: true,
-                                        delSuccess: false
-                                    })
-                                }
+        swal({
+            title: "Are you sure?",
+            text: "Are you sure that you want to delete this employee?",
+            icon: "warning",
+            // dangerMode: true,
+            buttons: true,
+            dangerMode: true,
+        })
+        .then(deleteEmployee => {
+            if(deleteEmployee) {
+                setData({
+                    ...data,
+                    isLoading: true
+                });
+                let datas = {
+                    'id': props.props.match.params.Emp_Id
+                };
+                PostAPI('employeeDELETE', datas, 'DELETE')
+                    .then(response => {
+                        if (response) {
+                            setData({
+                                ...data,
+                                isLoading: false,
+                                delError: false,
+                                delSuccess: true,
                             })
-                        onClose();
-                    }}
-                    >
-                    Yes, Delete it!
-                    </button>
-                </div>
-                );
+                        } else {
+                            setData({
+                                ...data,
+                                isLoading: false,
+                                delError: true,
+                                delSuccess: false
+                            })
+                        }
+                    })
             }
-            });
+        });
+        
     }
     const handleClickDelete = e => {
 

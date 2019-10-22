@@ -83,6 +83,7 @@ const MainAccountant = (props) => {
                 <div className="superad-content">
                     <div className="super-content-main">
                         <MessageField msg={message} /> 
+                        {/* {message ? <div>{swal(message, {icon: 'success'})}</div> : null} */}
                         <MessageField msg={delMessage} />
                         <ServiceList />
                     </div>

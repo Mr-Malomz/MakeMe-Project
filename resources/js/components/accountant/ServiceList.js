@@ -6,6 +6,7 @@ import { connect } from 'react-redux';
 import { fetchServices } from '../../redux/actions/servicesAction'
 import Loader from '../Loader';
 import ErrorField from '../ErrorField';
+import Pagination from '../Pagination';
 
 const ServiceListWrap = styled.section `
     width: 100%;
@@ -136,6 +137,8 @@ const ServiceList = ({isLoading, servError, fetchServices, services}) => {
 
     const [data, setData] = useState({
         search: '',
+        currentPage: 1,
+        itemPerpage: 10,
     });
 
     const handleChange = e => {
@@ -152,8 +155,17 @@ const ServiceList = ({isLoading, servError, fetchServices, services}) => {
         };
     }, []);
 
+    
+
+    //pagination
+    const indexOfLastItem = data.currentPage * data.itemPerpage;
+    const indexOfFirstItem = indexOfLastItem - data.itemPerpage;
+    const currentItem = services.slice(indexOfFirstItem, indexOfLastItem);
+
+    const paginate = (pageNumber) => setData({...data, currentPage: pageNumber})
+
     //implement search property based on services
-    const filteredServices = services.filter(service =>
+    const filteredServices = currentItem.filter(service =>
         service.Service_Name.toLowerCase().includes(data.search.toLowerCase()));
 
     return (
@@ -196,6 +208,12 @@ const ServiceList = ({isLoading, servError, fetchServices, services}) => {
                     </tbody>
                 </table>
             )}
+            <Pagination 
+                itemPerPage={data.itemPerpage} 
+                totalItem={services.length} 
+                currentPage={data.currentPage} 
+                paginate={paginate}
+            />
         </ServiceListWrap>
     )
 }

@@ -4,7 +4,7 @@ import FormInput from '../FormInput';
 import Button from '../Button';
 import { Link, Redirect } from 'react-router-dom';
 import { connect } from 'react-redux';
-import { confirmAlert } from 'react-confirm-alert';
+import swal from 'sweetalert';
 import { PostAPI } from '../../components/PostAPI';
 import Loader from '../Loader';
 import ErrorField from '../ErrorField';
@@ -137,93 +137,44 @@ const EditServiceForm = (props) => {
     }, [])
 
     const handleDelete = e => {
-        
-        confirmAlert({
-            customUI: ({ onClose }) => {
-                return (
-                // <div 
-                //     style={{
-                //         background: "#000000",
-                //         width: "104vw",
-                //         height: "100vh",
-                //         position: "absolute",
-                //         top: "0",
-                //         opacity: "0.6",
-                //         zIndex: "10"
-                //     }}
-                // >
-                    <div className='custom-ui' 
-                        style={{
-                                position: "absolute", 
-                                left: '40%',
-                                transform: 'translateY(-450px)',
-                                zIndex: '100',
-                                width: '400px',
-                                background: '#FFFFFF',
-                                boxShadow: '0px 5px 20px grey',
-                                height: '140px',
-                                fontSize: '12px',
-                                padding: '20px 20px'
-                            }}
-                    >
-                        <h1 style={{marginBottom: "10px"}}>Are you sure?</h1>
-                        <p style={{marginBottom: "10px"}}>You want to delete this service?</p>
-                        <button 
-                            style={{
-                                position: 'relative',
-                                width: '120px',
-                                height: '38px',
-                                fontSize: '12px',
-                                color: '#ffffff',
-                                textTransform: 'capitalize',
-                                borderRadius: '7px',
-                                fontWeight: 'bold',
-                                marginRight: '20px',
-                                background: "ffffff"
-                            }}
-                        onClick={onClose}>No</button>
-                        <button
-                        style={{
-                            position: 'relative',
-                            width: '120px',
-                            height: '38px',
-                            fontSize: '12px',
-                            color: '#ffffff',
-                            textTransform: 'capitalize',
-                            borderRadius: '7px',
-                            fontWeight: 'bold',
-                        }}
-                        onClick={() => {
-                            setData({...data, isLoading: true });
-                            let datas = {'id': props.props.match.params.ID};
-                            PostAPI('deleteService', datas, 'DELETE')
-                                .then(response => {
-                                    if(response) {
-                                        setData({
-                                            ...data,
-                                            isLoading: false,
-                                            delError: false,
-                                            delSuccess: true,
-                                        })
-                                    } else {
-                                        setData({
-                                            ...data,
-                                            isLoading: false,
-                                            delError: true,
-                                            delSuccess: false
-                                        })
-                                    }
+        swal({
+            title: "Are you sure?",
+            text: "Are you sure that you want to delete this service?",
+            icon: "warning",
+            // dangerMode: true,
+            buttons: true,
+            dangerMode: true,
+        }) 
+            .then(deleteService => {
+                if (deleteService) {
+                    setData({
+                        ...data,
+                        isLoading: true
+                    });
+                    let datas = {
+                        'id': props.props.match.params.ID
+                    };
+                    PostAPI('deleteService', datas, 'DELETE')
+                        .then(response => {
+                            if (response) {
+                                setData({
+                                    ...data,
+                                    isLoading: false,
+                                    delError: false,
+                                    delSuccess: true,
                                 })
-                            onClose();
-                        }}
-                        >
-                        Yes, Delete it!
-                        </button>
-                    </div>
-                // </div>
-                );
-            }
-            });
+                            } else {
+                                setData({
+                                    ...data,
+                                    isLoading: false,
+                                    delError: true,
+                                    delSuccess: false
+                                })
+                            }
+                        })
+                }
+            })
+        
     };
 
     const handleSubmit = e => {

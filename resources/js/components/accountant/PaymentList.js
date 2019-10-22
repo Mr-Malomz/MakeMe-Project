@@ -5,6 +5,9 @@ import { connect } from 'react-redux';
 import { fetchSalary  } from '../../redux/actions/salaryAction'
 import ErrorField from '../ErrorField';
 import Loader from '../Loader';
+import Pagination from '../Pagination';
+import Button from '../Button';
+import swal from 'sweetalert';
 
 const PaymentListWrap = styled.section `
     width: 100%;
@@ -67,6 +70,10 @@ const PaymentListWrap = styled.section `
                 background: #ffffff;
             }
 
+            .paid {
+                background: rgba(108, 189, 69, 0.2)
+            }
+
         }
 
         td {
@@ -121,7 +128,10 @@ const PaymentList = ({isLoading, salError, salary, fetchSalary}) => {
     const [data, setData] = useState({
         search: '',
         price: '',
-        isChecked: false
+        isChecked: {},
+        selectedRow: 0,
+        currentPage: 1,
+        itemPerpage: 10,
     })
 
     const handleChange = e => {
@@ -131,11 +141,22 @@ const PaymentList = ({isLoading, salError, salary, fetchSalary}) => {
         })
     };
 
-    const handleCheck = (e) => {
-        setData({
-            ...data,
-            isChecked: !data.isChecked
+    const handleCheck = (salary, e) => {
+        // setData({
+        //     ...data,
+        //     isChecked: !data.isChecked
+        // })
+        // data.isChecked[salary.Firstname] = e.target.checked
+        // setData({...data, isChecked: data.isChecked, selectedRow: salary.Firstname})
+        swal({
+            title: "Are you sure you want to pay this employee?",
+            text: "When done, it cannot be reversed",
+            icon: "warning",
+            // dangerMode: true,
+            buttons: true,
+            dangerMode: false,
         })
+        console.log(salary)
     };
 
     useEffect(() => {
@@ -145,8 +166,18 @@ const PaymentList = ({isLoading, salError, salary, fetchSalary}) => {
         };
     }, []);
 
+    //pagination
+    const indexOfLastItem = data.currentPage * data.itemPerpage;
+    const indexOfFirstItem = indexOfLastItem - data.itemPerpage;
+    const currentItem = salary.slice(indexOfFirstItem, indexOfLastItem);
+
+    const paginate = (pageNumber) => setData({
+        ...data,
+        currentPage: pageNumber
+    })
+
     //implement search property based on first name
-    const filteredSalary = salary.filter(salary =>
+    const filteredSalary = currentItem.filter(salary =>
         salary.Firstname.toLowerCase().includes(data.search.toLowerCase()));
     
     return (
@@ -165,7 +196,7 @@ const PaymentList = ({isLoading, salError, salary, fetchSalary}) => {
                     />
                     <div className="sal-total">
                         <h6>paid total</h6>
-                        <h1>&#x20A6; 10023008</h1>
+                        <h1>&#x20A6; 0</h1>
                     </div>
                 </div>
             </div>
@@ -179,26 +210,43 @@ const PaymentList = ({isLoading, salError, salary, fetchSalary}) => {
                             <th>percentage</th>
                             <th>amount</th>
                             <th>status</th>
-                            <th>paid</th>
+                            <th>payment</th>
                         </tr>
                     </thead>
                     <tbody>
                     {filteredSalary.map((salary, i) => (
-                        <tr key={i}>
+                        <tr key={i} className={data.selectedRow === salary.Firstname ? "paid" : null}>
                             <td>{i + 1}</td>
                             <td>{`${salary.Firstname}  ${salary.Surname}`}</td>
                             <td>{salary.Title}</td>
                             <td>{salary.Commission}</td>
                             <td>&#x20A6; {salary.Salary}</td>
-                            <td>{data.isChecked ? 'paid' : 'unpaid'}</td>
+                            <td>{data.selectedRow === salary.Firstname ? "paid" : "unpaid"}</td>
                             <td>
-                                <input type="checkbox" name="paid"  checked={data.isChecked} onChange={() => handleCheck(i)}/>
+                                {/* <input type="checkbox" name="paid" onClick={(i) => handleCheck(salary, i)}/> */}
+                                <Button
+                                style={{
+                                    height: '27px',
+                                    width: '60px',
+                                    fontSize: '11px',
+                                    background: '#3B5998'
+                                }}
+                                onClick={(i) => handleCheck(salary, i)}
+                                >
+                                pay</Button>
                             </td>
                         </tr>
                     ))}
                     </tbody>
                 </table>
             )}
+
+            <Pagination 
+                itemPerPage={data.itemPerpage} 
+                totalItem={salary.length} 
+                currentPage={data.currentPage} 
+                paginate={paginate}
+            />
             
         </PaymentListWrap>
     )

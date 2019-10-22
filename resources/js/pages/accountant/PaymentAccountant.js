@@ -11,7 +11,7 @@ const PaymentAccountantWrapper = styled.div `
     position: relative;
 
     .nav-hgt {
-        height: 145%;
+        height: 149%;
     }
 
     .main-content-side {

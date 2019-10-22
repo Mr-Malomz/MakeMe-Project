@@ -13,26 +13,16 @@ const PaginationWrapper = styled.section `
     .pagination {
         display: flex;
         font-size: 12px;
+        flex-flow: row nowrap;
+        justify-content: center;
+        align-content: center;
+        align-items: center;
         
             li {
                 list-style: none;
                 padding: 5px 10px 5px 10px;
                 border: 0.5px solid #C4C4C4;
-
-                &:first-child {
-                    border-radius: 4px 0 0 4px;
-                    font-weight: bold;
-                }
-
-                &:last-child {
-                    border-radius: 0 4px 4px 0;
-                    font-weight: bold;
-                }
-
-                a {
-                    text-decoration: none;
-                    color: #000000;
-                }
+                cursor: pointer;
             }
     }
 
@@ -43,16 +33,21 @@ const PaginationWrapper = styled.section `
 
 `;
 
-const Pagination = () => {
+const Pagination = ({itemPerPage, totalItem, paginate, currentPage}) => {
+    const pageNumber = [];
+
+    //get the number of pages for an item
+    for (let i = 1; i <= Math.ceil(totalItem / itemPerPage); i++) {
+        pageNumber.push(i)
+    }
+
     return (
         <PaginationWrapper>
             <nav aria-label="Page navigation example">
                 <ul className="pagination">
-                    <li ><a href="http://127.0.0.1:8000/#/workers">Previous</a></li>
-                    <li className="active"><a href="http://127.0.0.1:8000/#/workers">1</a></li>
-                    <li ><a href="http://127.0.0.1:8000/#/workers">2</a></li>
-                    <li ><a href="http://127.0.0.1:8000/#/workers">3</a></li>
-                    <li ><a href="http://127.0.0.1:8000/#/workers">Next</a></li>
+                    {totalItem >= 11 && pageNumber.map(number => (
+                        <li key={number} className={currentPage === number ? 'active' : ''} onClick={() => paginate(number)}>{number}</li>
+                    ))}
                 </ul>
             </nav>
         </PaginationWrapper>
