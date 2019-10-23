@@ -265,7 +265,7 @@ const EditServiceForm = (props) => {
 const MapStateToProps = (state, ownProps) => {
     let id = ownProps.props.match.params.ID;
     return {
-        service: state.services.services.filter(service => service.ID == id)
+        service: state.services.services.filter(service => service.Serv_ID == id)
     }
 }
 

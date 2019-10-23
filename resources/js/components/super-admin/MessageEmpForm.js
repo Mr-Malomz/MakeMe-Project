@@ -189,7 +189,7 @@ const MessageEmpForm = ({ fetchNotifications, notifications, notifError, isLoadi
         return () => {
             
         };
-    }, []);
+    }, [data.success]);
 
     return (
         <MessageEmpFormWrap>

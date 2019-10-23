@@ -197,12 +197,12 @@ const ServiceList = ({isLoading, servError, fetchServices, services}) => {
                     </thead>
                     <tbody>
                     {filteredServices.map(service => (
-                        <tr key={service.ID}>
-                            <td>{service.ID}</td>
+                        <tr key={service.Serv_ID}>
+                            <td>{service.Serv_ID}</td>
                             <td>{service.Service_Name}</td>
                             <td>&#x20A6; {service.Price}</td>
                             <td>{service.Date_Created.replace(/ .*/,'')}</td>
-                            <td><Link to={`/accountant/service/edit/${service.ID}`}>manage</Link></td>
+                            <td><Link to={`/accountant/service/edit/${service.Serv_ID}`}>manage</Link></td>
                         </tr>
                     ))}
                     </tbody>

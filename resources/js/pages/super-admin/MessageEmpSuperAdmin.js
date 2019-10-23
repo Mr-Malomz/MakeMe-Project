@@ -11,7 +11,7 @@ const MessageEmpSuperAdminWrapper = styled.div `
     position: relative;
 
     .nav-hgt {
-        height: 153%;
+        height: 158%;
     }
 
     .main-content-side {

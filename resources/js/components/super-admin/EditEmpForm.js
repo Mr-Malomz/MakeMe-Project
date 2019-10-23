@@ -315,21 +315,21 @@ const EditEmpForm = (props) => {
                             name="role" 
                             id="" 
                             required
-                            value={data.role}
+                            value=""
                             onChange={selectHandle}
                             style={{
                                 borderColor: '#7C7C7C', 
                                 width: '100%', 
-                                height: '30px', 
+                                height: '30px',
                                 borderWidth: '0.5px',
                                 marginLeft: '36px'
                                 }}
                         >
-                            <option value=""></option>
-                            <option value="accountant">Accountant</option>
-                            <option value="supervisor">Supervisor</option>
-                            <option value="receptionist">Receptionist</option>
-                            <option value="workers">Workers</option>
+                            <option value={data.role}>{data.role}</option>
+                            <option value="Accountant">Accountant</option>
+                            <option value="Supervisor">Supervisor</option>
+                            <option value="Receptionist">Receptionist</option>
+                            <option value="Workers">Workers</option>
                         </select>
                     </div>
                     <div className="inpt-wrap">

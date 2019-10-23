@@ -128,7 +128,7 @@ const SalaryList = ({handleChange}) => {
                     />
                     <div className="sal-total">
                         <h6>monthly total</h6>
-                        <h1>&#x20A6; 10023008</h1>
+                        <h1>&#x20A6; 1000</h1>
                     </div>
                 </div>
             </div>
